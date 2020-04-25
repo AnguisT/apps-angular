@@ -1,0 +1,17 @@
+<div no-padding-left class="info_bar">
+    <div class="container ui-g">
+        <div class="b_add" *ngFor="let item of menu" [routerLink]="item.url" routerLinkActive="active">
+            <span class="name">{{item.name}}</span>
+        </div>
+        <div class="d_ibfo ui-g">
+            <user-menu></user-menu>
+        </div>
+    </div>
+    <div class="sub-nav">
+        <div class="nav-item" *ngFor="let nav of sections"
+             [routerLink]="nav.url"
+             routerLinkActive="active">
+            {{nav.name}}
+        </div>
+    </div>
+</div>

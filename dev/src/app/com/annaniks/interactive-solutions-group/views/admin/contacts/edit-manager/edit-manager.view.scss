@@ -1,0 +1,35 @@
+.edit-manager {
+  margin: 10px;
+}
+
+.sub-nav {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+  padding: 0 10px;
+  border-bottom: 0;
+  max-height: 40px;
+
+  .nav-item {
+    font-family: Circe, serif;
+    font-size: 16px;
+    line-height: 13px;
+    color: #11223e;
+    height: 38px;
+    padding: 0 24px;
+    cursor: pointer;
+    box-sizing: border-box;
+    opacity: .6;
+    min-width: 160px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+
+    &.active {
+      border-bottom: solid 2px #324cb9;
+      opacity: 1;
+    }
+  }
+}

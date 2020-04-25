@@ -1,0 +1,104 @@
+<span padding-left-sm *ngIf="isError" font-size-16 font-open-sans error margin-top-95>{{errorMessage}}</span>
+<div margin-top-20 class="ui-g">
+    <div class="ui-g-3">
+        <div class="form_group">
+            <label for="project_name">Имя субпорядчика
+                <span error>*</span>
+            </label>
+            <input id="project_name" font-size-12 font-open-sans color-gray [(ngModel)]="subcontractorName" type="text"
+                placeholder="">
+        </div>
+    </div>
+    <div class="ui-g-3">
+        <div class="form_group">
+            <label for="project_name">Фамилия субпорядчика
+                <span error>*</span>
+            </label>
+            <input id="project_name" font-size-12 font-open-sans color-gray [(ngModel)]="subcontractorSurname" type="text"
+                placeholder="">
+        </div>
+    </div>
+    <div class="ui-g-3">
+        <div class="form_group">
+            <label for="project_name">Сегмент
+                <span error>*</span>
+            </label>
+            <p-dropdown filter="true" placeholder="Не выбрано" [options]="allSphereActivity" optionLabel="Name"
+                [(ngModel)]="selectedSphereActivity"></p-dropdown>
+        </div>
+    </div>
+</div>
+<div font-size-16 font-open-sans color-gray border-bottom-gray class="categories-name">Контактные данные
+    <span error>*</span>
+</div>
+<div margin-top-18 align-center class="ui-g">
+    <div *ngFor="let contact of contacts" class="ui-g-3">
+        <div class="form_group">
+            <label for="project_name">{{contact?.ContactType}}</label>
+            <input id="project_name" font-size-12 font-open-sans color-gray value="" [(ngModel)]="contact.ContactValue"
+                type="text" placeholder="">
+        </div>
+    </div>
+    <div class="ui-g-3">
+        <div class="form_group">
+            <input type="submit" font-open-sans font-size-14 width-80 value="Добавить данные" (click)="addContact()"
+                cursor-pointer>
+        </div>
+    </div>
+</div>
+<div font-open-sans font-size-16 color-gray border-bottom-gray class="categories-name"> Контракты
+    <span error>*</span>
+</div>
+<div margin-top-18 class="ui-g">
+    <div *ngIf="!id" class="ui-g-3">
+        <div class=" form_group">
+            <label for="project_name">Ссылка на договор</label>
+            <input id="project_name" font-size-12 font-open-sans color-gray [(ngModel)]="contractUrl" type="text"
+                placeholder="">
+        </div>
+    </div>
+    <div *ngFor="let contract of contracts;let i=index" class="ui-g-3">
+        <div class=" form_group">
+            <label for="project_name">Ссылка на договор</label>
+            <input id="project_name" font-size-12 font-open-sans color-gray [(ngModel)]="contracts[i]" type="text"
+                placeholder="">
+        </div>
+    </div>
+    <div *ngIf="id" class="ui-g-3">
+        <div class="form_group">
+            <input type="submit" font-open-sans font-size-14 width-80 value="Добавить договор" (click)="addContract()"
+                cursor-pointer>
+        </div>
+    </div>
+</div>
+<div font-open-sans color-gray border-bottom-gray class="categories-name">Описание</div>
+<div full-width padding-left-sm margin-top-28>
+    <p font-size-13 font-open-sans color-gray> Добавить описание</p>
+    <div margin-bottom-23 align-center comment-margin-bottom class="ui-g">
+        <div width-97 padding-rigth-sm width-comments>
+            <textarea full-width class="comment" name="comment" placeholder="..." [(ngModel)]="comment" font-open-sans
+                font-size-12 color-gray></textarea>
+        </div>
+    </div>
+</div>
+
+<div margin-top-110 class="ui-g">
+    <div margin-auto class="ui-g-6" style="margin-top:100px">
+        <div display-flex>
+            <div routerLink="/contacts/companies" margin-rigth-auto class="form_group" style="width:35%">
+                <input type="submit" value="Отмена" style="box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.27);font-size:16px;background-color: rgba(38, 153, 251, 1);height: 45px">
+            </div>
+            <div (click)="addOrChangeSubcontractor()" margin-left-auto class="form_group" style="width:35%;">
+                <input type="submit" style="box-shadow: 10px 10px 12px 0px rgba(0,0,0,0.27);font-size:16px;background-color: rgba(38, 153, 251, 1);height: 45px"
+                    value="Сохранить">
+            </div>
+        </div>
+        <div *ngIf="id" style="margin:18px auto;width:20%">
+            <p (click)="deleteSubcontractor()" cursor-pointer style="min-width: max-content;" no-margin full-width
+                text-center font-open-sans font-size-12 color-gray>
+                <u>Удалить контакт</u>
+            </p>
+        </div>
+    </div>
+</div>
+<app-loading [visiblity]="loading"></app-loading>

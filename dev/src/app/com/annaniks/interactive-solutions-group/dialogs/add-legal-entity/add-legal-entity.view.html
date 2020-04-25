@@ -1,0 +1,36 @@
+<div class="legal-entity">
+    <div *ngIf="!selectCompany" class="form-group">
+        <label for="sel_blk" class="label">Компания</label>
+        <p-dropdown id="sel_blk" placeholder="Выберите компанию" optionLabel="Denomination" [options]="companies"
+                    [(ngModel)]="selectCompany" filter="true"></p-dropdown>
+    </div>
+    <form *ngIf="selectCompany" [formGroup]="form">
+        <div class="ui-g">
+            <div class="form-group">
+                <label for="sel_blk" class="label">Тип юридического лица</label>
+                <p-dropdown id="sel_blk" placeholder="Выберите тип юр. лица" optionLabel="Name" [options]="legalEntityTypes"
+                            formControlName="TypeLegalEntity" ></p-dropdown>
+            </div>
+
+            <div class="form-group">
+                <label for="sel_blk2" class="label">Налогообложение</label>
+                <p-dropdown placeholder="Выберите налогооблажение" [options]="taxaties" optionLabel="Name" formControlName="Taxation"
+                            id="sel_blk2"></p-dropdown>
+            </div>
+
+            <div class="form-group">
+                <label for="AbbrName" class="label">Сокращенное наименование (для платежных поручений)</label>
+                <input type="text" id="AbbrName" class="form-control" formControlName="AbbrName">
+            </div>
+
+            <div class="form-group">
+                <label for="Inn" class="label">ИНН</label>
+                <input type="text" id="Inn" class="form-control" formControlName="Inn">
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <button *ngIf="selectCompany" class="btn btn-success mr-10" [ngClass]="{'valid': !form.valid,'noValid':form.valid}" (click)="onClick()">Добавить</button>
+        <button class="btn btn-danger mr-10" (click)="onClose()">Закрыть</button>
+    </div>
+</div>

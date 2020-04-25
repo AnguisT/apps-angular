@@ -1,0 +1,181 @@
+<dx-data-grid
+  id="gridContainer"
+  keyExpr="Id"
+  [dataSource]="dataSource"
+  [allowColumnReordering]="true"
+  [masterDetail]="{enabled: true, template: 'detail'}"
+  [showBorders]="false"
+  [errorRowEnabled]="false"
+  [columnAutoWidth]="true"
+  (onRowDblClick)="doubleClickFunction($event)"
+  (onToolbarPreparing)="onToolbarPreparing($event)"
+>
+  <dxo-selection mode="single"></dxo-selection>
+  <dxo-header-filter [visible]="true"></dxo-header-filter>
+  <dxo-state-storing
+    [enabled]="true"
+    type="localStorage"
+    storageKey="all-projects"
+  ></dxo-state-storing>
+
+  <dxi-column
+    dataField="StatusId"
+    alignment="center"
+    caption=""
+    width="30px"
+    [allowExporting]="false"
+    [allowFiltering]="false"
+    [calculateCellValue]="calculateCellValue"
+    [allowReordering]="false"
+    [encodeHtml]="false"
+  >
+  </dxi-column>
+  <dxi-column
+    [allowReordering]="false"
+    alignment="center"
+    dataField="StatusName"
+    [calculateCellValue]="calculateStatus"
+    [encodeHtml]="false"
+    caption="Статус"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="ProjectFinishDate"
+    cellTemplate="cellProjectFinishDateTemplate"
+    dataType="string"
+    caption="Дата сдачи"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="Projectdate"
+    caption="Дата мероприятия"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="Name"
+    caption="Название проекта"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="Number"
+    caption="Номер проекта"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="AreaName"
+    caption="Место"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="CustomerClientName"
+    caption="Клиент/заказчик"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="DepartamentName"
+    caption="Отдел ISG"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="ManagerProjectFullName"
+    caption="Менеджер"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="SWName"
+    caption="Сценарист"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="EventDateMonth"
+    caption="Период (Месяц)"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="EventDateQuarter"
+    caption="Период (Квартал)"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="EventDateYear"
+    caption="Период (Год)"
+  ></dxi-column>
+
+  <dxo-search-panel [visible]="true"></dxo-search-panel>
+  <dxo-group-panel [visible]="true"></dxo-group-panel>
+  <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="[10, 25, 50, 100]"
+    [showInfo]="true"
+  ></dxo-pager>
+
+  <div *dxTemplate="let project of 'detail'">
+    <div class="example-element-detail">
+      <div class="prod_names_open_block ui-g ui-g-w">
+        <div class="ui-g-3">
+          <span
+            >Бюджет план:
+            <strong>{{ project.data.BudgetPredlog }} ₽</strong></span
+          ><br />
+          <span
+            >Бюджет факт: <strong>{{ project.data.BudgetFact }} ₽</strong></span
+          ><br />
+          <span
+            >Прибыль факт:
+            <strong>{{ project.data.profitFact }} ₽</strong></span
+          >
+        </div>
+        <div class="ui-g-3">
+          <span
+            >Количество участников:
+            <strong>{{ project.data.CountParticipants }}</strong></span
+          ><br />
+          <span
+            >Тип договора:
+            <strong>{{ project.data.TypecontractName }}</strong></span
+          ><br />
+          <span
+            >Юр лицо:
+            <strong>{{ project.data.InfoISG?.AbbrName }}</strong></span
+          >
+        </div>
+        <div class="ui-g-3">
+          <span
+            >Формат проекта:
+            <strong>{{ project.data.ProjectFormatName }}</strong></span
+          ><br />
+          <span
+            >Форма оплаты:
+            <strong>{{ project.data.PayMethodName }}</strong></span
+          ><br />
+          <span
+            >Дата подачи предложений:
+            <strong>{{ project.data.RequestDate }}</strong></span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div *dxTemplate="let cell of 'cellProjectdateTemplate'">
+        <div>{{ (cell.data.Projectdate) | dateFormat }}</div>
+    </div> -->
+
+  <div *dxTemplate="let cell of 'cellProjectFinishDateTemplate'">
+    <div>{{ cell.data.ProjectFinishDate | dateFormat }}</div>
+  </div>
+
+  <dxo-summary>
+    <dxi-group-item column="Name" summaryType="count"> </dxi-group-item>
+  </dxo-summary>
+</dx-data-grid>
+<app-loading [visiblity]="loading"></app-loading>
+
+<div id="popover" [ngClass]="{visible: !defaultVisible}">
+  Текущий статус проекта не менялся {{ valueReminder }} или более дней.
+  Необходимо действие пользователя.
+</div>

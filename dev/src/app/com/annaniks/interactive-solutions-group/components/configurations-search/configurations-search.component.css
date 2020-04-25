@@ -1,0 +1,201 @@
+.b_add,.b_search,.d_ibfo {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+    background-color: #fff;
+    margin: 10px;
+    max-height: 80px;
+    border: solid 1px #fff;
+    }
+    .card{
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+    background-color: #fff;
+    margin: 10px;
+    max-height: 210px;
+    min-width: 400px;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    }
+    .b_add{
+    width: 11%;
+    cursor: pointer;
+    position: relative;
+    z-index: 1000;
+    }
+    .b_add .material-icons{
+    margin-top: 27px;
+    color: #F44336;
+    cursor: pointer;
+    margin-left: 10px;
+    position: absolute;
+    right: 15px;
+    top: 1px;
+    z-index: 1;
+    }
+    .b_add a{
+    text-decoration: none;
+    cursor: pointer;
+    }
+    .b_add img{
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 20px 15px 20px 20px;
+    background-color: #324cb9;
+    float: left;
+    }
+    .b_add span{
+    padding-top: 33px;
+        font-family: Circe;
+        font-size: 14px;
+        line-height: 13px;
+        text-align: left;
+        color: #11223e;
+        display: block;
+        padding-left: 20px;
+    }
+    .b_add:hover{
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+    border: solid 1px #324cb9;
+    color: #324cb9;
+    }
+    .active{
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+    border: solid 1px #324cb9;
+    color: #324cb9;
+    }
+    .b_search{
+    width: 30%;
+    }
+    .d_ibfo{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    height: 80px;
+    }
+    .d_ibfo .info_ico{
+    padding-top: 27px;
+    }
+    .d_ibfo .info_ico img{
+    padding-right: 15px;
+    }
+    .d_ibfo .user_b{
+    padding: 20px 20px 20px 15px;
+    }
+    .d_ibfo .user_b p{
+    font-family: ProximaNova;
+    font-size: 16px;
+    line-height: 11px;
+    text-align: left;
+    color: #11223e;
+    float: right;
+    }
+    .d_ibfo .user_b img{
+    padding-top: 5px;
+    height: 30px;
+    margin-right: 15px;
+    }
+    /* Style the search field */
+    .search input[type=text] {
+    padding: 10px 10px 10px 15px;
+    font-size: 17px;
+    float: left;
+    width: 80%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: solid 1px rgba(17, 34, 62, 0.15);
+    background-color: #fff;
+    opacity: 0.4;
+    font-family: Circe;
+    font-size: 14px;
+    color: #11223e;
+    }
+    
+    /* Style the submit button */
+    .search button {
+    float: left;
+    width: 90px;
+    padding: 8px;
+    font-family: Circe;
+    font-size: 16px;
+    color: white;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #324cb9;
+    border: none; /* Prevent double borders */
+    cursor: pointer;
+    }
+    
+    .search button:hover {
+    background: #0b7dda;
+    }
+    
+    /* Clear floats */
+    .search::after {
+    content: "";
+    clear: both;
+    display: table;
+    }
+    .search {
+    width: 100%;
+    }
+    .searchInput{
+    padding: 20px;
+    }
+    .b_sort,.b_group,.b_filt{
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+    background-color: #fff;
+    margin: 10px;
+    max-height: 40px;
+    }
+    
+    @media screen and (max-width: 1600px){
+    
+    }
+    @media screen and (max-width: 1300px){
+    .b_sort{
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    width: 35%;
+    }
+    .b_group{
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    width: 30%;
+    }
+    .b_add{
+    width: 10%;
+    }
+    .b_search{
+    width: 31%;
+    }
+    }
+    

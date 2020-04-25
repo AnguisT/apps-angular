@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.854 17.854">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ff595a;
+      }
+    </style>
+  </defs>
+  <g id="Group_492" data-name="Group 492" transform="translate(-1303.073 -867.073)">
+    <path id="Path_16" data-name="Path 16" class="cls-1" d="M16.366,1.674H13.948V.558a.558.558,0,1,0-1.116,0V1.674H9.485V.558a.558.558,0,0,0-1.116,0V1.674H5.021V.558a.558.558,0,0,0-1.116,0V1.674H1.488A1.487,1.487,0,0,0,0,3.161v13.2a1.488,1.488,0,0,0,1.488,1.488H16.366a1.487,1.487,0,0,0,1.487-1.488V3.161A1.487,1.487,0,0,0,16.366,1.674Zm.372,14.692a.372.372,0,0,1-.372.372H1.488a.372.372,0,0,1-.372-.372V3.161a.372.372,0,0,1,.372-.372H3.905V3.905a.558.558,0,1,0,1.116,0V2.79H8.369V3.905a.558.558,0,0,0,1.116,0V2.79h3.348V3.905a.558.558,0,1,0,1.116,0V2.79h2.418a.372.372,0,0,1,.372.372Z" transform="translate(1303.073 867.073)"/>
+    <rect id="Rectangle_24" data-name="Rectangle 24" class="cls-1" width="2.232" height="1.674" transform="translate(1306.979 873.768)"/>
+    <rect id="Rectangle_25" data-name="Rectangle 25" class="cls-1" width="2.232" height="1.674" transform="translate(1306.979 876.558)"/>
+    <rect id="Rectangle_26" data-name="Rectangle 26" class="cls-1" width="2.232" height="1.674" transform="translate(1306.979 879.348)"/>
+    <rect id="Rectangle_27" data-name="Rectangle 27" class="cls-1" width="2.232" height="1.674" transform="translate(1310.884 879.348)"/>
+    <rect id="Rectangle_28" data-name="Rectangle 28" class="cls-1" width="2.232" height="1.674" transform="translate(1310.884 876.558)"/>
+    <rect id="Rectangle_29" data-name="Rectangle 29" class="cls-1" width="2.232" height="1.674" transform="translate(1310.884 873.768)"/>
+    <rect id="Rectangle_30" data-name="Rectangle 30" class="cls-1" width="2.232" height="1.674" transform="translate(1314.79 879.348)"/>
+    <rect id="Rectangle_31" data-name="Rectangle 31" class="cls-1" width="2.232" height="1.674" transform="translate(1314.79 876.558)"/>
+    <rect id="Rectangle_32" data-name="Rectangle 32" class="cls-1" width="2.232" height="1.674" transform="translate(1314.79 873.768)"/>
+  </g>
+</svg>

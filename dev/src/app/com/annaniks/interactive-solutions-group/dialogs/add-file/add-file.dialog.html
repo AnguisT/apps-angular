@@ -1,0 +1,18 @@
+<div class="add-file">
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <div class="form-group">
+      <label for="input-1">Имя</label>
+      <input type="text" id="input-1" formControlName="name" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="input-2">Ссылка на файл</label>
+      <input type="url" id="input-2" formControlName="url" class="form-control">
+    </div>
+
+    <div class="row">
+      <button class="btn btn-success mr-10">Добавить</button>
+      <button class="btn btn-danger" type="button" (click)="onCancel()">Отменить</button>
+    </div>
+  </form>
+</div>

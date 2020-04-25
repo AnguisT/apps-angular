@@ -1,0 +1,13 @@
+<div>
+  <div class="content-container">
+    <div class="mat-confirm-dialog-close ui-g-12"> 
+        <i class="material-icons i-confirm-close" (click) = "closeDialog()">close</i>
+    </div>
+    <br/>
+    <div class="mat-confirm-dialog-message"> 
+        <span class="content-span full-width">{{data.message}}</span>      
+    </div>
+  </div>
+  <button class="mat-dialog-no-button" id="no-button" [mat-dialog-close]="false">NO</button>
+  <button class="mat-dialog-yes-button" id="yes-button" [mat-dialog-close]="true">YES</button>
+</div>

@@ -1,0 +1,66 @@
+<div class="content">
+    <div no-padding-left class="info_bar">
+        <div class="container ui-g">
+            <div class="b_add">
+            <!-- <a routerLink="/projects/new"><img src="/assets/images/add.svg" height="18px" alt=""> --><span>Рабочий стол</span><!-- </a> -->
+            </div>
+            <app-task-header class="task-header"></app-task-header>
+        </div>
+    </div>
+
+    <div class="container ui-g">
+        <mat-tab-group class="tasks-tabs">
+            <mat-tab label="Текущие проекты" class="md-no-animation">
+                <div class="projects">
+                    <div class="inf_block" *ngFor="let project of currentProjects" (dblclick)="onDblclick(project)">
+                        <div class="row">
+                            <div class="title">Название проекта:</div>
+                            <div class="text">{{project.Name}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="title">Департамент:</div>
+                            <div class="text">{{project.DepartamentName}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="title">Менеджер-исполнитель:</div>
+                            <div class="text">{{project.ManagerProjectName}} {{project.ManagerProjectSurname}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="title">Комментарий:</div>
+                            <div class="text">{{project.CommentStatus}}</div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Завершенные проекты" class="md-no-animation">
+                <div class="projects">
+                    <div class="inf_block" *ngFor="let project of completedProjects" (dblclick)="onDblclick(project)">
+                        <div class="row">
+                            <div class="title">Название проекта:</div>
+                            <div class="text">{{project.Name}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="title">Департамент:</div>
+                            <div class="text">{{project.DepartamentName}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="title">Менеджер-исполнитель:</div>
+                            <div class="text">{{project.ManagerProjectName}} {{project.ManagerProjectSurname}}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="title">Комментарий:</div>
+                            <div class="text">{{project.CommentStatus}}</div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div> 
+</div>
+<app-loading [visiblity]="loading"></app-loading>

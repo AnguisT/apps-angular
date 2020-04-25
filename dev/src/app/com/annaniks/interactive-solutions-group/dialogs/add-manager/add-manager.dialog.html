@@ -1,0 +1,20 @@
+<div>
+    <div border-bottom-gray>
+        <div align-center class="ui-g title">
+            <div class="ui-g-10 text"> Добавить менеджера</div>
+            <button (click)=" onNoClick()" cursor-pointer margin-left-auto display-flex align-center class="close">
+                <i class="material-icons">
+                    close
+                </i>
+            </button>
+        </div>
+    </div>
+    <div class="form_group">
+        <span error *ngIf="error">{{error}}</span>
+        <div margin-top-33>
+            <label>Менеджер</label>
+            <p-dropdown filter="true" [options]="manager" optionLabel="FulName" placeholder="Не выбрано" [(ngModel)]="selectedManger"></p-dropdown>
+        </div>
+        <button (click)="addManager()" [disabled]="disabled" cursor-pointer class="add"><span>Добавить</span></button>
+    </div>
+</div>

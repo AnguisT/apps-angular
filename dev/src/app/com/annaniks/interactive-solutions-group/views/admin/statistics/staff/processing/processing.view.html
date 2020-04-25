@@ -1,0 +1,61 @@
+<statistics-menu></statistics-menu>
+<dx-data-grid
+  id="gridContainer"
+  keyExpr="Id"
+  [dataSource]="accountProcessing"
+  [allowColumnReordering]="true"
+  [showBorders]="false"
+  [errorRowEnabled]="false"
+  [columnAutoWidth]="true"
+  (onToolbarPreparing)="onToolbarPreparing($event)"
+  (onRowDblClick)="updateProcessing($event)"
+>
+  <dxo-header-filter [visible]="true"></dxo-header-filter>
+  <dxo-state-storing
+    [enabled]="true"
+    type="localStorage"
+    storageKey="staf-process"
+  ></dxo-state-storing>
+
+  <dxi-column
+    alignment="center"
+    dataField="Number"
+    caption="Номер проекта"
+  ></dxi-column>
+  <dxi-column alignment="center" dataField="Name" caption="Проект"></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="FullName"
+    caption="Сотрудник"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="Day"
+    caption="Количество дней"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="Money"
+    caption="Сумма к выплате"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="Status"
+    caption="Статус"
+  ></dxi-column>
+  <dxi-column alignment="center" dataField="Year" caption="Год"></dxi-column>
+  <dxi-column alignment="center" dataField="Month" caption="Месяц"></dxi-column>
+
+  <dxo-search-panel [visible]="true"></dxo-search-panel>
+  <dxo-group-panel [visible]="true"></dxo-group-panel>
+  <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="[10, 25, 50, 100]"
+    [showInfo]="true"
+  ></dxo-pager>
+</dx-data-grid>
+<app-loading [visiblity]="loading"></app-loading>

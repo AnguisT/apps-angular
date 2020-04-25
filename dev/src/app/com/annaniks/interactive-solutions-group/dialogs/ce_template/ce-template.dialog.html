@@ -1,0 +1,44 @@
+<div border-bottom-gray>
+    <div align-center class="ui-g title">
+        <div class="ui-g-10 text"></div>
+        <button (click)="onCancel()" cursor-pointer margin-left-auto display-flex align-center class="close">
+            <i class="material-icons">
+                close
+            </i>
+        </button>
+    </div>
+</div>
+<div style="margin: 10px; height: 400px; overflow-y: auto;">
+    <dx-data-grid
+        id="gridContainer"
+        keyExpr="Id"
+        [dataSource]="dataSource"
+        [allowColumnReordering]="true"
+        [showBorders]="false"
+        [hoverStateEnabled]="true"
+        [selectedRowKeys]="[]"
+        [errorRowEnabled]="false"
+        [columnAutoWidth]="true"
+        (onToolbarPreparing)="onToolbarPreparing($event)">
+
+        <dxo-state-storing [enabled]="true" type="localStorage" storageKey="ce-template"></dxo-state-storing>
+        <dxo-selection mode="single"></dxo-selection>
+
+        <dxi-column alignment="center" dataField="Number" caption="Номер проекта"></dxi-column>
+        <dxi-column alignment="center" dataField="Name" caption="Название проекта"></dxi-column>
+        <dxi-column alignment="center" dataField="ClientCompany" caption="Клиент"></dxi-column>
+        <dxi-column alignment="center" dataField="CustomerCompany" caption="Заказчик"></dxi-column>
+        <dxi-column alignment="center" dataField="LegalPersonISG" caption="Юр. лицо ISG"></dxi-column>
+
+        <dxo-search-panel [visible]="true"></dxo-search-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
+
+        <dxo-paging [pageSize]="10"></dxo-paging>
+        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]" [showInfo]="true"></dxo-pager>
+    </dx-data-grid>
+</div>
+<div class="buttons">
+    <button class="btn cancel-btn mr-10" (click)="onCancel()">Отменить</button>
+    <button class="btn confirm-btn" (click)="confirmSelect()">Готово</button>
+</div>

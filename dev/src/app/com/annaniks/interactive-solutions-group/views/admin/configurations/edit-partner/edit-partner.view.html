@@ -1,0 +1,370 @@
+<span
+  padding-left-sm
+  *ngIf="isError"
+  font-size-16
+  font-open-sans
+  error
+  margin-top-95
+  >{{errorMessage}}</span
+>
+<div margin-top-20 position-relative>
+  <div margin-top-28 class="ui-g">
+    <div class="ui-g-3">
+      <div class="form_group">
+        <label for="project_name"
+          >Фамилия
+          <span error>*</span>
+        </label>
+        <input
+          id="project_name"
+          font-size-12
+          font-open-sans
+          color-gray
+          [(ngModel)]="surname"
+          type="text"
+          placeholder=""
+        />
+      </div>
+    </div>
+    <div class="ui-g-3">
+      <div class="form_group">
+        <label for="project_name"
+          >Имя
+          <span error>*</span>
+        </label>
+        <input
+          id="project_name"
+          font-size-12
+          font-open-sans
+          color-gray
+          [(ngModel)]="name"
+          type="text"
+          placeholder=""
+        />
+      </div>
+    </div>
+    <div class="ui-g-3">
+      <div class="form_group">
+        <label for="project_name"
+          >Должность
+          <span error>*</span>
+        </label>
+        <p-dropdown
+          filter="true"
+          placeholder="Не выбрано"
+          [options]="positionEmployee"
+          optionLabel="Name"
+          [(ngModel)]="selectedPositionEmployee"
+        ></p-dropdown>
+      </div>
+    </div>
+    <div
+      position-relative
+      overflow-hidden
+      border-circle
+      top-23
+      right-35
+      class="ui-g-3"
+    >
+      <div
+        width-fit
+        margin-auto
+        position-relative
+        overflow-hidden
+        border-circle
+      >
+        <div class="change-photo">
+          <label margin-auto for="file-upload" class="custom-file-upload">
+            <i cursor-pointer class="material-icons">
+              camera_alt
+            </i>
+          </label>
+          <input id="file-upload" (change)="changeImage($event)" type="file" />
+        </div>
+        <div class="image" [ngStyle]="{'background-image':defaultImage}"></div>
+      </div>
+    </div>
+
+    <div full-width margin-top-26 class="ui-g">
+      <div class="ui-g-3">
+        <div class="form_group">
+          <label for="project_name"
+            >Логин
+            <span error>*</span>
+          </label>
+          <input
+            id="project_name"
+            font-size-12
+            font-open-sans
+            color-gray
+            [(ngModel)]="username"
+            type="text"
+            placeholder=""
+          />
+        </div>
+      </div>
+      <div class="ui-g-3">
+        <div class="form_group">
+          <label for="project_name"
+            >Пароль
+            <span error>*</span>
+          </label>
+          <input
+            id="project_name"
+            font-size-12
+            font-open-sans
+            color-gray
+            [(ngModel)]="password"
+            type="text"
+            placeholder=""
+          />
+        </div>
+      </div>
+      <div class="ui-g-3">
+        <div class="form_group">
+          <label for="project_name"
+            >Дата рождения
+            <span error>*</span>
+          </label>
+          <p-calendar
+            id="project_name"
+            [(ngModel)]="birthday"
+            [monthNavigator]="true"
+            [yearNavigator]="true"
+            yearRange="1940:2030"
+            dateFormat="dd.mm.yy"
+          ></p-calendar>
+        </div>
+      </div>
+    </div>
+    <div full-width class="ui-g">
+      <div class="ui-g-3">
+        <div class="form_group">
+          <label for="project_name"
+            >Почта
+            <span error>*</span>
+          </label>
+          <input
+            id="project_name"
+            font-size-12
+            font-open-sans
+            color-gray
+            [textMask]="mask"
+            [(ngModel)]="email"
+            type="text"
+            placeholder="email@domain"
+          />
+        </div>
+      </div>
+      <div class="ui-g-3">
+        <div class="form_group">
+          <label for="departament"
+            >Департамент
+            <span error>*</span>
+          </label>
+          <p-dropdown
+            placeholder="Выберите департамент"
+            [options]="departaments"
+            optionLabel="Name"
+            [(ngModel)]="departament"
+          ></p-dropdown>
+        </div>
+      </div>
+      <div class="ui-g-3">
+        <div class="form_group">
+          <label for="project_name"
+            >Дата приема на работу
+            <span error>*</span>
+          </label>
+          <p-calendar
+            id="project_name"
+            font-size-12
+            font-open-sans
+            color-gray
+            [(ngModel)]="dateStartWork"
+            dateFormat="dd.mm.yy"
+            type="date"
+            placeholder=""
+          ></p-calendar>
+        </div>
+      </div>
+    </div>
+    <div full-width class="ui-g">
+      <div class="ui-g-3">
+        <div class="form_group">
+          <label for="project_name"
+            >Оклад
+            <span error>*</span>
+          </label>
+          <input
+            id="project_name"
+            font-size-12
+            font-open-sans
+            color-gray
+            [(ngModel)]="salary"
+            type="number"
+            placeholder=""
+          />
+        </div>
+      </div>
+      <div class="ui-g-3">
+        <div class="form_group">
+          <label for="departament"
+            >Пол
+            <span error>*</span>
+          </label>
+          <p-dropdown
+            placeholder="Выберите пол"
+            [options]="genders"
+            optionLabel="Name"
+            [(ngModel)]="gender"
+          ></p-dropdown>
+        </div>
+      </div>
+      <div class="ui-g-3">
+        <div class="form_group">
+          <label for="project_name"
+            >Индивидуальный план
+            <span error>*</span>
+          </label>
+          <input
+            id="project_name"
+            font-size-12
+            font-open-sans
+            color-gray
+            [(ngModel)]="individualPlan"
+            type="number"
+            placeholder=""
+          />
+        </div>
+      </div>
+    </div>
+    <div full-width class="ui-g">
+      <div class="ui-g-3">
+        <div class="form_group">
+          <label for="project_name"
+            >Всего дней отпуска
+            <span error>*</span>
+          </label>
+          <input
+            id="project_name"
+            font-size-12
+            font-open-sans
+            color-gray
+            [(ngModel)]="vacationDays"
+            type="number"
+            placeholder=""
+          />
+        </div>
+      </div>
+      <div
+        class="ui-g-3"
+        style="display: flex; align-items: flex-end; padding-bottom: 20px;"
+      >
+        <div class="form_group">
+          Блокировать доступ к системе
+          <mat-checkbox
+            class="checklist-leaf-node"
+            [(ngModel)]="isBlocked"
+            [checked]="isBlocked"
+          >
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  font-open-sans
+  margin-top-127font-size-16
+  color-gray
+  border-bottom-gray
+  class="categories-name"
+>
+  Контактные данные <span error>*</span><br />
+  <!-- <span error *ngIf="contactsValidationError">{{contactsValidationError}}</span> -->
+</div>
+<div style="float: left;">
+  <div
+    class="conf-categories-flex-container conf-categories-flex-start"
+    (click)="addContact()"
+  >
+    <div class="conf-categories-add-button">
+      <h1 class="conf-categories-plus">+</h1>
+    </div>
+    <span class="conf-categories-add-text">Добавить данные</span>
+  </div>
+  <!-- <input type="submit" font-open-sans font-size-14 value="Добавить данные" (click)="addContact()" cursor-pointer> -->
+</div>
+<div class="ui-g" style="margin-top: 55px;">
+  <div *ngFor="let contact of contacts; let ind=index" class="ui-g-3">
+    <div class="form_group" style="display: flex; flex-direction: column;">
+      <label for="project_name">{{contact?.ContactType}}</label>
+      <div style="display: flex; flex-direction: row;">
+        <input
+          id="project_name"
+          font-size-12
+          font-open-sans
+          color-gray
+          [(ngModel)]="contact.ContactValue"
+          type="text"
+          placeholder=""
+          readonly
+        />
+        <mat-icon (click)="deleteContact(contact, ind)">clear</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  font-open-sans
+  margin-top-127
+  font-size-16
+  color-gray
+  border-bottom-gray
+  class="categories-name"
+>
+  Описание <span error>*</span><br />
+</div>
+<div class="ui-g" style="margin-top: 25px; padding-left: 8px;">
+  <textarea
+    class="form-control"
+    style="min-height: 100px;"
+    rows="3"
+    id="desc"
+    placeholder="Описание"
+    [(ngModel)]="description"
+  ></textarea>
+</div>
+<div class="ui-g">
+  <div margin-auto class="ui-g-6" style="margin-top: 90px;">
+    <div display-flex>
+      <div margin-right-15 class="form_group" style="width: 35%;">
+        <input
+          style="text-align: center;"
+          routerLink="/configurations/isg"
+          type="submit"
+          value="Отмена"
+        />
+      </div>
+      <div class="form_group" style="width: 35%;" *ngIf="id">
+        <input
+          style="text-align: center;"
+          class="delete-button"
+          (click)="onClickDelete()"
+          type="submit"
+          value="Удалить сотрудника"
+        />
+      </div>
+      <div margin-left-15 class="form_group" style="width: 35%;">
+        <input
+          style="text-align: center;"
+          (click)="addEmployee()"
+          type="submit"
+          value="Сохранить"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+<app-loading [visiblity]="loading"></app-loading>

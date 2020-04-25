@@ -1,0 +1,40 @@
+<div style="margin-top:84px" class="ui-g">
+    <div class="ui-g-12 ui-lg-6 ui-xl-4 ui-md-6 ui-sm-6" font-size-20 font-open-sans>
+        <b>{{subcontractor?.Surname}} {{subcontractor?.Name}}</b>
+    </div>
+    <div margin-top-8 font-open-sans class="ui-g-4">
+        <div font-size-14 padding-bottom-sm>Сегмент</div>
+        <div font-size-12 color-gray>{{subcontractor?.SphereActivityName}}</div>
+    </div>
+    <div class="create-col">
+        <button routerLink='/contacts/companies/{{subcontractor?.Id}}/edit' cursor-pointer no-border class="create-circle">
+            <i float-rigth class="material-icons create_icon">
+                create
+            </i>
+        </button>
+    </div>
+</div>
+<div font-open-sans color-gray border-bottom-gray class="categories-name">Контактные данные</div>
+<div margin-top-18 class="ui-g categories" font-open-sans>
+    <div padding-top-1em *ngFor="let contact of contacts" padding-top-1em class="ui-g-2">
+        <div padding-bottom-sm font-size-14>{{contact.ContactType}}</div>
+        <div font-size-12 color-gray>{{contact.ContactValue}}</div>
+    </div>
+</div>
+<div font-open-sans color-gray border-bottom-gray class="categories-name">Договоры</div>
+<div margin-top-26 class="ui-g categories" font-open-sans>
+    <div class="ui-g-12" *ngFor="let item of contracts">
+        <div font-size-12 color-gray>{{contracts}}</div>
+    </div>
+</div>
+<div font-open-sans color-gray border-bottom-gray class="categories-name">Проекты</div>
+<div class="list ui-g">
+    <projects-list full-width>
+        <projects-list-item [item]=item *ngFor="let item of allProjects" full-width></projects-list-item>
+    </projects-list>
+</div>
+<div>
+    <div font-open-sans color-gray border-bottom-gray class="categories-name">Комментарии</div>
+    <div margin-bottom-top-32 padding-left-sm font-size-16 color-gray>{{subcontractor?.Comments}}</div>
+</div>
+<app-loading [visiblity]="loading"></app-loading>

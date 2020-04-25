@@ -1,0 +1,30 @@
+<div style="margin-top: 84px;" class="ui-g">
+    <div class="ui-g-3" font-size-20 font-open-sans>
+        <b>{{employee?.Surname}} {{employee?.Name}}</b>
+    </div>
+    <div margin-top-6 font-open-sans class="ui-g-3">
+        <div font-size-14 padding-bottom-sm>Должность </div>
+        <div font-size-12 color-gray>{{employee?.PositionName}} </div>
+    </div>
+    <div class="create-col">
+		<button routerLink='/configurations/partner/{{employee?.Id}}/edit'  cursor-pointer no-border class="create-circle">
+			<i float-rigth class="material-icons create_icon">
+				create
+			</i>
+		</button>
+	</div>
+</div>
+<div font-open-sans color-gray border-bottom-gray class="categories-name">Контактные данные</div>
+<div margin-top-26 class="ui-g categories" font-open-sans>
+    <div padding-top-1em *ngFor="let contact of contacts" class="ui-g-2">
+        <div padding-bottom-sm font-size-14>{{contact.ContactType}}</div>
+        <div font-size-12 color-gray>{{contact.ContactValue}}</div>
+    </div>
+</div>
+<div font-open-sans margin-top-25 margin-bottom-52 color-gray border-bottom-gray class="categories-name">Проекты</div>
+<div margin-left-sm class="list ui-g">
+    <projects-list full-width>
+        <projects-list-item [item]="item" *ngFor="let item of allProjects" full-width></projects-list-item>
+    </projects-list>
+</div>
+<app-loading [visiblity]="loading"></app-loading>

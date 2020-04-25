@@ -1,0 +1,81 @@
+<div class="isg">
+    <div class="isg-nav">
+        <div class="isg-nav-item active" *ngFor="let nav of isgNav" (click)="activeIsgNav(nav.key)"
+             [class.active]="selectedIsgNav === nav.key">{{nav.name}}</div>
+    </div>
+    <div class="isg-content">
+        <div class="employee" *ngIf="selectedIsgNav === 'employee'">
+
+            <div class="content">
+                <div class="header">
+                    <div class="title" style="width: 100%;">ФИО</div>
+                    <div class="title" style="width: 100%;">Должности</div>
+                    <div class="title" style="width: 275px;">Всего дней отпуска</div>
+                    <div class="title" style="width: 275px;">Осталось дней отпуска</div>
+                </div>
+                <div class="input-group" *ngFor="let employee of allEmployee">
+                    <input type="text" class="form-control" [ngClass]="{'isActive': !employee.isActive}" cursor-pointer routerLink='/configurations/partner/{{employee.Id}}/edit' [value]="employee.FulName" readonly>
+                    <mat-checkbox class="checklist-leaf-node icon-height" [(ngModel)]="employee.isActive" [checked]="employee.isActive" (change)="changeActiveEmployee(employee)">
+                        <mat-icon>watch_later</mat-icon>
+                      </mat-checkbox>
+                    <input type="text" class="form-control" [value]="employee.PositionName" readonly>
+                    <i mat-icon-button cursor-pointer class="material-icons icon-close" routerLink='/configurations/partner/{{employee?.Id}}/edit'> edit </i>
+                    <input type="number" class="form-control" [value]="employee.VacationDays || 0" readonly>
+                    <input type="number" class="form-control" [value]="employee.VacationDaysLeft" readonly>
+                </div>
+                <div class="conf-categories-flex-container conf-categories-flex-start" routerLink="/configurations/partner/create/new">
+                    <div class="conf-categories-add-button">
+                        <h1 class="conf-categories-plus">+</h1>
+                    </div>
+                    <span class="conf-categories-add-text">Добавить сотрудника</span>
+                </div>
+            </div>
+        </div>
+        <div class="departments" *ngIf="selectedIsgNav === 'departments'">
+            <div class="content">
+                <conf-categories [id]="'departament'" [categoryName]="'departmentEmployee'"
+                                 [title]="'Департаменты'"
+                                 [conf-info]="{'label':'Добавить Отдел ISG','text':'Отдел ISG','type':'departmentEmployee'}">
+                </conf-categories>
+            </div>
+        </div>
+        <div *ngIf="selectedIsgNav === 'position'">
+            <div class="content">
+                <conf-categories [id]="'positionEmployees'" [categoryName]="'positionEmployees'"
+                                 [title]="'Должности сотрудников'"
+                                 [conf-info]="{'label':'Добавить должность сотрудников','text':'Должности сотрудников','type':'positionEmployees'}">
+                </conf-categories>
+            </div>
+        </div>
+        <div class="employee" *ngIf="selectedIsgNav === 'legal_person'">
+            <div class="content">
+                            <div class="header">
+                <div class="title">Юридические лица</div>
+            </div>
+                <div class="input-group" *ngFor="let person of legalPersons" (click)="openDialog(person)">
+                    <input type="text" class="form-control" cursor-pointer readonly [value]="person.info?.AbbrName">
+                    <i mat-icon-button cursor-pointer class="material-icons icon-close"> edit </i>
+                </div>
+                <div class="conf-categories-flex-container conf-categories-flex-start" (click)="openDialog()">
+                    <div class="conf-categories-add-button">
+                        <h1 class="conf-categories-plus">+</h1>
+                    </div>
+                    <span class="conf-categories-add-text">Добавить Юр. лицо</span>
+                </div>
+            </div>
+        </div>
+        <div class="employee" *ngIf="selectedIsgNav === 'reminder'">
+            <div class="content">
+                <div class="header">
+                    <div class="title">Ремайндер</div>
+                </div>
+                <div class="input-reminder">
+                    <p-dropdown [options]="statuses" filter="true" optionLabel="Name" placeholder="Не выбрано" [(ngModel)]="selectStatus" (onChange)="selectingStatus($event)"></p-dropdown>
+                    <input *ngIf="selectStatus" type="number" class="form-control" [(ngModel)]="valueReminder">
+                    <button *ngIf="selectStatus" class="reminder-save-button" (click)="saveReminder()">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="isLoading"></app-loading>

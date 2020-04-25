@@ -1,0 +1,92 @@
+<div [formGroup]="estimateForm" class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center;" class="controls">
+        <div class="center">
+            <button cursor-pointer class="add-section" (click)="addCE()">Добавить программу</button>
+            <button cursor-pointer class="delete-section" *ngIf="estimateForm.get('SelectedProgramm').value" (click)="deleteCE(estimateForm.get('SelectedProgramm').value?.Id)">Удалить программу</button>
+            <button cursor-pointer class="select-section mr-10" (click)="openCETemplateDialog()">Выбрать шаблон из другой программы</button>
+            <p-dropdown placeholder="Не выбрано" formControlName="SelectedProgramm" [options]="programm_ce" optionLabel="NumberPerson"></p-dropdown>
+        </div>
+        <div style="display: flex; align-items: center; margin-top: 0;" class="form_group" *ngIf="estimateForm.get('SelectedProgramm').value">
+            <mat-checkbox class="pr-10 mb-3" formControlName="isCommission"></mat-checkbox>
+            <span class="pr-10">Агентская комиссия</span>
+            <input class="mr-10" style="width: 50px;" formControlName="Commission" [ngStyle]="{'opacity': !estimateForm.get('isCommission').value ? '0.5' : '1'}" [readonly]="!estimateForm.get('isCommission').value" type="number">
+            <span>%</span>
+        </div>
+    </div>
+    <div class="general">
+        <div>
+            <div *ngFor="let section of estimateForm.get('sections').controls; let ind = index" formArrayName="sections">
+                <div [formGroupName]="ind" class="grid">
+                    <div class="header form_group">
+                        <div class="center-start">
+                            <input formControlName="NameSection" placeholder="Название раздела" readonly>
+                            <mat-icon cursor-pointer (click)="addArticle(section)" class="add">add</mat-icon>
+                            <mat-icon cursor-pointer (click)="deleteArticle(section)" class="delete">clear</mat-icon>
+                        </div>
+                        <span class="center" *ngIf="ind === 0">Ставка</span>
+                        <span class="center" *ngIf="ind === 0">Единица</span>
+                        <span class="center" *ngIf="ind === 0">Количество участников</span>
+                        <span class="center" *ngIf="ind === 0">Коэффициент</span>
+                        <span class="center" *ngIf="ind === 0">Итого</span>
+                    </div>
+                    <div class="main">
+                        <div *ngFor="let article of section.controls.articles.controls; let i = index" formArrayName="articles">
+                            <div [formGroupName]="i" class="grid-main form_group">
+                                <div style="padding-left: 10px" class="center-start">
+                                    <mat-checkbox *ngIf="article.get('selected')" formControlName="selected" class="ph-10"></mat-checkbox>
+                                    <input [ngClass]="{'invalid': article.get('NameArticle').invalid && validError, 'ml-36': !article.get('selected')}" formControlName="NameArticle" placeholder="Название статьи" [readonly]="i === 0 && ind === 0">
+                                </div>
+                                <div class="field">
+                                    <input type="number" (input)="calculate(article)" formControlName="Rate" placeholder="">
+                                </div>
+                                <div class="field">
+                                    <p-dropdown [ngClass]="{'invalid': article.get('UnitType').invalid && validError}" (onChange)="calculate(article)" placeholder="Не выбрано" [options]="unitTypes" formControlName="UnitType" optionLabel="Name"></p-dropdown>
+                                    <input [ngClass]="{'invalid': article.get('Unit').invalid && validError}" type="number" (input)="calculate(article)" formControlName="Unit" placeholder="">
+                                </div>
+                                <div class="field">
+                                    <p-dropdown [ngClass]="{'invalid': article.get('NumberPersonType').invalid && validError}" (onChange)="calculate(article)" placeholder="Не выбрано" [options]="numberPersonTypes" formControlName="NumberPersonType" optionLabel="Name"></p-dropdown>
+                                    <input [ngClass]="{'invalid': article.get('NumberPerson').invalid && validError}" type="number" (input)="calculate(article)" formControlName="NumberPerson" placeholder="" [readonly]="i === 0 && ind === 0">
+                                </div>
+                                <div class="field">
+                                    <p-dropdown [ngClass]="{'invalid': article.get('CoefficientType').invalid && validError}" (onChange)="calculate(article)" placeholder="Не выбрано" [options]="coefficientTypes" formControlName="CoefficientType" optionLabel="Name"></p-dropdown>
+                                    <input [ngClass]="{'invalid': article.get('Coefficient').invalid && validError}" type="number" (input)="calculate(article)" formControlName="Coefficient" placeholder="">
+                                </div>
+                                <span class="center">{{article.get('TotalArticle').value}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="center"></span>
+                        <span class="center">Тотал:</span>
+                        <span class="center">{{getTotalSection(section, 'TotalArticle', 'TotalSection')}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="estimateForm.get('SelectedProgramm').value" style="width: 100%;">
+        <div class="general-footer">
+            <span class="center">Приход на счет: {{getCommingAccount()}}</span>
+            <span class="center">Агентская комиссия: {{getCommission()}}</span>
+            <span class="center right">Налог на прибыль (ИП): 
+                <div class="form_group field" style="align-items: center; margin-right: 5px; margin-left: 5px;">
+                    <input type="number" formControlName="Nalog" style="padding: 2px 5px 1px 5px">%
+                </div>
+                {{getNalog()}}
+            </span>
+        </div>
+        <div class="general-footer">
+            <span class="center"></span>
+            <span class="center">Итого стоимость игры: {{getTotal('TotalSection', 'Total')}}</span>
+            <span class="center right">Прибыль: {{getProfit()}}</span>
+        </div>
+        <div class="general-footer">
+            <span class="center"></span>
+            <span class="center"></span>
+            <span class="center right">Рентабельность: {{getProfitability()}}</span>
+        </div>
+    </div>
+</div>

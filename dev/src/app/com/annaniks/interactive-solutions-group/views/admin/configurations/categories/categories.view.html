@@ -1,0 +1,192 @@
+<div class="category">
+    <div class="category-scroll">
+        <!-- (click)="scroll(page.href)" -->
+        <div cursor-pointer margin-left-22 font-size-16 font-open-sans margin-for-other-items
+             class="left-block"
+             *ngFor="let page of menuList;let i=index"
+             [class.active]="selectedCategory === i"
+             (click)="scroll(page, i)">{{page.pageName}}
+        </div>
+    </div>
+    <div class="ui-g category-content">
+
+        <conf-categories [id]="'type-project'" [hidden]="boolvalues[0]" [categoryName]="'typeProject'"
+                         [title]="'Тип проекта'"
+                         [conf-info]="{'label':'Добавить тип проекта','text':'Тип проекта','type':'typeProject'}"
+                         class="ui-g-6"></conf-categories>
+
+        <!-- </div>
+
+        <div margin-top-24 class="ui-g"> -->
+
+        <conf-categories [id]="'cyclical'" [hidden]="boolvalues[2]" [categoryName]="'cyclicalProject'"
+                         [title]="'Цикличность'"
+                         [conf-info]="{'label':'Добавить цикличность','text':'Цикличность','type':'cyclicalProject'}"
+                         class="ui-g-6"></conf-categories>
+
+
+        <conf-categories [id]="'formatProject'" [hidden]="boolvalues[3]" [categoryName]="'formatProject'"
+                         [title]="'Формат проекта'"
+                         [conf-info]="{'label':'Добавить формат проекта','text':'Формат проекта','type':'formatProject'}"
+                         class="ui-g-6"></conf-categories>
+
+        <conf-categories [id]="'levelcompany'" [hidden]="boolvalues[4]" [categoryName]="'levelcompany'"
+                         [title]="'Уровень в компании'"
+                         [conf-info]="{'label':'Добавить формат проекта','text':'Формат проекта','type':'levelcompany'}"
+                         class="ui-g-6"></conf-categories>
+        <conf-categories [id]="'nacionparty'" [hidden]="boolvalues[5]" [categoryName]="'nacionparty'"
+                         [title]="'Национальность'"
+                         [conf-info]="{'label':'Добавить формат проекта','text':'Формат проекта','type':'nacionparty'}"
+                         class="ui-g-6"></conf-categories>
+        <conf-categories [id]="'langparty'" [hidden]="boolvalues[6]" [categoryName]="'langparty'" [title]="'Язык'"
+                         [conf-info]="{'label':'Добавить формат проекта','text':'Формат проекта','type':'langparty'}"
+                         class="ui-g-6"></conf-categories>
+        <conf-categories [id]="'taskproject'" [hidden]="boolvalues[7]" [categoryName]="'taskproject'"
+                         [title]="'Задача проекта'"
+                         [conf-info]="{'label':'Добавить формат проекта','text':'Формат проекта','type':'taskproject'}"
+                         class="ui-g-6"></conf-categories>
+        <conf-categories [id]="'bizkontent'" [hidden]="boolvalues[8]" [categoryName]="'bizkontent'"
+                         [title]="'Бизнес-контент'"
+                         [conf-info]="{'label':'Добавить формат проекта','text':'Формат проекта','type':'bizkontent'}"
+                         class="ui-g-6"></conf-categories>
+        <conf-categories [id]="'scenariyparty'" [hidden]="boolvalues[9]" [categoryName]="'scenariyparty'"
+                         [title]="'Сценарий'"
+                         [conf-info]="{'label':'Добавить формат проекта','text':'Формат проекта','type':'scenariyparty'}"
+                         class="ui-g-6"></conf-categories>
+
+
+        <!-- </div>
+
+        <div margin-top-24 class="ui-g"> -->
+
+        <conf-categories [id]="'typeSale'" [hidden]="boolvalues[10]" [categoryName]="'typeSale'" [title]="'Тип продаж'"
+                         [conf-info]="{'label':'Добавить тип продажи','text':'Тип продаж','type':'typeSale'}"
+                         class="ui-g-6"></conf-categories>
+
+
+        <conf-categories [id]="'status'" [hidden]="boolvalues[11]" [categoryName]="'status'"
+                         [title]="'Статусы проектов'"
+                         [conf-info]="{'label':'Добавить статус проекта','text':'Статус проекта','type':'status'}"
+                         class="ui-g-6"></conf-categories>
+        <!-- </div>
+
+        <div margin-top-24 class="ui-g"> -->
+
+        <conf-categories [id]="'project_task'" [hidden]="boolvalues[12]" [categoryName]="'project_task'"
+                         [title]="'Задача проекта'"
+                         [conf-info]="{'label':'Добавить задачу проекта','text':'Задача проекта','type':'project_task'}"
+                         class="ui-g-6"></conf-categories>
+
+        <!-- </div>
+
+        <div margin-top-24 class="ui-g"> -->
+
+        <conf-categories [id]="'sphereActivity'" [hidden]="boolvalues[14]" [categoryName]="'sphereActivity'"
+                         [title]="'Сегмент'"
+                         [conf-info]="{'label':'Добавить сферу деятельности','text':'Сегмент','type':'sphereActivity'}"
+                         class="ui-g-6"></conf-categories>
+
+        <conf-categories [id]="'typeCompany'" [hidden]="boolvalues[15]" [categoryName]="'typeCompany'"
+                         [title]="'Тип компании'"
+                         [conf-info]="{'label':'Добавить тип компании','text':'Тип компании','type':'typeCompany'}"
+                         class="ui-g-6"></conf-categories>
+
+        <!-- </div>
+
+        <div margin-top-24 class="ui-g"> -->
+
+        <!-- <conf-categories [id]="'country'" [hidden]="boolvalues[16]" [categoryName]="'country'" [title]="'Страны'"
+                         [conf-info]="{'label':'Добавить страну','text':'Страны','type':'country'}"
+                         class="ui-g-6"></conf-categories> -->
+
+        <!-- <conf-categories [id]="'city'" [hidden]="boolvalues[17]" [categoryName]="'city'" [title]="'Города'"
+                         [conf-info]="{'label':'Добавить город','text':'Города','type':'city'}"
+                         class="ui-g-6"></conf-categories> -->
+
+        <div [hidden]="boolvalues[16]"  margin-right-83 full-width position-relative>
+            <div
+                [id]="id"
+                color-gray
+                font-size-16
+                border-bottom-gray
+                class="categories-name"
+            >
+                Страны и города
+            </div>
+            <div style="display: flex; flex-direction: row;">
+                <div style="width: 50%">
+                    <div cdkDropList (cdkDropListDropped)="dropCountry($event)">
+                        <div class="input" *ngFor="let item of country; let i = index" cdkDrag>
+                            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+                            <input
+                                matInput
+                                placeholder="Name"
+                                type="text"
+                                class="conf-categories-input"
+                                name="name-{{ i }}"
+                                value="{{ item.Name }}"
+                                (click)="selectCountry(item)"
+                                (keyup.enter)="saveCountry($event.target.value, i)"
+                            />
+                            <i
+                                (click)="deleteObject('country/' + item.Id, 'country')"
+                                mat-icon-button
+                                class="material-icons conf-categories-clear"
+                            >clear</i>
+                        </div>
+                    </div>
+                    <div class="conf-categories-flex-container conf-categories-flex-start" (click)="addObject()">
+                        <div class="conf-categories-add-button">
+                            <h1 class="conf-categories-plus">+</h1>
+                        </div>
+                        <span class="conf-categories-add-text">Добавить</span>
+                    </div>
+                </div>
+                <div style="width: 50%">
+                    <div cdkDropList (cdkDropListDropped)="dropCity($event)">
+                        <div class="input" *ngFor="let item of citiesByCountry; let i = index" cdkDrag>
+                            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+                            <input
+                                matInput
+                                type="text"
+                                class="conf-categories-input"
+                                name="name-{{ i }}"
+                                value="{{ item.Name }}"
+                                (keyup.enter)="saveCity($event.target.value, i)"
+                            />
+                            <i
+                                (click)="deleteObject('city/' + item.Id, 'city')"
+                                mat-icon-button
+                                class="material-icons conf-categories-clear"
+                            >clear</i>
+                            <mat-checkbox [(ngModel)]="item.isCapital" (change)="changeIsCapital(item)"></mat-checkbox>
+                        </div>
+                    </div>
+                    <div *ngIf="selectedCountryId" class="conf-categories-flex-container conf-categories-flex-start" (click)="addCity()">
+                        <div class="conf-categories-add-button">
+                            <h1 class="conf-categories-plus">+</h1>
+                        </div>
+                        <span class="conf-categories-add-text">Добавить</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- </div>
+        <div margin-top-24 class="ui-g"> -->
+        <conf-categories [id]="'areas_conduct'" [hidden]="boolvalues[17]" [categoryName]="'areas_conduct'"
+                         [title]="'Зоны проведения'"
+                         [conf-info]="{'label':'Добавить зону проведения','text':'Зоны проведения','type':'areas_conduct'}"
+                         class="ui-g-6"></conf-categories>
+        <conf-categories [id]="'typeContact'" [hidden]="boolvalues[18]" [categoryName]="'typeContact'"
+                         [title]="'Контакты'"
+                         [conf-info]="{'label':'Добавить контакт','text':'Контакты','type':'typeContact'}"
+                         class="ui-g-6"></conf-categories>
+        <conf-categories [id]="'financeStatus'" [hidden]="boolvalues[19]" [categoryName]="'financeStatus'"
+                         [title]="'Статусы финансов'"
+                         [conf-info]="{'label':'Добавить статус финансов','text':'Статус финансов','type':'financeStatus'}"
+                         class="ui-g-6"></conf-categories>
+    </div>
+</div>
+
+<p-toast [style]="{marginTop: '5px'}"></p-toast>

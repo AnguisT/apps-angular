@@ -1,0 +1,24 @@
+<div class="category">
+    <div class="category-scroll">
+        <!-- (click)="scroll(page.href)" -->
+        <div cursor-pointer margin-left-22 font-size-16 font-open-sans margin-for-other-items
+             class="left-block"
+             *ngFor="let page of menuList;let i=index"
+             [class.active]="selectedCategory === i"
+             (click)="scroll(page, i)">{{page.pageName}}
+        </div>
+    </div>
+    <div class="ui-g category-content">
+
+        <conf-categories [id]="'role-isg'" [hidden]="boolvalues[0]" [categoryName]="boolstrings[0]"
+            [title]="'Роли ОП менеджера ISG'"
+            [conf-info]="{'label':'Добавить роль ОП менеджера','text':'Роль ОП менеджера ISG','type': boolstrings[0]}"
+            class="ui-g-6"></conf-categories>
+
+        <conf-categories [id]="'role-manager'" [hidden]="boolvalues[1]" [categoryName]="boolstrings[1]"
+            [title]="'Роли ОП менеджера'"
+            [conf-info]="{'label':'Добавить роль ОП менеджера','text':'Роль ОП менеджера','type':boolstrings[1]}"
+            class="ui-g-6"></conf-categories>
+
+    </div>
+</div>

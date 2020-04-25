@@ -1,0 +1,114 @@
+<div class="content" [formGroup]="formGroup">
+  <div no-padding-left class="info_bar">
+    <div class="container ui-g">
+      <div class="b_add" *ngIf="isProjectCreate">
+        <a *ngIf="showCreateProject" routerLink="/projects/new"
+          ><img src="/assets/images/add.svg" height="18px" alt="" /><span
+            >Добавить проект</span
+          ></a
+        >
+        <a *ngIf="showEventCalendarTitle"
+          ><div class="event-span">Event-calendar</div></a
+        >
+      </div>
+      <div class="d_ibfo ui-g">
+        <user-menu></user-menu>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="container ui-g">
+        <div class="b_sort">
+
+            <p>Сортировка графиков по:</p>
+            <ul>
+                <span (click)="redFilter()">
+                    <li style="color: #ff4851;"></li>
+                </span>
+                <li (click)="blueFilter()" style="color: #324cb9;"></li>
+                <li (click)="greenFilter()" style="color: #32b970;"></li>
+                <li (click)="pinkFilter()" style="color: #ff48dc;"></li>
+                <li (click)="orangeFilter()" style="color: #ffe51d;"></li>
+                <li (click)="violetFilter()" style="color: #9b45e5;"></li>
+                <li (click)="resetFilter()"  class="material-icons all-proj-refresh">refresh</li>
+            </ul>
+        </div>
+    </div> -->
+  <div *ngIf="showCreateProject" class="list ui-g">
+    <projects-list full-width margin-all-10>
+      <projects-list-item full-width></projects-list-item>
+    </projects-list>
+  </div>
+  <div *ngIf="showEventCalendarTitle" style="padding: 0 10px;">
+    <div class="container-header">
+      <div class="filter">
+        <div class="container-field">
+          <div>Формат проекта</div>
+          <p-dropdown
+            filter="true"
+            placeholder="Не выбрано"
+            [options]="formatProjects"
+            formControlName="projectFormat"
+            optionLabel="Name"
+          ></p-dropdown>
+        </div>
+        <div class="container-field">
+          <div>Департамент</div>
+          <p-dropdown
+            filter="true"
+            placeholder="Не выбрано"
+            [options]="departments"
+            formControlName="department"
+            optionLabel="Name"
+          ></p-dropdown>
+        </div>
+        <div class="container-field">
+          <div>Менеджер</div>
+          <p-dropdown
+            filter="true"
+            placeholder="Не выбрано"
+            [options]="employies"
+            formControlName="employee"
+            optionLabel="FulName"
+          ></p-dropdown>
+        </div>
+      </div>
+      <!-- <div class="switch-views">
+        <button
+          [ngClass]="{'active': selectView === 'dayGridMonth'}"
+          (click)="changeView('dayGridMonth')"
+        >
+          Месяц
+        </button>
+        <button
+          [ngClass]="{'active': selectView === 'timeGridWeek'}"
+          (click)="changeView('timeGridWeek')"
+        >
+          Неделя
+        </button>
+        <button
+          [ngClass]="{'active': selectView === 'timeGridDay'}"
+          (click)="changeView('timeGridDay')"
+        >
+          День
+        </button>
+      </div> -->
+    </div>
+    <!-- <mbsc-eventcalendar [data]="events" [options]="eventSettings" [view]="viewOptions"></mbsc-eventcalendar> -->
+    <full-calendar
+      #calendar
+      [defaultView]="selectView"
+      [header]="{
+        left: 'prev, next today',
+        center: 'title',
+        right: 'dayGridMonth, timeGridWeek, timeGridDay, listWeek'
+      }"
+      [locales]="arrayLanguages"
+      [plugins]="calendarPlugins"
+      [weekends]="calendarWeekends"
+      [events]="calendarEvents"
+      [eventLimit]="3"
+      [height]="700"
+      (dateClick)="handleDateClick($event)"
+    ></full-calendar>
+  </div>
+</div>

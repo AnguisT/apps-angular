@@ -1,0 +1,36 @@
+.mat-dialog-no-button {
+    height: 40px;
+    width: 195px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.mat-dialog-yes-button {
+    height: 40px;
+    width: 195px;
+    background-color: brown;
+    border-color: brown;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.mat-dialog-no-button:hover {
+    background-color: rgb(212, 206, 206);
+}
+
+.mat-dialog-yes-button:hover {
+    background-color: rgb(194, 30, 30);
+    border-color: rgb(194, 30, 30);;
+}
+
+.mat-confirm-dialog-close {
+    text-align: right;
+}
+
+.i-confirm-close {
+    cursor: pointer;
+}
+
+.mat-confirm-dialog-message {
+    text-align: center;
+}

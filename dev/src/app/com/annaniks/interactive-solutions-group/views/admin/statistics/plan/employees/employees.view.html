@@ -1,0 +1,108 @@
+<statistics-menu></statistics-menu>
+<div class="date_navigator">
+  <div>
+    <a (click)="decrementMonth()" class="button_navigation">Пред. месяц</a>
+  </div>
+  <div class="title">{{ months[selectedMonth] }} {{ currentYear }}</div>
+  <div>
+    <a (click)="incrementMonth()" class="button_navigation">След. месяц</a>
+  </div>
+</div>
+<dx-data-grid
+  id="gridContainer"
+  keyExpr="Id"
+  [dataSource]="employees"
+  [allowColumnReordering]="true"
+  [showBorders]="false"
+  [errorRowEnabled]="false"
+  [columnAutoWidth]="true"
+  (onToolbarPreparing)="onToolbarPreparing($event)"
+  [customizeExportData]="customizeExportData"
+>
+  <dxo-header-filter [visible]="true"></dxo-header-filter>
+  <dxo-state-storing
+    [enabled]="true"
+    type="localStorage"
+    storageKey="plan-employees"
+  ></dxo-state-storing>
+
+  <dxi-column alignment="center" dataField="FulName" caption="Фио"></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="PositionName"
+    caption="Должность"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="Department"
+    caption="Департамент"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="Performance"
+    cellTemplate="cellPerformanceTemplate"
+    caption="Выполнение"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="Plan"
+    caption="% перевыполнение/недовыполнение"
+    cellTemplate="cellPercentTemplate"
+    headerCellTemplate="titleHeaderCompletedTemplate"
+    [allowFiltering]="false"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="Plan"
+    caption="Сумма перевыполнение/недовыполнение"
+    cellTemplate="cellAmountTemplate"
+    headerCellTemplate="titleHeaderPercentTemplate"
+    [allowFiltering]="false"
+  ></dxi-column>
+
+  <dxo-search-panel [visible]="true"></dxo-search-panel>
+  <dxo-group-panel [visible]="true"></dxo-group-panel>
+  <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="[10, 25, 50, 100]"
+    [showInfo]="true"
+  ></dxo-pager>
+
+  <div *dxTemplate="let header of 'titleHeaderCompletedTemplate'">
+    <span class="drob">% </span>
+    <span class="color-success">перевыполнение</span>
+    <span class="drob">/</span>
+    <span class="color-danger">недовыполнение</span>
+  </div>
+  <div *dxTemplate="let header of 'titleHeaderPercentTemplate'">
+    <span class="drob">Сумма</span>
+    <span class="color-success">перевыполнение</span>
+    <span class="drob">/</span>
+    <span class="color-danger">недовыполнение</span>
+  </div>
+
+  <div *dxTemplate="let cell of 'cellPerformanceTemplate'">
+    <span>{{ cell.data.Performance }}</span>
+  </div>
+  <div *dxTemplate="let cell of 'cellPercentTemplate'">
+    <span *ngIf="cell.data.Plan" class="color-success"
+      >{{ generatePercentSucess(cell) }}</span
+    >
+    <span *ngIf="cell.data.Plan" class="color-danger"
+      >{{ generatePercentDanger(cell) }}</span
+    >
+  </div>
+  <div *dxTemplate="let cell of 'cellAmountTemplate'">
+    <span *ngIf="cell.data.Plan" class="color-success"
+      >{{ generateAmountSucess(cell) }}</span
+    >
+    <span *ngIf="cell.data.Plan" class="color-danger"
+      >{{ generateAmountDanger(cell) }}</span
+    >
+  </div>
+</dx-data-grid>
+<app-loading [visiblity]="loading"></app-loading>

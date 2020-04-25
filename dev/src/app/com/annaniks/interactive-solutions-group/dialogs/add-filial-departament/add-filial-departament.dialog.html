@@ -1,0 +1,125 @@
+<!-- <div border-bottom-gray>
+    <div align-center class="ui-g title">
+        <div class="ui-g-10 text"> Добавить </div>
+        <button (click)=" onNoClick()" cursor-pointer margin-left-auto display-flex align-center class="close">
+            <i class="material-icons">
+                close
+            </i>
+        </button>
+    </div>
+</div>
+<form [formGroup]="formGroup" class="form_group">
+    <div margin-top-33>
+        <h3 error text-align-center *ngIf="errorMessage">{{errorMessage}}</h3>
+        <label>{{data.title}}</label>
+        <p-dropdown *ngIf="data.key === 'filial'; else input" filter="true" [options]="legalPersons" placeholder="Выберите юридическое лицо" optionLabel="Name" formControlName="name"></p-dropdown>
+        <ng-template  #input>
+            <input type="text" formControlName="name" class="form-control">
+        </ng-template >
+    </div>
+    <button [ngClass]="{'valid': !formGroup.valid,'noValid':formGroup.valid}" [ngStyle]="{disabled : formGroup.valid}" [disabled]="!formGroup.valid" (click)="add()" cursor-pointer class="add"><span>Добавить</span></button>
+</form> -->
+
+<div class="general-info" [formGroup]="formGroup">
+  <div class="form-group">
+    <label for="Name" class="label">Название</label>
+    <input
+      type="text"
+      id="Name"
+      formControlName="name"
+      class="form-control"
+      [readonly]="data.item"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="Name" class="label">Описание</label>
+    <textarea
+      type="text"
+      id="Name"
+      formControlName="description"
+      class="form-control"
+      style="resize: none;"
+    ></textarea>
+  </div>
+
+  <div
+    class="form_group"
+    style="display: flex; justify-content: center; align-content: center;"
+  >
+    <button
+      class="btn btn-success"
+      style="margin-top: 15px;"
+      (click)="addContact()"
+    >
+      Добавить контакт
+    </button>
+  </div>
+
+  <div class="form-group" style="height: 300px; overflow-y: scroll;">
+    <div
+      class="form_group"
+      *ngFor="let contact of formGroup.get('contacts').controls; let ind=index"
+      formArrayName="contacts"
+    >
+      <p-dropdown
+        [ngClass]="{'dirty': contact.controls['typeContact']?.dirty}"
+        placeholder="Не выбрано"
+        [options]="typeContacts"
+        [formControl]="contact.controls['typeContact']"
+        optionLabel="Name"
+      ></p-dropdown>
+      <input
+        *ngIf="contact.controls['typeContact'].value?.Id !== 2 && contact.controls['typeContact'].value?.Id !== 14"
+        type="text"
+        id="Name"
+        style="width: 50%;"
+        [formControl]="contact.controls['value']"
+        class="form-control"
+        [ngClass]="{'dirty': contact.controls['value']?.dirty}"
+      />
+      <international-phone-number
+        *ngIf="contact.controls['typeContact'].value?.Id === 14"
+        [formControl]="contact.controls['value']"
+        placeholder="Enter phone number"
+        [maxlength]="20"
+        [defaultCountry]="'ru'"
+        [required]="true"
+        name="text"
+      ></international-phone-number>
+      <input
+        *ngIf="contact.controls['typeContact'].value?.Id === 2"
+        [textMask]="mask"
+        type="text"
+        placeholder="email@domain"
+        style="width: 50%;"
+        [formControl]="contact.controls['value']"
+        class="form-control"
+        [ngClass]="{'dirty': contact.controls['value']?.dirty}"
+      />
+
+      <i
+        style="color: #ff4e4e;"
+        class="material-icons"
+        cursor-pointer
+        (click)="removeContact(ind)"
+      >
+        delete
+      </i>
+    </div>
+  </div>
+
+  <div class="row">
+    <button
+      [ngClass]="{'valid': !validation(),'noValid':validation()}"
+      [ngStyle]="{disabled : validation()}"
+      [disabled]="!validation()"
+      (click)="add()"
+      cursor-pointer
+      class="btn btn-success mr-10"
+    >
+      <span>{{data.item ? 'Сохранить' : 'Добавить'}}</span>
+    </button>
+    <button class="btn btn-danger mr-10" (click)="onNoClick()">Закрыть</button>
+  </div>
+</div>

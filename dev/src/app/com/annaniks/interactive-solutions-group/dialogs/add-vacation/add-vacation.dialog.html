@@ -1,0 +1,18 @@
+<div class="add-task" [formGroup]="form">
+    <div class="form-group">
+        <label class="form-control-label date-time_label" for="date">Дата отпуска</label>
+        <p-calendar id="date" formControlName="Date" dateFormat="dd.mm.yy" [readonlyInput]="true" selectionMode="range"></p-calendar>
+    </div>
+
+    <div class="form-group" *ngIf="data.data">
+        <label class="form-control-label" for="status">Статус</label>
+        <p-dropdown [options]="status" placeholder="Не выбрано" id="status" optionLabel="Name"
+            formControlName="Status"></p-dropdown>
+    </div>
+
+    <div class="text-right">
+        <button class="btn add-task-btn mr-10" (click)="add()" [disabled]="form.invalid" >{{data.data ? 'Сохранить' : 'Добавить'}}</button>
+        <button class="btn cancel-btn mr-10" (click)="onDelete()" *ngIf="data.data">Удалить</button>
+        <button class="btn cancel-btn" (click)="onCancel()">Отменить</button>
+    </div>
+</div>

@@ -1,0 +1,541 @@
+<div class="general-info">
+  <h3 error text-align-center *ngIf="errorMessage">{{errorMessage}}</h3>
+  <div class="ui-g row">
+    <div class="column ui-g-6">
+      <div class="form-group">
+        <label for="Denomination" class="label">Название</label>
+        <input
+          type="text"
+          id="Denomination"
+          [(ngModel)]="denomination"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="SphereActivityId" class="label">Сегмент</label>
+        <p-dropdown
+          filter="true"
+          placeholder="Не выбрано"
+          [options]="allSphereActivity"
+          [(ngModel)]="selectedSphereActivity"
+          id="SphereActivityId"
+          optionLabel="Name"
+        ></p-dropdown>
+        <mat-icon class="add-icon" (click)="addNewSphereActivity()"
+          >add</mat-icon
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="CompanyTypeId" class="label">Тип компании</label>
+        <p-dropdown
+          filter="true"
+          placeholder="Не выбрано"
+          [options]="allCompanyTypes"
+          [(ngModel)]="companyType"
+          id="CompanyTypeId"
+          optionLabel="Name"
+        ></p-dropdown>
+        <mat-icon class="add-icon" (click)="addNewTypeCompany()">add</mat-icon>
+      </div>
+
+      <div
+        width-80
+        class="form-group"
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        "
+      >
+        <div>
+          <label class="label_checkbox">Компания заказчик</label>
+          <mat-checkbox
+            class="checklist-leaf-node icon-height"
+            [(ngModel)]="companyCustomer"
+            [checked]="companyCustomer"
+          ></mat-checkbox>
+        </div>
+        <div>
+          <label class="label_checkbox" style="margin-left: 10px;"
+            >Компания подрядчик</label
+          >
+          <mat-checkbox
+            class="checklist-leaf-node icon-height"
+            [(ngModel)]="companySubcontractor"
+            [checked]="companySubcontractor"
+          ></mat-checkbox>
+        </div>
+      </div>
+
+      <div
+        width-80
+        class="form-group"
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        "
+      >
+        <div>
+          <label class="label_checkbox">Филиал</label>
+          <mat-checkbox
+            class="checklist-leaf-node icon-height"
+            [(ngModel)]="companyFilial"
+            [checked]="companyFilial"
+          ></mat-checkbox>
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="companyFilial">
+        <label for="companyId" class="label">Компания</label>
+        <p-dropdown
+          filter="true"
+          placeholder="Не выбрано"
+          [options]="companies"
+          [(ngModel)]="companyParent"
+          id="companyId"
+          optionLabel="Denomination"
+        ></p-dropdown>
+      </div>
+
+      <div class="form-group">
+        <label for="CountryId" class="label">Страна</label>
+        <p-dropdown
+          filter="true"
+          placeholder="Не выбрано"
+          [options]="allCountries"
+          [(ngModel)]="country"
+          id="CountryId"
+          optionLabel="Name"
+          (onChange)="selectCountry($event)"
+        ></p-dropdown>
+      </div>
+
+      <div class="form-group">
+        <label for="CityId" class="label">Город</label>
+        <p-dropdown
+          filter="true"
+          placeholder="Не выбрано"
+          [options]="citiesByCountry"
+          [(ngModel)]="city"
+          id="CityId"
+          optionLabel="Name"
+        ></p-dropdown>
+        <mat-icon *ngIf="country" class="add-icon" (click)="addNewCity()"
+          >add</mat-icon
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="" class="label">Партнер</label>
+        <p-dropdown
+          placeholder="Не выбрано"
+          [options]="allPartners"
+          optionLabel="name"
+          [(ngModel)]="partner"
+        ></p-dropdown>
+      </div>
+
+      <div class="form-group">
+        <label for="Concurent" class="label">Конкурент</label>
+        <p-dropdown
+          placeholder="Не выбрано"
+          id="Concurent"
+          [options]="concurentValue"
+          optionLabel="name"
+          [(ngModel)]="concurent"
+        ></p-dropdown>
+      </div>
+
+      <div class="form-group">
+        <label class="label">В союзе TRUE teambuilding</label>
+        <p-dropdown
+          placeholder="Не выбрано"
+          [options]="unions"
+          optionLabel="name"
+          [(ngModel)]="isUnion"
+        ></p-dropdown>
+      </div>
+
+      <div class="form-group">
+        <label for="DiscountSize" class="label">Размер скидки</label>
+        <input
+          type="number"
+          id="DiscountSize"
+          class="form-control"
+          [(ngModel)]="saleSize"
+        />
+      </div>
+
+      <div
+        width-80
+        class="form-group"
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        "
+      >
+        <div>
+          <label class="label_checkbox"
+            >Действующая/не действующая компания</label
+          >
+          <mat-checkbox
+            class="checklist-leaf-node icon-height"
+            [(ngModel)]="status"
+            [checked]="status"
+          ></mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="ui-g-6" *ngIf="departaments && id" height-fit>
+      <div margin-top-26 padding class="box-hierarchy tree">
+        <ul no-margin-bottom no-padding-left>
+          <li>
+            <div width-90 class="form_group">
+              <label for="project_name" class="label">Название компании </label>
+              <input
+                id="project_name"
+                class="form-control"
+                font-size-12
+                color-gray
+                value="{{denomination}}"
+                type="text"
+                placeholder=""
+              />
+            </div>
+          </li>
+          <ul>
+            <li *ngFor="let department of departaments">
+              <div width-90 class="form_group">
+                <label for="project_name" class="label"
+                  >Название департамента
+                </label>
+                <input
+                  id="project_name"
+                  class="form-control"
+                  font-size-12
+                  color-gray
+                  value="{{department?.Name}}"
+                  type="text"
+                  placeholder=""
+                />
+              </div>
+
+              <ul *ngIf="department.managers">
+                <li *ngFor="let departamentManager of department.managers ">
+                  <div full-width class="form_group">
+                    <label for="project_name" class="label"
+                      >Название менеджера
+                    </label>
+                    <input
+                      id="project_name"
+                      class="form-control"
+                      font-size-12
+                      color-gray
+                      value="{{departamentManager?.Name}} {{departamentManager?.Surname}}"
+                      type="text"
+                      placeholder=""
+                    />
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li *ngFor="let entity of legalEntities">
+              <div class="form_group">
+                <label for="project_name" class="label">Юр. лицо </label>
+                <input
+                  id="project_name"
+                  class="form-control"
+                  font-size-12
+                  color-gray
+                  value="{{entity?.AbbrName}}"
+                  type="text"
+                  placeholder=""
+                />
+              </div>
+            </li>
+            <li *ngFor="let company of companiesFilial">
+              <div class="form_group">
+                <label for="companyId" class="label">Филиал </label>
+                <input
+                  id="companyId"
+                  class="form-control"
+                  font-size-12
+                  color-gray
+                  value="{{company?.Denomination}}"
+                  type="text"
+                  placeholder=""
+                />
+              </div>
+            </li>
+          </ul>
+        </ul>
+        <div padding-left-5 class="ui-g">
+          <div full-width center>
+            <button
+              [disabled]="!isDepartmentCreate"
+              (click)="openDialog('Департамент','department',id)"
+              width-80
+              cursor-pointer
+              class="add"
+            >
+              <span font-size-14>Добавить департамент</span>
+            </button>
+          </div>
+          <div full-width center>
+            <button
+              [disabled]="!isCompany"
+              (click)="legalEntityPopup()"
+              width-80
+              cursor-pointer
+              class="add"
+            >
+              <span font-size-14>Добавить Юр.лицо</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row column">
+    <div font-size-16 color-gray border-bottom-gray class="categories-name">
+      Контактные данные
+    </div>
+    <div class="ui-g-3">
+      <div class="form_group">
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="addContact()"
+          [disabled]="!isCompany"
+        >
+          Добавить данные
+        </button>
+      </div>
+    </div>
+    <div margin-top-18 align-center class="ui-g">
+      <div *ngFor="let contact of contacts; let ind = index" class="ui-g-3">
+        <div class="form_group">
+          <label for="project_name">{{contact?.ContactType}}</label>
+          <div style="display: flex; flex-direction: row;">
+            <input
+              id="project_name"
+              font-size-12
+              color-gray
+              value=""
+              class="form-control"
+              [(ngModel)]="contact.ContactValue"
+              type="text"
+              placeholder=""
+              readonly
+            />
+            <mat-icon
+              style="margin-top: 12px;"
+              class="close-icon"
+              cursor-pointer
+              (click)="deleteContact(contact, ind)"
+              >close</mat-icon
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div font-size-16 color-gray border-bottom-gray class="categories-name">
+      Контракты
+    </div>
+    <div margin-top-18 class="ui-g">
+      <div *ngIf="!id" class="ui-g-3">
+        <div class="form_group">
+          <label for="project_name">Ссылка на договор</label>
+          <input
+            id="project_name"
+            font-size-12
+            color-gray
+            [(ngModel)]="contactUrl"
+            class="form-control"
+            type="text"
+            placeholder=""
+          />
+        </div>
+      </div>
+      <div *ngFor="let contract of contracts;let i=index" class="ui-g-3">
+        <div class="form_group">
+          <label for="project_name">Ссылка на договор</label>
+          <input
+            id="project_name"
+            font-size-12
+            color-gray
+            [(ngModel)]="contracts[i]"
+            class="form-control"
+            type="text"
+            placeholder=""
+          />
+        </div>
+      </div>
+      <div *ngIf="id" class="ui-g-3">
+        <div class="form_group">
+          <button
+            type="button"
+            style="height: 50px;"
+            class="btn btn-success"
+            (click)="addContract()"
+            [disabled]="!isCompany"
+          >
+            Добавить договор
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div
+      *ngIf="id"
+      font-size-16
+      color-gray
+      border-bottom-gray
+      class="categories-name"
+    >
+      Структура компании
+    </div>
+    <div *ngIf="id" margin-top-23>
+      <div
+        class="ui-g"
+        full-width
+        margin-top-20
+        padding-top-none
+        heigth-fit
+        margin-auto
+      >
+        <div text-align-center class="ui-g-4">
+          <div full-width>
+            Департамент компании
+          </div>
+        </div>
+        <div text-align-center class="ui-g-4">
+          <div full-width>
+            Менеджеры компании
+          </div>
+        </div>
+        <div text-align-center class="ui-g-4">
+          <div full-width>
+            Юр. лицо компании
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--filial-->
+    <div *ngIf="id" class="ui-g">
+      <div class="column ui-g-4 mt-20">
+        <div class="mb-10" row center *ngFor="let departament of departaments">
+          <button
+            style="background-color: white;"
+            (dblclick)="openDialog('Департамент','department', id, departament)"
+            class="person"
+            [disabled]="!isDepartment"
+          >
+            {{departament.Name}}
+          </button>
+          <mat-icon (click)="deleteDepartment(departament)">clear</mat-icon>
+        </div>
+        <button
+          [disabled]="!isDepartmentCreate"
+          class="btn btn-success auto-width d-block mt-20"
+          (click)="openDialog('Департамент','department',id)"
+        >
+          Добавить департамент
+        </button>
+      </div>
+
+      <!--manager-->
+      <div class="column ui-g-4 mt-20">
+        <div *ngFor="let manager of managers" class="mb-10" row center>
+          <div class="person" style="background-color: white;">
+            {{manager.Name}} {{manager.Surname}}
+          </div>
+          <mat-icon (click)="deleteManager(manager)">clear</mat-icon>
+        </div>
+        <button
+          [disabled]="!isManagerCreate || !isCompany"
+          class="btn btn-success auto-width d-block mt-20"
+          (click)="addNewManager()"
+        >
+          Добавить менеджера
+        </button>
+      </div>
+
+      <div class="column ui-g-4 mt-20">
+        <div
+          class="person mb-10"
+          *ngFor="let entity of legalEntities"
+          (dblclick)="legalEntityPopup(entity)"
+        >
+          {{entity.AbbrName}}
+        </div>
+        <button
+          [disabled]="!isCompany"
+          class="btn btn-success auto-width d-block mt-20"
+          (click)="legalEntityPopup()"
+        >
+          Добавить Юр.лицо
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div color-gray border-bottom-gray class="categories-name">Описание</div>
+    <div full-width padding-left-sm margin-top-28>
+      <p font-size-13 color-gray>Добавить описание</p>
+      <div margin-bottom-23 align-center comment-margin-bottom class="ui-g">
+        <div width-97 padding-rigth-sm width-comments>
+          <textarea
+            full-width
+            class="form-control"
+            rows="3"
+            name="comment"
+            placeholder="..."
+            font-size-12
+            [(ngModel)]="comment"
+            color-gray
+          ></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <button
+      class="btn mr-10 auto-width btn-success"
+      (click)="addCompany()"
+      [disabled]="!isCompany"
+    >
+      {{id ? 'Сохранить' : 'Добавить' }}
+    </button>
+    <button
+      type="button"
+      style="width: auto;"
+      class="btn btn-danger mr-10"
+      routerLink="/contacts/companies"
+    >
+      Отмена
+    </button>
+    <button
+      *ngIf="id"
+      class="btn auto-width btn-danger"
+      (click)="deleteCompany()"
+      [disabled]="!isCompany"
+    >
+      Удалить
+    </button>
+  </div>
+</div>
+<app-loading [visiblity]="loading"></app-loading>

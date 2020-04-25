@@ -1,0 +1,73 @@
+<div class="general-info" [formGroup]="formGroup">
+
+    <div class="ui-g">
+        <div class="form-group ui-g-6">
+            <label class="label">Статус</label>
+            <p-dropdown placeholder="Не выбрано" filter="true" [options]="financeStatus" formControlName="Status" optionLabel="Name" [readonly]="isReadonly()"></p-dropdown>
+        </div>
+
+        <div class="form-group ui-g-6">
+            <label class="label">Номер проекта</label>
+            <p-dropdown placeholder="Не выбрано" filter="true" [options]="projects" formControlName="NumberProject" optionLabel="Number"></p-dropdown>
+        </div>
+
+        <div class="form-group ui-g-6">
+            <label class="label">Дата подачи</label>
+            <p-calendar color-gray styleClass="width-calendar" formControlName="DateApp" [readonlyInput]="true" dateFormat="dd.mm.yy"></p-calendar>
+        </div>
+
+        <div class="form-group ui-g-6">
+            <label class="label">Название проекта</label>
+            <input type="text" class="form-control" formControlName="NameProject" placeholder="" [readonly]="true">
+        </div>
+
+        <div class="form-group ui-g-6">
+            <label class="label">Дата выдачи</label>
+            <p-calendar color-gray styleClass="width-calendar" formControlName="DateIssue" [readonlyInput]="true" [minDate]="formGroup.get('DateApp').value" dateFormat="dd.mm.yy"></p-calendar>
+        </div>
+
+        <div class="form-group ui-g-6">
+            <label class="label">Менеджер ISG</label>
+            <p-dropdown placeholder="Не выбрано" filter="true" [options]="employies" formControlName="Manager" optionLabel="FulName" [readonly]="isReadonly()"></p-dropdown>
+        </div>
+
+        <div class="form-group ui-g-6">
+            <label class="label">Дата закрытия</label>
+            <p-calendar color-gray styleClass="width-calendar" [disabled]="true" formControlName="DateClose" [readonlyInput]="true" dateFormat="dd.mm.yy"></p-calendar>
+        </div>
+
+        <div class="form-group ui-g-6">
+            <label class="label">Сумма к выплате</label>
+            <input type="number" class="form-control" formControlName="AmountIssue" placeholder="" >
+        </div>
+
+        <div class="article_label display-add">
+            <span>Статьи</span>
+            <i (click)="addArticle()" class="material-icons add-icon">
+                add
+            </i>
+        </div>
+
+        <div class="ui-g" style="max-height: 200px; overflow: auto; width: 100%;">
+            <div class="ui-g-6" *ngFor="let articles of formGroup.get('Articles').controls; let ind=index" formArrayName="Articles">
+                <div [formGroupName]="ind" class="form_group">
+                    <input type="number" formControlName="Article" class="form-control">
+
+                    <i style="color:#FF4E4E" class="material-icons" cursor-pointer (click)="removeArticle(ind)">
+                        delete
+                    </i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <button [ngClass]="{'valid': !formGroup.valid,'noValid':formGroup.valid}" [ngStyle]="{disabled : formGroup.valid}" [disabled]="!formGroup.valid" (click)="add()" cursor-pointer class="btn btn-success mr-10">
+            <span>{{data ? 'Сохранить' : 'Добавить'}}</span>
+        </button>
+        <button class="btn btn-danger mr-10" (click)="close()">Закрыть</button>
+        <button class="btn btn-danger mr-10" *ngIf="data" (click)="delete()" [disabled]="!isDeleting">Удалить заявку</button>
+    </div>
+</div>
+
+<app-loading [visiblity]="loading"></app-loading>

@@ -1,0 +1,81 @@
+<div class="task-board">
+  <div class="ui-g">
+    <div class="left">
+      <div class="project-name">
+        <span *ngIf="project">{{project.Name}}</span>
+      </div>
+      <button
+        class="add-status-btn"
+        [disabled]="addColumnBtnDisabled"
+        (click)="addColumn()"
+      >
+        Добавить <br />
+        Статус
+      </button>
+    </div>
+    <app-task-header class="task-header"></app-task-header>
+  </div>
+
+  <div class="container ui-g tasks">
+    <div class="inf_block" *ngFor="let column of columns">
+      <div
+        class="inf_block_title"
+        [ngClass]="{'info_block_title_edit': column.edit}"
+      >
+        <div class="block-title" *ngIf="!column.edit">
+          <span>{{column.title}}</span>
+          <i
+            *ngIf="column.id !== 14 && column.id !== 15 && column.id !== 16"
+            (click)="deleteColumn(column)"
+            class="material-icons task-board-icons"
+            >clear</i
+          >
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Введите название статуса"
+          [class.error]="!column.title.length"
+          *ngIf="column.edit"
+          [(ngModel)]="column.title"
+          (keyup.enter)="saveColumnStatus(column)"
+        />
+      </div>
+      <div class="inf_block_content">
+        <div
+          class="task-list"
+          cdkDropList
+          [id]="setTaskBoardId(column.id)"
+          [cdkDropListData]="column.tasks"
+          [cdkDropListConnectedTo]="taskBoardIds"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div
+            class="task-item"
+            *ngFor="let task of column.tasks"
+            cdkDrag
+            (dblclick)="addTaskDialog(column, task)"
+          >
+            <div class="container-image">
+              <img
+                src="{{task.imageExecutor}}"
+                alt=""
+                style="
+                  height: 35px;
+                  width: 35px;
+                  border-radius: 25px;
+                  margin-left: 10px;
+                "
+              />
+            </div>
+            <div class="text">{{task.name}}</div>
+            <div style="width: 35px; margin-right: 10px;"></div>
+          </div>
+        </div>
+        <button class="add-task-btn" (click)="addTaskDialog(column)">
+          + Добавить задачу
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

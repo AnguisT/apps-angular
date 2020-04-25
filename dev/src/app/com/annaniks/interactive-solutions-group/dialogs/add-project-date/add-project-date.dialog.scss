@@ -1,0 +1,142 @@
+.title {
+  margin: 12px 10px 2px 22px;
+
+  .text {
+    font-family: CeraPro;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: center;
+    color: #2c2c2c;
+  }
+
+  .close {
+    height: 25px;
+    width: 25px;
+    border: 1px solid #1875f0;
+    border-radius: 50%;
+    background: none;
+    padding: 0;
+    i {
+      color: #11223e;
+      font-size: 20px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.form_group {
+  width: 258px;
+  margin: 0 auto;
+  padding: 5px;
+  label {
+    font-family: Circe;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.64;
+    letter-spacing: normal;
+    text-align: left;
+    color: #11223e;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 7.5px 8px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: solid 1px #dbdee2;
+    font-family: Circe;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.64;
+    letter-spacing: normal;
+    text-align: left;
+    color: #11223e;
+  }
+  .add {
+    color: white;
+    width: 100%;
+    border: none;
+    height: 45px;
+    margin-top: 38px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Circe;
+    border: solid 1px #1875f0;
+    background-color: #1875f0;
+  }
+}
+
+:host::ng-deep .ui-dropdown {
+  width: 100% !important;
+  padding: 3px;
+  margin: 4px 0;
+}
+
+:host::ng-deep .ui-state-default {
+  border-color: #ff595a;
+  color: #ff595a;
+  border-radius: 5px;
+}
+
+:host::ng-deep .ui-state-default:hover {
+  border-color: #ff595a;
+  color: #ff595a;
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+:host::ng-deep .ui-inputtext {
+  color: #707270;
+  font-size: 14px;
+}
+
+:host::ng-deep .ui-state-focus {
+  box-shadow: none !important;
+}
+
+:host::ng-deep .ui-state-highlight {
+  border-color: none;
+  background-color: transparent;
+  color: #11223e;
+}
+
+:host::ng-deep .ui-dropdown-trigger-icon:before {
+  content: "";
+}
+
+:host::ng-deep .ui-dropdown-trigger-icon {
+  top: 50%;
+  left: 50%;
+  margin-top: -0.5em !important;
+  margin-left: -0.8em !important;
+  font-size: 2em;
+}
+
+:host::ng-deep .ui-dropdown:not(.ui-state-disabled):hover {
+  background-color: transparent;
+}
+
+.ng-dirty {
+  border-color: #32b970 !important;
+}
+
+:host::ng-deep .ng-dirty > .ui-dropdown {
+  border-color: #32b970 !important;
+}
+
+:host::ng-deep .ng-dirty > .ui-multiselect {
+  border-color: #32b970 !important;
+}
+
+:host::ng-deep .ng-dirty > .ui-calendar > .ui-inputtext {
+  border-color: #32b970 !important;
+}

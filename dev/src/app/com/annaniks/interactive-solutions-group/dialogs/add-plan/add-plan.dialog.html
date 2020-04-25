@@ -1,0 +1,104 @@
+<div class="add-task">
+  <form [formGroup]="form">
+    <div class="container ui-g">
+      <div padding-top30 class="form-group ui-g-12 ui-md-6 ui-lg-6 cell">
+        Digital-departament
+      </div>
+
+      <div flex-column class="form-group ui-g-12 ui-md-6 ui-lg-6 cell">
+        <label>План</label>
+        <input
+          (input)="changePlan($event)"
+          type="number"
+          class="form-control"
+          formControlName="digitalPlan"
+          name="digitalPlan"
+        />
+      </div>
+    </div>
+
+    <div class="container ui-g">
+      <div padding-top30 class="form-group ui-g-12 ui-md-6 ui-lg-6 cell">
+        Event-department
+      </div>
+
+      <div flex-column class="form-group ui-g-12 ui-md-6 ui-lg-6 cell">
+        <label>План</label>
+        <input
+          (input)="changePlan($event)"
+          type="number"
+          class="form-control"
+          formControlName="eventPlan"
+          name="eventPlan"
+        />
+      </div>
+    </div>
+
+    <div class="container ui-g">
+      <div padding-top30 class="form-group ui-g-12 ui-md-6 ui-lg-6 cell">
+        План компании
+      </div>
+
+      <div flex-column class="form-group ui-g-12 ui-md-6 ui-lg-6 cell">
+        <label>План</label>
+        <input
+          type="number"
+          class="form-control"
+          formControlName="companyPlan"
+          name="companyPlan"
+        />
+      </div>
+    </div>
+
+    <div class="container ui-g">
+      <div *ngIf="!data.data; else titleDate" padding-top30 class="form-group ui-g-12 ui-md-6 ui-lg-6 cell">
+        Выберите дату
+      </div>
+      <ng-template #titleDate>
+        <div padding-top30 class="form-group ui-g-12 ui-md-6 ui-lg-6 cell">Дата</div>
+      </ng-template>
+
+      <div flex-column [attr.padding-top30]="data.data" class="form-group ui-g-12 ui-md-6 ui-lg-6 cell">
+        <p-calendar
+          formControlName="selectedDate"
+          view="month"
+          dateFormat="mm.yy"
+          [yearNavigator]="true"
+          yearRange="2015:2030"
+          [readonlyInput]="true"
+          [inline]="true"
+          [locale]="ru"
+          [ngClass]="{
+            'disabled-1': disabled1Month,
+            'disabled-2': disabled2Month,
+            'disabled-3': disabled3Month,
+            'disabled-4': disabled4Month,
+            'disabled-5': disabled5Month,
+            'disabled-6': disabled6Month,
+            'disabled-7': disabled7Month,
+            'disabled-8': disabled8Month,
+            'disabled-9': disabled9Month,
+            'disabled-10': disabled10Month,
+            'disabled-11': disabled11Month,
+            'disabled-12': disabled12Month
+          }"
+          (onYearChange)="changeYear($event)"
+          *ngIf="!data.data; else dateTemplate"
+        ></p-calendar>
+        <ng-template #dateTemplate>
+          {{ validDate(form.get('selectedDate').value, 'MM.yyyy', 'en') }}
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="text-right">
+      <button class="btn add-task-btn mr-10" (click)="savePlan()">
+        {{ data.data ? "Сохранить" : "Добавить" }}
+      </button>
+      <button class="btn cancel-btn mr-10" (click)="_deletePlan()" *ngIf="data.data">
+        Удалить
+      </button>
+      <button class="btn cancel-btn" (click)="onCancel(false)">Отменить</button>
+    </div>
+  </form>
+</div>

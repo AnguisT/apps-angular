@@ -1,0 +1,11 @@
+<contacts-search></contacts-search>
+<div class="edit-company">
+    <div class="sub-nav">
+        <div class="nav-item" *ngFor="let nav of menu"
+             [routerLink]="nav.url"
+             routerLinkActive="active">
+            {{nav.name}}
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,111 @@
+.form_group {
+    width: 80%;
+    label {
+        font-family: 'Open Sans';
+        font-weight: 100;
+        font-size: 14px;
+    }
+    input[type=text],
+        {
+        height: 32px;
+        width: 100%;
+        padding: 7.5px 6px;
+        margin: 4px 0;
+        border: 1px solid rgba(255, 89, 90, 1);
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    input[type=submit] {
+        width: 100%;
+        background-color: rgba(255, 89, 90, 1);
+        color: white;
+        padding: 7.5px 20px;
+        margin: 23px 0 4px 0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
+input[type=text],
+{
+height: 32px;
+width: 100%;
+padding: 7.5px 6px;
+margin: 4px 0;
+border: 1px solid rgba(255, 89, 90, 1);
+border-radius: 5px;
+box-sizing: border-box;
+}
+.categories-name{
+    margin-top: 32px;
+    padding: 0.5em 0;
+    margin-left: 0.5em;
+    width: 100%;
+}
+.add{
+    color: white;
+    background-color: #FF595A;
+    border: none;
+    height: 32px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.comment{
+
+    height: 79px;
+    padding: .5em 0 0 .5em ;
+    border: 2px solid #FF595A;
+    border-radius: 10px;
+}
+textarea{
+    resize: none;
+}
+:host::ng-deep .ui-dropdown {
+    width: 100% !important;
+    padding: 3px;
+    margin: 4px 0;
+}
+
+:host::ng-deep .ui-state-default {
+    border-color: #FF595A;
+    color: #FF595A;
+    border-radius: 5px;
+}
+
+:host::ng-deep .ui-state-default:hover {
+    border-color: #FF595A;
+    color: #FF595A;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+:host::ng-deep .ui-inputtext {
+    color: #707270;
+    font-size: 14px;
+}
+
+:host::ng-deep .ui-state-focus {
+    box-shadow: none !important;
+}
+
+:host::ng-deep .ui-state-highlight {
+    border-color: none;
+    background-color: transparent;
+    color: black;
+}
+
+:host::ng-deep .ui-dropdown-trigger-icon:before {
+    content: ""
+}
+
+:host::ng-deep .ui-dropdown-trigger-icon {
+    top: 50%;
+    left: 50%;
+    margin-top: -0.5em !important;
+    margin-left: -0.8em !important;
+    font-size: 2em;
+}
+
+:host::ng-deep .ui-dropdown:not(.ui-state-disabled):hover{
+    background-color: transparent;
+}

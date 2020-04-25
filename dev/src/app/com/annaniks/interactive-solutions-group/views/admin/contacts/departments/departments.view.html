@@ -1,0 +1,44 @@
+<contacts-search></contacts-search>
+<div class="departments">
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="CompanyName">Название компании</label>
+            <input type="text" id="CompanyName" class="form-control" formControlName="CompanyName">
+        </div>
+
+        <div class="form-group">
+            <label for="DepartmentName">Название</label>
+            <input type="text" id="DepartmentName" class="form-control" formControlName="DepartmentName">
+        </div>
+
+        <div class="form-group">
+            <label for="DepartmentPlan">План департамента</label>
+            <input type="number" id="DepartmentPlan" class="form-control" formControlName="DepartmentPlan">
+        </div>
+
+        <div class="form-group">
+            <label for="Description">Описание</label>
+            <textarea type="number" id="Description" class="form-control" formControlName="Description"></textarea>
+        </div>
+    </form>
+    <div class="contacts">
+        <div class="title">Контактные данные</div>
+        <div class="content">
+            <div class="form-group" *ngFor="let contact of contacts">
+                <label for="{{contact?.ContactType}}" class="label">{{contact?.ContactType}}</label>
+                <input type="text" id="{{contact?.ContactType}}" [(ngModel)]="contact.ContactValue"
+                       class="form-control">
+            </div>
+            <div class="row">
+                <input type="button" class="btn btn-success mt-10" value="Добавить данные"
+                       (click)="addContact()">
+            </div>
+        </div>
+    </div>
+
+    <div class="row footer">
+        <button type="button" class="btn btn-success mr-10" (click)="onSave()">Добавить</button>
+        <button type="button" class="btn btn-danger">Отмена</button>
+    </div>
+
+</div>

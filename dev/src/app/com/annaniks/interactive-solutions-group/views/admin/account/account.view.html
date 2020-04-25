@@ -1,0 +1,200 @@
+<div padding-control id="backgroundcontrol">
+    <div class="content">
+        <div no-padding-left class="info_bar">
+            <div class="container ui-g">
+                <div class="b_add">
+                   <span>Личный кабинет</span>
+                </div>
+
+                <div class="d_ibfo ui-g">
+                    <user-menu></user-menu>
+                </div>
+            </div>
+            <div class="container ui-g">
+                <div class="about">
+                    <div class="inf_block_title">Информация обо мне</div>
+                    <div class="inblock ui-g">
+                        <div class="foto">
+                                <img src= {{imgurl}} alt="" style="max-width: 150px;">
+                            <!-- <img src="/assets/images/user.jpg" height="200px" alt=""> -->
+                            <label class="edit" for="avatar">
+                                <span>Сменить фото</span>
+                                <input type="file" id="avatar" (change)="uploadAvatar($event)">
+                            </label>
+                        </div>
+                        <div class="about_in">
+                            <div class="form_group">
+                                <label>ФИО</label>
+                                <input type="text" [(ngModel)] = "fio" placeholder="ФИО" readonly>
+                            </div>
+                            <div class="form_group">
+                                <label>Пол</label>
+                                <input type="text" [(ngModel)] = "gender" placeholder="Пол" readonly>
+                            </div>
+                            <div class="form_group">
+                                <label>Дата рождения</label>
+                                <input type="text" [(ngModel)] = "birthday" placeholder="Дата рождения" readonly>
+                            </div>
+                            <div class="form_group">
+                                <label>E-mail</label>
+                                <input type="text" [(ngModel)] = "email" placeholder="Почта" readonly>
+                            </div>
+                            <div class="form_group">
+                                <label>Номер телефона</label>
+                                <input ngxPhoneMask type="tel" [(ngModel)]="phoneNumber" placeholder="Номер телефона" readonly>
+                            </div>
+                            <div class="form_group select-box">
+                                <label>Должность</label>
+                                <input type="text" [(ngModel)]="position" readonly>
+                            </div>
+                            <div class="form_group">
+                                <label>Дата принятия на работу</label>
+                                <input type="text" [(ngModel)] = "dateStartWork" placeholder="Дата принятия на работу" readonly>
+                            </div>
+                            <div class="form_group">
+                                <label>Оклад</label>
+                                <input type="number" [(ngModel)] = "salary" placeholder="Оклад" readonly>
+                            </div>
+                            <div class="form_group">
+                                <label>Описание</label>
+                                <textarea type="text" style="height: 100px;" [(ngModel)] = "description" placeholder="Описание" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="plan">
+                    <div class="inf_block_title">
+                        <a class="lbtn" (click)="decrementMonth()">Пред. месяц</a>
+                        <span>План на месяц: {{ months[selectedMonth] }} {{ currentYear }}</span>
+                        <a class="rbtn" (click)="incrementMonth()">След. месяц</a>
+                    </div>
+                    <div class="inblock">
+                        <div class="plans">
+                            <div class="form_group">
+                                <label>Индивидуальный план</label>
+                                <input type="text" value="{{dataPlan.IndividualPlan}}" readonly>
+                            </div>
+                            <div class="form_group">
+                                <label>План департамента</label>
+                                <input type="text" value="{{dataPlan.PlanDepartment}}" readonly>
+                            </div>
+                            <div class="form_group">
+                                <label>План компании</label>
+                                <input type="text" value="{{dataPlan.PlanCompany}}" readonly>
+                            </div>
+                            <div class="form_group">
+                                <label>Текущий план</label>
+                                <input type="text" value="{{dataPlan.PlanNow}}" readonly>
+                            </div>
+                            <div class="form_group">
+                                <label>Остаток плана</label>
+                                <input type="text" value="{{dataPlan.BalancePlan}}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; overflow-x: auto;">
+                <div class="item-scroll">
+                    <div class="inf_block_title popup-title">
+                        <span>Переработки</span>
+                        <i class="material-icons" (click)="openModalAccountProcessing()">add_circle_outline</i>
+                    </div>
+                    <div class="d_block">
+                        <table *ngIf="loaded">
+                        <tr class="head_t"> 
+                            <td>Проект</td><td>Количество дней</td><td>Выплата к сумме</td><td>Статус</td>
+                        </tr>
+                            <tr class="cont_t" *ngFor="let item of accountProcessing"
+                                (dblclick)="openModalAccountProcessing(item)">
+                                <td>{{item?.Name}}</td>
+                                <td>{{item?.day}}</td>
+                                <td>{{item?.money}}</td>
+                                <td>{{item?.stat === 0 ? 'Не получено' : 'Получено'}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="item-scroll">
+                    <div class="inf_block_title popup-title">
+                        <span>Коммандировки</span>
+                        <i class="material-icons" (click)="openModalAccountTrip()">add_circle_outline</i>
+                    </div>
+                    <div class="d_block">
+                        <table *ngIf="loaded">
+                           <tr class="head_t"> 
+                            <td>Проект</td><td>Количество дней</td><td>Выплата к сумме</td><td>Статус</td>
+                           </tr>
+                           <tr class="cont_t" *ngFor="let item of accountTrip"
+                               (dblclick)="openModalAccountTrip(item)">
+                               <td>{{item?.Name}}</td>
+                               <td>{{item?.day}}</td>
+                               <td>{{item?.money}}</td>
+                               <td>{{item?.stat === 0 ? 'Не получено' : 'Получено'}}</td>
+                           </tr>
+                          </table> 
+                    </div>
+                </div>
+                <div class="item-scroll">
+                    <div class="inf_block_title popup-title" style="justify-content: space-between;">
+                        <div>
+                            <span cursor-pointer (click)="prevYearDayOff()">Пред. год</span>
+                        </div>
+                        <div class="display-center">
+                            <span>Отгул: {{currentYearDayOff}}</span>
+                            <i class="material-icons" (click)="openModalAccountDayOff()">add_circle_outline</i>
+                        </div>
+                        <div>
+                            <span cursor-pointer (click)="nextYearDayOff()">След. год</span>
+                        </div>
+                    </div>
+                    <div class="d_block">
+                        <table *ngIf="loaded">
+                        <tr class="head_t"> 
+                            <td>Дата</td><td>Причина</td><td>Статус</td>
+                        </tr>
+                            <tr class="cont_t" *ngFor="let item of accountDayOff"
+                                (dblclick)="openModalAccountDayOff(item)">
+                                <td>{{item?.Date}}</td>
+                                <td>{{item?.Cause}}</td>
+                                <td>{{item?.Status === 0 ? 'Не завершен' : 'Завершен'}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="item-scroll">
+                    <div class="inf_block_title popup-title" style="justify-content: space-between;">
+                        <div>
+                            <span cursor-pointer (click)="prevYearVacation()">Пред. год</span>
+                        </div>
+                        <div class="display-center">
+                            <span>Отпуск: {{currentYearVacation}}</span>
+                            <i class="material-icons" (click)="openModalAccountVacation()">add_circle_outline</i>
+                        </div>
+                        <div>
+                            <span cursor-pointer (click)="nextYearVacation()">След. год</span>
+                        </div>
+                    </div>
+                    <div class="d_block">
+                        <table *ngIf="loaded">
+                        <tr class="head_t"> 
+                            <td>Дата</td><td>Количество дней</td><td>Статус</td>
+                        </tr>
+                            <tr class="cont_t" *ngFor="let item of accountVacation"
+                                (dblclick)="openModalAccountVacation(item)">
+                                <td>{{item?.DateStart}} - {{item?.DateEnd}}</td>
+                                <td>{{item?.NumberDays}}</td>
+                                <td>{{item?.Status === 0 ? 'Не завершен' : 'Завершен'}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="text-align: right;">
+                        Оставшееся количество дней отпуска: {{vacationDaysLeft}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-loading [visiblity]="!loaded"></app-loading>

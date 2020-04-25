@@ -1,0 +1,122 @@
+<div class="legal-entity">
+    <form [formGroup]="form">
+        <div class="ui-g">
+            <div class="column ui-g-4">
+                <div class="form-group">
+                    <label for="sel_blk" class="label">Тип юридического лица</label>
+                    <p-dropdown id="sel_blk" optionLabel="Name" [options]="legalEntityTypes"
+                                placeholder="Выберите тип юр. лица" formControlName="TypeLegalEntity" ></p-dropdown>
+                </div>
+
+            <div class="form-group">
+                <label for="sel_blk2" class="label">Налогообложение</label>
+                <p-dropdown placeholder="Выберите налогооблажение" [options]="taxaties" optionLabel="Name" formControlName="Taxation"
+                            id="sel_blk2"></p-dropdown>
+            </div>
+
+                <div class="form-group">
+                    <label for="FullNameEntity" class="label">Полное наименование юридического лица</label>
+                    <input type="text" id="FullNameEntity" class="form-control" formControlName="FullNameEntity">
+                </div>
+
+                <div class="form-group">
+                    <label for="AbbrName" class="label">Сокращенное наименование (для платежных поручений)</label>
+                    <input type="text" id="AbbrName" class="form-control" formControlName="AbbrName">
+                </div>
+
+                <div class="form-group">
+                    <label for="LegalAddress" class="label">Юридический адрес</label>
+                    <input type="text" id="LegalAddress" class="form-control" formControlName="LegalAddress">
+                </div>
+
+                <div class="form-group">
+                    <label for="ActualAddress" class="label">Фактический адрес</label>
+                    <input type="text" id="ActualAddress" class="form-control" formControlName="ActualAddress">
+                </div>
+
+                <div class="form-group">
+                    <label for="Inn" class="label">ИНН</label>
+                    <input type="text" id="Inn" class="form-control" formControlName="Inn">
+                </div>
+            </div>
+
+            <div class="column ui-g-4">
+                <div class="form-group">
+                    <label for="Kpp" class="label">КПП</label>
+                    <input type="text" id="Kpp" class="form-control" formControlName="Kpp">
+                </div>
+
+                <div class="form-group">
+                    <label for="Okonx" class="label">ОКОНХ (ОКВЭД)</label>
+                    <input type="text" id="Okonx" class="form-control" formControlName="Okonx">
+                </div>
+
+                <div class="form-group">
+                    <label for="Okpo" class="label">ОКПО</label>
+                    <input type="text" id="Okpo" class="form-control" formControlName="Okpo">
+                </div>
+
+                <div class="form-group">
+                    <label for="Ogrn" class="label">ОГРН</label>
+                    <input type="text" id="Ogrn" class="form-control" formControlName="Ogrn">
+                </div>
+
+                <div class="form-group">
+                    <label for="SurName" class="label">Фамилия лица, уполномоченного подписывать документы от лица
+                        компании</label>
+                    <input type="text" id="SurName" class="form-control" formControlName="SurName">
+                </div>
+
+                <div class="form-group">
+                    <label for="Name" class="label">Имя лица, уполномоченного подписывать документы от лица компании</label>
+                    <input type="text" id="Name" class="form-control" formControlName="Name">
+                </div>
+            </div>
+
+            <div class="column ui-g-4">
+                <div class="form-group">
+                    <label for="MiddleName" class="label">Отчество лица, уполномоченного подписывать документы от лица
+                        компании</label>
+                    <input type="text" id="MiddleName" class="form-control" formControlName="MiddleName">
+                </div>
+
+                <div class="form-group">
+                    <label for="Acting" class="label">Действующее на основании:</label>
+                    <input type="text" id="Acting" class="form-control" formControlName="Acting">
+                </div>
+
+                <div class="form-group">
+                    <label for="FullNameBank" class="label">Полное наименование банка</label>
+                    <input type="text" id="FullNameBank" class="form-control" formControlName="FullNameBank">
+                </div>
+
+                <div class="form-group">
+                    <label for="AbbrBank" class="label">Сокращенное наименование банка</label>
+                    <input type="text" id="AbbrBank" class="form-control" formControlName="AbbrBank">
+                </div>
+
+                <div class="form-group">
+                    <label for="Bik" class="label">БИК</label>
+                    <input type="text" id="Bik" class="form-control" formControlName="Bik">
+                </div>
+
+                <div class="form-group">
+                    <label for="BillNumber" class="label">Номер корр. счета</label>
+                    <input type="text" id="BillNumber" class="form-control" formControlName="BillNumber">
+                </div>
+
+                <div class="form-group">
+                    <label for="PaymentAccountNumber" class="label">Номер расчетного счета</label>
+                    <input type="text" id="PaymentAccountNumber" class="form-control" formControlName="PaymentAccountNumber">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn btn-success mr-10" [disabled]="form.invalid" [ngClass]="{'disabled': form.invalid}" (click)="onClick()">{{data.entity ? 'Сохранить' : 'Добавить'}}</button>
+            <button class="btn btn-danger mr-10" (click)="deleteLegalEntities()" *ngIf="data.entity">
+                Удалить
+            </button>
+            <button class="btn btn-danger" (click)="cancel()">Отменить</button>
+        </div>
+    </form>
+</div>

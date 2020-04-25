@@ -1,0 +1,92 @@
+<div [formGroup]="estimateForm" class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <button cursor-pointer class="add-section" (click)="addSection()">Добавить раздел</button>
+            <button cursor-pointer class="delete-section" (click)="deleteSection()">Удалить раздел</button>
+            <button cursor-pointer class="select-section" (click)="openCETemplateDialog()">Выбрать шаблон из другого проекта</button>
+        </div>
+        <div style="display: flex; align-items: center; margin-top: 0;" class="form_group">
+            <mat-checkbox class="pr-10" formControlName="isCommission"></mat-checkbox>
+            <span class="pr-10">Агентская комиссия</span>
+            <input class="mr-10" style="width: 50px;" formControlName="Commission" [ngStyle]="{'opacity': !estimateForm.get('isCommission').value ? '0.5' : '1'}" [readonly]="!estimateForm.get('isCommission').value" type="number">
+            <span>%</span>
+        </div>
+    </div>
+    <div class="general">
+        <div style="min-height: calc(100vh - 275px);">
+            <div *ngFor="let section of estimateForm.get('sections').controls; let ind = index" formArrayName="sections">
+                <div [formGroupName]="ind" class="grid">
+                    <div class="header form_group">
+                        <div class="center-start">
+                            <mat-checkbox formControlName="selected" class="pr-10"></mat-checkbox>
+                            <input formControlName="NameSection" placeholder="Название раздела">
+                            <mat-icon cursor-pointer (click)="addArticle(section)" class="add">add</mat-icon>
+                            <mat-icon cursor-pointer (click)="deleteArticle(section)" class="delete">clear</mat-icon>
+                        </div>
+                        <span class="center" *ngIf="ind === 0">Цена</span>
+                        <span class="center" *ngIf="ind === 0">Количество дней</span>
+                        <span class="center" *ngIf="ind === 0">Количество человек</span>
+                        <span class="center" *ngIf="ind === 0">Стоимость</span>
+                        <span class="center" *ngIf="ind === 0">Цена_IN</span>
+                        <span class="center" *ngIf="ind === 0">Стоимость_IN</span>
+                        <span class="center" *ngIf="ind === 0">Прибыль</span>
+                        <span class="center" *ngIf="ind === 0">%</span>
+                    </div>
+                    <div class="main">
+                        <div *ngFor="let article of section.controls.articles.controls; let i = index" formArrayName="articles">
+                            <div [formGroupName]="i" class="grid-main form_group">
+                                <div style="padding-left: 10px" class="center-start">
+                                    <mat-checkbox formControlName="selected" class="ph-10"></mat-checkbox>
+                                    <input formControlName="NameArticle" placeholder="Название статьи">
+                                </div>
+                                <input w-auto type="number" (input)="calculate(article)" formControlName="Price" placeholder="">
+                                <input w-auto type="number" (input)="calculate(article)" formControlName="NumberDays" placeholder="">
+                                <input w-auto type="number" (input)="calculate(article)" formControlName="NumberPerson" placeholder="">
+                                <span class="center">{{article.get('Cost').value}}</span>
+                                <input w-auto type="number" (input)="calculate(article)" formControlName="Price_IN" placeholder="">
+                                <span class="center">{{article.get('Cost_IN').value}}</span>
+                                <span class="center">{{article.get('Profit').value}}</span>
+                                <span class="center">{{article.get('Percent').value}}%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="center">Тотал:</span>
+                        <span class="center">{{getTotalSection(section, 'Cost', 'TotalSectionCost')}}</span>
+                        <span><span style="display: none;">{{getTotalSection(section, 'Price_IN', 'TotalSectionPrice_IN')}}</span></span>
+                        <span class="center">{{getTotalSection(section, 'Cost_IN', 'TotalSectionCost_IN')}}</span>
+                        <span class="center">{{getTotalSection(section, 'Profit', 'TotalSectionProfit')}}</span>
+                        <span class="center">{{section.get('TotalSectionPercent').value}}%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%; display: grid">
+            <div class="general-footer">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span class="center">Тотал:</span>
+                <span class="center">{{getTotal('TotalSectionCost', 'totalCost')}}</span>
+                <span><span style="display: none;">{{getTotal('TotalSectionPrice_IN', 'totalPrice_IN')}}</span></span>
+                <span class="center">{{getTotal('TotalSectionCost_IN', 'totalCost_IN')}}</span>
+                <span class="center">{{getTotal('TotalSectionProfit', 'totalProfit')}}</span>
+                <span class="center">{{estimateForm.get('totalPercent').value}}%</span>
+            </div>
+            <div class="general-footer">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span class="center">АК:</span>
+                <span class="center">{{getCommission()}}</span>
+                <span></span>
+                <span class="center">{{estimateForm.get('isCommission').value ? estimateForm.get('Commission').value : '0'}}%</span>
+                <span class="center"></span>
+                <span class="center"></span>
+            </div>
+        </div>
+    </div>
+</div>

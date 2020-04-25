@@ -1,0 +1,57 @@
+<div margin-right-83 full-width position-relative>
+  <div
+    [id]="id"
+    color-gray
+    font-size-16
+    border-bottom-gray
+    class="categories-name"
+  >
+    {{ title }}
+  </div>
+  <div fxFlex fxLayoutAlign="center center">
+    <mat-card fxFlex="95">
+      <mat-card-content cdkDropList (cdkDropListDropped)="drop($event)">
+        <div
+          fxLayout="row"
+          class="input"
+          fxLayoutGap="25px"
+          cdkDrag
+          *ngFor="let category of categories; let i = index"
+        >
+          <mat-form-field class="example-full-width" fxFlex="25">
+            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+            <input
+              matInput
+              placeholder="Name"
+              type="text"
+              class="conf-categories-input"
+              name="name-{{ i }}"
+              value="{{ category.Name }}"
+              (keyup.enter)="save($event.target.value, i)"
+            />
+          </mat-form-field>
+          <i
+            (click)="
+              deleteObject(categoryName + '/' + category.Id, categoryName)
+            "
+            mat-icon-button
+            class="material-icons conf-categories-clear"
+          >
+            clear
+          </i>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <div
+      class="conf-categories-flex-container conf-categories-flex-start"
+      (click)="addObject()"
+    >
+      <div class="conf-categories-add-button">
+        <h1 class="conf-categories-plus">+</h1>
+      </div>
+      <span class="conf-categories-add-text">Добавить</span>
+    </div>
+  </div>
+</div>
+
+<p-toast [style]="{marginTop: '5px'}"></p-toast>

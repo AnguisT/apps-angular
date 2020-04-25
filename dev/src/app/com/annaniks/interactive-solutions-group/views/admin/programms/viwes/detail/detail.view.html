@@ -1,0 +1,97 @@
+<div class="content">
+    <div no-padding-left class="info_bar">
+        <div class="container ui-g">
+            <div no-padding no-margin class="topms ui-g">
+                <div no-padding no-margin class="ui-g ui-g-12">
+                    <div class="name_prod"><p>{{ _programmInfo?.Name }}</p></div>
+                    <div class="wblock_btn ui-g-2" (click)="onClickSave()" style="background-color: #00BCD4;border-color: #00BCD4;color: white;"><p>{{programm_id ? 'Обновить' : 'Сохранить'}}</p></div>
+                    <div class="wblock_btn ui-g-2" *ngIf="programm_id" (click)="onClickDelete()" style="background-color: #F44336;border-color: #F44336;color: white;"><p>Удалить программу</p></div>
+                </div>
+                <div class="wblock ui-g-1" [ngClass]="{ 'active': switchValue===1 }" (click)="changeSwitchValue(1)"><p>Информация</p></div>
+                <div class="wblock ui-g-1" [ngClass]="{ 'active': switchValue===2 }"  *ngIf="programm_id" (click)="changeSwitchValue(2)"><p>CE</p></div>
+            </div>
+            <div class="d_ibfo ui-g">
+               <user-menu></user-menu>
+            </div>
+        </div>
+    </div>
+    <h3 error text-align-center *ngIf="error">{{error}}</h3>
+    <p no-margin text-center error *ngIf="validationError && validError">{{validationError}}</p>
+    <form [formGroup]="programmForm" [ngSwitch]="switchValue">
+        <div *ngSwitchDefault>
+            <div class="container ui-g">
+                <div class="inf_block_title">Основная информация</div>
+                <div class="inf_block_title"></div>
+            </div>
+            <div class="container ui-g">
+                <div class="inf_block">
+                    <div class="form_group">
+                        <label for="programm_name">Название</label>
+                        <textarea [ngClass]="{'invalid': programmForm.get('Name').invalid && validError}" matInput matTextareaAutosize id="programm_name" placeholder="" formControlName="Name"></textarea>
+                    </div>
+                    <div class="form_group">
+                        <label for="programm_duration">Длительность (час)</label>
+                        <div class="switch_group">
+                            <input type="number" min="0" [attr.disabled]="!checkDisabled() ? true : null" id="programm_duration" placeholder="" formControlName="Duration">
+
+                            <p-inputSwitch formControlName="DurationSwitch"></p-inputSwitch>
+
+                            <input type="number" min="0" [attr.disabled]="checkDisabled() ? true : null" id="programm_duration" placeholder="" formControlName="DurationFirst">
+                            <span class="blank">-</span>
+                            <input type="number" min="0" [attr.disabled]="checkDisabled() ? true : null" id="programm_duration" placeholder="" formControlName="DurationSecond">
+                        </div>
+                    </div>
+                    <div class="form_group">
+                        <label for="programm_format">Формат</label>
+                        <p-multiSelect [ngClass]="{'invalid': programmForm.get('Format').invalid && validError}" id="programm_format" [options]="formats" formControlName="Format" optionLabel="Name" defaultLabel="Не выбрано">
+                            <ng-template let-sitem pTemplate="selectedItems">
+                                <div *ngIf="sitem.length === 0">
+                                    <span>Не выбрано</span>
+                                </div>
+                                <div *ngIf="sitem.length !== 0">
+                                    <span *ngFor="let item of sitem; last as isLast">
+                                        <span>{{item.Name}}<span *ngIf="!isLast">, </span></span>
+                                    </span>
+                                </div>
+                            </ng-template>
+                        </p-multiSelect>
+                    </div>
+                    <div class="form_group">
+                        <label for="programm_number_person">Количество участников</label>
+                    </div>
+                    <div class="form_group">
+                        <label for="programm_duration">Количество участников</label>
+                        <div class="switch_group">
+                            <span id="programm_number_person" class="number-person">{{getNumberPerson()}}</span>
+
+                            <p-inputSwitch formControlName="NumberPersonSwitch"></p-inputSwitch>
+
+                            <input type="number" min="0" [attr.disabled]="checkDisabledNumberPerson() ? true : null" id="programm_number_person" placeholder="" formControlName="NumberPersonFirst">
+                            <span class="blank">-</span>
+                            <input type="number" min="0" [attr.disabled]="checkDisabledNumberPerson() ? true : null" id="programm_number_person" placeholder="" formControlName="NumberPersonSecond">
+                        </div>
+                    </div>
+                    <div class="form_group">
+                        <label for="programm_venue">Место проведения</label>
+                        <textarea [ngClass]="{'invalid': programmForm.get('Venue').invalid && validError}" matInput matTextareaAutosize id="programm_venue" placeholder="" formControlName="Venue"></textarea>
+                    </div>
+                    <div class="form_group">
+                        <label for="programm_presentation">Презентация</label>
+                        <textarea [ngClass]="{'invalid': programmForm.get('Presentation').invalid && validError}" *ngIf="!_programmInfo?.Presentation" matInput matTextareaAutosize id="programm_presentation" placeholder="" formControlName="Presentation"></textarea>
+                        <a *ngIf="_programmInfo?.Presentation" id="programm_presentation" [href]="programmForm.get('Presentation').value" target="_blank">Ссылка</a>
+                    </div>
+                    <div class="form_group">
+                        <label for="programm_ce">CE</label>
+                        <textarea [ngClass]="{'invalid': programmForm.get('CE').invalid && validError}" *ngIf="!_programmInfo?.CE" matInput matTextareaAutosize id="programm_ce" placeholder="" formControlName="CE"></textarea>
+                        <a *ngIf="_programmInfo?.CE" id="programm_presentation" [href]="programmForm.get('CE').value" target="_blank">Ссылка</a>
+                    </div>
+                </div>
+                <div vs-hidden class="inf_block"></div>
+            </div>
+        </div>
+        <div *ngSwitchCase="2">
+            <app-estimate [programmId]="programm_id" [programmName]="programmForm.get('Name').value" [data]="estimateData" [validError]="validError" (ondestroy)="saveEstimate($event)" (onestiamtebody)="saveEstimateBody($event)" (onupdatenumberperson)="updateNumberPerson()"></app-estimate>
+        </div>
+    </form>
+</div>
+<app-loading [visiblity]="loading"></app-loading>

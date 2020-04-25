@@ -1,0 +1,7 @@
+<div class="menu">
+    <div cursor-pointer margin-left-22 font-size-16 font-open-sans routerLink="/configurations/partner" routerLinkActive="active-page"
+        class="margin-first-item">Сотрудники ISG</div>
+    <div cursor-pointer margin-left-22 font-size-16 font-open-sans routerLink="/configurations/categories" (click)="scroll(page.href)"
+        *ngFor="let page of menuList;let i=index" margin-for-other-items>{{page.pageName}}
+    </div>
+</div>

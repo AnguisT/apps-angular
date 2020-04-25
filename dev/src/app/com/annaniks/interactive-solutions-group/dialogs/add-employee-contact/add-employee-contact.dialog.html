@@ -1,0 +1,63 @@
+<div border-bottom-gray>
+  <div align-center class="ui-g title">
+    <div class="ui-g-10 text">Добавить данные</div>
+    <button
+      (click)=" onNoClick()"
+      cursor-pointer
+      margin-left-auto
+      display-flex
+      align-center
+      class="close"
+    >
+      <i class="material-icons">
+        close
+      </i>
+    </button>
+  </div>
+</div>
+<div [formGroup]="formGroup" class="form_group">
+  <div margin-top-33>
+    <label>Тип контакта</label>
+    <p-dropdown
+      [options]="typeContact"
+      placeholder="Выберите вид контакта"
+      optionLabel="Name"
+      formControlName="selectedInfo"
+    ></p-dropdown>
+  </div>
+  <div margin-top-33>
+    <label>Значение</label>
+    <input
+      *ngIf="formGroup.get('selectedInfo').value?.Id !== 14 && formGroup.get('selectedInfo').value?.Id !== 2"
+      type="text"
+      formControlName="text"
+    />
+    <input
+      *ngIf="formGroup.get('selectedInfo').value?.Id === 14"
+      placeholder="Enter phone number"
+      type="text"
+      min="1"
+      value="7"
+      id="customer_phone"
+    />
+    <label *ngIf="formGroup.get('selectedInfo').value?.Id === 14" id="descr"
+      >Россия</label
+    >
+    <input
+      *ngIf="formGroup.get('selectedInfo').value?.Id === 2"
+      [textMask]="mask"
+      formControlName="text"
+      type="text"
+      placeholder="email@domain"
+    />
+  </div>
+  <button
+    [ngClass]="{'valid': !validation(),'noValid':validation()}"
+    (click)="addContact()"
+    [disabled]="!validation()"
+    cursor-pointer
+    class="add"
+  >
+    <span>Добавить</span>
+  </button>
+</div>

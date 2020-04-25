@@ -1,0 +1,3662 @@
+<div
+  class="content"
+  *ngIf="isDataAvailable && fiedsFunctionality.length !== 0; else isEmpty"
+>
+  <div no-padding-left class="info_bar">
+    <div class="container ui-g">
+      <div no-padding no-margin class="topms ui-g">
+        <div no-padding no-margin class="ui-g ui-g-12">
+          <div class="name_prod"><p>{{ _projectInfo?.Name }}</p></div>
+          <div
+            class="wblock_btn ui-g-2"
+            (click)="onClickSave()"
+            [ngClass]="{'disabled': !isProject}"
+            style="
+              background-color: #00bcd4;
+              border-color: #00bcd4;
+              color: white;
+            "
+          >
+            <p>Сохранить</p>
+          </div>
+          <button
+            class="wblock_btn ui-g-2"
+            [disabled]="!isProject"
+            [ngClass]="{'disabled': !isProject}"
+            (click)="onClickDelete()"
+            style="
+              background-color: #f44336;
+              border-color: #f44336;
+              color: white;
+            "
+          >
+            <p>Удалить проект</p>
+          </button>
+        </div>
+        <div
+          class="wblock ui-g-1"
+          [ngClass]="{ 'active': switchValue==1 }"
+          (click)="changeSwitchValue(1)"
+        >
+          <p>Информация</p>
+        </div>
+        <div
+          class="wblock ui-g-1"
+          [ngClass]="{ 'active': switchValue==2 }"
+          (click)="changeSwitchValue(2)"
+        >
+          <p>Задачи проекта</p>
+        </div>
+        <div
+          class="wblock ui-g-1"
+          [ngClass]="{ 'active': switchValue==4 }"
+          (click)="changeSwitchValue(4)"
+          *ngIf="projectForm.get('harProdject').value?.Id==1"
+        >
+          <p>Форма продажи</p>
+        </div>
+        <div
+          class="wblock ui-g-1"
+          [ngClass]="{ 'active': switchValue==3 }"
+          (click)="changeSwitchValue(3)"
+        >
+          <p>Бюджет и оплата</p>
+        </div>
+        <div
+          class="wblock ui-g-1"
+          [ngClass]="{ 'active': switchValue==5 }"
+          (click)="changeSwitchValue(5)"
+        >
+          <p>Проектная группа</p>
+        </div>
+        <div
+          class="wblock ui-g-1"
+          [ngClass]="{ 'active': switchValue==6 }"
+          (click)="changeSwitchValue(6)"
+        >
+          <p>Подрядчики</p>
+        </div>
+      </div>
+      <div class="d_ibfo ui-g">
+        <user-menu></user-menu>
+      </div>
+    </div>
+  </div>
+  <h3 error text-align-center *ngIf="error">{{error}}</h3>
+  <p no-margin text-center error *ngIf="validationError && projectForm.invalid">
+    {{validationError}}
+  </p>
+  <form [formGroup]="projectForm" [ngSwitch]="switchValue">
+    <div *ngSwitchDefault>
+      <div class="container ui-g">
+        <div class="inf_block_title">Основная информация</div>
+        <div class="inf_block_title">Дата и место проведения</div>
+      </div>
+      <div class="container ui-g">
+        <div class="inf_block">
+          <div *ngIf="checkIsVisible('projectName')" class="form_group">
+            <label
+              ><div>
+                Название проекта<span
+                  *ngIf="checkIsRequired('projectName')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              style="overflow: hidden;"
+              formControlName="projectName"
+              placeholder="Название проекта"
+              [readonly]="!checkIsEditable('projectName')"
+            ></textarea>
+          </div>
+          <div style="display: none;" class="form_group">
+            <label><div>Дата проекта</div></label>
+            <p-calendar
+              color-gray
+              styleClass="width-calendar"
+              formControlName="projectDate"
+              selectionMode="multiple"
+              [readonlyInput]="true"
+              dateFormat="dd.mm.yy"
+            ></p-calendar>
+          </div>
+          <div *ngIf="checkIsVisible('number')" class="form_group">
+            <label
+              ><div>
+                Номер проекта<span
+                  *ngIf="checkIsRequired('number')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              formControlName="number"
+              id="project_number"
+              type="text"
+              placeholder=""
+              [readonly]="true"
+            ></textarea>
+          </div>
+          <div *ngIf="checkIsVisible('harProdject')" class="form_group">
+            <label
+              ><div>
+                Характер проекта<span
+                  *ngIf="checkIsRequired('harProdject')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="harProdjects"
+              [readonly]="!checkIsEditable('harProdject')"
+              formControlName="harProdject"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div *ngIf="checkIsVisible('projectType')" class="form_group">
+            <label
+              ><div>
+                Тип проекта<span
+                  *ngIf="checkIsRequired('projectType')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              id="sel_blk"
+              (onChange)="resetSalesForm()"
+              placeholder="Не выбрано"
+              [options]="projectsTypes"
+              formControlName="projectType"
+              optionLabel="Name"
+              [readonly]="!checkIsEditable('projectType')"
+            ></p-dropdown>
+          </div>
+          <div *ngIf="checkIsVisible('salesType')" class="form_group">
+            <label
+              ><div>
+                Тип продаж<span
+                  *ngIf="checkIsRequired('salesType')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="salesTypes"
+              formControlName="salesType"
+              optionLabel="Name"
+              [readonly]="!checkIsEditable('salesType')"
+            ></p-dropdown>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="projectForm.get('salesType').value?.Id === 8"
+          >
+            <label><div>Менеджер ISG</div></label>
+            <p-dropdown
+              id="sel_blk"
+              placeholder="Не выбрано"
+              filter="true"
+              [options]="recomendNameISG"
+              formControlName="recomendationNameISG"
+              optionLabel="FulName"
+            ></p-dropdown>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="projectForm.get('salesType').value?.Id === 15"
+          >
+            <label><div>Кто порекомендовал</div></label>
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isManagerCreate"
+                (click)="addNewManager('recomendationName', true)"
+                >add</mat-icon
+              >
+              <p-dropdown
+                id="sel_blk"
+                placeholder="Не выбрано"
+                filter="true"
+                [options]="recomendName"
+                formControlName="recomendationName"
+                optionLabel="FulName"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="projectForm.get('recomendationName').value && projectForm.get('salesType').value?.Id === 15 && checkIsVisible('recomendationName')"
+          >
+            <label
+              ><div>
+                Комментарий (Кто порекомендовал)<span
+                  *ngIf="checkIsRequired('recomendationName')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              formControlName="commentRecomendManager"
+              id="commentRecomendManager"
+              type="text"
+              placeholder=""
+              [readonly]="!checkIsEditable('recomendationName')"
+            ></textarea>
+          </div>
+          <div *ngIf="checkIsVisible('department')" class="form_group">
+            <label
+              ><div>
+                Департамент-исполнитель<span
+                  *ngIf="checkIsRequired('department')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              id="sel_blk"
+              (onChange)="onClickGenerate()"
+              [options]="departments"
+              optionLabel="Name"
+              formControlName="department"
+              placeholder="Не выбрано"
+              [readonly]="!checkIsEditable('department')"
+              [disabled]="true"
+            ></p-dropdown>
+          </div>
+          <div *ngIf="checkIsVisible('departmentInvolved')" class="form_group">
+            <label
+              ><div>
+                Участвующие департаменты<span
+                  *ngIf="checkIsRequired('departmentInvolved')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              formControlName="departmentInvolved"
+              type="text"
+              placeholder=""
+              readonly
+            ></textarea>
+          </div>
+          <div *ngIf="checkIsVisible('projectStatus')" class="form_group">
+            <label
+              ><div>
+                Статус проекта<span
+                  *ngIf="checkIsRequired('projectStatus')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              id="sel_blk"
+              placeholder="Не выбрано"
+              (onChange)="onChangeStatus($event)"
+              [options]="projectsStatuses"
+              optionLabel="Name"
+              formControlName="projectStatus"
+              [readonly]="!checkIsEditable('projectStatus')"
+            ></p-dropdown>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="projectForm.get('projectStatus').value && checkIsVisible('projectStatus')"
+          >
+            <label
+              ><div>
+                Комментарий (Статус)<span
+                  *ngIf="checkIsRequired('projectStatus')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              formControlName="commentStatus"
+              id="commentStatus"
+              type="text"
+              placeholder=""
+              [readonly]="!checkIsEditable('projectStatus')"
+            ></textarea>
+          </div>
+          <div *ngIf="checkIsVisible('requestDate')" class="form_group">
+            <label
+              ><div>
+                Дата запроса<span
+                  *ngIf="checkIsRequired('requestDate')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <input
+              matInput
+              matTextareaAutosize
+              color-gray
+              type="date"
+              max="9999-12-31"
+              placeholder=""
+              formControlName="requestDate"
+              [readonly]="!checkIsEditable('requestDate')"
+            />
+          </div>
+          <div *ngIf="checkIsVisible('submissionDate')" class="form_group">
+            <label
+              ><div>
+                Дата сдачи предложения<span
+                  *ngIf="checkIsRequired('submissionDate')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <input
+              matInput
+              matTextareaAutosize
+              color-gray
+              type="date"
+              [min]="projectForm.get('requestDate').value"
+              max="9999-12-31"
+              placeholder=""
+              formControlName="submissionDate"
+              [readonly]="!checkIsEditable('submissionDate')"
+            />
+          </div>
+          <div *ngIf="checkIsVisible('setProjectFormat')" class="form_group">
+            <label
+              ><div>
+                Входящий формат проекта<span
+                  *ngIf="checkIsRequired('setProjectFormat')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-multiSelect
+              id="sel_blk"
+              [options]="projectsFormats"
+              formControlName="setProjectFormat"
+              optionLabel="Name"
+              defaultLabel="Не выбрано"
+              [disabled]="!checkIsEditable('setProjectFormat')"
+            >
+              <ng-template let-sitem pTemplate="selectedItems">
+                <div *ngIf="sitem.length === 0">
+                  <span>Не выбрано</span>
+                </div>
+                <div *ngIf="sitem.length !== 0">
+                  <span *ngFor="let item of sitem; last as isLast">
+                    <span>{{item.Name}}<span *ngIf="!isLast">, </span></span>
+                  </span>
+                </div>
+              </ng-template>
+            </p-multiSelect>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="projectForm.get('setProjectFormat').value?.length && checkIsVisible('setProjectFormat')"
+          >
+            <label><div>Комментарий (Входящий формат проекта)</div></label>
+            <textarea
+              matInput
+              matTextareaAutosize
+              formControlName="commentSetFormatProject"
+              type="text"
+              placeholder=""
+              [readonly]="!checkIsEditable('setProjectFormat')"
+            ></textarea>
+          </div>
+          <div *ngIf="checkIsVisible('projectFormat')" class="form_group">
+            <label
+              ><div>
+                Формат проекта<span
+                  *ngIf="checkIsRequired('projectFormat')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-multiSelect
+              id="sel_blk"
+              [options]="projectsFormats"
+              formControlName="projectFormat"
+              optionLabel="Name"
+              defaultLabel="Не выбрано"
+              [disabled]="!checkIsEditable('projectFormat')"
+            >
+              <ng-template let-sitem pTemplate="selectedItems">
+                <div *ngIf="sitem.length === 0">
+                  <span>Не выбрано</span>
+                </div>
+                <div *ngIf="sitem.length !== 0">
+                  <span *ngFor="let item of sitem; last as isLast">
+                    <span>{{item.Name}}<span *ngIf="!isLast">, </span></span>
+                  </span>
+                </div>
+              </ng-template>
+            </p-multiSelect>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="projectForm.get('projectFormat').value?.length && checkIsVisible('projectFormat')"
+          >
+            <label><div>Комментарий (Формат проекта)</div></label>
+            <textarea
+              matInput
+              matTextareaAutosize
+              formControlName="commentFormatProject"
+              id="commentFormatProject"
+              type="text"
+              placeholder=""
+              [readonly]="!checkIsEditable('projectFormat')"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="inf_block">
+          <div *ngIf="checkIsVisible('dateParty')" class="form_group">
+            <label
+              ><div>
+                Серия мероприятий<span
+                  *ngIf="checkIsRequired('dateParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              (onChange)="resetDayPartyForm($event)"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="datePartys"
+              [readonly]="!checkIsEditable('dateParty')"
+              formControlName="dateParty"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="projectForm.get('dateParty').value?.Id === 1 && checkIsVisible('dateParty')"
+          >
+            <label
+              ><div>
+                Дата мероприятия<span
+                  *ngIf="checkIsRequired('dateParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="date-party">
+              <p-dropdown
+                [readonly]="!checkIsEditable('dateParty')"
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="typeDatePartys"
+                formControlName="typeDateParty"
+                (onChange)="selectTypeDateParty($event, 'singleParty')"
+                optionLabel="Name"
+              ></p-dropdown>
+              <p-calendar
+                *ngIf="projectForm.get('typeDateParty').value?.Id === 1"
+                color-gray
+                formControlName="singleParty"
+                [readonlyInput]="true"
+                dateFormat="dd.mm.yy"
+                [disabled]="!checkIsEditable('dateParty')"
+              ></p-calendar>
+              <p-calendar
+                *ngIf="projectForm.get('typeDateParty').value?.Id === 2"
+                color-gray
+                formControlName="singleParty"
+                view="month"
+                [readonlyInput]="true"
+                dateFormat="mm.yy"
+                [disabled]="!checkIsEditable('dateParty')"
+              ></p-calendar>
+              <div
+                class="not-date"
+                *ngIf="projectForm.get('typeDateParty').value?.Id === 3"
+              >
+                Не определено
+              </div>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="projectForm.get('dateParty').value?.Id === 2 && checkIsVisible('dateParty')"
+          >
+            <label
+              ><div>
+                Даты мероприятий<span
+                  *ngIf="checkIsRequired('dateParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="date-party">
+              <p-dropdown
+                [readonly]="!checkIsEditable('dateParty')"
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="typeDatePartys"
+                formControlName="typeDateParty"
+                (onChange)="selectTypeDateParty($event, 'multiDateParty')"
+                optionLabel="Name"
+              ></p-dropdown>
+              <p-calendar
+                *ngIf="projectForm.get('typeDateParty').value?.Id === 1"
+                color-gray
+                formControlName="multiDateParty"
+                selectionMode="multiple"
+                [readonlyInput]="true"
+                dateFormat="dd.mm.yy"
+                [disabled]="!checkIsEditable('dateParty')"
+              ></p-calendar>
+              <p-calendar
+                *ngIf="projectForm.get('typeDateParty').value?.Id === 2"
+                color-gray
+                formControlName="multiDateParty"
+                view="month"
+                [readonlyInput]="true"
+                dateFormat="mm.yy"
+                [disabled]="!checkIsEditable('dateParty')"
+              ></p-calendar>
+              <div
+                class="not-date"
+                *ngIf="projectForm.get('typeDateParty').value?.Id === 3"
+              >
+                Не определено
+              </div>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="projectForm.get('dateParty').value?.Id === 3 && checkIsVisible('dateParty')"
+          >
+            <label
+              ><div>
+                Даты мероприятий<span
+                  *ngIf="checkIsRequired('dateParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="date-party">
+              <p-dropdown
+                [readonly]="!checkIsEditable('dateParty')"
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="typeDatePartys"
+                formControlName="typeDateParty"
+                (onChange)="selectTypeDateParty($event, 'multiDatePartyPause')"
+                optionLabel="Name"
+              ></p-dropdown>
+              <p-calendar
+                *ngIf="projectForm.get('typeDateParty').value?.Id === 1"
+                color-gray
+                formControlName="multiDatePartyPause"
+                selectionMode="multiple"
+                [readonlyInput]="true"
+                dateFormat="dd.mm.yy"
+                [disabled]="!checkIsEditable('dateParty')"
+              ></p-calendar>
+              <p-calendar
+                *ngIf="projectForm.get('typeDateParty').value?.Id === 2"
+                color-gray
+                formControlName="multiDatePartyPause"
+                view="month"
+                [readonlyInput]="true"
+                dateFormat="mm.yy"
+                [disabled]="!checkIsEditable('dateParty')"
+              ></p-calendar>
+              <div
+                class="not-date"
+                *ngIf="projectForm.get('typeDateParty').value?.Id === 3"
+              >
+                Не определено
+              </div>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="projectForm.get('dateParty').value?.Id === 4 && checkIsVisible('dateParty')"
+          >
+            <label
+              ><div>
+                Даты мероприятий<span
+                  *ngIf="checkIsRequired('dateParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="date-party">
+              <p-dropdown
+                [readonly]="!checkIsEditable('dateParty')"
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="typeDatePartys"
+                formControlName="typeDateParty"
+                (onChange)="selectTypeDateParty($event, 'seriesDateParty')"
+                optionLabel="Name"
+              ></p-dropdown>
+              <p-calendar
+                *ngIf="projectForm.get('typeDateParty').value?.Id === 1"
+                color-gray
+                formControlName="seriesDateParty"
+                selectionMode="multiple"
+                [readonlyInput]="true"
+                dateFormat="dd.mm.yy"
+                [disabled]="!checkIsEditable('dateParty')"
+              ></p-calendar>
+              <p-calendar
+                *ngIf="projectForm.get('typeDateParty').value?.Id === 2"
+                color-gray
+                formControlName="seriesDateParty"
+                view="month"
+                [readonlyInput]="true"
+                dateFormat="mm.yy"
+                [disabled]="!checkIsEditable('dateParty')"
+              ></p-calendar>
+              <div
+                class="not-date"
+                *ngIf="projectForm.get('typeDateParty').value?.Id === 3"
+              >
+                Не определено
+              </div>
+            </div>
+          </div>
+
+          <div class="form_group" *ngIf="checkIsVisible('cyclicity')">
+            <label
+              ><div>
+                Цикличность<span
+                  *ngIf="checkIsRequired('cyclicity')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="cyclicites"
+              formControlName="cyclicity"
+              optionLabel="Name"
+              [readonly]="!checkIsEditable('cyclicity')"
+            ></p-dropdown>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('cyclicity') && projectForm.get('cyclicity').value?.Id === 18"
+          >
+            <label
+              ><div>
+                Комментарий (Цикличность)<span
+                  *ngIf="checkIsRequired('cyclicity')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              formControlName="commentCyclicity"
+              id="commentCyclicity"
+              type="text"
+              placeholder=""
+              [readonly]="!checkIsEditable('cyclicity')"
+            ></textarea>
+          </div>
+          <!-- <div no-padding class="form_group" *ngIf="checkIsVisible('timetable')">
+                        <label><div>Расписание<span *ngIf="checkIsRequired('timetable')" style="color: red">*</span></div></label>
+                        <p-calendar color-gray formControlName="timetable" selectionMode="multiple" [showTime]="true" [readonlyInput]="true" dateFormat="dd.mm.yy" [ngClass]="{'disabled-timepicker': disabledTime}" [disabled]="!checkIsEditable('timetable')"></p-calendar>
+                    </div> -->
+          <div *ngIf="checkIsVisible('timetable')">
+            <div
+              *ngFor="let time of projectForm.get('arrayTimetables').controls; let ind=index"
+              formArrayName="arrayTimetables"
+            >
+              <div class="form_group" [formGroupName]="ind">
+                <label
+                  ><div>
+                    Расписание {{ind + 1}}<span
+                      *ngIf="checkIsRequired('timetable')"
+                      style="color: red;"
+                      >*</span
+                    >
+                  </div></label
+                >
+                <div class="display-add">
+                  <p-calendar
+                    color-gray
+                    formControlName="Timetable"
+                    [readonlyInput]="true"
+                    dateFormat="dd.mm.yy"
+                    [disabled]="true"
+                  ></p-calendar>
+                  <p-calendar
+                    class="time"
+                    color-gray
+                    (onSelect)="onInputStartTime($event, time)"
+                    (onInput)="inputStartTime($event, time)"
+                    formControlName="StartTime"
+                    [timeOnly]="true"
+                    [disabled]="!checkIsEditable('timetable')"
+                  ></p-calendar>
+                  <span style="margin-left: 10px;">-</span>
+                  <p-calendar
+                    class="time"
+                    color-gray
+                    (onSelect)="onInputEndTime($event, time)"
+                    (onInput)="inputEndTime($event, time)"
+                    formControlName="EndTime"
+                    [timeOnly]="true"
+                    [disabled]="!checkIsEditable('timetable')"
+                  ></p-calendar>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('country')">
+            <label
+              ><div>
+                Страна проведения<span
+                  *ngIf="checkIsRequired('country')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="countries"
+              formControlName="country"
+              optionLabel="Name"
+              [readonly]="!checkIsEditable('country')"
+            ></p-dropdown>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('city')">
+            <label
+              ><div>
+                Город проведения<span
+                  *ngIf="checkIsRequired('city')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-multiSelect
+              id="sel_blk"
+              [options]="citiesByCountry"
+              formControlName="city"
+              optionLabel="Name"
+              defaultLabel="Не выбрано"
+              [disabled]="!checkIsEditable('city')"
+            >
+              <ng-template let-sitem pTemplate="selectedItems">
+                <div *ngIf="sitem.length === 0">
+                  <span>Не выбрано</span>
+                </div>
+                <div *ngIf="sitem.length !== 0">
+                  <span *ngFor="let item of sitem; last as isLast">
+                    <span>{{item.Name}}<span *ngIf="!isLast">, </span></span>
+                  </span>
+                </div>
+              </ng-template>
+            </p-multiSelect>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('zone')">
+            <label
+              ><div>
+                Зона проведения<span
+                  *ngIf="checkIsRequired('zone')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-multiSelect
+              id="sel_blk"
+              [options]="zones"
+              formControlName="zone"
+              optionLabel="Name"
+              defaultLabel="Не выбрано"
+              [disabled]="!checkIsEditable('zone')"
+            >
+              <ng-template let-sitem pTemplate="selectedItems">
+                <div *ngIf="sitem.length === 0">
+                  <span>Не выбрано</span>
+                </div>
+                <div *ngIf="sitem.length !== 0">
+                  <span *ngFor="let item of sitem; last as isLast">
+                    <span>{{item.Name}}<span *ngIf="!isLast">, </span></span>
+                  </span>
+                </div>
+              </ng-template>
+            </p-multiSelect>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('zone') && projectForm.get('zone').value?.length"
+          >
+            <label
+              ><div>
+                Комментарий (Зона проведения)<span
+                  *ngIf="checkIsRequired('zone')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              formControlName="commentZones"
+              id="commentZones"
+              type="text"
+              placeholder=""
+              [readonly]="!checkIsEditable('zone')"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('indOut')">
+            <label
+              ><div>
+                Место проведения<span
+                  *ngIf="checkIsRequired('indOut')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-multiSelect
+              id="sel_blk"
+              [options]="indOut"
+              formControlName="indOut"
+              optionLabel="Name"
+              defaultLabel="Не выбрано"
+              [disabled]="!checkIsEditable('indOut')"
+            >
+              <ng-template let-sitem pTemplate="selectedItems">
+                <div *ngIf="sitem.length === 0">
+                  <span>Не выбрано</span>
+                </div>
+                <div *ngIf="sitem.length !== 0">
+                  <span *ngFor="let item of sitem; last as isLast">
+                    <span>{{item.Name}}<span *ngIf="!isLast">, </span></span>
+                  </span>
+                </div>
+              </ng-template>
+            </p-multiSelect>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('indOut') && projectForm.get('indOut').value?.length"
+          >
+            <label
+              ><div>
+                <div>
+                  Комментарий (Место проведения)<span
+                    *ngIf="checkIsRequired('indOut')"
+                    style="color: red;"
+                    >*</span
+                  >
+                </div>
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              formControlName="commentIndOut"
+              id="commentIndOut"
+              type="text"
+              placeholder=""
+              [readonly]="!checkIsEditable('indOut')"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngSwitchCase="2">
+      <div class="container ui-g">
+        <div class="inf_block_title">Участники</div>
+        <div class="inf_block_title">
+          Задачи проекта и дополнительные вводные
+        </div>
+      </div>
+      <div class="container ui-g">
+        <div class="inf_block">
+          <div class="form_group" *ngIf="checkIsVisible('participantCount')">
+            <label
+              ><div>
+                Количество участников план<span
+                  *ngIf="checkIsRequired('participantCount')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('participantCount')"
+              id="project_name"
+              type="text"
+              OnlyNumber="true"
+              placeholder=""
+              formControlName="participantCount"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('participantCountF')">
+            <label
+              ><div>
+                Количество участников факт<span
+                  *ngIf="checkIsRequired('participantCountF')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('participantCountF')"
+              id="project_nam"
+              type="text"
+              OnlyNumber="true"
+              placeholder=""
+              formControlName="participantCountF"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('fgender')">
+            <label
+              ><div>
+                Гендерное соотношение М и Ж<span
+                  *ngIf="checkIsRequired('fgender')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="gen" style="display: flex; align-items: center;">
+              М -
+              <textarea
+                matInput
+                matTextareaAutosize
+                [readonly]="!checkIsEditable('fgender')"
+                type="text"
+                placeholder=""
+                OnlyNumber="true"
+                formControlName="fgenderMan"
+                style="width: 15%; float: none;"
+              ></textarea
+              >% Ж -
+              <textarea
+                matInput
+                matTextareaAutosize
+                [readonly]="!checkIsEditable('fgender')"
+                type="text"
+                OnlyNumber="true"
+                placeholder=""
+                formControlName="fgenderWoman"
+                style="width: 15%; float: none;"
+              ></textarea
+              >%
+            </div>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('formagesKl')">
+            <label
+              ><div>
+                Средний возраст<span
+                  *ngIf="checkIsRequired('formagesKl')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('formagesKl')"
+              type="text"
+              placeholder=""
+              formControlName="formagesKl"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('fprofileKl')">
+            <label
+              ><div>
+                Профиль деятельности аудитории<span
+                  *ngIf="checkIsRequired('fprofileKl')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('fprofileKl')"
+              type="text"
+              placeholder=""
+              formControlName="fprofileKl"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('levelCompany')">
+            <label
+              ><div>
+                Уровень в компании<span
+                  *ngIf="checkIsRequired('levelCompany')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-multiSelect
+              id="sel_blk"
+              defaultLabel="Не выбрано"
+              [options]="levelCompanys"
+              [disabled]="!checkIsEditable('levelCompany')"
+              formControlName="levelCompany"
+              optionLabel="Name"
+            >
+              <ng-template let-sitem pTemplate="selectedItems">
+                <div *ngIf="sitem.length === 0">
+                  <span>Не выбрано</span>
+                </div>
+                <div *ngIf="sitem.length !== 0">
+                  <span *ngFor="let item of sitem; last as isLast">
+                    <span>{{item.Name}}<span *ngIf="!isLast">, </span></span>
+                  </span>
+                </div>
+              </ng-template>
+            </p-multiSelect>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('levelCompany') && checkLevelCompany()"
+          >
+            <label
+              ><div>
+                Комментарий (Уровень компании)<span
+                  *ngIf="checkIsRequired('levelCompany')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              formControlName="commentLevelCompany"
+              id="commentLevelCompany"
+              type="text"
+              placeholder=""
+              [readonly]="!checkIsEditable('levelCompany')"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('fbackgroundKl')">
+            <label
+              ><div>
+                Бэкграунд<span
+                  *ngIf="checkIsRequired('fbackgroundKl')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              type="text"
+              placeholder=""
+              formControlName="fbackgroundKl"
+              [readonly]="!checkIsEditable('fbackgroundKl')"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('motivParty')">
+            <label
+              ><div>
+                Мотивация<span
+                  *ngIf="checkIsRequired('motivParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="motivPartys"
+              [readonly]="!checkIsEditable('motivParty')"
+              formControlName="motivParty"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('vovlechParty')">
+            <label
+              ><div>
+                Вовлеченность<span
+                  *ngIf="checkIsRequired('vovlechParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="vovlechPartys"
+              [readonly]="!checkIsEditable('vovlechParty')"
+              formControlName="vovlechParty"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('activParty')">
+            <label
+              ><div>
+                Активность<span
+                  *ngIf="checkIsRequired('activParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="activPartys"
+              [readonly]="!checkIsEditable('activParty')"
+              formControlName="activParty"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('opensParty')">
+            <label
+              ><div>
+                Открытость<span
+                  *ngIf="checkIsRequired('opensParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="opensPartys"
+              [readonly]="!checkIsEditable('opensParty')"
+              formControlName="opensParty"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('nacionParty')">
+            <label
+              ><div>
+                Национальность<span
+                  *ngIf="checkIsRequired('nacionParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-multiSelect
+              id="sel_blk"
+              defaultLabel="Не выбрано"
+              [options]="nacionPartys"
+              [disabled]="!checkIsEditable('nacionParty')"
+              formControlName="nacionParty"
+              optionLabel="Name"
+            >
+              <ng-template let-sitem pTemplate="selectedItems">
+                <div *ngIf="sitem.length === 0">
+                  <span>Не выбрано</span>
+                </div>
+                <div *ngIf="sitem.length !== 0">
+                  <span *ngFor="let item of sitem; last as isLast">
+                    <span>{{item.Name}}<span *ngIf="!isLast">, </span></span>
+                  </span>
+                </div>
+              </ng-template>
+            </p-multiSelect>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('langParty')">
+            <label
+              ><div>
+                Язык<span
+                  *ngIf="checkIsRequired('langParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-multiSelect
+              id="sel_blk"
+              defaultLabel="Не выбрано"
+              [options]="langPartys"
+              [disabled]="!checkIsEditable('langParty')"
+              formControlName="langParty"
+              optionLabel="Name"
+            >
+              <ng-template let-sitem pTemplate="selectedItems">
+                <div *ngIf="sitem.length === 0">
+                  <span>Не выбрано</span>
+                </div>
+                <div *ngIf="sitem.length !== 0">
+                  <span *ngFor="let item of sitem; last as isLast">
+                    <span>{{item.Name}}<span *ngIf="!isLast">, </span></span>
+                  </span>
+                </div>
+              </ng-template>
+            </p-multiSelect>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('vipParty')">
+            <label
+              ><div>
+                Наличие VIP - бенефициара<span
+                  *ngIf="checkIsRequired('vipParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('vipParty')"
+              type="text"
+              placeholder=""
+              formControlName="vipParty"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('commentParty')">
+            <label
+              ><div>
+                Комментарий (VIP)<span
+                  *ngIf="checkIsRequired('commentParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('commentParty')"
+              type="text"
+              placeholder=""
+              formControlName="commentParty"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="inf_block">
+          <div class="form_group" *ngIf="checkIsVisible('taskProject')">
+            <label
+              ><div>
+                Задача проекта<span
+                  *ngIf="checkIsRequired('taskProject')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-multiSelect
+              id="sel_blk"
+              defaultLabel="Не выбрано"
+              [options]="taskProjects"
+              [disabled]="!checkIsEditable('taskProject')"
+              formControlName="taskProject"
+              optionLabel="Name"
+            >
+              <ng-template let-sitem pTemplate="selectedItems">
+                <div *ngIf="sitem.length === 0">
+                  <span>Не выбрано</span>
+                </div>
+                <div *ngIf="sitem.length !== 0">
+                  <span *ngFor="let item of sitem; last as isLast">
+                    <span>{{item.Name}}<span *ngIf="!isLast">, </span></span>
+                  </span>
+                </div>
+              </ng-template>
+            </p-multiSelect>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('taskProject') && checkTaskProject()"
+          >
+            <label
+              ><div>
+                Комментарий (Задача проекта)<span
+                  *ngIf="checkIsRequired('taskProject')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('taskProject')"
+              type="text"
+              placeholder=""
+              formControlName="taskProjectComment"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('bizKontent')">
+            <label
+              ><div>
+                Бизнес-контент<span
+                  *ngIf="checkIsRequired('bizKontent')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('bizKontent')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="bizKontents"
+              formControlName="bizKontent"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('bizKontent') && projectForm.get('bizKontent').value"
+          >
+            <label
+              ><div>
+                Комментарий (Бизнес-контент)<span
+                  *ngIf="checkIsRequired('bizKontent')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('bizKontent')"
+              type="text"
+              placeholder=""
+              formControlName="commentBizKontent"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('scenariyParty')">
+            <label
+              ><div>
+                Сценарий<span
+                  *ngIf="checkIsRequired('scenariyParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('scenariyParty')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="scenariyPartys"
+              formControlName="scenariyParty"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('scenariyParty') && projectForm.get('scenariyParty').value"
+          >
+            <label
+              ><div>
+                Комментарий (Сценарий)<span
+                  *ngIf="checkIsRequired('scenariyParty')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('scenariyParty')"
+              type="text"
+              placeholder=""
+              formControlName="commentScenariyParty"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('lifeExpe')">
+            <label
+              ><div>
+                Life-experience<span
+                  *ngIf="checkIsRequired('lifeExpe')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('lifeExpe')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="lifeExpes"
+              formControlName="lifeExpe"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('lifeExpe') && projectForm.get('lifeExpe').value"
+          >
+            <label
+              ><div>
+                Комментарий (Life-experience)<span
+                  *ngIf="checkIsRequired('lifeExpe')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('lifeExpe')"
+              type="text"
+              placeholder=""
+              formControlName="commentLifeExpe"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('finsider')">
+            <label
+              ><div>
+                Инсайт<span
+                  *ngIf="checkIsRequired('finsider')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('finsider')"
+              type="text"
+              placeholder=""
+              formControlName="finsider"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('fefficiencyKl')">
+            <label
+              ><div>
+                Как оценивать эффективность проекта<span
+                  *ngIf="checkIsRequired('fefficiencyKl')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('fefficiencyKl')"
+              type="text"
+              placeholder=""
+              formControlName="fefficiencyKl"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngSwitchCase="3">
+      <div class="container ui-g">
+        <div class="section">
+          <div
+            class="item_section"
+            [ngClass]="{ 'activeSection': sectionSelect === 1 }"
+            (click)="changeSection(1)"
+          >
+            Бюджет
+          </div>
+          <div
+            class="item_section"
+            [ngClass]="{ 'activeSection': sectionSelect === 2 }"
+            (click)="changeSection(2)"
+          >
+            Смета
+          </div>
+        </div>
+        <!-- <div class="inf_block_title">Бюджет</div>
+                <div vs-hidden class="inf_block_title"></div> -->
+      </div>
+      <div class="container ui-g" *ngIf="sectionSelect === 1">
+        <div class="inf_block">
+          <div class="form_group" *ngIf="checkIsVisible('ifBudget')">
+            <label
+              ><div>
+                Бюджет<span
+                  *ngIf="checkIsRequired('ifBudget')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('ifBudget')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="ifBudgets"
+              formControlName="ifBudget"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="projectForm.get('ifBudget').value?.Id === 1 && checkIsVisible('clientBudget')"
+          >
+            <label
+              ><div>
+                Размер бюджета<span
+                  *ngIf="checkIsRequired('clientBudget')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('clientBudget')"
+              type="text"
+              placeholder=""
+              OnlyNumber="true"
+              formControlName="clientBudget"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('fBudgetPredlog')">
+            <label
+              ><div>
+                Бюджет предложение<span
+                  *ngIf="checkIsRequired('fBudgetPredlog')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isCompanyCreate"
+                (click)="addBudgetPredlog()"
+                >add</mat-icon
+              >
+              <textarea
+                matInput
+                matTextareaAutosize
+                [readonly]="!checkIsEditable('fBudgetPredlog')"
+                type="text"
+                OnlyNumber="true"
+                formControlName="fBudgetPredlog"
+              ></textarea>
+            </div>
+          </div>
+          <div *ngIf="checkIsVisible('fBudgetPredlog')">
+            <div
+              *ngFor="let budget of projectForm.get('arrayBudgetPredlogs').controls; let ind=index"
+              formArrayName="arrayBudgetPredlogs"
+            >
+              <div class="form_group" [formGroupName]="ind">
+                <label
+                  ><div>
+                    Бюджет предложение {{ind + 1}}<span
+                      *ngIf="checkIsRequired('fBudgetPredlog')"
+                      style="color: red;"
+                      >*</span
+                    >
+                  </div></label
+                >
+                <div class="display-add">
+                  <mat-icon
+                    class="remove-icon"
+                    *ngIf="isCompanyCreate"
+                    (click)="removeBudgetPredlog(ind)"
+                    >delete</mat-icon
+                  >
+                  <textarea
+                    matInput
+                    matTextareaAutosize
+                    [readonly]="!checkIsEditable('fBudgetPredlog')"
+                    type="text"
+                    OnlyNumber="true"
+                    formControlName="budgetPredlog"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('fprofitWont')">
+            <label
+              ><div>
+                Ожидаемая прибыль<span
+                  *ngIf="checkIsRequired('fprofitWont')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('fprofitWont')"
+              type="text"
+              placeholder=""
+              OnlyNumber="true"
+              formControlName="fprofitWont"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('fBudgetFact')">
+            <label
+              ><div>
+                Бюджет факт<span
+                  *ngIf="checkIsRequired('fBudgetFact')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('fBudgetFact')"
+              type="text"
+              placeholder=""
+              OnlyNumber="true"
+              formControlName="fBudgetFact"
+            ></textarea>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('fprofitFact')">
+            <label
+              ><div>
+                Прибыль факт<span
+                  *ngIf="checkIsRequired('fprofitFact')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('fprofitFact')"
+              type="text"
+              placeholder=""
+              OnlyNumber="true"
+              formControlName="fprofitFact"
+            ></textarea>
+          </div>
+          <!-- <div class="form_group" *ngIf="checkIsVisible('')">
+                        <label><div>Прибыль<span *ngIf="checkIsRequired('')" style="color: red">*</span></div></label>
+                        <textarea matInput matTextareaAutosize [readonly]="!checkIsEditable('')" type="text" placeholder="" OnlyNumber="true" formControlName="fprofit"></textarea>
+                    </div> -->
+          <div class="form_group" *ngIf="checkIsVisible('paymentMethod')">
+            <label
+              ><div>
+                Способ оплаты<span
+                  *ngIf="checkIsRequired('paymentMethod')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('paymentMethod')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="paymentMethods"
+              formControlName="paymentMethod"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('formMethod')">
+            <label
+              ><div>
+                Форма оплаты<span
+                  *ngIf="checkIsRequired('formMethod')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('formMethod')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="formMethods"
+              formControlName="formMethod"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('payDate') && projectForm.get('payDate').value?.Id !== 4 && projectForm.get('formMethod').value?.Id !== null"
+          >
+            <label
+              ><div>
+                Дата оплаты<span
+                  *ngIf="checkIsRequired('payDate')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-calendar
+              color-gray
+              styleClass="width-calendar"
+              formControlName="payDate"
+              selectionMode="multiple"
+              [readonlyInput]="true"
+              dateFormat="dd.mm.yy"
+              [disabled]="!checkIsEditable('payDate')"
+            ></p-calendar>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('typeContract')">
+            <label
+              ><div>
+                Тип договора<span
+                  *ngIf="checkIsRequired('typeContract')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('typeContract')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="typeContracts"
+              formControlName="typeContract"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('legalPersonISG')">
+            <label
+              ><div>
+                Юридическое лицо ISG<span
+                  *ngIf="checkIsRequired('legalPersonISG')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('legalPersonISG')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="legalPersonsISG"
+              formControlName="legalPersonISG"
+              optionLabel="info.AbbrName"
+            ></p-dropdown>
+          </div>
+        </div>
+        <div vs-hidden class="inf_block">
+          <div class="form_group">
+            <label><div></div></label>
+            <textarea
+              matInput
+              matTextareaAutosize
+              type="text"
+              placeholder=""
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div
+        class="container ui-g"
+        *ngIf="sectionSelect === 2"
+        style="overflow-x: auto;"
+      >
+        <app-estimate
+          (ondestroy)="saveEstimateDate($event)"
+          [projectName]="projectForm.get('projectName').value"
+          [data]="estimateData"
+          [projectInfo]="projectForm.value"
+          [projectId]="_projectId"
+          style="width: 100%;"
+        ></app-estimate>
+      </div>
+    </div>
+    <div *ngSwitchCase="4">
+      <!--Форма продажи-->
+      <div class="container ui-g">
+        <div
+          class="inf_block_title"
+          *ngIf="projectForm.get('projectType').value?.Mode !== 3"
+        >
+          {{ projectForm.get('projectType').value?.Mode === 2 ? 'Заказчик' :
+          ''}}
+        </div>
+        <div
+          class="inf_block_title"
+          *ngIf="projectForm.get('projectType').value?.Mode === 3"
+        >
+          {{projectForm.get('projectType').value?.Mode === 3 ? 'Комиссионер' :
+          '' }}
+        </div>
+        <div class="inf_block_title">
+          {{projectForm.get('projectType').value?.Mode === 1 ||
+          projectForm.get('projectType').value?.Mode === 2 ||
+          projectForm.get('projectType').value?.Mode === 3 ? 'Клиент' : '' }}
+        </div>
+      </div>
+      <!--Заказчик и Клиент-->
+      <div
+        class="container ui-g"
+        *ngIf="projectForm.get('projectType').value?.Mode === 2"
+      >
+        <div class="inf_block">
+          <div class="form_group" *ngIf="checkIsVisible('customer')">
+            <label
+              ><div>
+                Название компании<span
+                  *ngIf="checkIsRequired('customer')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isCompanyCreate"
+                (click)="addNewCompany('customer')"
+                >add</mat-icon
+              >
+              <p-dropdown
+                filter="true"
+                [readonly]="!checkIsEditable('customer')"
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="companies"
+                optionLabel="Denomination"
+                formControlName="customer"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('mainCustomerLegalPerson')"
+          >
+            <label
+              ><div>
+                Юридическое лицо<span
+                  *ngIf="checkIsRequired('mainCustomerLegalPerson')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isCompanyCreate"
+                (click)="addNewLegalEntity('mainCustomerLegalPerson')"
+                >add</mat-icon
+              >
+              <p-dropdown
+                [readonly]="!checkIsEditable('mainCustomerLegalPerson')"
+                id="sel_blk"
+                [options]="customerLegalPerson"
+                filter="false"
+                optionLabel="AbbrName"
+                placeholder="Не выбрано"
+                formControlName="mainCustomerLegalPerson"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('mainCustomerManager')">
+            <label
+              ><div>
+                Операционный менеджер<span
+                  *ngIf="checkIsRequired('mainCustomerManager')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isManagerCreate"
+                (click)="addNewManager('mainCustomerManager', false)"
+                >add</mat-icon
+              >
+              <p-dropdown
+                [readonly]="!checkIsEditable('mainCustomerManager')"
+                id="sel_blk"
+                [options]="customerManager"
+                filter="false"
+                optionLabel="FulName"
+                placeholder="Не выбрано"
+                formControlName="mainCustomerManager"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('customerClosingDocuments')"
+          >
+            <label
+              ><div>
+                Наличие закрывающих документов<span
+                  *ngIf="checkIsRequired('customerClosingDocuments')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('customerClosingDocuments')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="typeClosingDocuments"
+              formControlName="customerClosingDocuments"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div class="form_group center">
+            <label><div>Операционные менеджеры</div></label>
+          </div>
+
+          <div class="form_group om_manager">
+            <div
+              class="form-group"
+              *ngFor="let opCustomerEmployee of projectForm.get('opCustomer').controls; let ind=index"
+              formArrayName="opCustomer"
+            >
+              <p-dropdown
+                *ngIf="!opCustomerEmployee.controls['typeOPCustomer']?.value"
+                placeholder="Не выбрано"
+                [options]="typeOPSaleForm"
+                [formControl]="opCustomerEmployee.controls['typeOPCustomer']"
+                optionLabel="Name"
+              ></p-dropdown>
+
+              <div
+                class="display-add"
+                *ngIf="opCustomerEmployee.controls['typeOPCustomer']?.value?.Id === 2"
+              >
+                <p-dropdown
+                  placeholder="Выберите менеджера"
+                  [options]="managers"
+                  [formControl]="opCustomerEmployee.controls['opCustomerEmployee']"
+                  optionLabel="FulName"
+                ></p-dropdown>
+                <mat-icon
+                  class="add-icon"
+                  *ngIf="isManagerCreate"
+                  (click)="addNewManagerInArray('opCustomerEmployee', 'opCustomer', ind)"
+                  >add</mat-icon
+                >
+              </div>
+              <p-dropdown
+                *ngIf="opCustomerEmployee.controls['typeOPCustomer']?.value?.Id === 2"
+                placeholder="Выберите роль"
+                [options]="rolesManagers"
+                [formControl]="opCustomerEmployee.controls['roleCustomer']"
+                optionLabel="Name"
+              ></p-dropdown>
+
+              <i
+                style="color: #ff4e4e;"
+                class="material-icons"
+                cursor-pointer
+                (click)="removeOPManager(ind, 'customer', opCustomerEmployee)"
+              >
+                delete
+              </i>
+            </div>
+          </div>
+
+          <div
+            class="form_group"
+            style="
+              display: flex;
+              justify-content: center;
+              align-content: center;
+            "
+          >
+            <input
+              style="text-align: center;"
+              type="submit"
+              class="add-button"
+              value="Добавить менеджера"
+              (click)="addOPManager('customer')"
+            />
+          </div>
+        </div>
+
+        <div class="inf_block">
+          <div class="form_group" *ngIf="checkIsVisible('client')">
+            <label
+              ><div>
+                Название компании<span
+                  *ngIf="checkIsRequired('client')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isCompanyCreate"
+                (click)="addNewCompany('client')"
+                >add</mat-icon
+              >
+              <p-dropdown
+                filter="true"
+                [readonly]="!checkIsEditable('client')"
+                id="sel_blk"
+                [options]="companies"
+                placeholder="Не выбрано"
+                optionLabel="Denomination"
+                formControlName="client"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('mainClientLegalPerson')"
+          >
+            <label
+              ><div>
+                Юридическое лицо<span
+                  *ngIf="checkIsRequired('mainClientLegalPerson')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isCompanyCreate"
+                (click)="addNewLegalEntity('mainClientLegalPerson')"
+                >add</mat-icon
+              >
+              <p-dropdown
+                [readonly]="!checkIsEditable('mainClientLegalPerson')"
+                id="sel_blk"
+                [options]="clientLegalPerson"
+                filter="false"
+                optionLabel="AbbrName"
+                placeholder="Не выбрано"
+                formControlName="mainClientLegalPerson"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('mainClientManager')">
+            <label
+              ><div>
+                Операционный менеджер<span
+                  *ngIf="checkIsRequired('mainClientManager')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isManagerCreate"
+                (click)="addNewManager('mainClientManager', false)"
+                >add</mat-icon
+              >
+              <p-dropdown
+                [readonly]="!checkIsEditable('mainClientManager')"
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="clientManager"
+                filter="true"
+                optionLabel="FulName"
+                formControlName="mainClientManager"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('clientClosingDocuments')"
+          >
+            <label
+              ><div>
+                Наличие закрывающих документов<span
+                  *ngIf="checkIsRequired('clientClosingDocuments')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('clientClosingDocuments')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="typeClosingDocuments"
+              formControlName="clientClosingDocuments"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div class="form_group center">
+            <label><div>Операционные менеджеры</div></label>
+          </div>
+
+          <div class="form_group om_manager">
+            <div
+              class="form-group"
+              *ngFor="let opClientEmployee of projectForm.get('opClient').controls; let ind=index"
+              formArrayName="opClient"
+            >
+              <p-dropdown
+                *ngIf="!opClientEmployee.controls['typeOPClient']?.value"
+                placeholder="Не выбрано"
+                [options]="typeOPSaleForm"
+                [formControl]="opClientEmployee.controls['typeOPClient']"
+                optionLabel="Name"
+              ></p-dropdown>
+
+              <div
+                class="display-add"
+                *ngIf="opClientEmployee.controls['typeOPClient']?.value?.Id === 2"
+              >
+                <p-dropdown
+                  *ngIf="opClientEmployee.controls['typeOPClient']?.value?.Id === 2"
+                  placeholder="Выберите менеджера"
+                  [options]="managers"
+                  [formControl]="opClientEmployee.controls['opClientEmployee']"
+                  optionLabel="FulName"
+                ></p-dropdown>
+                <mat-icon
+                  class="add-icon"
+                  *ngIf="isManagerCreate"
+                  (click)="addNewManagerInArray('opClientEmployee', 'opClient', ind)"
+                  >add</mat-icon
+                >
+              </div>
+              <p-dropdown
+                *ngIf="opClientEmployee.controls['typeOPClient']?.value?.Id === 2"
+                placeholder="Выберите роль"
+                [options]="rolesManagers"
+                [formControl]="opClientEmployee.controls['roleClient']"
+                optionLabel="Name"
+              ></p-dropdown>
+
+              <i
+                style="color: #ff4e4e;"
+                class="material-icons"
+                cursor-pointer
+                (click)="removeOPManager(ind, 'client', opClientEmployee)"
+              >
+                delete
+              </i>
+            </div>
+          </div>
+
+          <div
+            class="form_group"
+            style="
+              display: flex;
+              justify-content: center;
+              align-content: center;
+            "
+          >
+            <input
+              style="text-align: center;"
+              type="submit"
+              class="add-button"
+              value="Добавить менеджера"
+              (click)="addOPManager('client')"
+            />
+          </div>
+        </div>
+      </div>
+      <!--Заказчик-->
+      <div
+        class="container ui-g"
+        *ngIf="projectForm.get('projectType').value?.Id==20"
+      >
+        <div class="inf_block">
+          <div class="form_group" *ngIf="checkIsVisible('customer')">
+            <label
+              ><div>
+                Название компании<span
+                  *ngIf="checkIsRequired('customer')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isCompanyCreate"
+                (click)="addNewCompany('customer')"
+                >add</mat-icon
+              >
+              <p-dropdown
+                filter="true"
+                [readonly]="!checkIsEditable('customer')"
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="companies"
+                optionLabel="Denomination"
+                formControlName="customer"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('mainCustomerLegalPerson')"
+          >
+            <label
+              ><div>
+                Юридическое лицо<span
+                  *ngIf="checkIsRequired('mainCustomerLegalPerson')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isCompanyCreate"
+                (click)="addNewLegalEntity('mainCustomerLegalPerson')"
+                >add</mat-icon
+              >
+              <p-dropdown
+                [readonly]="!checkIsEditable('mainCustomerLegalPerson')"
+                id="sel_blk"
+                [options]="customerLegalPerson"
+                filter="false"
+                optionLabel="AbbrName"
+                placeholder="Не выбрано"
+                formControlName="mainCustomerLegalPerson"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('mainCustomerManager')">
+            <label
+              ><div>
+                Операционный менеджер<span
+                  *ngIf="checkIsRequired('mainCustomerManager')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isManagerCreate"
+                (click)="addNewManager('mainCustomerManager', false)"
+                >add</mat-icon
+              >
+              <p-dropdown
+                [readonly]="!checkIsEditable('mainCustomerManager')"
+                id="sel_blk"
+                [options]="customerManager"
+                filter="false"
+                filter="true"
+                optionLabel="FulName"
+                placeholder="Не выбрано"
+                formControlName="mainCustomerManager"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('customerClosingDocuments')"
+          >
+            <label
+              ><div>
+                Наличие закрывающих документов<span
+                  *ngIf="checkIsRequired('customerClosingDocuments')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('customerClosingDocuments')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="typeClosingDocuments"
+              formControlName="customerClosingDocuments"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div class="form_group center">
+            <label><div>Операционные менеджеры</div></label>
+          </div>
+
+          <div class="form_group om_manager">
+            <div
+              class="form-group"
+              *ngFor="let opCustomerEmployee of projectForm.get('opCustomer').controls; let ind=index"
+              formArrayName="opCustomer"
+            >
+              <p-dropdown
+                *ngIf="!opCustomerEmployee.controls['typeOPCustomer']?.value"
+                placeholder="Не выбрано"
+                [options]="typeOPSaleForm"
+                [formControl]="opCustomerEmployee.controls['typeOPCustomer']"
+                optionLabel="Name"
+              ></p-dropdown>
+
+              <div
+                class="display-add"
+                *ngIf="opCustomerEmployee.controls['typeOPCustomer']?.value?.Id === 2"
+              >
+                <p-dropdown
+                  placeholder="Выберите менеджера"
+                  [options]="managers"
+                  [formControl]="opCustomerEmployee.controls['opCustomerEmployee']"
+                  optionLabel="FulName"
+                ></p-dropdown>
+                <mat-icon
+                  class="add-icon"
+                  *ngIf="isManagerCreate"
+                  (click)="addNewManagerInArray('opCustomerEmployee', 'opCustomer', ind)"
+                  >add</mat-icon
+                >
+              </div>
+              <p-dropdown
+                *ngIf="opCustomerEmployee.controls['typeOPCustomer']?.value?.Id === 2"
+                placeholder="Выберите роль"
+                [options]="rolesManagers"
+                [formControl]="opCustomerEmployee.controls['roleCustomer']"
+                optionLabel="Name"
+              ></p-dropdown>
+
+              <i
+                style="color: #ff4e4e;"
+                class="material-icons"
+                cursor-pointer
+                (click)="removeOPManager(ind, 'customer', opCustomerEmployee)"
+              >
+                delete
+              </i>
+            </div>
+          </div>
+
+          <div
+            class="form_group"
+            style="
+              display: flex;
+              justify-content: center;
+              align-content: center;
+            "
+          >
+            <input
+              style="text-align: center;"
+              type="submit"
+              class="add-button"
+              value="Добавить менеджера"
+              (click)="addOPManager('customer')"
+            />
+          </div>
+        </div>
+        <div vs-hidden class="inf_block">
+          <div class="form_group">
+            <label><div></div></label>
+            <textarea
+              matInput
+              matTextareaAutosize
+              type="text"
+              placeholder=""
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <!--Клиент-->
+      <div
+        class="container ui-g"
+        *ngIf="projectForm.get('projectType').value?.Mode === 1"
+      >
+        <div class="empty_block"></div>
+        <div class="inf_block">
+          <div class="form_group" *ngIf="checkIsVisible('client')">
+            <label
+              ><div>
+                Название компании<span
+                  *ngIf="checkIsRequired('client')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isCompanyCreate"
+                (click)="addNewCompany('client')"
+                >add</mat-icon
+              >
+              <p-dropdown
+                filter="true"
+                [readonly]="!checkIsEditable('client')"
+                id="sel_blk"
+                [options]="companies"
+                placeholder="Не выбрано"
+                optionLabel="Denomination"
+                formControlName="client"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('mainClientLegalPerson')"
+          >
+            <label
+              ><div>
+                Юридическое лицо<span
+                  *ngIf="checkIsRequired('mainClientLegalPerson')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isCompanyCreate"
+                (click)="addNewLegalEntity('mainClientLegalPerson')"
+                >add</mat-icon
+              >
+              <p-dropdown
+                [readonly]="!checkIsEditable('mainClientLegalPerson')"
+                id="sel_blk"
+                [options]="clientLegalPerson"
+                filter="false"
+                filter="true"
+                optionLabel="AbbrName"
+                placeholder="Не выбрано"
+                formControlName="mainClientLegalPerson"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('mainClientManager')">
+            <label
+              ><div>
+                Операционный менеджер<span
+                  *ngIf="checkIsRequired('mainClientManager')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isManagerCreate"
+                (click)="addNewManager('mainClientManager', false)"
+                >add</mat-icon
+              >
+              <p-dropdown
+                [readonly]="!checkIsEditable('mainClientManager')"
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="clientManager"
+                filter="true"
+                optionLabel="FulName"
+                formControlName="mainClientManager"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('clientClosingDocuments')"
+          >
+            <label
+              ><div>
+                Наличие закрывающих документов<span
+                  *ngIf="checkIsRequired('clientClosingDocuments')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('clientClosingDocuments')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="typeClosingDocuments"
+              formControlName="clientClosingDocuments"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div class="form_group center">
+            <label><div>Операционные менеджеры</div></label>
+          </div>
+
+          <div class="form_group om_manager">
+            <div
+              class="form-group"
+              *ngFor="let opClientEmployee of projectForm.get('opClient').controls; let ind=index"
+              formArrayName="opClient"
+            >
+              <p-dropdown
+                *ngIf="!opClientEmployee.controls['typeOPClient']?.value"
+                placeholder="Не выбрано"
+                [options]="typeOPSaleForm"
+                [formControl]="opClientEmployee.controls['typeOPClient']"
+                optionLabel="Name"
+              ></p-dropdown>
+
+              <div
+                class="display-add"
+                *ngIf="opClientEmployee.controls['typeOPClient']?.value?.Id === 2"
+              >
+                <p-dropdown
+                  *ngIf="opClientEmployee.controls['typeOPClient']?.value?.Id === 2"
+                  placeholder="Выберите менеджера"
+                  [options]="managers"
+                  [formControl]="opClientEmployee.controls['opClientEmployee']"
+                  optionLabel="FulName"
+                ></p-dropdown>
+                <mat-icon
+                  class="add-icon"
+                  *ngIf="isManagerCreate"
+                  (click)="addNewManagerInArray('opClientEmployee', 'opClient', ind)"
+                  >add</mat-icon
+                >
+              </div>
+              <p-dropdown
+                *ngIf="opClientEmployee.controls['typeOPClient']?.value?.Id === 2"
+                placeholder="Выберите роль"
+                [options]="rolesManagers"
+                [formControl]="opClientEmployee.controls['roleClient']"
+                optionLabel="Name"
+              ></p-dropdown>
+
+              <i
+                style="color: #ff4e4e;"
+                class="material-icons"
+                cursor-pointer
+                (click)="removeOPManager(ind, 'client', opClientEmployee)"
+              >
+                delete
+              </i>
+            </div>
+          </div>
+
+          <div
+            class="form_group"
+            style="
+              display: flex;
+              justify-content: center;
+              align-content: center;
+            "
+          >
+            <input
+              style="text-align: center;"
+              type="submit"
+              class="add-button"
+              value="Добавить менеджера"
+              (click)="addOPManager('client')"
+            />
+          </div>
+        </div>
+      </div>
+      <!--Клиент и комиссионер-->
+      <div
+        class="container ui-g"
+        *ngIf="projectForm.get('projectType').value?.Mode === 3"
+      >
+        <div class="inf_block">
+          <div class="form_group" *ngIf="checkIsVisible('komisioner')">
+            <label
+              ><div>
+                Комиссионер<span
+                  *ngIf="checkIsRequired('projectType')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('projectType')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="komisioners"
+              formControlName="komisioner"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('customer') && projectForm.get('komisioner').value?.Id === 1"
+          >
+            <label
+              ><div>
+                Название компании<span
+                  *ngIf="checkIsRequired('customer')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isCompanyCreate"
+                (click)="addNewCompany('customer')"
+                >add</mat-icon
+              >
+              <p-dropdown
+                filter="true"
+                [readonly]="!checkIsEditable('customer')"
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="companies"
+                optionLabel="Denomination"
+                formControlName="customer"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('mainCustomerLegalPerson') && projectForm.get('komisioner').value?.Id === 1"
+          >
+            <label
+              ><div>
+                Юридическое лицо<span
+                  *ngIf="checkIsRequired('mainCustomerLegalPerson')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isCompanyCreate"
+                (click)="addNewLegalEntity('mainCustomerLegalPerson')"
+                >add</mat-icon
+              >
+              <p-dropdown
+                [readonly]="!checkIsEditable('mainCustomerLegalPerson')"
+                id="sel_blk"
+                [options]="customerLegalPerson"
+                filter="false"
+                optionLabel="AbbrName"
+                placeholder="Не выбрано"
+                formControlName="mainCustomerLegalPerson"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('mainCustomerManager') && projectForm.get('komisioner').value?.Id === 2"
+          >
+            <label
+              ><div>
+                Менеджер<span
+                  *ngIf="checkIsRequired('mainCustomerManager')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isManagerCreate"
+                (click)="addNewManager('mainCustomerManager', true, true)"
+                >add</mat-icon
+              >
+              <p-dropdown
+                filter="true"
+                [readonly]="!checkIsEditable('mainCustomerManager')"
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="managers"
+                optionLabel="FulName"
+                formControlName="mainCustomerManager"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('typeComision')">
+            <label
+              ><div>
+                Тип комиссии<span
+                  *ngIf="checkIsRequired('typeComision')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div style="display: flex;">
+              <input
+                matInput
+                matTextareaAutosize
+                type="number"
+                style="width: 70px; margin-right: 10px; margin-top: 1px;"
+                *ngIf="projectForm.get('typeComision').value"
+                [readonly]="!checkIsEditable('typeComision')"
+                formControlName="commissionNumber"
+              />
+              <p-dropdown
+                [readonly]="!checkIsEditable('typeComision')"
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="typeComisions"
+                formControlName="typeComision"
+                optionLabel="Name"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('paymentMethod')">
+            <label
+              ><div>
+                Тип оплаты<span
+                  *ngIf="checkIsRequired('paymentMethod')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('paymentMethod')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="paymentMethods"
+              formControlName="paymentMethod"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div class="form_group" *ngIf="checkIsVisible('commentCommission')">
+            <label
+              ><div>
+                Комментарий<span
+                  *ngIf="checkIsRequired('commentCommission')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <textarea
+              matInput
+              matTextareaAutosize
+              [readonly]="!checkIsEditable('commentCommission')"
+              type="text"
+              formControlName="commentCommission"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="inf_block">
+          <div class="form_group" *ngIf="checkIsVisible('client')">
+            <label
+              ><div>
+                Название компании<span
+                  *ngIf="checkIsRequired('client')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isCompanyCreate"
+                (click)="addNewCompany('client')"
+                >add</mat-icon
+              >
+              <p-dropdown
+                filter="true"
+                [readonly]="!checkIsEditable('client')"
+                id="sel_blk"
+                [options]="companies"
+                placeholder="Не выбрано"
+                optionLabel="Denomination"
+                formControlName="client"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('mainClientLegalPerson')"
+          >
+            <label
+              ><div>
+                Юридическое лицо<span
+                  *ngIf="checkIsRequired('mainClientLegalPerson')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isCompanyCreate"
+                (click)="addNewLegalEntity('mainClientLegalPerson')"
+                >add</mat-icon
+              >
+              <p-dropdown
+                [readonly]="!checkIsEditable('mainClientLegalPerson')"
+                id="sel_blk"
+                [options]="clientLegalPerson"
+                filter="false"
+                optionLabel="AbbrName"
+                placeholder="Не выбрано"
+                formControlName="mainClientLegalPerson"
+              ></p-dropdown>
+            </div>
+          </div>
+
+          <div class="form_group" *ngIf="checkIsVisible('mainClientManager')">
+            <label
+              ><div>
+                Операционный менеджер<span
+                  *ngIf="checkIsRequired('mainClientManager')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <div class="display-add">
+              <mat-icon
+                class="add-icon"
+                *ngIf="isManagerCreate"
+                (click)="addNewManager('mainClientManager', false)"
+                >add</mat-icon
+              >
+              <p-dropdown
+                [readonly]="!checkIsEditable('mainClientManager')"
+                id="sel_blk"
+                [options]="clientManager"
+                filter="false"
+                optionLabel="FulName"
+                placeholder="Не выбрано"
+                formControlName="mainClientManager"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div
+            class="form_group"
+            *ngIf="checkIsVisible('clientClosingDocuments')"
+          >
+            <label
+              ><div>
+                Наличие закрывающих документов<span
+                  *ngIf="checkIsRequired('clientClosingDocuments')"
+                  style="color: red;"
+                  >*</span
+                >
+              </div></label
+            >
+            <p-dropdown
+              [readonly]="!checkIsEditable('clientClosingDocuments')"
+              id="sel_blk"
+              placeholder="Не выбрано"
+              [options]="typeClosingDocuments"
+              formControlName="clientClosingDocuments"
+              optionLabel="Name"
+            ></p-dropdown>
+          </div>
+          <div class="form_group center">
+            <label><div>Операционные менеджеры</div></label>
+          </div>
+
+          <div class="form_group om_manager">
+            <div
+              class="form-group"
+              *ngFor="let opClientEmployee of projectForm.get('opClient').controls; let ind=index"
+              formArrayName="opClient"
+            >
+              <p-dropdown
+                *ngIf="!opClientEmployee.controls['typeOPClient']?.value"
+                placeholder="Не выбрано"
+                [options]="typeOPSaleForm"
+                [formControl]="opClientEmployee.controls['typeOPClient']"
+                optionLabel="Name"
+              ></p-dropdown>
+
+              <div
+                class="display-add"
+                *ngIf="opClientEmployee.controls['typeOPClient']?.value?.Id === 2"
+              >
+                <p-dropdown
+                  *ngIf="opClientEmployee.controls['typeOPClient']?.value?.Id === 2"
+                  placeholder="Выберите менеджера"
+                  [options]="managers"
+                  [formControl]="opClientEmployee.controls['opClientEmployee']"
+                  optionLabel="FulName"
+                ></p-dropdown>
+                <mat-icon
+                  class="add-icon"
+                  *ngIf="isManagerCreate"
+                  (click)="addNewManagerInArray('opClientEmployee', 'opClient', ind)"
+                  >add</mat-icon
+                >
+              </div>
+              <p-dropdown
+                *ngIf="opClientEmployee.controls['typeOPClient']?.value?.Id === 2"
+                placeholder="Выберите роль"
+                [options]="rolesManagers"
+                [formControl]="opClientEmployee.controls['roleClient']"
+                optionLabel="Name"
+              ></p-dropdown>
+
+              <i
+                style="color: #ff4e4e;"
+                class="material-icons"
+                cursor-pointer
+                (click)="removeOPManager(ind, 'client', opClientEmployee)"
+              >
+                delete
+              </i>
+            </div>
+          </div>
+
+          <div
+            class="form_group"
+            style="
+              display: flex;
+              justify-content: center;
+              align-content: center;
+            "
+          >
+            <input
+              style="text-align: center;"
+              type="submit"
+              class="add-button"
+              value="Добавить менеджера"
+              (click)="addOPManager('client')"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngSwitchCase="5">
+      <div class="container ui-g">
+        <div class="inf_block_title">Продажа</div>
+        <div class="inf_block_title">Реализация</div>
+      </div>
+      <div class="container ui-g">
+        <div class="inf_block">
+          <div class="form_group" style="flex-direction: column;">
+            <div style="display: flex; justify-content: space-between;">
+              <label><div>Менеджер</div></label>
+              <p-dropdown
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="employeesList"
+                formControlName="sale"
+                optionLabel="FulName"
+              ></p-dropdown>
+            </div>
+            <div
+              class="form-group"
+              *ngFor="let saleEmployee of saleEmployees;let ind=index"
+            >
+              <label><div>{{saleEmployee.PositionName}}</div></label>
+
+              <div class="form-group-item">
+                <p-dropdown
+                  placeholder="Не выбрано"
+                  [options]="saleEmployee?.employeesPosition"
+                  [formControlName]="'saleEmployee'+ind"
+                  optionLabel="FulName"
+                ></p-dropdown>
+
+                <i
+                  style="color: #ff4e4e;"
+                  class="material-icons"
+                  cursor-pointer
+                  (click)="removeEmployee(ind,saleEmployee.EmployeeId, 'sale')"
+                >
+                  delete
+                </i>
+              </div>
+            </div>
+          </div>
+
+          <div class="form_group">
+            <label style="color: #fff !important;">Кнопка</label>
+            <input
+              type="submit"
+              class="add-button"
+              value="Добавить сотрудника"
+              (click)="addEmployee('sale')"
+            />
+          </div>
+
+          <div class="form_group center">
+            <label><div>Операционные менеджеры</div></label>
+          </div>
+
+          <div class="form_group om_manager">
+            <div
+              class="form-group"
+              *ngFor="let opSaleEmployee of projectForm.get('opSale').controls; let ind=index"
+              formArrayName="opSale"
+            >
+              <p-dropdown
+                *ngIf="!opSaleEmployee.controls['typeOPSale']?.value"
+                placeholder="Не выбрано"
+                [options]="typeOP"
+                [formControl]="opSaleEmployee.controls['typeOPSale']"
+                optionLabel="Name"
+              ></p-dropdown>
+
+              <p-dropdown
+                *ngIf="opSaleEmployee.controls['typeOPSale']?.value?.Id === 1"
+                placeholder="Выберите сотрудника"
+                [options]="employeesList"
+                [formControl]="opSaleEmployee.controls['opSaleEmployee']"
+                optionLabel="FulName"
+              ></p-dropdown>
+              <p-dropdown
+                *ngIf="opSaleEmployee.controls['typeOPSale']?.value?.Id === 1"
+                placeholder="Выберите роль"
+                [options]="rolesISG"
+                [formControl]="opSaleEmployee.controls['roleSale']"
+                optionLabel="Name"
+              ></p-dropdown>
+
+              <i
+                style="color: #ff4e4e;"
+                class="material-icons"
+                cursor-pointer
+                (click)="removeOPManager(ind, 'sale', opSaleEmployee)"
+              >
+                delete
+              </i>
+            </div>
+          </div>
+
+          <div
+            class="form_group"
+            style="
+              display: flex;
+              justify-content: center;
+              align-content: center;
+            "
+          >
+            <input
+              style="text-align: center;"
+              type="submit"
+              class="add-button"
+              value="Добавить менеджера"
+              (click)="addOPManager('sale')"
+            />
+          </div>
+        </div>
+        <div class="inf_block">
+          <div class="form_group" style="flex-direction: column;">
+            <div style="display: flex; justify-content: space-between;">
+              <label><div>Менеджер</div></label>
+              <p-dropdown
+                (onChange)="changeManager($event)"
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="employeesList"
+                formControlName="pm"
+                optionLabel="FulName"
+              ></p-dropdown>
+            </div>
+            <div
+              class="form-group"
+              *ngFor="let employee of employees;let ind=index"
+            >
+              <label><div>{{employee.PositionName}}</div></label>
+
+              <div class="form-group-item">
+                <p-dropdown
+                  placeholder="Не выбрано"
+                  [options]="employee?.employeesPosition"
+                  [formControlName]="'employee'+ind"
+                  optionLabel="FulName"
+                ></p-dropdown>
+
+                <i
+                  style="color: #ff4e4e;"
+                  class="material-icons"
+                  cursor-pointer
+                  (click)="removeEmployee(ind,employee.EmployeeId)"
+                >
+                  delete
+                </i>
+              </div>
+            </div>
+          </div>
+
+          <div class="form_group">
+            <label style="color: #fff !important;">Кнопка</label>
+            <input
+              type="submit"
+              class="add-button"
+              value="Добавить сотрудника"
+              (click)="addEmployee()"
+            />
+          </div>
+
+          <div class="form_group center">
+            <label><div>Операционные менеджеры</div></label>
+          </div>
+
+          <div class="form_group om_manager">
+            <div
+              class="form-group"
+              *ngFor="let opEmployee of projectForm.get('op').controls; let ind=index"
+              formArrayName="op"
+            >
+              <p-dropdown
+                *ngIf="!opEmployee.controls['typeOP']?.value"
+                placeholder="Не выбрано"
+                [options]="typeOP"
+                [formControl]="opEmployee.controls['typeOP']"
+                optionLabel="Name"
+              ></p-dropdown>
+
+              <p-dropdown
+                *ngIf="opEmployee.controls['typeOP']?.value?.Id === 1"
+                placeholder="Выберите сотрудника"
+                [options]="employeesList"
+                [formControl]="opEmployee.controls['opEmployee']"
+                optionLabel="FulName"
+              ></p-dropdown>
+              <p-dropdown
+                *ngIf="opEmployee.controls['typeOP']?.value?.Id === 1"
+                placeholder="Выберите роль"
+                [options]="rolesISG"
+                [formControl]="opEmployee.controls['role']"
+                optionLabel="Name"
+              ></p-dropdown>
+
+              <i
+                style="color: #ff4e4e;"
+                class="material-icons"
+                cursor-pointer
+                (click)="removeOPManager(ind, '', opEmployee)"
+              >
+                delete
+              </i>
+            </div>
+          </div>
+
+          <div
+            class="form_group"
+            style="
+              display: flex;
+              justify-content: center;
+              align-content: center;
+            "
+          >
+            <input
+              style="text-align: center;"
+              type="submit"
+              class="add-button"
+              value="Добавить менеджера"
+              (click)="addOPManager()"
+            />
+          </div>
+        </div>
+        <!-- <div class="inf_block">
+                    <div class="form_group" *ngIf="checkIsVisible('zoneReact')">
+                        <label><div>Зона ответственности<span *ngIf="checkIsRequired('zoneReact')" style="color: red">*</span></div></label>
+                        <p-multiSelect id="sel_blk" defaultLabel="Не выбрано" [options]="zoneReacts"
+                        formControlName="zoneReact" optionLabel="Name" [disabled]="!checkIsEditable('zoneReact')">
+                            <ng-template let-sitem pTemplate="selectedItems">
+                                <div *ngIf="sitem.length === 0">
+                                    <span>Не выбрано</span>
+                                </div>
+                                <div *ngIf="sitem.length !== 0">
+                                    <span *ngFor="let item of sitem; last as isLast">
+                                        <span>{{item.Name}}<span *ngIf="!isLast">, </span></span>
+                                    </span>
+                                </div>
+                            </ng-template>
+                        </p-multiSelect>
+                    </div>
+                    <div class="form_group" *ngIf="checkIsVisible('ifContractor')">
+                        <label><div>Подрядчик<span *ngIf="checkIsRequired('ifContractor')" style="color: red">*</span></div></label>
+                        <p-dropdown id="sel_blk" placeholder="Не выбрано" [options]="ifContractors"
+                        formControlName="ifContractor" optionLabel="Name" [readonly]="!checkIsEditable('ifContractor')"></p-dropdown>
+                    </div>
+                    <div class="form_group" *ngIf="checkIsVisible('companySub')">
+                        <label><div>Название компании<span *ngIf="checkIsRequired('companySub')" style="color: red">*</span></div></label>
+                        <div class="display-add">
+                            <mat-icon class="add-icon" *ngIf="isCompanyCreate" (click)="addNewCompany('companySub')">add</mat-icon>
+                            <p-dropdown id="sel_blk" filter="true" [options]="companiesSub" placeholder="Не выбрано" optionLabel="Denomination"
+                            formControlName="companySub" [readonly]="!checkIsEditable('companySub')"></p-dropdown>
+                        </div>
+                    </div>
+                    <div class="form_group" *ngIf="checkIsVisible('companySubLegalPerson') && projectForm.get('ifContractor').value?.Id === 1">
+                        <label><div>Юридическое лицо<span *ngIf="checkIsRequired('companySubLegalPerson')" style="color: red">*</span></div></label>
+                        <div class="display-add">
+                            <mat-icon class="add-icon" *ngIf="isCompanyCreate" (click)="addNewLegalEntity('companySubLegalPerson')">add</mat-icon>
+                            <p-dropdown id="sel_blk" [options]="subLegalPerson" filter="false"
+                                optionLabel="AbbrName" placeholder="Не выбрано" formControlName="companySubLegalPerson" [readonly]="!checkIsEditable('companySubLegalPerson')"></p-dropdown>
+                        </div>
+                    </div>
+                    <div class="form_group" *ngIf="checkIsVisible('companySubManager')">
+                        <label><div>Операционный менеджер<span *ngIf="checkIsRequired('companySubManager')" style="color: red">*</span></div></label>
+                        <div class="display-add">
+                            <mat-icon class="add-icon" *ngIf="isManagerCreate" (click)="addNewManager('companySubManager', false)">add</mat-icon>
+                            <p-dropdown id="sel_blk" placeholder="Не выбрано" [options]="subManager"
+                            filter="true" optionLabel="FulName" formControlName="companySubManager" [readonly]="!checkIsEditable('companySubManager')"></p-dropdown>
+                        </div>
+                    </div>
+                    <div class="form_group" *ngIf="checkIsVisible('subClosingDocuments')">
+                        <label><div>Наличие закрывающих документов<span *ngIf="checkIsRequired('subClosingDocuments')" style="color: red">*</span></div></label>
+                        <p-dropdown [readonly]="!checkIsEditable('subClosingDocuments')" id="sel_blk" placeholder="Не выбрано" [options]="typeClosingDocuments"
+                        formControlName="subClosingDocuments" optionLabel="Name"></p-dropdown>
+                    </div>
+
+                    <div class="form_group center">
+                        <label><div>Операционные менеджеры</div></label>
+                    </div>
+
+                    <div class="form_group om_manager">
+                        <div class="form-group" *ngFor="let opSubEmployee of projectForm.get('opSub').controls; let ind=index" formArrayName="opSub">
+                            <p-dropdown *ngIf="!opSubEmployee.controls['typeOPSub']?.value" placeholder="Не выбрано" [options]="typeOPSaleForm"
+                                        [formControl]="opSubEmployee.controls['typeOPSub']" optionLabel="Name"></p-dropdown>
+
+                            <div class="display-add" *ngIf="opSubEmployee.controls['typeOPSub']?.value?.Id === 2">
+                                <p-dropdown *ngIf="opSubEmployee.controls['typeOPSub']?.value?.Id === 2" placeholder="Выберите менеджера" [options]="managers"
+                                        [formControl]="opSubEmployee.controls['opSubEmployee']" optionLabel="FulName"></p-dropdown>
+                                <mat-icon class="add-icon" *ngIf="isManagerCreate" (click)="addNewManagerInArray('opSubEmployee', 'opSub', ind)">add</mat-icon>
+                            </div>
+                            <p-dropdown *ngIf="opSubEmployee.controls['typeOPSub']?.value?.Id === 2" placeholder="Выберите роль" [options]="rolesManagers"
+                                        [formControl]="opSubEmployee.controls['roleSub']" optionLabel="Name"></p-dropdown>
+
+                            <i style="color:#FF4E4E" class="material-icons" cursor-pointer (click)="removeOPManager(ind, 'sub', opSubEmployee)">
+                                delete
+                            </i>
+                        </div>
+                    </div>
+
+                    <div class="form_group" style="display: flex; justify-content: center; align-content: center;">
+                        <input style="text-align: center;" type="submit" class="add-button" value="Добавить менеджера" (click)="addOPManager('sub')">
+                    </div>
+                </div> -->
+      </div>
+    </div>
+
+    <div *ngSwitchCase="6">
+      <div class="ui-g">
+        <p-card
+          header="Advanced Card"
+          subheader="Subheader"
+          [style]="{width: '550px', margin: '10px 10px'}"
+          styleClass="ui-card-shadow"
+          *ngFor="let subcontractor of projectForm.get('subcontractors').controls; let ind = index"
+          formArrayName="subcontractors"
+        >
+          <div [formGroupName]="ind">
+            <p-header>
+              <i
+                style="color: #ff4e4e;"
+                class="material-icons"
+                cursor-pointer
+                (click)="removeSubcontractor(ind)"
+              >
+                delete
+              </i>
+            </p-header>
+            <div class="form_group" *ngIf="checkIsVisible('zoneReact')">
+              <label
+                ><div>
+                  Зона ответственности<span
+                    *ngIf="checkIsRequired('zoneReact')"
+                    style="color: red;"
+                    >*</span
+                  >
+                </div></label
+              >
+              <p-multiSelect
+                id="sel_blk"
+                defaultLabel="Не выбрано"
+                [options]="zoneReacts"
+                formControlName="zoneReact"
+                optionLabel="Name"
+                [disabled]="!checkIsEditable('zoneReact')"
+              >
+                <ng-template let-sitem pTemplate="selectedItems">
+                  <div *ngIf="sitem.length === 0">
+                    <span>Не выбрано</span>
+                  </div>
+                  <div *ngIf="sitem.length !== 0">
+                    <span *ngFor="let item of sitem; last as isLast">
+                      <span>{{item.Name}}<span *ngIf="!isLast">, </span></span>
+                    </span>
+                  </div>
+                </ng-template>
+              </p-multiSelect>
+            </div>
+            <div class="form_group" *ngIf="checkIsVisible('ifContractor')">
+              <label
+                ><div>
+                  Подрядчик<span
+                    *ngIf="checkIsRequired('ifContractor')"
+                    style="color: red;"
+                    >*</span
+                  >
+                </div></label
+              >
+              <p-dropdown
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="ifContractors"
+                formControlName="ifContractor"
+                optionLabel="Name"
+                [readonly]="!checkIsEditable('ifContractor')"
+              ></p-dropdown>
+            </div>
+            <div
+              class="form_group"
+              *ngIf="checkIsVisible('companySub') && subcontractor.get('ifContractor').value?.Id === 1"
+            >
+              <label
+                ><div>
+                  Название компании<span
+                    *ngIf="checkIsRequired('companySub')"
+                    style="color: red;"
+                    >*</span
+                  >
+                </div></label
+              >
+              <div class="display-add">
+                <mat-icon
+                  class="add-icon"
+                  *ngIf="isCompanyCreate"
+                  (click)="addNewSubCompany(subcontractor)"
+                  >add</mat-icon
+                >
+                <p-dropdown
+                  id="sel_blk"
+                  filter="true"
+                  [options]="companiesSub"
+                  placeholder="Не выбрано"
+                  optionLabel="Denomination"
+                  formControlName="companySub"
+                  [readonly]="!checkIsEditable('companySub')"
+                ></p-dropdown>
+              </div>
+            </div>
+            <div
+              class="form_group"
+              *ngIf="checkIsVisible('companySubLegalPerson') && subcontractor.get('ifContractor').value?.Id === 1"
+            >
+              <label
+                ><div>
+                  Юридическое лицо<span
+                    *ngIf="checkIsRequired('companySubLegalPerson')"
+                    style="color: red;"
+                    >*</span
+                  >
+                </div></label
+              >
+              <div class="display-add">
+                <mat-icon
+                  class="add-icon"
+                  *ngIf="isCompanyCreate"
+                  (click)="addNewSubLegalEntity(subcontractor)"
+                  >add</mat-icon
+                >
+                <p-dropdown
+                  id="sel_blk"
+                  [options]="subcontractor.get('subLegalPerson').value"
+                  filter="false"
+                  optionLabel="AbbrName"
+                  placeholder="Не выбрано"
+                  formControlName="companySubLegalPerson"
+                  [readonly]="!checkIsEditable('companySubLegalPerson')"
+                ></p-dropdown>
+              </div>
+            </div>
+            <div
+              class="form_group"
+              *ngIf="checkIsVisible('companySubManager') && (subcontractor.get('ifContractor').value?.Id === 2 || subcontractor.get('ifContractor').value?.Id === 1)"
+            >
+              <label
+                ><div>
+                  Операционный менеджер<span
+                    *ngIf="checkIsRequired('companySubManager')"
+                    style="color: red;"
+                    >*</span
+                  >
+                </div></label
+              >
+              <div class="display-add">
+                <mat-icon
+                  class="add-icon"
+                  *ngIf="isManagerCreate"
+                  (click)="addNewSubManager(subcontractor)"
+                  >add</mat-icon
+                >
+                <p-dropdown
+                  id="sel_blk"
+                  placeholder="Не выбрано"
+                  [options]="managers"
+                  filter="true"
+                  optionLabel="FulName"
+                  formControlName="companySubManager"
+                  [readonly]="!checkIsEditable('companySubManager')"
+                ></p-dropdown>
+              </div>
+            </div>
+            <div
+              class="form_group"
+              *ngIf="checkIsVisible('subClosingDocuments') && subcontractor.get('ifContractor').value?.Id === 1"
+            >
+              <label
+                ><div>
+                  Наличие закрывающих документов<span
+                    *ngIf="checkIsRequired('subClosingDocuments')"
+                    style="color: red;"
+                    >*</span
+                  >
+                </div></label
+              >
+              <p-dropdown
+                [readonly]="!checkIsEditable('subClosingDocuments')"
+                id="sel_blk"
+                placeholder="Не выбрано"
+                [options]="typeClosingDocuments"
+                formControlName="subClosingDocuments"
+                optionLabel="Name"
+              ></p-dropdown>
+            </div>
+
+            <div
+              class="form_group center"
+              *ngIf="subcontractor.get('ifContractor').value?.Id === 1"
+            >
+              <label><div>Операционные менеджеры</div></label>
+            </div>
+
+            <div
+              class="form_group om_manager"
+              *ngIf="subcontractor.get('ifContractor').value?.Id === 1"
+            >
+              <div
+                class="form-group"
+                *ngFor="let opSubEmployee of subcontractor.get('opSub').controls; let i=index"
+                formArrayName="opSub"
+              >
+                <p-dropdown
+                  *ngIf="!opSubEmployee.controls['typeOPSub']?.value"
+                  placeholder="Не выбрано"
+                  [options]="typeOPSaleForm"
+                  [formControl]="opSubEmployee.controls['typeOPSub']"
+                  optionLabel="Name"
+                ></p-dropdown>
+
+                <div
+                  class="display-add"
+                  *ngIf="opSubEmployee.controls['typeOPSub']?.value?.Id === 2"
+                >
+                  <p-dropdown
+                    *ngIf="opSubEmployee.controls['typeOPSub']?.value?.Id === 2"
+                    placeholder="Выберите менеджера"
+                    [options]="managers"
+                    [formControl]="opSubEmployee.controls['opSubEmployee']"
+                    optionLabel="FulName"
+                  ></p-dropdown>
+                  <mat-icon
+                    class="add-icon"
+                    *ngIf="isManagerCreate"
+                    (click)="addNewSubManagerInArray(subcontractor, i)"
+                    >add</mat-icon
+                  >
+                </div>
+                <p-dropdown
+                  *ngIf="opSubEmployee.controls['typeOPSub']?.value?.Id === 2"
+                  placeholder="Выберите роль"
+                  [options]="rolesManagers"
+                  [formControl]="opSubEmployee.controls['roleSub']"
+                  optionLabel="Name"
+                ></p-dropdown>
+
+                <i
+                  style="color: #ff4e4e;"
+                  class="material-icons"
+                  cursor-pointer
+                  (click)="removeOPSubManager(subcontractor, i)"
+                >
+                  delete
+                </i>
+              </div>
+            </div>
+
+            <div
+              class="form_group"
+              style="
+                display: flex;
+                justify-content: center;
+                align-content: center;
+              "
+              *ngIf="subcontractor.get('ifContractor').value?.Id === 1"
+            >
+              <input
+                style="text-align: center;"
+                type="submit"
+                class="add-button"
+                value="Добавить менеджера"
+                (click)="addOPSubManager(subcontractor)"
+              />
+            </div>
+          </div>
+        </p-card>
+        <div class="sub-display-add" style="justify-content: center;">
+          <mat-icon class="add-icon" (click)="addSubcontractor()">add</mat-icon>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="container ui-g" *ngIf="sectionSelect !== 2 || switchValue !== 3">
+    <div class="inf_block">
+      <table *ngIf="showTask">
+        <tr class="head_t">
+          <td class="add">
+            <span>Задачи</span>
+            <i
+              *ngIf="_projectId"
+              class="material-icons"
+              (click)="openTaskModal()"
+              >add_circle_outline</i
+            >
+          </td>
+          <td>DDL</td>
+        </tr>
+        <tr
+          class="cont_t task-item"
+          *ngFor="let task of tasks"
+          (dblclick)="openTaskModal(task)"
+        >
+          <td>{{task.name}}</td>
+          <td>{{task.date}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="inf_block">
+      <table>
+        <tr class="head_t">
+          <td class="add">
+            <span>Файлы</span>
+            <i *ngIf="_projectId" class="material-icons" (click)="addFile()"
+              >add_circle_outline</i
+            >
+          </td>
+          <td>Путь</td>
+        </tr>
+        <tr class="cont_t file-item" *ngFor="let file of files">
+          <td>{{file.name}}</td>
+          <td>
+            <a [href]="file.url" target="_blank" download>{{file.url}}</a>
+          </td>
+          <td>
+            <mat-icon
+              class="material-icons"
+              class="delete-icons"
+              (click)="deleteFile(file)"
+              >clear</mat-icon
+            >
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<ng-template #isEmpty>
+  <div class="not-right" *ngIf="!loading">
+    <div class="header">
+      <mat-icon class="icon">warning</mat-icon>
+      <span class="title">Ошибка доступа к данным</span>
+    </div>
+    <div class="message">
+      У вас недостаточно прав для доступа
+    </div>
+  </div>
+</ng-template>
+<div class="test">
+  <router-outlet></router-outlet>
+</div>
+
+<app-loading [visiblity]="loading"></app-loading>
+<p-toast [style]="{marginTop: '5px'}"></p-toast>

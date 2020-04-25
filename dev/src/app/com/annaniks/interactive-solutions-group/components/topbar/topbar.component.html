@@ -1,0 +1,15 @@
+<div class="topbar_wrapper">
+    <div class="container">
+        <div class="logo">
+            <a routerLink="/projects"><img src="/assets/images/logo_ch.png" height="34px" alt=""></a>
+        </div>
+        <div class="items">
+            <ul>
+                <li *ngFor="let item of topbarItems" [routerLink]="item.routerLink" routerLinkActive="active">
+                    <img src="/assets/images/{{item.imag}}" height="10px" alt="" class="svg"><br>{{item.label}}
+                    <div *ngIf="item.label === 'Финансы' && isShow" class="notif"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

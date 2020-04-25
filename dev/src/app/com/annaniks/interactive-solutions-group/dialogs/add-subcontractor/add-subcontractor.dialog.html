@@ -1,0 +1,18 @@
+<div border-bottom-gray>
+    <div align-center class="ui-g title">
+        <div class="ui-g-10 text"> Добавить субподрядчика</div>
+        <button (click)=" onNoClick()" cursor-pointer margin-left-auto display-flex align-center class="close">
+            <i class="material-icons">
+                close
+            </i>
+        </button>
+    </div>
+</div>
+<div class="form_group">
+    <span *ngIf="error">{{error}}</span>
+    <div margin-top-33>
+        <label>Субподрядчик</label>
+        <p-dropdown filter="true" [options]="subcontractor" placeholder="Не выбрано" optionLabel="Name" [(ngModel)]="selectedSubcontractor"></p-dropdown>
+    </div>
+    <button (click)="addSubcontractor()" cursor-pointer class="add"><span>Добавить</span></button>
+</div>

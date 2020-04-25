@@ -1,0 +1,15 @@
+<div no-padding-left class="info_bar">
+    <div class="container ui-g">
+        <div class="b_add" *ngFor="let item of items;let i=index;let last=last" [routerLink]="item.routerLink" routerLinkActive="active">
+            <div *ngIf="item.routerLink !== '/contacts/subcontractor'; else subcontractor">
+                <span>{{item.label}}</span><i *ngIf="item.Id === 1 ? isCompanyCreate : isManagerCreate" class="material-icons" routerLink="/{{item?.routerLink}}/create/new">add_circle_outline</i>
+            </div>
+            <ng-template #subcontractor>
+                <div><span>{{item.label}}</span><i *ngIf="isCompanyCreate" class="material-icons" routerLink="/contacts/subcontractor/create/new">add_circle_outline</i></div>
+            </ng-template>
+        </div>
+        <div class="d_ibfo ui-g">
+            <user-menu></user-menu>
+        </div>
+    </div>
+</div>

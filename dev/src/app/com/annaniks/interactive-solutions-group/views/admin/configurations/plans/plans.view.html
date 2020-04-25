@@ -1,0 +1,96 @@
+<div class="category">
+  <div>
+    <div
+      class="conf-categories-flex-container conf-categories-flex-start"
+      (click)="openModal()"
+    >
+      <div class="conf-categories-add-button">
+        <h1 class="conf-categories-plus">+</h1>
+      </div>
+      <span class="conf-categories-add-text">Добавить план</span>
+    </div>
+    <div class="category-scroll">
+      <div
+        cursor-pointer
+        margin-left-22
+        font-size-16
+        font-open-sans
+        margin-for-other-items
+        class="left-block"
+        *ngFor="let date of datesTitle; let i = index"
+        [class.active]="selectedPlan === i"
+        (click)="singleClick(date.id)"
+        (dblclick)="doubleClick(date.id)"
+      >
+        {{ date.title }}
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-g category-content">
+    <div style="flex: 1;" *ngIf="selectedPlan > -1">
+      <div
+        color-gray
+        font-size-16
+        border-bottom-gray
+        style="text-align: center;"
+        class="categories-name"
+      >
+        {{ datesTitle[selectedPlan].title }}
+      </div>
+      <div style="margin-top: 10px">
+        <div class="ui-g-12 ui-md-6 ui-lg-4 card">
+          <div style="background-color: #fff; margin: 0 5px; text-align: center;">
+            <div padding-horizantal-25>
+                Digital-departament
+            </div>
+            <div padding-horizantal-25>
+              {{ plans[selectedPlan].DigitalPlan }}
+            </div>
+            <div padding-horizantal-25>
+                Текущие выполнение {{ plans[selectedPlan].DigitalPlanNowProcent }}%
+            </div>
+            <div padding-horizantal-25>
+              {{ plans[selectedPlan].DigitalPlanNow }}
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-6 ui-lg-4 card">
+          <div style="background-color: #fff; margin: 0 5px; text-align: center;">
+            <div padding-horizantal-25>
+              План компании
+            </div>
+            <div padding-horizantal-25>
+              {{ plans[selectedPlan].CompanyPlan }}
+            </div>
+            <div padding-horizantal-25>
+                Текущие выполнение {{ plans[selectedPlan].CompanyPlanNowProcent }}%
+            </div>
+            <div padding-horizantal-25>
+              {{ plans[selectedPlan].CompanyPlanNow }}
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-g-12 ui-md-6 ui-lg-4 card">
+          <div style="background-color: #fff; margin: 0 5px; text-align: center;">
+            <div padding-horizantal-25>
+              Event-departament
+            </div>
+            <div padding-horizantal-25>
+              {{ plans[selectedPlan].EventPlan }}
+            </div>
+            <div padding-horizantal-25>
+                Текущие выполнение {{ plans[selectedPlan].EventPlanNowProcent }}%
+            </div>
+            <div padding-horizantal-25>
+              {{ plans[selectedPlan].EventPlanNow }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loading [visiblity]="loading"></app-loading>

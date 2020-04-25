@@ -1,0 +1,55 @@
+<div class="general-info" [formGroup]="managerForm">
+    <div class="form-group">
+        <label for="Name" class="label">Имя</label>
+        <input type="text" id="Name" class="form-control" formControlName="Name">
+    </div>
+
+    <div class="form-group">
+        <label for="Surname" class="label">Фамилия</label>
+        <input type="text" id="Surname" class="form-control" formControlName="Surname">
+    </div>
+
+    <div class="form-group">
+        <label for="gender" class="label">Пол</label>
+        <p-dropdown placeholder="Выберите пол" id="gender" [options]="genders" optionLabel="Name"
+            formControlName="Gender"></p-dropdown>
+    </div>
+
+    <div class="form-group" hidden>
+        <label for="sphereActivity" class="label">Сфера деятельности</label>
+        <p-dropdown placeholder="Выберите сферу деятельности" id="sphereActivity" [options]="allSphereActivity" optionLabel="Name"
+                    formControlName="SphereActivity"></p-dropdown>
+    </div>
+
+    <div class="form-group">
+        <label for="Position" class="label">Должность</label>
+        <input type="text" id="Position" class="form-control" formControlName="Position">
+    </div>
+
+    <div *ngIf="!this.data.Company" class="form-group">
+        <label for="CompanyName" class="label">Название компании</label>
+        <div class="display-add">
+            <p-dropdown filter="true" placeholder="Выберите компанию" id="CompanyName" [options]="companies" optionLabel="Denomination"
+                        formControlName="CompanyName"></p-dropdown>
+            <i *ngIf="data.isCompany" (click)="addNewCompany()" class="material-icons add-icon">
+                add
+            </i>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="DepartmentName" class="label">Название департамента</label>
+        <div class="display-add">
+            <p-dropdown id="DepartmentName" placeholder="Выберите департамент" optionLabel="Name" [options]="departments" formControlName="DepartmentName"></p-dropdown>
+            <i *ngIf="data.isDepartment" (click)="openDialog('Департамент', 'department')" class="material-icons add-icon" [ngStyle]="{'opacity': managerForm.get('CompanyName').value ? 1 : 0.5 }">
+                add
+            </i>
+        </div>
+    </div>
+
+    <div class="row">
+        <button (click)="addCompany()" [disabled]="managerForm.invalid" [ngClass]="{'valid': !managerForm.valid,'noValid':managerForm.valid}" cursor-pointer
+            class="btn btn-success mr-10">Добавить</button>
+        <button class="btn btn-danger mr-10" (click)="onClose()">Закрыть</button>
+    </div>
+</div>

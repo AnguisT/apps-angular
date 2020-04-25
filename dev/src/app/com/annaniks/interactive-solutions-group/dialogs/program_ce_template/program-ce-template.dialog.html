@@ -1,0 +1,19 @@
+<div border-bottom-gray>
+    <div align-center class="ui-g title">
+        <div class="ui-g-10 text"></div>
+        <button (click)="onCancel()" cursor-pointer margin-left-auto display-flex align-center class="close">
+            <i class="material-icons">
+                close
+            </i>
+        </button>
+    </div>
+</div>
+<div style="margin: 10px; height: auto;">
+    <p no-margin text-center error class="mb-10" *ngIf="errorMessage">{{errorMessage}}</p>
+    <p-dropdown [(ngModel)]="selectProgram" [style]="{'margin-bottom': '10px'}" (onChange)="select($event)" placeholder="Выберите игровую программу" [options]="programs" optionLabel="Name"></p-dropdown>
+    <p-dropdown [(ngModel)]="selectProgramSub" *ngIf="selectProgram" placeholder="Выберите смету" [options]="programs_sub" optionLabel="NumberPerson"></p-dropdown>
+</div>
+<div class="buttons">
+    <button class="btn cancel-btn mr-10" (click)="onCancel()">Отменить</button>
+    <button class="btn confirm-btn" (click)="confirmSelect()">Готово</button>
+</div>

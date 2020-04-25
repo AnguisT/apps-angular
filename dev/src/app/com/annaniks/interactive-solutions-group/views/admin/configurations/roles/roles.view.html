@@ -1,0 +1,504 @@
+<div class="roles">
+  <div class="roles-header">
+    <div class="titles">Настройка доступа</div>
+  </div>
+  <div class="roles-header">
+    <div class="title-employee">Сотрудник</div>
+    <div class="title">Права по функционалу</div>
+  </div>
+
+  <div class="roles-content mb-15">
+    <div class="item">
+      <div class="employee">
+        <p-dropdown
+          (onChange)="selectEmploee($event)"
+          [(ngModel)]="employee"
+          [options]="employees"
+          placeholder="Выберить сотрудника"
+          optionLabel="FulName"
+        ></p-dropdown>
+      </div>
+      <div class="functional">
+        <div *ngIf="employee" style="display: flex; flex-direction: row;">
+          <div style="display: flex; flex-direction: column;">
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isConfigurator"
+                [checked]="employeeRights.isConfigurator"
+              >
+              </mat-checkbox>
+              Видимость конфигуратора
+            </div>
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isProjectCreate"
+                [checked]="employeeRights.isProjectCreate"
+              >
+              </mat-checkbox>
+              Создание проекта
+            </div>
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isProject"
+                [checked]="employeeRights.isProject"
+              >
+              </mat-checkbox>
+              Редактирование\Удаление проекта
+            </div>
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isCompanyCreate"
+                [checked]="employeeRights.isCompanyCreate"
+              >
+              </mat-checkbox>
+              Создание компании
+            </div>
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isCompany"
+                [checked]="employeeRights.isCompany"
+              >
+              </mat-checkbox>
+              Редактирование\Удаление компании
+            </div>
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isManagerCreate"
+                [checked]="employeeRights.isManagerCreate"
+              >
+              </mat-checkbox>
+              Создание менеджера
+            </div>
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isManager"
+                [checked]="employeeRights.isManager"
+              >
+              </mat-checkbox>
+              Редактирование\Удаление менеджера
+            </div>
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isDepartmentCreate"
+                [checked]="employeeRights.isDepartmentCreate"
+              >
+              </mat-checkbox>
+              Создание департамента
+            </div>
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isDepartment"
+                [checked]="employeeRights.isDepartment"
+              >
+              </mat-checkbox>
+              Редактирование\Удаление департамента
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isTrip"
+                [checked]="employeeRights.isTrip"
+              >
+              </mat-checkbox>
+              Редактирование\Удаление командировок
+            </div>
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isProcess"
+                [checked]="employeeRights.isProcess"
+              >
+              </mat-checkbox>
+              Редактирование\Удаление переработков
+            </div>
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isVacation"
+                [checked]="employeeRights.isVacation"
+              >
+              </mat-checkbox>
+              Редактирование\Удаление отпусков
+            </div>
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isDayOff"
+                [checked]="employeeRights.isDayOff"
+              >
+              </mat-checkbox>
+              Редактирование\Удаление отгулов
+            </div>
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isFinanceVisible"
+                [checked]="employeeRights.isFinanceVisible"
+              >
+              </mat-checkbox>
+              Видимость фин. заявок
+            </div>
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isFinanceEditable"
+                [checked]="employeeRights.isFinanceEditable"
+              >
+              </mat-checkbox>
+              Редактирование фин. заявок
+            </div>
+            <div ml-30>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [(ngModel)]="employeeRights.isFinanceDeleting"
+                [checked]="employeeRights.isFinanceDeleting"
+              >
+              </mat-checkbox>
+              Удаление фин. заявок
+            </div>
+          </div>
+        </div>
+        <div *ngIf="employee" ml-30>
+          <button class="btn add-task-btn" (click)="saveEmployeeRights()">
+            Сохранить
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="roles">
+  <div class="roles-header">
+    <div class="titles">Настройка полей проекта</div>
+  </div>
+  <div class="roles-header">
+    <div class="title">Должности</div>
+    <div class="title">Доступный функционал</div>
+  </div>
+
+  <div class="roles-content mt-15">
+    <div class="item">
+      <div class="position" style="margin-bottom: 15px">
+        <p-dropdown
+          (onChange)="onChange()"
+          [(ngModel)]="posEmployee"
+          [options]="positionEmployee"
+          placeholder="Выберить должность"
+          optionLabel="Name"
+        ></p-dropdown>
+        <p-dropdown
+          (onChange)="onChange()"
+          [(ngModel)]="projStatus"
+          [options]="projectStatus"
+          placeholder="Выберить статус"
+          optionLabel="Name"
+        ></p-dropdown>
+      </div>
+      <div class="functional">
+        <div *ngIf="selectedPosition">
+          <div style="display: flex; flex-direction: row;">
+            Все поля
+            <mat-checkbox
+              class="checklist-leaf-node"
+              [indeterminate]="!checkIndeterminateGeneral()"
+              [checked]="checkedGeneral()"
+              (change)="changeCheckGeneral()"
+            >
+            </mat-checkbox>
+            <div
+              style="display: flex; flex-direction: row; align-items: center; margin-left: 20px"
+            >
+              <span style="width: 105px;"></span>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [indeterminate]="!checkIndeterminateGeneralCol('isVisible')"
+                [checked]="checkedGeneralCol('isVisible')"
+                (change)="changeCheckGeneralCol('isVisible')"
+              >
+                <mat-icon>remove_red_eye</mat-icon>
+              </mat-checkbox>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [indeterminate]="!checkIndeterminateGeneralCol('isEditable')"
+                [checked]="checkedGeneralCol('isEditable')"
+                (change)="changeCheckGeneralCol('isEditable')"
+                [disabled]="checkIsVisibleGeneral()"
+              >
+                <mat-icon>create</mat-icon>
+              </mat-checkbox>
+              <mat-checkbox
+                class="checklist-leaf-node"
+                [indeterminate]="!checkIndeterminateGeneralCol('isRequired')"
+                [checked]="checkedGeneralCol('isRequired')"
+                (change)="changeCheckGeneralCol('isRequired')"
+                [disabled]="checkIsVisibleGeneral()"
+              >
+                <mat-icon>priority_hight</mat-icon>
+              </mat-checkbox>
+            </div>
+          </div>
+          <dx-accordion
+            #accordion
+            [dataSource]="fieldsProject"
+            [collapsible]="true"
+            [multiple]="true"
+            [animationDuration]="300"
+          >
+            <div *dxTemplate="let company of 'title'">
+              <h3>{{company.tabName}}</h3>
+            </div>
+            <div *dxTemplate="let company of 'item'">
+              <div
+                style="display: flex; flex-direction: row; align-items: center; margin-left: 20px"
+                *ngIf="company.fields2"
+              >
+                <span class="width-200"></span>
+                <mat-checkbox
+                  class="checklist-leaf-node"
+                  [indeterminate]="!checkIndeterminateSection(company, 'isVisible')"
+                  [checked]="checkedSection(company, 'isVisible')"
+                  (change)="changeCheckSection(company, 'isVisible')"
+                >
+                  <mat-icon>remove_red_eye</mat-icon>
+                </mat-checkbox>
+                <mat-checkbox
+                  class="checklist-leaf-node"
+                  [indeterminate]="!checkIndeterminateSection(company, 'isEditable')"
+                  [checked]="checkedSection(company, 'isEditable')"
+                  (change)="changeCheckSection(company, 'isEditable')"
+                  [disabled]="checkIsVisibleSection(company)"
+                >
+                  <mat-icon>create</mat-icon>
+                </mat-checkbox>
+                <mat-checkbox
+                  class="checklist-leaf-node"
+                  [indeterminate]="!checkIndeterminateSection(company, 'isRequired')"
+                  [checked]="checkedSection(company, 'isRequired')"
+                  (change)="changeCheckSection(company, 'isRequired')"
+                  [disabled]="checkIsVisibleSection(company)"
+                >
+                  <mat-icon>priority_hight</mat-icon>
+                </mat-checkbox>
+              </div>
+              <div *ngIf="company.fields1">
+                <div
+                  style="display: flex; flex-direction: row; align-items: center; margin-bottom: 20px; margin-top: 20px"
+                >
+                  <h4 class="width-200">{{company.cardName1}}</h4>
+                  <div
+                    style="display: flex; flex-direction: row; align-items: center; margin-left: 20px"
+                  >
+                    <mat-checkbox
+                      class="checklist-leaf-node"
+                      [indeterminate]="!checkIndeterminate(company.fields1, 'isVisible')"
+                      [checked]="checked(company.fields1, 'isVisible')"
+                      (change)="changeCheck(company.fields1, 'isVisible')"
+                    >
+                      <mat-icon>remove_red_eye</mat-icon>
+                    </mat-checkbox>
+                    <mat-checkbox
+                      class="checklist-leaf-node"
+                      [disabled]="checkIsVisible(company.fields1)"
+                      [indeterminate]="!checkIndeterminate(company.fields1, 'isEditable')"
+                      [checked]="checked(company.fields1, 'isEditable')"
+                      (change)="changeCheck(company.fields1, 'isEditable')"
+                    >
+                      <mat-icon>create</mat-icon>
+                    </mat-checkbox>
+                    <mat-checkbox
+                      class="checklist-leaf-node"
+                      [disabled]="checkIsVisible(company.fields1)"
+                      [indeterminate]="!checkIndeterminate(company.fields1, 'isRequired')"
+                      [checked]="checked(company.fields1, 'isRequired')"
+                      (change)="changeCheck(company.fields1, 'isRequired')"
+                    >
+                      <mat-icon>priority_hight</mat-icon>
+                    </mat-checkbox>
+                  </div>
+                </div>
+                <div
+                  class="second-level"
+                  *ngFor="let fields of company.fields1; let ind=index"
+                >
+                  <span class="width-200">{{fields.name}}</span>
+                  <mat-checkbox
+                    class="checklist-leaf-node"
+                    [(ngModel)]="fields.isVisible"
+                    [checked]="fields.isVisible"
+                    (change)="changeVisible(fields)"
+                  >
+                    <mat-icon>remove_red_eye</mat-icon>
+                  </mat-checkbox>
+                  <mat-checkbox
+                    class="checklist-leaf-node"
+                    [disabled]="!fields.isVisible"
+                    [(ngModel)]="fields.isEditable"
+                    [checked]="fields.isEditable"
+                  >
+                    <mat-icon>create</mat-icon>
+                  </mat-checkbox>
+                  <mat-checkbox
+                    class="checklist-leaf-node"
+                    [disabled]="!fields.isVisible"
+                    [(ngModel)]="fields.isRequired"
+                    [checked]="fields.isRequired"
+                  >
+                    <mat-icon>priority_hight</mat-icon>
+                  </mat-checkbox>
+                </div>
+              </div>
+              <div *ngIf="company.fields2">
+                <div
+                  style="display: flex; flex-direction: row; align-items: center; margin-bottom: 20px; margin-top: 20px"
+                >
+                  <h4 class="width-200">{{company.cardName2}}</h4>
+                  <div
+                    style="display: flex; flex-direction: row; align-items: center; margin-left: 20px"
+                  >
+                    <mat-checkbox
+                      class="checklist-leaf-node"
+                      [indeterminate]="!checkIndeterminate(company.fields2, 'isVisible')"
+                      [checked]="checked(company.fields2, 'isVisible')"
+                      (change)="changeCheck(company.fields2, 'isVisible')"
+                    >
+                      <mat-icon>remove_red_eye</mat-icon>
+                    </mat-checkbox>
+                    <mat-checkbox
+                      class="checklist-leaf-node"
+                      [indeterminate]="!checkIndeterminate(company.fields2, 'isEditable')"
+                      [checked]="checked(company.fields2, 'isEditable')"
+                      (change)="changeCheck(company.fields2, 'isEditable')"
+                    >
+                      <mat-icon>create</mat-icon>
+                    </mat-checkbox>
+                    <mat-checkbox
+                      class="checklist-leaf-node"
+                      [indeterminate]="!checkIndeterminate(company.fields2, 'isRequired')"
+                      [checked]="checked(company.fields2, 'isRequired')"
+                      (change)="changeCheck(company.fields2, 'isRequired')"
+                    >
+                      <mat-icon>priority_hight</mat-icon>
+                    </mat-checkbox>
+                  </div>
+                </div>
+                <div
+                  class="second-level"
+                  *ngFor="let fields of company.fields2"
+                >
+                  <span class="width-200">{{fields.name}}</span>
+                  <mat-checkbox
+                    class="checklist-leaf-node"
+                    [(ngModel)]="fields.isVisible"
+                    [checked]="fields.isVisible"
+                    (change)="changeVisible(fields)"
+                  >
+                    <mat-icon>remove_red_eye</mat-icon>
+                  </mat-checkbox>
+                  <mat-checkbox
+                    class="checklist-leaf-node"
+                    [disabled]="!fields.isVisible"
+                    [(ngModel)]="fields.isEditable"
+                    [checked]="fields.isEditable"
+                  >
+                    <mat-icon>create</mat-icon>
+                  </mat-checkbox>
+                  <mat-checkbox
+                    class="checklist-leaf-node"
+                    [disabled]="!fields.isVisible"
+                    [(ngModel)]="fields.isRequired"
+                    [checked]="fields.isRequired"
+                  >
+                    <mat-icon>priority_hight</mat-icon>
+                  </mat-checkbox>
+                </div>
+              </div>
+              <div *ngIf="company.fields3">
+                <div
+                  style="display: flex; flex-direction: row; align-items: center; margin-bottom: 20px; margin-top: 20px"
+                >
+                  <h4 class="width-200">{{company.cardName3}}</h4>
+                  <div
+                    style="display: flex; flex-direction: row; align-items: center; margin-left: 20px"
+                  >
+                    <mat-checkbox
+                      class="checklist-leaf-node"
+                      [indeterminate]="!checkIndeterminate(company.fields3, 'isVisible')"
+                      [checked]="checked(company.fields3, 'isVisible')"
+                      (change)="changeCheck(company.fields3, 'isVisible')"
+                    >
+                      <mat-icon>remove_red_eye</mat-icon>
+                    </mat-checkbox>
+                    <mat-checkbox
+                      class="checklist-leaf-node"
+                      [indeterminate]="!checkIndeterminate(company.fields3, 'isEditable')"
+                      [checked]="checked(company.fields3, 'isEditable')"
+                      (change)="changeCheck(company.fields3, 'isEditable')"
+                    >
+                      <mat-icon>create</mat-icon>
+                    </mat-checkbox>
+                    <mat-checkbox
+                      class="checklist-leaf-node"
+                      [indeterminate]="!checkIndeterminate(company.fields3, 'isRequired')"
+                      [checked]="checked(company.fields3, 'isRequired')"
+                      (change)="changeCheck(company.fields3, 'isRequired')"
+                    >
+                      <mat-icon>priority_hight</mat-icon>
+                    </mat-checkbox>
+                  </div>
+                </div>
+                <div
+                  class="second-level"
+                  *ngFor="let fields of company.fields3"
+                >
+                  <span class="width-200">{{fields.name}}</span>
+                  <mat-checkbox
+                    class="checklist-leaf-node"
+                    [(ngModel)]="fields.isVisible"
+                    [checked]="fields.isVisible"
+                    (change)="changeVisible(fields)"
+                  >
+                    <mat-icon>remove_red_eye</mat-icon>
+                  </mat-checkbox>
+                  <mat-checkbox
+                    class="checklist-leaf-node"
+                    [disabled]="!fields.isVisible"
+                    [(ngModel)]="fields.isEditable"
+                    [checked]="fields.isEditable"
+                  >
+                    <mat-icon>create</mat-icon>
+                  </mat-checkbox>
+                  <mat-checkbox
+                    class="checklist-leaf-node"
+                    [disabled]="!fields.isVisible"
+                    [(ngModel)]="fields.isRequired"
+                    [checked]="fields.isRequired"
+                  >
+                    <mat-icon>priority_hight</mat-icon>
+                  </mat-checkbox>
+                </div>
+              </div>
+            </div>
+          </dx-accordion>
+          <ng-container *ngIf="selectedPosition">
+            <button class="btn add-task-btn" (click)="onClickSave()">
+              Сохранить
+            </button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-loading [visiblity]="loading"></app-loading>
+</div>

@@ -1,0 +1,12 @@
+<div class="dialog-content">
+    <h3 text-align-center>Вы уверены ?</h3>
+    <div display-flex>
+        <div (click)="onClickYes()"  margin-rigth-autoclass="form_group" style="width:40%;">
+            <input type="submit" style="font-size:16px;background-color: #1875f0;height: 45px"
+                value="Да">
+        </div>
+        <div  margin-left-auto  class="form_group" style="width:40%" (click)="onClickNo()">
+            <input type="submit" value="Нет" style="font-size:16px;background-color: #d0d0d0;;height: 45px">
+        </div>
+    </div>
+</div>

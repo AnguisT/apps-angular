@@ -1,0 +1,214 @@
+<div class="general-info">
+  <div class="ui-g">
+    <div class="ui-g-8">
+      <form [formGroup]="form">
+        <div class="form-group">
+          <label for="Name" class="label">Имя</label>
+          <input
+            type="text"
+            id="Name"
+            class="form-control"
+            formControlName="Name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="Surname" class="label">Фамилия</label>
+          <input
+            type="text"
+            id="Surname"
+            class="form-control"
+            formControlName="Surname"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="LastName" class="label">Отчество</label>
+          <input
+            type="text"
+            id="LastName"
+            class="form-control"
+            formControlName="LastName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="gender" class="label">Пол</label>
+          <p-dropdown
+            placeholder="Выберите пол"
+            id="gender"
+            [options]="genders"
+            optionLabel="Name"
+            formControlName="Gender"
+          ></p-dropdown>
+        </div>
+
+        <div class="form-group">
+          <label for="dateBirthday" class="label">Дата рождения</label>
+          <input
+            type="date"
+            id="dateBirthday"
+            max="9999-12-31"
+            placeholder=""
+            class="form-control"
+            formControlName="DateBirthday"
+          />
+        </div>
+
+        <div class="form-group" hidden>
+          <label for="sphereActivity" class="label">Сфера деятельности</label>
+          <p-dropdown
+            placeholder="Выберите сферу деятельности"
+            id="sphereActivity"
+            [options]="allSphereActivity"
+            optionLabel="Name"
+            formControlName="SphereActivity"
+          ></p-dropdown>
+        </div>
+
+        <div class="form-group">
+          <label for="Position" class="label">Должность</label>
+          <input
+            type="text"
+            id="Position"
+            class="form-control"
+            formControlName="Position"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="CompanyName" class="label">Название компании</label>
+          <p-dropdown
+            filter="true"
+            placeholder="Выберите компанию"
+            id="CompanyName"
+            [options]="companies"
+            optionLabel="Denomination"
+            formControlName="CompanyName"
+          ></p-dropdown>
+        </div>
+
+        <div class="form-group">
+          <label for="DepartmentName" class="label"
+            >Название департамента</label
+          >
+          <p-dropdown
+            id="DepartmentName"
+            placeholder="Выберите департамент"
+            optionLabel="Name"
+            [options]="departments"
+            formControlName="Department"
+          ></p-dropdown>
+        </div>
+
+        <div class="form-group">
+          <label for="desc" class="label">Описание</label>
+          <textarea
+            class="form-control"
+            rows="3"
+            id="desc"
+            placeholder="Описание"
+            formControlName="Description"
+          ></textarea>
+        </div>
+      </form>
+
+      <div class="contacts">
+        <div class="title">Контактные данные</div>
+        <div class="content">
+          <div
+            class="form-group"
+            *ngFor="let contact of contacts; let ind = index"
+          >
+            <label for="{{ contact?.ContactType }}" class="label">{{
+              contact?.ContactType
+            }}</label>
+            <div style="display: flex; align-items: center;">
+              <input
+                id="{{ contact?.ContactType }}"
+                class="form-control"
+                [(ngModel)]="contact.ContactValue"
+                type="text"
+                readonly
+              />
+              <mat-icon
+                class="add-icon"
+                (click)="deleteContact(contact, ind)"
+                cursor-pointer
+                >close</mat-icon
+              >
+            </div>
+          </div>
+          <div class="row">
+            <input
+              type="button"
+              class="btn btn-success mt-10"
+              value="Добавить данные"
+              (click)="addContact()"
+              [disabled]="!isManager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      position-relative
+      overflow-hidden
+      border-circle
+      top-23
+      right-35
+      class="ui-g-4"
+    >
+      <div
+        width-fit
+        margin-auto
+        position-relative
+        overflow-hidden
+        border-circle
+        style="width: 200px; height: 200px;"
+      >
+        <div class="change-photo">
+          <label margin-auto for="file-upload" class="custom-file-upload">
+            <i cursor-pointer class="material-icons">
+              camera_alt
+            </i>
+          </label>
+          <input
+            id="file-upload"
+            (change)="changeImage($event)"
+            type="file"
+            [disabled]="!isManager"
+          />
+        </div>
+        <div class="image" [ngStyle]="{'background-image': defaultImage}"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row footer">
+    <button
+      type="button"
+      class="btn btn-success mr-10"
+      (click)="addOrChangeManager()"
+      [disabled]="!isManager"
+    >
+      {{ id ? 'Сохранить' : 'Добавить' }}
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger mr-10"
+      routerLink="/contacts/managers"
+    >
+      Отмена
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger mr-10"
+      (click)="deleteManager()"
+      [disabled]="!isManager"
+    >
+      Удалить менеджера
+    </button>
+  </div>
+</div>
+<app-loading [visiblity]="loading"></app-loading>

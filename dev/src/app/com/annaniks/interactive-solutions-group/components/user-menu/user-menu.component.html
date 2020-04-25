@@ -1,0 +1,83 @@
+<div class="user-menu">
+  <div class="info_ico">
+    <a (click)="showCalendarBirthday()" style="position: relative;">
+      <img
+        src="/assets/images/calendar-birthday.svg"
+        height="27px"
+        alt=""
+        title="Дни рождения"
+      />
+      <div *ngIf="todayBirthday" class="active-birthday"></div>
+    </a>
+    <a (click)="showEventCalendar()" *ngIf="isShowEventCalendar">
+      <img
+        src="/assets/images/show-event-calendar.svg"
+        height="27px"
+        alt=""
+        title="Event-календарь"
+      />
+    </a>
+    <a (click)="showProjects()" *ngIf="isShowProjects">
+      <img
+        src="/assets/images/show-projects.svg"
+        height="27px"
+        alt=""
+        title="Проекты"
+      />
+    </a>
+    <a (click)="liteExport()" *ngIf="showLiteExport">
+      <img
+        src="/assets/images/lite.png"
+        height="27px"
+        alt=""
+        title="Экспорт в Excel одного"
+      />
+    </a>
+    <a (click)="exportAll()" *ngIf="showExportAll">
+      <img
+        src="/assets/images/export-all.png"
+        height="27px"
+        class="export-all"
+        alt=""
+        title="Экспорт в Excel финансов"
+      />
+    </a>
+    <a (click)="saveGrid()" *ngIf="flag">
+      <img
+        src="/assets/images/clod.svg"
+        height="27px"
+        alt=""
+        title="Экспорт в Excel"
+      />
+    </a>
+    <a routerLink="/configurations" *ngIf="isShow">
+      <img
+        src="/assets/images/set.svg"
+        height="27px"
+        alt=""
+        title="Конфигуратор"
+      />
+    </a>
+    <a (click)="logOut()" style="cursor: pointer;">
+      <img src="/assets/images/exit.svg" height="27px" alt="" title="Выйти" />
+    </a>
+  </div>
+  <div class="user_b">
+    <a routerLink="/account" class="avatar" *ngIf="user?.Image">
+      <img
+        src="{{ imgUrl + user?.Image }}"
+        height="27px"
+        alt=""
+        title="Личный кабинет"
+      />
+    </a>
+    <a routerLink="/account" class="name">{{ user?.Name }}</a>
+  </div>
+</div>
+<div style="position: relative;" *ngIf="isShowCalendar">
+  <app-calendar-birthday
+    [markedDays]="markedDays"
+    [employies]="filterEmployies"
+    (selectDate)="selectDate($event)"
+  ></app-calendar-birthday>
+</div>

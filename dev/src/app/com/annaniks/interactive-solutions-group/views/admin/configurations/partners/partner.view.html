@@ -1,0 +1,28 @@
+<div class="content">
+    <div class="ui-g" align-center>
+        <div margin-left-auto width-fit>
+            <button cursor-pointer class="add" routerLink="/configurations/partner/create/new">
+                <span font-open-sans font-size-14>Добавить сотрудника</span>
+            </button>
+        </div>
+    </div>
+    <div padding *ngFor="let employee of allEmployee;let i=index" class="list ui-g">
+        <div width-fit>
+            <div [ngStyle]="setImage(employee)" class="image"></div>
+        </div>
+        <div margin-left-19 font-open-sans font-size-16 class="ui-g-4 ">
+            <div  margin-bottom-9>
+                <b cursor-pointer routerLink='/configurations/partner/{{employee.Id}}'>{{employee.Surname}} {{employee.Name}}</b>
+            </div>
+            <div font-open-sans font-size-16 color-gray>{{employee.PositionName}}</div>
+        </div>
+        <div class="create-col">
+            <button  routerLink='/configurations/partner/{{employee?.Id}}/edit' cursor-pointer no-border class="create-circle">
+                <i float-rigth class="material-icons create_icon">
+                    create
+                </i>
+            </button>
+        </div>
+    </div>
+    <app-loading [visiblity]="loading"></app-loading>
+</div>

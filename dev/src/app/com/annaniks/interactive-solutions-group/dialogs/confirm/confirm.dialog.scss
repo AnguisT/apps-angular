@@ -1,0 +1,61 @@
+label {
+    font-family: Circe;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.64;
+    letter-spacing: normal;
+    text-align: left;
+    color: #11223e;
+}
+
+h3 {
+    font-family: CeraPro;
+    font-size: 20px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: center;
+    color: #2c2c2c;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 7.5px 8px;
+    margin: 4px 0;
+    border: 1px solid rgba(255, 89, 90, 1);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: rgba(255, 89, 90, 1);
+    color: white;
+    padding: 7.5px 20px;
+    margin: 25px 0 4px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Circe;
+    font-size: 14px;
+}
+
+input[type=date] {
+    width: 100%;
+    padding: 5px 8px;
+    margin: 4px 0;
+    border: 1px solid rgba(255, 89, 90, 1);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+    background: url(/assets/images/calendar.svg) center/80% no-repeat;
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    background-size: 20px 20px;
+}

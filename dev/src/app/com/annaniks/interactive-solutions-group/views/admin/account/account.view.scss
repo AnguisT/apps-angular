@@ -1,0 +1,435 @@
+#backgroundcontrol {
+}
+.b_add,
+.b_search,
+.d_ibfo {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+  background-color: #fff;
+  margin: 10px;
+  height: 80px;
+}
+.b_add {
+  width: 35%;
+}
+
+.b_add span {
+  padding-left: 20px;
+  padding-top: 33px;
+  font-family: Circe;
+  font-size: 20px;
+  line-height: 13px;
+  text-align: left;
+  color: #11223e;
+  display: block;
+}
+.b_search {
+  width: 35%;
+}
+.d_ibfo {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+.d_ibfo .info_ico {
+  padding-top: 27px;
+}
+.d_ibfo .info_ico img {
+  padding-right: 15px;
+}
+.d_ibfo .user_b {
+  padding: 20px 20px 20px 15px;
+}
+.d_ibfo .user_b p {
+  font-family: ProximaNova;
+  font-size: 16px;
+  line-height: 11px;
+  text-align: left;
+  color: #11223e;
+  float: right;
+}
+.d_ibfo .user_b img {
+  padding-top: 5px;
+  height: 30px;
+  margin-right: 15px;
+}
+/* Style the search field */
+form.search input[type="text"], textarea {
+  padding: 10px 10px 10px 15px;
+  font-size: 17px;
+  float: left;
+  width: 80%;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: solid 1px rgba(17, 34, 62, 0.15);
+  background-color: #fff;
+  opacity: 0.4;
+  font-family: Circe;
+  font-size: 14px;
+  color: #11223e;
+}
+
+textarea {
+  resize: none;
+}
+
+textarea:-moz-read-only {
+  border: solid 1px rgba(17, 34, 62, 0.15);
+}
+
+/* Supported in Blink/WebKit/Edge without a prefix */
+textarea:read-only {
+  border: solid 1px rgba(17, 34, 62, 0.15);
+  font-family: Circe;
+  font-size: 14px;
+  color: #11223e;
+  opacity: 1;
+}
+
+/* Style the submit button */
+form.search button {
+  float: left;
+  width: 90px;
+  padding: 8px;
+  font-family: Circe;
+  font-size: 16px;
+  color: white;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #324cb9;
+  border: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.search button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.search::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+form.search {
+  width: 100%;
+}
+.searchInput {
+  padding: 20px;
+}
+.about,
+.plan,
+.clean_block {
+  margin: 10px;
+}
+.about,
+.plan {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.clean_block {
+  width: 220px;
+}
+.inblock,
+.inblock_clean {
+  margin: 20px 0;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+  background-color: #fff;
+  height: 600px;
+}
+
+.select-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.select-box p-dropdown {
+  width: 59%;
+}
+
+#avatar {
+  display: none;
+}
+
+:host::ng-deep .ui-state-default {
+  font-family: Circe;
+  font-size: 14px;
+  text-align: left;
+  color: #11223e;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  line-height: 14px;
+  padding: 11px 15px 9px 15px;
+  width: 100% !important;
+  background-color: white;
+  -webkit-box-sizing: unset;
+  box-sizing: unset;
+  display: block;
+  margin-right: 20px;
+  right: 32px;
+}
+
+:host::ng-deep .ui-dropdown:not(.ui-state-disabled):hover {
+  background-color: transparent;
+}
+
+:host::ng-deep .ui-state-default:hover {
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+:host::ng-deep .ui-state-focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+:host::ng-deep .ui-state-highlight {
+  border-color: transparent;
+  background-color: transparent;
+  color: black;
+}
+.inf_block_title {
+  opacity: 0.8;
+  font-family: CeraPro;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 13px;
+  text-align: center;
+  color: #11223e;
+}
+.foto {
+  margin: 20px 10px 0 15px;
+  width: 150px;
+}
+.foto .edit,
+.foto .del {
+  font-family: Circe;
+  font-size: 12px;
+  text-align: center;
+  padding-top: 10px;
+  margin: 0;
+  cursor: pointer;
+  display: block;
+}
+.foto .edit {
+  color: #1875f0;
+}
+.foto .del {
+  color: #ff4851;
+}
+.about_in {
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.form_group {
+  margin-top: 15px;
+}
+.form_group label {
+  opacity: 0.4;
+  font-family: Circe;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: left;
+  color: #11223e;
+}
+.form_group input, textarea {
+  font-family: Circe;
+  font-size: 14px;
+  text-align: left;
+  color: #11223e;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: solid 1px #dbdee2;
+  line-height: 18px;
+  padding: 11px 15px 9px 15px;
+  float: right;
+}
+.about_in .form_group:nth-child(1) {
+  margin-top: 0;
+}
+.plans .form_group:nth-child(1) {
+  margin-top: 0;
+}
+@for $i from 1 through 8 {
+  .about_in .form_group:nth-child(#{$i}) input, textarea {
+    width: 59%;
+  }
+}
+.plans {
+  padding: 20px;
+}
+.plans .form_group input {
+  width: 66%;
+}
+.inf_block_title a {
+  font-family: CeraPro;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 13px;
+  color: #1875f0;
+  text-decoration: none;
+}
+.inf_block_title span {
+  color: #002b5d;
+}
+.inf_block_title a.rbtn {
+  cursor: pointer;
+  float: right;
+}
+.inf_block_title a.lbtn {
+  cursor: pointer;
+  float: left;
+}
+.d_block {
+  margin: 20px 0;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+  background-color: #fff;
+}
+table {
+  text-align: center;
+  width: 100%;
+  border-spacing: 0;
+  padding-bottom: 20px;
+}
+
+.head_t td {
+  opacity: 0.6;
+  font-family: Circe;
+  font-size: 14px;
+  line-height: 13px;
+  color: #000;
+  padding: 20px 0;
+  border: 1px solid #f8f8f8;
+  border-spacing: 0;
+}
+.cont_t td {
+  font-family: Circe;
+  font-size: 14px;
+  line-height: 13px;
+  padding-top: 16px;
+  color: #000;
+  border-left: 1px solid #f8f8f8;
+  border-right: 1px solid #f8f8f8;
+  border-spacing: 0;
+}
+
+@media screen and (max-width: 1600px) {
+  .form_group input, textarea {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 5px 10px 3px 10px;
+  }
+  .select-box p-dropdown {
+    width: 50%;
+  }
+  :host::ng-deep .ui-state-default {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 5px 10px 3px 10px;
+    right: 22px;
+  }
+
+  :host::ng-deep .ui-inputtext {
+    padding: 0;
+  }
+
+  .form_group label {
+    font-size: 12px;
+    line-height: 30px;
+  }
+  @for $i from 1 through 8 {
+    .about_in .form_group:nth-child(#{$i}) input, textarea {
+      width: 50%;
+    }
+  }
+  .inblock,
+  .inblock_clean {
+    height: 465px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .b_sort {
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    width: 35%;
+  }
+  .b_group {
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    width: 30%;
+  }
+  .b_add {
+    width: 27%;
+  }
+  .b_search {
+    width: 31%;
+  }
+}
+
+.popup-title {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.popup-title i {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.item-scroll {
+  width: 49%;
+  flex-shrink: 0;
+  margin: 0 10px 0 10px;
+}
+
+.display-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

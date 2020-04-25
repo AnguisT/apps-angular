@@ -1,0 +1,55 @@
+<statistics-menu></statistics-menu>
+<dx-data-grid
+  id="gridContainer"
+  keyExpr="Id"
+  [dataSource]="accountDayOff"
+  [allowColumnReordering]="true"
+  [showBorders]="false"
+  [errorRowEnabled]="false"
+  [columnAutoWidth]="true"
+  (onToolbarPreparing)="onToolbarPreparing($event)"
+  (onRowDblClick)="updateDayOff($event)"
+>
+  <dxo-header-filter [visible]="true"></dxo-header-filter>
+  <dxo-state-storing
+    [enabled]="true"
+    type="localStorage"
+    storageKey="staf-day-off"
+  ></dxo-state-storing>
+
+  <dxi-column alignment="center" dataField="Year" caption="Год"></dxi-column>
+  <dxi-column alignment="center" dataField="Month" caption="Месяц"></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="Cause"
+    caption="Причина"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="Date"
+    caption="Дата отгула"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="FullName"
+    caption="ФИО"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="StatusName"
+    caption="Статус"
+  ></dxi-column>
+
+  <dxo-search-panel [visible]="true"></dxo-search-panel>
+  <dxo-group-panel [visible]="true"></dxo-group-panel>
+  <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="[10, 25, 50, 100]"
+    [showInfo]="true"
+  ></dxo-pager>
+</dx-data-grid>
+<app-loading [visiblity]="loading"></app-loading>

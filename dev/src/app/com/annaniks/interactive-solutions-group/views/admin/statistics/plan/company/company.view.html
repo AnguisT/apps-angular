@@ -1,0 +1,100 @@
+<statistics-menu></statistics-menu>
+<div class="date_navigator">
+  <div>
+    <a (click)="decrementMonth()" class="button_navigation">Пред. месяц</a>
+  </div>
+  <div class="title">{{ months[selectedMonth] }} {{ currentYear }}</div>
+  <div>
+    <a (click)="incrementMonth()" class="button_navigation">След. месяц</a>
+  </div>
+</div>
+<dx-data-grid
+  id="gridContainer"
+  keyExpr="Id"
+  [dataSource]="plans"
+  [allowColumnReordering]="false"
+  [showBorders]="false"
+  [errorRowEnabled]="false"
+  [columnAutoWidth]="true"
+  [customizeExportData]="customizeExportData"
+  (onToolbarPreparing)="onToolbarPreparing($event)"
+  (onExported)="onExported($event)"
+>
+  <dxo-header-filter [visible]="true"></dxo-header-filter>
+  <dxo-state-storing
+    [enabled]="true"
+    type="localStorage"
+    storageKey="plan-companies"
+  ></dxo-state-storing>
+
+  <dxo-search-panel [visible]="true"></dxo-search-panel>
+  <dxo-group-panel [visible]="true"></dxo-group-panel>
+  <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxi-column
+    [allowSorting]="false"
+    alignment="center"
+    dataField="Type"
+    caption="Тип"
+  ></dxi-column>
+  <dxi-column
+    [allowSorting]="false"
+    alignment="center"
+    dataField="Performance"
+    cellTemplate="cellPerformanceTemplate"
+    caption="Выполнен"
+  ></dxi-column>
+  <dxi-column
+    [allowSorting]="false"
+    alignment="center"
+    dataField="Plan"
+    caption="% перевыполнение/недовыполнение"
+    cellTemplate="cellPercentTemplate"
+    headerCellTemplate="titleHeaderPercentTemplate"
+    [allowFiltering]="false"
+  ></dxi-column>
+  <dxi-column
+    [allowSorting]="false"
+    alignment="center"
+    dataField="Plan"
+    caption="Сумма перевыполнение/недовыполнение"
+    cellTemplate="cellAmountTemplate"
+    headerCellTemplate="titleHeaderAmountTemplate"
+    [allowFiltering]="false"
+  ></dxi-column>
+
+  <div *dxTemplate="let header of 'titleHeaderPercentTemplate'">
+    <span class="drob">% </span>
+    <span class="color-success">перевыполнение</span>
+    <span class="drob">/</span>
+    <span class="color-danger">недовыполнение</span>
+  </div>
+  <div *dxTemplate="let header of 'titleHeaderAmountTemplate'">
+    <span class="drob">Сумма</span>
+    <span class="color-success">перевыполнение</span>
+    <span class="drob">/</span>
+    <span class="color-danger">недовыполнение</span>
+  </div>
+
+  <div *dxTemplate="let cell of 'cellPerformanceTemplate'">
+    <span>{{ cell.data.Performance }}</span>
+  </div>
+  <div *dxTemplate="let cell of 'cellPercentTemplate'">
+    <span *ngIf="cell.data" class="color-success"
+      >{{ generatePercentSucess(cell) }}</span
+    >
+    <span *ngIf="cell.data" class="color-danger"
+      >{{ generatePercentDanger(cell) }}</span
+    >
+  </div>
+  <div *dxTemplate="let cell of 'cellAmountTemplate'">
+    <span *ngIf="cell.data" class="color-success"
+      >{{ generateAmountSucess(cell) }}</span
+    >
+    <span *ngIf="cell.data" class="color-danger"
+      >{{ generateAmountDanger(cell) }}</span
+    >
+  </div>
+</dx-data-grid>
+<app-loading [visiblity]="loading"></app-loading>

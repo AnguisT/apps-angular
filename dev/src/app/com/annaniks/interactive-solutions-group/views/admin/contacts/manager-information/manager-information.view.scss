@@ -1,0 +1,90 @@
+.create-col{
+    text-align: right;
+    margin-top: 15px;
+
+    button{
+        background-color: #FF595A;
+        border-radius: 50%;
+        height: 39px;
+        width: 39px;
+        i{
+            color: white;
+        }
+
+    }
+}
+.categories-name{
+        font-size: 16px;
+        padding: 0.5em 0;
+        margin-left: 0.5em;
+        margin-top: 28px;
+    }
+    .form_group {
+        width: 80%;
+        input[type=text],
+            {
+            height: 37px;
+            width: 100%;
+            padding: 7.5px 6px;
+            margin: -1px;
+            border: 1px solid rgba(255, 89, 90, 1);
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: rgba(255, 89, 90, 1);
+            color: white;
+            padding: 7.5px 20px;
+            margin: 23px 0 4px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+    .categories{
+        .ui-g-2{
+            width: 15%;
+        }
+    }
+    .comment{
+
+        height: 79px;
+        padding: .5em 0 0 .5em ;
+        border: 2px solid #FF595A;
+        border-radius: 10px;
+    }
+    .send{
+        height: 39px;
+        width: 39px;
+        background: #FF595A;
+        margin-left: 11px;
+        i{
+            color: white;
+            margin: 0 auto;
+        }
+    }
+    textarea{
+        resize: none;
+    }
+   
+    
+    *[width-comments]{
+        width: 94%;
+    }
+    *[width-5]{
+        width: 5%;
+    }
+    *[margin-bottom-23]{     
+      margin-bottom: 23px;
+    }
+    *[width-20]{
+        width: 20%;
+    }
+    *[width-70]{
+        width: 70% !important;
+    }
+    *[width-90]{
+        width: 90%;
+    }

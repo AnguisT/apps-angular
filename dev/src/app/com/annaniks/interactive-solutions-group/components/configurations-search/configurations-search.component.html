@@ -1,0 +1,12 @@
+<div no-padding-left class="info_bar">
+  <div class="container ui-g">
+
+      <div class="b_add" *ngFor="let item of confgItems;let i=index;let last=last" [routerLink]="item.routerLink" routerLinkActive="active">
+       <span>{{item.label}}</span>
+      </div>
+
+      <div class="d_ibfo ui-g">
+          <user-menu></user-menu>
+      </div>
+  </div>
+</div>

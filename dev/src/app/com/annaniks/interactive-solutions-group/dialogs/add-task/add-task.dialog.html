@@ -1,0 +1,50 @@
+<div class="add-task">
+  <h3 error text-align-center>{{form.getError('dates')}}</h3>
+  <form [formGroup]="form" (submit)="addTask()">
+    <div class="form-group">
+      <label class="form-control-label" for="task-name">Название задачи</label>
+      <input type="text" id="task-name" class="form-control" placeholder="Введите название задачи" formControlName="name">
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+      <div class="form-group" style="width: 100%; padding-right: 10px;">
+        <label>Постановщик</label>
+        <p-dropdown filter="true" [options]="employees" placeholder="Не выбрано" optionLabel="FulName" formControlName="director"></p-dropdown>
+      </div>
+
+      <div class="form-group" style="width: 100%;">
+        <label>Исполнитель</label>
+        <p-dropdown filter="true" [options]="employees" placeholder="Не выбрано" optionLabel="FulName" formControlName="executor"></p-dropdown>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label" for="task-desc">Описание:</label>
+      <textarea id="task-desc" class="form-control" placeholder="Введите описание" cols="30" rows="4" formControlName="description"></textarea>
+    </div>
+
+    <div class="form-group date-time">
+      <label class="form-control-label date-time_label" for="date">DDL</label>
+      <input type="date" id="date" class="form-control date-time_date" formControlName="date">
+      <input type="time" class="form-control date-time_time" formControlName="time">
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label" for="task-comment">Комментарий</label>
+      <textarea id="task-comment" class="form-control" cols="30" rows="4" formControlName="comment"></textarea>
+    </div>
+
+    <div class="row button-group">
+      <div class="">
+        <button type="button" class="btn done-btn" *ngIf="data" (click)="done()">Задача выполнена</button>
+      </div>
+      <div class="text-right">
+        <span style="margin-right: 10px; opacity: 0.8">{{createDate}}</span>
+        <button class="btn add-task-btn mr-10" [disabled]="form.invalid || form.hasError('dates')" (click)="addTask()">{{data ? 'Сохранить' : 'Добавить'}}</button>
+        <button class="btn cancel-btn mr-10" (click)="deleteTask()" *ngIf="data">Удалить</button>
+        <button class="btn cancel-btn" (click)="onCancel()">Отменить</button>
+      </div>
+    </div>
+
+  </form>
+</div>

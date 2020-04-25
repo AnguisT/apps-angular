@@ -1,0 +1,303 @@
+.isg {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+
+  &-nav {
+    margin-right: 20px;
+    &-item {
+      font-family: Circe, serif;
+      font-size: 16px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.63;
+      letter-spacing: normal;
+      padding: 15px;
+      margin-bottom: 12px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+      box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+      background-color: #fff;
+      width: 360px;
+      cursor: pointer;
+
+      &.active {
+        background-color: rgba(24, 117, 240, 0.1);
+      }
+    }
+  }
+
+  &-content {
+    width: 100%;
+
+    .header {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      .title {
+        width: 100%;
+        opacity: 0.5;
+        font-family: CeraPro, serif;
+        font-size: 16px;
+        font-weight: 500;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 0.81;
+        letter-spacing: normal;
+        color: #11223e;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+    }
+
+    .content {
+      padding: 20px;
+      -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+      box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.03);
+      background-color: #fff;
+      margin-right: 2px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+
+      input[type="number"] {
+        width: 100px;
+        margin-right: 10px;
+      }
+
+      .form-control {
+        width: 100%;
+      }
+
+      .input-group {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-bottom: 15px;
+        justify-content: space-between;
+
+        .isActive {
+          background-color: #0000000d;
+          color: #00000057;
+        }
+
+        mat-checkbox {
+          margin: 0 30px;
+        }
+      }
+    }
+
+    .departments {
+      .content {
+        padding-top: 10px;
+      }
+    }
+  }
+}
+
+.d-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.form-control {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: solid 1px #dbdee2;
+  padding: 11px 15px 9px;
+  font-family: Circe, serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.64;
+  letter-spacing: normal;
+  color: #11223e;
+  height: 40px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+
+.icon-close {
+  margin-left: 12px;
+  color: red;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  cursor: pointer;
+  position: relative;
+  left: -44px;
+}
+
+.icon-danger {
+  color: #f7396b;
+  font-size: 20px;
+}
+
+.conf-categories-add-button {
+  background-color: #39be7b;
+  width: 35px;
+  height: 35px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.conf-categories-add-text {
+  margin-top: 6px;
+  margin-left: 10px;
+}
+
+.conf-categories-plus {
+  color: white;
+  margin-left: 8px;
+  margin-top: -4px;
+}
+
+.conf-categories-flex-container {
+  list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  margin: 10px 0 0;
+  width: 210px;
+  -webkit-border-radius: 22px;
+  border-radius: 22px;
+  padding: 5px;
+}
+
+.conf-categories-flex-container:hover {
+  background-color: #e0dddd;
+}
+
+.conf-categories-flex-start {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.mat-icon {
+  color: #000000a6;
+}
+
+.icon-height {
+  .mat-checkbox-layout .mat-checkbox-label {
+    height: 24px;
+    width: 24px;
+    mat-icon {
+      height: 24px;
+      width: 24px;
+    }
+  }
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: red;
+}
+
+.input-reminder {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 15px;
+
+  .form-control {
+    width: 200px !important;
+  }
+
+  .reminder-save-button {
+    color: white;
+    margin-left: 10px;
+    width: 150px;
+    border: none;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Circe, serif;
+    border: solid 1px #32b970;
+    background-color: #32b970;
+    cursor: pointer;
+  }
+}
+
+p-dropdown {
+    margin-right: 10px;
+    width: 250px;
+}
+
+:host::ng-deep .ui-state-default {
+  font-family: Circe;
+  font-size: 14px;
+  text-align: left;
+  color: #11223e;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  line-height: 14px;
+  padding: 8px 15px 9px;
+  width: 100% !important;
+  background-color: white;
+}
+
+:host::ng-deep .ui-dropdown-panel {
+  min-width: 100%;
+  top: 45px !important;
+}
+
+:host::ng-deep .ui-state-default:hover {
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+:host::ng-deep .ui-state-focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+:host::ng-deep .ui-state-highlight {
+  border-color: none;
+  background-color: transparent;
+  color: black;
+}
+
+:host::ng-deep .ui-dropdown-trigger-icon:before {
+  content: "";
+}
+
+:host::ng-deep .ui-dropdown-trigger-icon {
+  top: 50%;
+  left: 50%;
+  margin-top: -0.5em !important;
+  margin-left: -0.8em !important;
+  font-size: 10px;
+}
+
+:host::ng-deep .ui-dropdown:not(.ui-state-disabled):hover {
+  background-color: transparent;
+}
+
+:host::ng-deep .ui-corner-right {
+  width: 20px !important;
+  border: none;
+}

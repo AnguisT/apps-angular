@@ -1,0 +1,78 @@
+<statistics-menu></statistics-menu>
+<dx-data-grid
+  id="gridContainer"
+  keyExpr="Id"
+  [dataSource]="dataSource"
+  [allowColumnReordering]="true"
+  [showBorders]="false"
+  [errorRowEnabled]="false"
+  [columnAutoWidth]="true"
+  (onToolbarPreparing)="onToolbarPreparing($event)"
+>
+  <dxo-header-filter [visible]="true"></dxo-header-filter>
+  <dxo-state-storing
+    [enabled]="true"
+    type="localStorage"
+    storageKey="income"
+  ></dxo-state-storing>
+
+  <dxi-column alignment="center" dataField="Name" caption="Тип"></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="FindOut"
+    caption="Откуда узнали"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="NumberOfRequests"
+    caption="Количество запросов"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="NumberOfProject"
+    caption="Количество проектов"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="TenderYes"
+    cellTemplate="cellTenderYesTemplate"
+    headerCellTemplate="titleHeaderTenderYesTemplate"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="TenderNo"
+    cellTemplate="cellTenderNoTemplate"
+    headerCellTemplate="titleHeaderTenderNoTemplate"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="Conversion"
+    caption="Конверсия"
+  ></dxi-column>
+
+  <dxo-search-panel [visible]="true"></dxo-search-panel>
+  <dxo-group-panel [visible]="true"></dxo-group-panel>
+  <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="[10, 25, 50, 100]"
+    [showInfo]="true"
+  ></dxo-pager>
+
+  <div *dxTemplate="let cell of 'cellTenderYesTemplate'">
+    <span class="color-success">{{cell.data.TenderYes}}</span>
+  </div>
+  <div *dxTemplate="let cell of 'cellTenderNoTemplate'">
+    <span class="color-danger">{{cell.data.TenderNo}}</span>
+  </div>
+  <div *dxTemplate="let header of 'titleHeaderTenderYesTemplate'">
+    <span>Тендер </span><span class="color-success">(ДА)</span>
+  </div>
+  <div *dxTemplate="let header of 'titleHeaderTenderNoTemplate'">
+    <span>Тендер </span><span class="color-danger">(НЕТ)</span>
+  </div>
+</dx-data-grid>
+<app-loading [visiblity]="loading"></app-loading>

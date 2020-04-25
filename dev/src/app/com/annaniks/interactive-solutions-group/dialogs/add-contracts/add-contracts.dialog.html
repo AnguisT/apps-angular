@@ -1,0 +1,17 @@
+<div border-bottom-gray>
+        <div align-center class="ui-g title">
+            <div class="ui-g-10 text"> Добавить договор</div>
+            <button (click)=" onNoClick()" cursor-pointer margin-left-auto display-flex align-center class="close">
+                <i class="material-icons">
+                    close
+                </i>
+            </button>
+        </div>
+    </div>
+    <form [formGroup]="formGroup" class="form_group">
+        <div margin-top-33>
+            <label>Ссылка на договор</label>
+            <input type="text" formControlName="url">
+        </div>
+        <button [ngClass]="{'valid': !formGroup.valid,'noValid':formGroup.valid}" [ngStyle]="{disabled : formGroup.valid}" [disabled]="!formGroup.valid" (click)="add()" cursor-pointer class="add"><span>Добавить</span></button>
+    </form>

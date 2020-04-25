@@ -1,0 +1,102 @@
+<div class="content">
+  <div no-padding-left class="info_bar">
+    <div class="container ui-g">
+      <div class="b_add">
+        <a routerLink="/programms/new"
+          ><img src="/assets/images/add.svg" height="18px" alt="" /><span
+            >Добавить программу</span
+          ></a
+        >
+      </div>
+      <div class="d_ibfo ui-g">
+        <user-menu></user-menu>
+      </div>
+    </div>
+  </div>
+  <dx-data-grid
+    id="gridContainer"
+    keyExpr="Id"
+    [dataSource]="dataSource"
+    [allowColumnReordering]="true"
+    [showBorders]="false"
+    [errorRowEnabled]="false"
+    [columnAutoWidth]="true"
+    [masterDetail]="{ enabled: true, template: 'detail' }"
+    (onToolbarPreparing)="onToolbarPreparing($event)"
+    (onRowDblClick)="showDetail($event)"
+  >
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+    <dxo-state-storing
+      [enabled]="true"
+      type="localStorage"
+      storageKey="staf-day-off"
+    ></dxo-state-storing>
+
+    <dxi-column
+      alignment="center"
+      dataField="Name"
+      caption="Название"
+    ></dxi-column>
+    <dxi-column
+      alignment="center"
+      dataField="Duration"
+      caption="Длительность (час)"
+    ></dxi-column>
+    <dxi-column
+      alignment="center"
+      dataField="NumberPerson"
+      caption="Количество участников"
+    ></dxi-column>
+    <dxi-column
+      alignment="center"
+      dataField="Venue"
+      caption="Место проведения"
+    ></dxi-column>
+    <dxi-column
+      alignment="center"
+      dataField="Formats"
+      caption="Формат"
+    ></dxi-column>
+    <dxi-column
+      alignment="center"
+      dataField="Presentation"
+      caption="Презентация"
+      [calculateCellValue]="calculatePresentation"
+      [encodeHtml]="false"
+      [allowFiltering]="false"
+      [allowReordering]="false"
+    ></dxi-column>
+    <dxi-column
+      alignment="center"
+      dataField="CE"
+      caption="СЕ"
+      [calculateCellValue]="calculateCE"
+      [encodeHtml]="false"
+      [allowFiltering]="false"
+      [allowReordering]="false"
+    ></dxi-column>
+
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+    <dxo-group-panel [visible]="true"></dxo-group-panel>
+    <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-pager
+      [showPageSizeSelector]="true"
+      [allowedPageSizes]="[10, 25, 50, 100]"
+      [showInfo]="true"
+    ></dxo-pager>
+
+    <div *dxTemplate="let programs of 'detail'">
+      <div class="example-element-detail">
+        <div class="prod_names_open_block ui-g ui-g-w">
+          <span *ngFor="let ce of programs.data.ce" class="ui-g-1 center"
+            >{{ce.ViewNumberPerson}}: <strong>{{ce.Total}}</strong></span
+          >
+        </div>
+      </div>
+    </div>
+  </dx-data-grid>
+</div>
+<app-loading [visiblity]="loading"></app-loading>

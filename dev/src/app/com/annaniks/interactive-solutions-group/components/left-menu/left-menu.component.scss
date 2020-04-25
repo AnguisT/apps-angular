@@ -1,0 +1,32 @@
+.menu{
+    position: fixed;
+    -webkit-transition: left 200ms;
+    -o-transition: left 200ms;
+    transition: left 200ms;
+    top: 36px;
+    height: 710px;
+    width: 273px;
+    z-index: 9999;
+    -webkit-box-shadow: 7px 0 20px rgba(0, 0, 0, 0.16);
+    box-shadow: 7px 0 20px rgba(0, 0, 0, 0.16)
+}
+
+.margin-first-item{
+    margin-top: 27px;
+}
+
+.active-page{
+    color: #FF595A
+}
+.open{
+    
+}
+.close{
+    left: -273px;
+}
+*[margin-left-22]{
+    margin-left: 22px;
+}
+*[margin-for-other-items]{
+    margin-top: 18px;
+}

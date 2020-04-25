@@ -1,0 +1,68 @@
+<contacts-search [url]="activeUrl"></contacts-search>
+<dx-data-grid
+  id="gridContainer"
+  keyExpr="Id"
+  [dataSource]="dataSource"
+  [allowColumnReordering]="true"
+  [showBorders]="false"
+  [errorRowEnabled]="false"
+  [columnAutoWidth]="true"
+  (onRowDblClick)="doubleClickFunction($event)"
+  (onToolbarPreparing)="onToolbarPreparing($event)"
+>
+  <dxo-header-filter [visible]="true"></dxo-header-filter>
+  <dxo-state-storing
+    [enabled]="true"
+    type="localStorage"
+    storageKey="subcontractor"
+  ></dxo-state-storing>
+
+  <dxi-column
+    alignment="center"
+    dataField="Denomination"
+    caption="Компании"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="SphereActivityName"
+    caption="Сегмент"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="Status"
+    caption="Статус"
+    cellTemplate="cellStatusTemplate"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="TypeCompany"
+    caption="Тип компании"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="PhoneNumber"
+    caption="Телефон"
+  ></dxi-column>
+  <dxi-column
+    alignment="center"
+    dataField="DatesProject"
+    caption="Дата последнего проекта"
+  ></dxi-column>
+
+  <div *dxTemplate="let cell of 'cellStatusTemplate'">
+    {{ cell.data.Status === 1 ? 'Действующая' : 'Недействующая' }}
+  </div>
+
+  <dxo-search-panel [visible]="true"></dxo-search-panel>
+  <dxo-group-panel [visible]="true"></dxo-group-panel>
+  <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="[10, 25, 50, 100]"
+    [showInfo]="true"
+  ></dxo-pager>
+</dx-data-grid>
+<app-loading [visiblity]="loading"></app-loading>

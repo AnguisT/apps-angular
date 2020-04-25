@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="header"><span class="header-title">Дни рождения</span></div>
+  <!-- <mbsc-form>
+        <mbsc-calendar (onDayChange)="onSelect($event)" [(ngModel)]="calendarOneWeek" display="inline" weeks="1" [options]="russiaSettings" [marked]="markedDays"></mbsc-calendar>
+    </mbsc-form> -->
+  <div class="week-view">
+    <div class="center">
+      <h4 class="month-year text-capitalize">{{ month }} {{ year }}</h4>
+    </div>
+    <ul class="center">
+      <a class="btn border-out prev" (click)="previousDays()">
+        <i class="fa fa-chevron-left"></i>
+      </a>
+      <div class="week-container">
+        <div class="week center" *ngFor="let week of weeks; let index = index">
+          <li
+            class="center"
+            *ngFor="let date of week.dates"
+            [ngClass]="{active: date.active}"
+            (click)="setSelectDay(date)"
+          >
+            <a
+              [disabled]="date.disabled"
+              [ngClass]="{isDisabled: date.disabled}"
+            >
+              <strong class="text-capitalize" *ngIf="index === 0">{{
+                date.dayName
+              }}</strong>
+              <br *ngIf="index === 0" />
+              <span class="badge big">{{ date.day }}</span>
+            </a>
+            <div
+              [ngClass]="{
+                indicator: checkBirthday(date.value),
+                not_indicator: !checkBirthday(date.value)
+              }"
+            ></div>
+          </li>
+        </div>
+      </div>
+      <a class="btn border-out next" (click)="nextDays()">
+        <i class="fa fa-chevron-right"></i>
+      </a>
+    </ul>
+  </div>
+  <div class="container-list">
+    <div class="container-list-employee" *ngIf="employies.length">
+      <div *ngFor="let employee of employies">
+        <div class="employee-info">
+          <img
+            src="https://crm.i-s-group.ru:3000/static/{{ employee.Image }}"
+            alt=""
+            style="
+              height: 35px;
+              width: 35px;
+              border-radius: 25px;
+              margin-left: 10px;
+            "
+          />
+          <div class="employee-desc">
+            <span class="employee-name">{{ employee.FulName }}</span>
+            <span class="employee-position">{{ employee.PositionName }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-empty-message" *ngIf="!employies.length">
+      <span class="empty-message">Дней рождения в этот день нету</span>
+    </div>
+  </div>
+</div>

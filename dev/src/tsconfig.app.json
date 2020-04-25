@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "../out-tsc/app",
+    "module": "es2015",
+    "types": ["jquery"]
+  },
+  "exclude": ["src/test.ts", "**/*.spec.ts"]
+}

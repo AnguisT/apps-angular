@@ -1,0 +1,18 @@
+<div border-bottom-gray>
+    <div align-center class="ui-g title">
+        <div class="ui-g-10 text">{{data.title }}</div>
+        <button (click)=" onNoClick()" cursor-pointer margin-left-auto display-flex align-center class="close">
+            <i class="material-icons">
+                close
+            </i>
+        </button>
+    </div>
+</div>
+<div class="form_group">
+    <div margin-top-33>
+        <label font-size-14>{{data.category}}</label>
+        <input type="text" [(ngModel)]="object" [placeholder]="data.category">
+        <p-dropdown *ngIf="showModeTypeProject" placeholder="Не выбрано" [options]="modeTypePropjects" [(ngModel)]="selectedItem" optionLabel="Name"></p-dropdown>
+    </div>
+    <button [ngClass]="{'valid': object.length === 0,'noValid':object.length !== 0}" cursor-pointer class="add" (click)="addObject()">Добавить</button>
+</div>

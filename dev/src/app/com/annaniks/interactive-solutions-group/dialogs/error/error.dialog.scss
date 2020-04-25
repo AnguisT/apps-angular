@@ -1,0 +1,40 @@
+.title {
+  margin: 12px 10px 2px 22px;
+
+  .text {
+    font-family: CeraPro;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: center;
+    color: #2c2c2c;
+  }
+
+  .close {
+    height: 25px;
+    width: 25px;
+    border: 1px solid #1875f0;
+    border-radius: 50%;
+    background: none;
+    padding: 0;
+    i {
+      color: #11223e;
+      font-size: 20px;
+      margin: 0 auto;
+    }
+  }
+}
+h3 {
+    font-family: CeraPro;
+    font-size: 20px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: center;
+    color: #2c2c2c;
+}

@@ -1,0 +1,30 @@
+<div class="add-task">
+  <form [formGroup]="form" (submit)="add()">
+    <div class="form-group" *ngIf="showProjects">
+      <label class="form-control-label" for="prod">Проект</label>
+      <p-dropdown [options]="projects" optionLabel="Name" placeholder="Не выбрано" id="prod" formControlName="Prod"></p-dropdown>
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label" for="day">Количество дней</label>
+      <input type="number" id="day" class="form-control" formControlName="Day">
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label date-time_label" for="money">Выплата к сумме</label>
+      <input type="number" id="money" class="form-control" formControlName="Money">
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label" for="status">Статус</label>
+      <p-dropdown [options]="status" placeholder="Не выбрано" id="status" optionLabel="Name" formControlName="Stat"></p-dropdown>
+    </div>
+
+    <div class="text-right">
+      <button class="btn add-task-btn mr-10" (click)="add()">{{data.data ? 'Сохранить' : 'Добавить'}}</button>
+      <button class="btn cancel-btn mr-10" (click)="onDelete()" *ngIf="data.data">Удалить</button>
+      <button class="btn cancel-btn" (click)="onCancel()">Отменить</button>
+    </div>
+
+  </form>
+</div>

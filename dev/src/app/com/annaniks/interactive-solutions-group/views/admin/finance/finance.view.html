@@ -1,0 +1,94 @@
+<div class="content">
+  <div no-padding-left class="info_bar">
+    <div class="container ui-g">
+      <div class="b_add">
+        <a (click)="addFinance()"
+          ><img src="/assets/images/add.svg" height="18px" alt="" /><span
+            >Добавить заявку</span
+          ></a
+        >
+      </div>
+      <div class="d_ibfo ui-g">
+        <user-menu></user-menu>
+      </div>
+    </div>
+  </div>
+  <dx-data-grid
+    id="gridContainer"
+    keyExpr="Id"
+    [dataSource]="dataSource"
+    [allowColumnReordering]="true"
+    [showBorders]="false"
+    [errorRowEnabled]="false"
+    [columnAutoWidth]="true"
+    (onToolbarPreparing)="onToolbarPreparing($event)"
+    (onRowDblClick)="addFinance($event)"
+  >
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+    <dxo-state-storing
+      [enabled]="true"
+      type="localStorage"
+      storageKey="finance"
+    ></dxo-state-storing>
+
+    <dxi-column
+      alignment="center"
+      dataField="Status"
+      caption="Статус"
+    ></dxi-column>
+    <dxi-column
+      alignment="center"
+      dataField="DateApp"
+      caption="Дата подачи"
+    ></dxi-column>
+    <dxi-column alignment="center" dataField="Year" caption="Год"></dxi-column>
+    <dxi-column
+      alignment="center"
+      dataField="Month"
+      caption="Месяц"
+    ></dxi-column>
+    <dxi-column
+      alignment="center"
+      dataField="DateIssue"
+      caption="Дата выдачи"
+    ></dxi-column>
+    <dxi-column
+      alignment="center"
+      dataField="DateClose"
+      caption="Дата закрытия"
+    ></dxi-column>
+    <dxi-column
+      alignment="center"
+      dataField="NumberProject"
+      caption="Номер проекта"
+    ></dxi-column>
+    <dxi-column
+      alignment="center"
+      dataField="NameProject"
+      caption="Название проекта"
+    ></dxi-column>
+    <dxi-column
+      alignment="center"
+      dataField="Employee"
+      caption="Менеджер ISG"
+    ></dxi-column>
+    <dxi-column
+      alignment="center"
+      dataField="AmountIssue"
+      caption="Сумма к выдаче"
+    ></dxi-column>
+
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+    <dxo-group-panel [visible]="true"></dxo-group-panel>
+    <dxo-grouping [autoExpandAll]="true"></dxo-grouping>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-pager
+      [showPageSizeSelector]="true"
+      [allowedPageSizes]="[10, 25, 50, 100]"
+      [showInfo]="true"
+    ></dxo-pager>
+  </dx-data-grid>
+</div>
+<app-loading [visiblity]="loading"></app-loading>

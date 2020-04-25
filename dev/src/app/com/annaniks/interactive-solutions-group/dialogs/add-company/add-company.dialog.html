@@ -1,0 +1,48 @@
+<div class="general-info" [formGroup]="companyForm">
+    <h3 error text-align-center *ngIf="error">{{error}}</h3>
+    <div class="form-group">
+        <label for="Denomination" class="label">Название</label>
+        <input type="text" id="Denomination" formControlName="denomination" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="SphereActivityId" class="label">Сегмент</label>
+        <p-dropdown filter="true" placeholder="Не выбрано" [options]="allSphereActivity" formControlName="selectedSphereActivity"
+                id="SphereActivityId" optionLabel="Name"></p-dropdown>
+    </div>
+
+    <div class="form-group">
+        <label for="CompanyTypeId" class="label">Тип компании</label>
+        <p-dropdown filter="true" placeholder="Не выбрано" [options]="allCompanyTypes" formControlName="companyType"
+                id="CompanyTypeId" optionLabel="Name"></p-dropdown>
+    </div>
+
+    <div class="form-group">
+        <label for="CountryId" class="label">Страна</label>
+        <p-dropdown filter="true" placeholder="Не выбрано" [options]="allCountries" formControlName="country"
+                    id="CountryId" optionLabel="Name"></p-dropdown>
+    </div>
+
+    <div class="form-group">
+        <label for="CityId" class="label">Город</label>
+        <p-dropdown filter="true" placeholder="Не выбрано" [options]="allCities" formControlName="city"
+                id="CityId" optionLabel="Name"></p-dropdown>
+    </div>
+
+    <div class="form-group" style="display: flex; flex-direction: row; justify-content: space-between;">
+        <div>
+            <label class="label_checkbox">Компания заказчик</label>
+            <mat-checkbox style="margin-left: 10px" class="checklist-leaf-node icon-height" formControlName="companyCustomer" [checked]="companyCustomer"></mat-checkbox>
+        </div>
+        <div>
+            <label class="label_checkbox" >Компания подрядчик</label>
+            <mat-checkbox style="margin-left: 10px" class="checklist-leaf-node icon-height" formControlName="companySubcontractor" [checked]="companySubcontractor"></mat-checkbox>
+        </div>
+    </div>
+
+    <div class="row">
+        <button (click)="addCompany()" [disabled]="companyForm.invalid" [ngClass]="{'valid': !companyForm.valid,'noValid':companyForm.valid}" cursor-pointer
+            class="btn btn-success mr-10">Добавить</button>
+        <button class="btn btn-danger mr-10" (click)="onClose()">Закрыть</button>
+    </div>
+</div>

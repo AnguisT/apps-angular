@@ -1,0 +1,18 @@
+<div border-bottom-gray>
+    <div align-center class="ui-g title">
+        <div class="ui-g-10 text">Игровая программа</div>
+        <button (click)=" onNoClick()" cursor-pointer margin-left-auto display-flex align-center class="close">
+            <i class="material-icons">
+                close
+            </i>
+        </button>
+    </div>
+</div>
+<div class="form_group" style="margin-bottom: 15px;">
+    <p no-margin text-center error *ngIf="errorMessage">{{errorMessage}}</p>
+    <div margin-top-33>
+        <label font-size-14>Количество участников</label>
+        <input type="number" [(ngModel)]="value" placeholder="Введите количество участников">
+    </div>
+    <button [ngClass]="{'valid': value.length === 0,'noValid':value.length !== 0}" cursor-pointer class="add" (click)="add()">Добавить</button>
+</div>

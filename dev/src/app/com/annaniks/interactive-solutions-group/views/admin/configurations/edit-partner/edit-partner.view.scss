@@ -1,0 +1,329 @@
+// .form_group {
+//     width: 80%;
+//     label {
+//         font-family: 'Open Sans';
+//         font-weight: 100;
+//         font-size: 14px;
+//     }
+// }
+
+.form_group {
+    width: 80%;
+    input {
+        font-family: Circe;
+        font-size: 14px;
+        text-align: left;
+        color: #11223e;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        border: solid 1px #dbdee2;
+        line-height: 18px;
+        padding: 11px 15px 9px 15px;
+        float: right;
+        width: 100%;
+        height: 32px;
+    }
+    label {
+        opacity: 0.6;
+        font-family: Circe;
+        font-size: 14px;
+        line-height: 40px;
+        text-align: left;
+        color: #11223e;
+    }
+    input[type=text] {
+        width: 100%;
+        margin: 4px 0;
+        box-sizing: border-box;
+    }
+    input[type=number] {
+        width: 100%;
+        margin: 4px 0;
+        box-sizing: border-box;
+    }
+    input[type=date] {
+        width: 100%;
+        margin: 4px 0;
+        box-sizing: border-box;
+    }
+    input[type=submit] {
+        width: 100%;
+        margin: 20px 0 4px 0;
+        border: none;
+        cursor: pointer;
+        box-shadow: 3px 3px 4px 0px rgba(0,0,0,0.27);
+        background-color: rgba(38, 153, 251, 1);
+        border-radius: 5px;
+        font-size: 16px;
+        height: 40px;
+        font-family: Circe, serif;
+        cursor: pointer;
+        color: #fff;
+        padding: 0 20px;
+        border: solid 1px #32b970;
+        background-color: #32b970;
+    }
+}
+
+.form-control {
+    font-family: Circe, serif;
+    font-size: 14px;
+    color: #11223e;
+    border-radius: 5px;
+    border: solid 1px #dbdee2;
+    line-height: 18px;
+    padding: 11px 15px 9px 15px;
+    width: 600px;
+    box-sizing: border-box;
+}
+
+.delete-button {
+    background-color: #ff595a !important;
+    border-color: #ff595a !important;
+    border: solid 1px #ff595a !important;
+}
+
+:host::ng-deep .ui-calendar {
+    width: 100%
+}
+
+.conf-categories-add-button {
+    background-color: #39be7b;
+    width: 35px;
+    height: 35px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.conf-categories-add-text {
+    margin-top: 6px;
+    margin-left: 10px;
+}
+
+.conf-categories-plus {
+    color: white;
+    margin-left: 8px;
+    margin-top: -4px;
+}
+
+
+.conf-categories-flex-container {
+    list-style: none;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    cursor: pointer;
+    margin: 10px 0 0;
+    width: 210px;
+    -webkit-border-radius: 22px;
+    border-radius: 22px;
+    padding: 5px;
+}
+
+.conf-categories-flex-container:hover {
+    background-color: #e0dddd;
+}
+
+.conf-categories-flex-start {
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.categories-name {
+    margin-top: 32px;
+    padding: 0.5em 0;
+    margin-left: 0.5em;
+    width: 100%;
+}
+
+.add-button {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    .add {
+        color: white;
+        background-color: #FF595A;
+        width: 100%;
+        border: none;
+        height: 32px;
+        border-radius: 5px;
+        width: 90%;
+    }
+}
+
+.image {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 1px solid #70707026;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.change-photo {
+    background-color: #FF595A;
+    opacity: .85;
+    position: absolute;
+    height: 30px;
+    width: 92px;
+    bottom: 0;
+    left: calc(50% - 92px/2);
+    display: flex;
+    align-items: center;
+    i {
+        color: white;
+        margin: 0 auto;
+    }
+}
+
+.valid {
+    opacity: .5;
+}
+
+.novalid {
+    opacity: 1;
+}
+
+:host::ng-deep .ui-state-default {
+    font-family: Circe;
+    font-size: 14px;
+    text-align: left;
+    color: #11223e;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    line-height: 14px;
+    padding: 11px 15px 9px 15px;
+    width: 100% !important;
+    background-color: white;
+}
+
+:host::ng-deep .ui-dropdown-panel {
+    min-width: 100%;
+    top: 45px !important;
+}
+
+:host::ng-deep .ui-state-default:hover {
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.3);
+}
+
+:host::ng-deep .ui-state-focus {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+:host::ng-deep .ui-state-highlight {
+    border-color: none;
+    background-color: transparent;
+    color: black;
+}
+
+:host::ng-deep .ui-dropdown-trigger-icon:before {
+    content: ""
+}
+
+:host::ng-deep .ui-dropdown-trigger-icon {
+    top: 50%;
+    left: 50%;
+    margin-top: -0.5em !important;
+    margin-left: -0.8em !important;
+    font-size: 10px;
+}
+
+:host::ng-deep .ui-dropdown:not(.ui-state-disabled):hover {
+    background-color: transparent;
+}
+
+:host::ng-deep .ui-corner-right {
+    width: 20px !important;
+    border: none;
+}
+
+:host::ng-deep .ui-multiselect:not(.ui-state-disabled):hover {
+    background-color: transparent;
+}
+
+:host::ng-deep .ui-chkbox-box {
+    padding: 10px;
+}
+
+:host::ng-deep .ui-state-active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 1.125em !important;
+    height: 1.125em;
+}
+
+:host::ng-deep .ui-multiselect-filter-container .ui-inputtext {
+    padding: 0.429em 2em 0.429em 0.429em;
+}
+
+:host::ng-deep .ui-multiselect-filter-icon {
+    color: #007ad9;
+    top: 50% !important;
+    margin-top: -0.5em;
+    right: 0.5em;
+    left: auto !important;
+}
+
+:host::ng-deep .ui-inputtext:focus {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+:host::ng-deep .mat-icon {
+    margin: 4px 0;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    cursor: pointer;
+}
+
+*[margin-top-127] {
+    margin-top: 127px;
+}
+
+*[margin-top-110] {
+    margin-top: 117px;
+}
+
+*[margin-top-37] {
+    margin-top: 37px
+}
+
+*[top-23] {
+    top: 23px;
+}
+
+*[right-35] {
+    right: 35px;
+}
+
+*[margin-top-26] {
+    margin-top: -26px;
+}
+
+*[margin-top-95] {
+    margin-top: 95px;
+}
+
+*[margin-right-15] {
+    margin-right: 15px
+}
+
+*[margin-left-15] {
+    margin-left: 15px
+}

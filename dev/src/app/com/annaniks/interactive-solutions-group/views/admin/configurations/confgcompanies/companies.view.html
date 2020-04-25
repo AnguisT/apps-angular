@@ -1,0 +1,28 @@
+<div class="category">
+        <div class="category-scroll">
+            <!-- (click)="scroll(page.href)" -->
+            <div cursor-pointer margin-left-22 font-size-16 font-open-sans margin-for-other-items
+                 class="left-block"
+                 *ngFor="let page of menuList;let i=index"
+                 [class.active]="selectedCategory === i"
+                 (click)="scroll(page, i)">{{page.pageName}}
+            </div>
+        </div>
+        <div class="ui-g category-content">
+    
+            <conf-categories [id]="'type-legal-person'" [hidden]="boolvalues[0]" [categoryName]="boolstrings[0]"
+                [title]="'Тип юридического лица'"
+                [conf-info]="{'label':'Добавить тип юридического лица','text':'Тип юридического лица','type': boolstrings[0]}"
+                class="ui-g-6"></conf-categories>
+    
+            <conf-categories [id]="'taxation-legal-person'" [hidden]="boolvalues[1]" [categoryName]="boolstrings[1]"
+                [title]="'Тип налогооблажения'"
+                [conf-info]="{'label':'Добавить тип налогооблажения','text':'Тип налогооблажения','type':boolstrings[1]}"
+                class="ui-g-6"></conf-categories>
+
+            <conf-categories [id]="'zonereact'" [hidden]="boolvalues[2]" [categoryName]="boolstrings[2]"
+                [title]="'Зона ответственности подрядчика'"
+                [conf-info]="{'label':'Добавить зону ответственности подрядчика','text':'Зона ответственности подрядчика','type':boolstrings[2]}"
+                class="ui-g-6"></conf-categories>
+        </div>
+    </div>

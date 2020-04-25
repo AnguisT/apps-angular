@@ -1,0 +1,162 @@
+.add-task {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+
+  input {
+    height: 40px;
+  }
+}
+
+.form-control-label {
+  font-family: Circe;
+  display: block;
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: #11223e;
+}
+
+.form-control {
+  font-family: Circe;
+  font-size: 14px;
+  color: #11223e;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: solid 1px #dbdee2;
+  line-height: 18px;
+  padding: 11px 15px 9px 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.date-time {
+  display: flex;
+  align-items: center;
+
+  &_label,
+  &_time {
+    flex: 1;
+    margin: 0;
+  }
+
+  &_date {
+    flex: 2;
+    margin-right: 10px;
+  }
+}
+
+.text-right {
+  text-align: right;
+}
+
+.btn {
+  border-radius: 5px;
+  font-size: 16px;
+  height: 40px;
+  font-family: Circe;
+  cursor: pointer;
+  color: #fff;
+  padding: 0 20px;
+}
+
+.add-task-btn {
+  border: solid 1px #32b970;
+  background-color: #32b970;
+}
+
+.add-task-btn:disabled {
+  opacity: 0.5;
+}
+
+.cancel-btn {
+  border: 1px solid #f44336;
+  background-color: #f44336;
+}
+
+.done-btn {
+  border: 1px solid #00bcd4;
+  background-color: #00bcd4;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+:host::ng-deep {
+  .ui-state-default {
+    font-family: Circe;
+    font-size: 14px;
+    text-align: left;
+    color: #11223e;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    line-height: 14px;
+    padding: 11px 15px 9px 15px;
+    width: 100% !important;
+    background-color: white;
+  }
+
+  .ui-dropdown-panel {
+    min-width: 100%;
+    top: 45px !important;
+  }
+
+  .ui-state-default:hover {
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .ui-dropdown-filter {
+    height: 28px;
+  }
+
+  .ui-state-focus {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  .ui-state-highlight {
+    border-color: none;
+    background-color: transparent;
+    color: black;
+  }
+
+  .ui-dropdown-trigger-icon {
+    top: 50%;
+    left: 50%;
+    margin-top: -0.5em !important;
+    margin-left: -0.8em !important;
+    font-size: 10px;
+  }
+
+  .ui-dropdown:not(.ui-state-disabled):hover {
+    background-color: transparent;
+  }
+
+  .ui-dropdown-item {
+    font-family: Circe;
+  }
+}
+
+.ng-dirty {
+  border-color: #32b970 !important;
+}
+
+:host::ng-deep .ng-dirty > .ui-dropdown {
+  border-color: #32b970 !important;
+}
+
+:host::ng-deep .ng-dirty > .ui-multiselect {
+  border-color: #32b970 !important;
+}
+
+:host::ng-deep .ng-dirty > .ui-calendar > .ui-inputtext {
+  border-color: #32b970 !important;
+}

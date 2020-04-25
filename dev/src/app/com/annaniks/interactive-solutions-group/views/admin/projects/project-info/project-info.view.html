@@ -1,0 +1,235 @@
+<div *ngIf="isGet">
+    <div font-open-sans class="ui-g">
+        <div half-width display-flex>
+            <div class="ui-g-4">
+                <div height-52 display-flex align-flex-end font-size-20>
+                    <b>{{project.Name}}</b>
+                </div>
+                <span font-size-14>{{project.Number}}</span>
+            </div>
+            <div class="ui-g-4">
+                <div height-52 font-size-14 display-flex padding-bottom-msm align-flex-end>Главный проект</div>
+                <span font-size-12 color-gray>{{project?.GeneralProjectName}}</span>
+            </div>
+            <div class="ui-g-4">
+                <div height-52 font-size-14 display-flex padding-bottom-msm align-flex-end>Статус</div>
+                <span font-size-12 color-gray>{{project.StatusName}}</span>
+            </div>
+        </div>
+        <div class="create-col">
+            <button routerLink="/projects/{{id}}/edit" cursor-pointer no-border class="create-circle">
+                <i float-rigth class="material-icons create_icon">
+                    create
+                </i>
+            </button>
+        </div>
+    </div>
+
+    <div font-open-sans color-gray border-bottom-gray class="categories-name">Основная информация</div>
+    <div font-open-sans class="ui-g">
+        <div no-padding-left border-rigth-gray padding-top class="ui-g-6 ui-g left-col">
+            <div margin-top-20 class="ui-g-4">
+                <div class="customer" font-size-14 padding-bottom-sm>Заказчик</div>
+                <div font-size-12 color-gray>
+                    <div padding-bottom-msm>{{project.CustomerName}}</div>
+                    <div padding-bottom-msm *ngIf="project?.CustomerFilialName">Филиал:{{project.CustomerFilialName}}</div>
+                    <div *ngIf="project?.CustomerDepartmentName">Департмент:{{project.CustomerDepartmentName}}</div>
+                </div>
+            </div>
+            <div class="ui-g-8 ui-g">
+                <div margin-top-20 class="ui-g-6">
+                    <div font-size-14 padding-bottom-sm>Менеджер (главный)</div>
+                    <div font-size-12 color-gray>{{project?.CustomerMainManager}}
+                        {{project?.CustomerMainManagerSuranme}}</div>
+                </div>
+                <div margin-top-20 class="ui-g-6" *ngFor="let item of project['ChildManagerCustomer']">
+                    <div font-size-14 padding-bottom-sm>Менеджер</div>
+                    <div font-size-12 color-gray>{{item?.Name}} {{item?.Surname}}</div>
+                </div>
+            </div>
+        </div>
+        <div padding-left margin-top-20 class="ui-g-6 ui-g">
+            <div class="ui-g-4">
+                <div font-size-14 padding-bottom-sm>Клиент</div>
+                <div font-size-12 color-gray>
+                    <div padding-bottom-msm>{{project.ClientName}}</div>
+                    <div padding-bottom-msm *ngIf="project?.ClientFilialName">Филиал:{{project.ClientFilialName}}</div>
+                    <div *ngIf="project?.ClientDepartamentName">Департмент:{{project.ClientDepartamentName}}</div>
+                </div>
+            </div>
+            <div class="ui-g-8 ui-g">
+                <div class="ui-g-6" no-padding-top>
+                    <div font-size-14 padding-bottom-sm>Менеджер (главный)</div>
+                    <div font-size-12 color-gray>{{project?.ClientMainManagerName}}
+                        {{project?.ClientMainManagerSurname}}</div>
+                </div>
+                <div class="ui-g-6" no-padding-top *ngFor="let item of project['ChildManagerClient']">
+                    <div font-size-14 padding-bottom-sm>Менеджер</div>
+                    <div font-size-12 color-gray>{{item?.Name}} {{item?.Surname}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div align-center margin-top-28 font-open-sans class="ui-g projects-information">
+        <div class="ui-g-2">
+            <div padding-bottom-sm font-size-14>Участники</div>
+            <div height-36 font-size-12 color-gray>{{project.CountParticipants}}</div>
+        </div>
+        <div class="ui-g-2">
+            <div padding-bottom-sm font-size-14>Формат проекта</div>
+            <div height-36 font-size-12 color-gray>{{project.FormatProjectName}}</div>
+        </div>
+        <div class="ui-g-2">
+            <div padding-bottom-sm font-size-14>Тип проекта</div>
+            <div height-36 font-size-12 color-gray>{{project.ProjectTypeName}}</div>
+        </div>
+        <div class="ui-g-2">
+            <div padding-bottom-sm font-size-14>Отдел ISG</div>
+            <div height-36 font-size-12 color-gray>{{project?.ProjectDepartmentName}}</div>
+        </div>
+        <div class="ui-g-2 ">
+            <div padding-bottom-sm font-size-14>Тип продажи</div>
+            <div height-36 font-size-12 color-gray> {{project.SaleName}}</div>
+        </div>
+        <div class="ui-g-2">
+            <div padding-bottom-sm font-size-14>задача проекта</div>
+            <div height-36 font-size-12 color-gray>{{project.ProjectTaskName}}</div>
+        </div>
+        <div width-5>
+            <div padding-bottom-sm font-size-14>тендер</div>
+            <div height-36 font-size-12 color-gray>{{tender}}</div>
+        </div>
+    </div>
+
+    <div align-center margin-top-9 font-open-sans class="ui-g projects-information">
+        <div class="ui-g-2">
+            <div height-38 display-flex align-flex-end padding-bottom-sm font-size-14>Дата проекта</div>
+            <div font-size-12 display-flex color-gray height-36>{{project.Projectdate}}</div>
+        </div>
+        <div class="ui-g-2">
+            <div height-38 display-flex align-flex-end padding-bottom-sm font-size-14>Дата запроса</div>
+            <div font-size-12 display-flex color-gray height-36>{{project.RequestDate}}</div>
+        </div>
+        <div class="ui-g-2">
+            <div height-38 display-flex align-flex-end padding-bottom-sm font-size-14>Длительность (час)</div>
+            <div font-size-12 display-flex color-gray height-36>{{project?.ProjectDuration}} часов</div>
+        </div>
+        <div class="ui-g-3">
+            <div height-38 display-flex align-flex-end padding-bottom-sm font-size-14>Дата сдачи предложения</div>
+            <div font-size-12 display-flex color-gray height-36>{{project?.ProjectFinishDate}}</div>
+        </div>
+
+        <div class="ui-g-2">
+            <div height-38 display-flex align-flex-end padding-bottom-sm font-size-14>Цикличность </div>
+            <div font-size-12 display-flex color-gray height-36>{{selectedCyclicalProject}}</div>
+        </div>
+        <div width-5>
+            <div height-38 display-flex align-flex-end padding-bottom-sm font-size-14>follow-up</div>
+            <div font-size-12 display-flex color-gray height-36>{{project.FollowUp}}</div>
+        </div>
+    </div>
+
+    <div font-open-sans color-gray border-bottom-gray class="categories-name">Место проведение</div>
+    <div margin-top-28 font-open-sans class="ui-g projects-information">
+        <div class="ui-g-2">
+            <div padding-bottom-sm font-size-14>Страна</div>
+            <div font-size-12 color-gray>{{project.CountryName}}</div>
+        </div>
+        <div class="ui-g-2">
+            <div padding-bottom-sm font-size-14>Город</div>
+            <div font-size-12 color-gray>{{project.Cityname}}</div>
+        </div>
+        <div class="ui-g-2">
+            <div padding-bottom-sm font-size-14>Зона проведения</div>
+            <div font-size-12 color-gray>{{project.AreaName}}</div>
+        </div>
+        <div class="ui-g-2">
+            <div padding-bottom-sm font-size-14>Индор/ауидор</div>
+            <div font-size-12 color-gray>{{project.IndoorOutdoorName}}</div>
+        </div>
+    </div>
+
+    <div font-open-sans color-gray border-bottom-gray class="categories-name">Бюджет</div>
+    <div margin-top-9 font-open-sans class="ui-g projects-information">
+        <div class="ui-g-2">
+            <div padding-bottom-sm height-36 display-flex align-flex-end font-size-14>Бюджет для клиента</div>
+            <div font-size-12 color-gray>{{project.Budget}}</div>
+        </div>
+        <div class="ui-g-2">
+            <div padding-bottom-sm height-36 display-flex align-flex-end font-size-14>Расходный бюджет</div>
+            <div font-size-12 color-gray>{{project.BudgetForClient}}</div>
+        </div>
+        <div class="ui-g-2">
+            <div padding-bottom-sm height-36 display-flex align-flex-end font-size-14>Способ оплаты</div>
+            <div font-size-12 color-gray>{{project.PayMethodName}}</div>
+        </div>
+    </div>
+
+    <div font-open-sans color-gray border-bottom-gray class="categories-name">Проектная группа</div>
+    <div align-center margin-top-28 font-open-sans class="ui-g patners-grid projects-information">
+        <div class="ui-g-2">
+            <div font-size-14 height-36 display-flex align-center>Sale</div>
+            <div display-flex align-center width-fit>
+                <div border-circle class="ui-g-3 image-partner" *ngIf="project.SaleManagerImage" [ngStyle]="setImage('SaleManagerImage')"></div>
+                <div class="name-partner" width-fit font-size-12 color-gray> {{project.SaleManagerName}}
+                    {{project.SaleManagerSurname}}</div>
+            </div>
+        </div>
+        <div class="ui-g-2">
+            <div font-size-14 height-36 display-flex align-center>PM</div>
+            <div display-flex align-center width-fit>
+                <div border-circle class="ui-g-3 image-partner" *ngIf="project.ManagerProjectImage" [ngStyle]="setImage('ManagerProjectImage')"></div>
+                <div class="name-partner" width-fit font-size-12 color-gray>{{project?.ManagerProjectName}}
+                    {{project?.ManagerProjectSurname}}</div>
+            </div>
+        </div>
+
+        <div *ngFor="let employee of project.Employee" class="ui-g-2">
+            <div font-size-14 height-36 display-flex align-center>{{employee?.PositionName}}</div>
+            <div display-flex align-center width-fit>
+                <div border-circle class="ui-g-3 image-partner" *ngIf="employee.EmployeeImage" [ngStyle]="{'background-image': 'url(https://crm.i-s-group.ru:3000/static/'+employee.EmployeeImage}"></div>
+                <div class="name-partner" width-fit font-size-12 color-gray>{{employee?.EmployeeName}}
+                    {{employee?.EmployeeSurname}}</div>
+            </div>
+        </div>
+
+    </div>
+    <div font-open-sans margin-top-28 padding-left-sm>
+        <div font-size-14 padding-bottom-sm>Cубподрядчики</div>
+        <div *ngFor="let subcontractor of project.Subcontractor" font-size-12 color-gray>{{subcontractor.Surname}}
+            {{subcontractor.Name[0]}}.
+        </div>
+
+    </div>
+
+    <div font-open-sans color-gray border-bottom-gray class="categories-name">Комментарии</div>
+    <div *ngFor="let comments of projectComments" margin-top-28 padding-left-sm font-open-sans class="ui-g projects-information">
+        <div align-center display-flex class="ui-g-1" min-width-fit>
+            <div border-circle class="image-partner" [ngStyle]="{'background-image': 'url(https://crm.i-s-group.ru:3000/static/'+comments.Image,'opacity':'1'}"></div>
+            <div margin-for-name>
+                <p no-margin font-size-14>{{comments.EmployeeSurname}} {{comments.EmployeeName[0]}}.</p>
+                <p no-margin font-size-12 color-gray>{{comments.CreateTime}}</p>
+            </div>
+        </div>
+        <div class="ui-g-9" font-size-12 color-gray>{{comments.Comment}}</div>
+    </div>
+
+    <div padding-left-sm margin-top-28>
+        <p font-size-13 font-open-sans color-gray> Добавить описание</p>
+        <div align-center comment-margin-bottom class="ui-g">
+            <div padding-rigth-sm width-comments>
+                <textarea full-width class="comment" [(ngModel)]="comment" name="comment" placeholder="..."
+                    font-open-sans font-size-12 color-gray></textarea>
+            </div>
+            <div width-5>
+                <button (click)="addComment()" cursor-pointer no-border border-circle display-flex align-center class="send">
+                    <i class="material-icons">
+                        near_me
+                    </i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading [visiblity]="loading"></app-loading>
