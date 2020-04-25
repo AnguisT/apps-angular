@@ -1,0 +1,8 @@
+<div class="xml-modal-wrapper">
+    <imfx-xml-tree
+    #xmlTree
+    [schemaModel]="selectedSchemaModel"
+    [xmlModel]="selectedXmlModel"
+  ></imfx-xml-tree>
+  <div *ngIf="showOverlay" class="modal-overlay"><div class="spinner"></div></div>
+</div>

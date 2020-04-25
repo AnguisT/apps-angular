@@ -1,0 +1,10 @@
+<div class="full-height-block demo-video">
+  <div style="display: flex; flex: 2;">
+    <html-player #video [file]="file" [src]="src"
+                [type]="file.MEDIA_TYPE" [id]="file.ID" style="width: 100%;"
+                [externalDownload]="true"></html-player>
+  </div>
+  <div>
+    <button (click)="initPlayer(65866, 100)">init player</button>
+  </div>
+</div>

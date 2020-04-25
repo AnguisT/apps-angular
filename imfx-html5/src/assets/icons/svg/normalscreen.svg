@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <title>
+    NormalScreen
+  </title>
+  <g fill-rule="evenodd">
+    <path d="M8 13L8 12 4 12 4 14 6 14 6 16 8 16 8 13zM13 12L12 12 12 16 14 16 14 14 16 14 16 12 13 12zM12 7L12 8 16 8 16 6 14 6 14 4 12 4 12 7zM7 8L4 8 4 6 6 6 6 4 8 4 8 8 7 8z"/>
+  </g>
+</svg>

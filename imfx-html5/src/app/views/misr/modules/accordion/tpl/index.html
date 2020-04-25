@@ -1,0 +1,30 @@
+<div class="accordion-group-wrapper" *ngFor="let group of config.options.data.items; let i=index">
+  <span *ngIf="!(group.name=='Media Items' && !group.data.MIS)">
+    <div class="accordion-header-row js-subrow-header "
+         (click)="group.hideme = !group.hideme;contentReady();selectRow($event);">
+      <i *ngIf="!group.hideme" class="icons-down icon"></i>
+      <i *ngIf="group.hideme" class="icons-right icon"></i>
+      {{group.name}}
+    </div>
+    <div class="accordion-item-row js-subrow "
+         [ngClass]="{'pointer':group.name=='Media Items'}"
+         [hidden]="group.hideme"
+         *ngFor="let item of group.props; let j=index"
+         (dblclick)="goToDetail(item.Id, group.name)"
+         (click)="selectRow($event);">
+      <span *ngIf="!(group.name=='Media Items')">
+        <i *ngIf="!item.IsPresent" class="icons-statusred icon status-red"></i>
+        <i *ngIf="item.IsPresent" class="icons-statusgreen icon status-green"></i>
+        <div class="row-item code">{{item.LanguageIsoCode}}</div>
+        <div class="row-item name">{{item.LanguageName}}</div>
+      </span> <span *ngIf="group.name=='Media Items'">
+        <i *ngIf="!item.MatchedMedia" class="icons-statusred icon status-red"></i>
+        <i *ngIf="item.MatchedMedia" class="icons-statusgreen icon status-green"></i>
+        <div class="row-item num">{{item.Id}}</div>
+        <div class="row-item type">{{item.MediaType}}</div>
+        <div class="row-item format">{{item.MediaFormat}}</div>
+        <div class="row-item server">{{item.ServerName}}</div>
+        <div class="row-item pass">{{item.QcPass}}</div>
+      </span> </div>
+  </span>
+</div>

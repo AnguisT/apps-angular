@@ -1,0 +1,4 @@
+<div class="wrapper img-cell media-basket-button" (click)="toggleBasket()" [ngSwitch]="isOrdered()">
+  <i *ngSwitchCase="false" class="icons-addbasket icon"></i>
+  <i *ngSwitchCase="true" class="icons-inbasket icon ordered-basket"></i>
+</div>

@@ -1,0 +1,19 @@
+@import "../../base/styles/theme.scss";
+
+@each $key, $value in $common-themes {
+  .#{$key} {
+    //.sidebar {
+    //  height: calc(100% - 35px);
+    //
+    //  .input-filter {
+    //    width: 100%;
+    //    margin-bottom: 5px;
+    //  }
+    //}
+
+    //.modal-open .modal .modal-content .modal-body div.report-params-item {
+    //  margin: 15px;
+    //}
+  }
+}
+

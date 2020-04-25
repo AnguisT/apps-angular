@@ -1,0 +1,101 @@
+@import "../../../../views/base/styles/theme.scss";
+@each $key, $value in $common-themes {
+  .#{$key} {
+    .angucomplete-dropdown {
+      margin: 0 auto;
+      display: table;
+      position: absolute;
+      z-index: 2;
+      .angucomplete-result-block {
+        display: table-cell;
+        vertical-align: top;
+        border: 1px solid getThemeColor(15, $key);
+        .angucomplete-row {
+          margin: 0 auto;
+          border-bottom: 1px solid getThemeColor(15, $key);
+          padding: 5px;
+          cursor: pointer;
+          padding: 10px 10px 5px 10px;
+          width: 100%;
+          min-width: 250px;
+          position: static;
+        }
+        .angucomplete-episodes-title {
+          text-align: center;
+        }
+        .angucomplete-row-wrapper {
+          width: 100% !important;
+          .angucomplete-entry-title {
+            display: inline;
+            float: left;
+            text-align: left;
+          }
+          .angucomplete-count {
+            display: inline;
+            float: right;
+            width: 90px;
+          }
+          .angucomplete-contributor-info {
+            display: table !important;
+            .image {
+              display: table-cell;
+              margin: 10px;
+              max-width: 70px;
+            }
+            .title {
+              display: table-cell !important;
+              vertical-align: middle;
+              padding: 20px;
+            }
+          }
+          .angucomplete-image {
+            max-width: 400px;
+          }
+        }
+        .angucomplete-row:last-child {
+          border-bottom: none;
+        }
+      }
+      .angucomplete-searching {
+        margin: 15px auto;
+        text-align: center;
+      }
+    }
+    .search-mode {
+      position: absolute !important;
+      top: 0px;
+      border-right: 1px solid #cccccc;
+      padding: .4rem .45rem;
+      cursor: pointer;
+      width: 115px;
+      z-index: 4;
+      color: #999;
+      .close {
+        display: inline-block;
+        float: right;
+        cursor: pointer;
+        margin: 2px 0px 0 10px;
+        font-size: 16px;
+        font-family: monospace;
+      }
+    }
+
+    .search-mode {
+      &.series {
+        width: auto;
+        position: absolute !important;
+        border-right: 1px solid #cccccc;
+        cursor: pointer;
+        z-index: 4;
+        top: 0;
+        padding: .4rem .75rem;
+      }
+    }
+    .series-input {
+      padding-left: 90px;
+    }
+    .contributors-input {
+      padding-left: 125px;
+    }
+  }
+}

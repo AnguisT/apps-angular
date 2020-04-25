@@ -1,0 +1,1040 @@
+{
+  "common": {
+    "lang": "en",
+    "locale": "en-GB",
+    "time_format": "H:i",
+    "date_full_format": "d/m/Y H:i",
+    "date_full_format_datepipe": "dd/MM/yyyy hh:mm",
+    "date_format": "d/m/Y",
+    "date_day_of_week_start": 0,
+    "back_button": "Back",
+    "yes": "Yes",
+    "cancel": "Cancel",
+    "createNew": "New",
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "dayOfWeek": [
+      "Sun",
+      "Mon",
+      "Thu",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat"
+    ],
+    "ok": "OK",
+    "empty": "Empty",
+    "close": "Close",
+    "save": "Save",
+    "apply": "Apply",
+    "select_all": "Select all",
+    "deselect_all": "Deselect all",
+    "search_placeholder": "Search...",
+    "searching_placeholder": "Searching...",
+    "information": "Information",
+    "loadingOoo": "Loading...",
+    "input_name": "Input name",
+    "error_need_value": "Need for value",
+    "add": "Add",
+    "remove": "Remove",
+    "download": "Download",
+    "not_available": "i-mediaflex cannot display this media",
+    "drag_panel_to_layout": "Drag panel to layout",
+    "empty_layout": "Please select components to display",
+    "player_not_available": "Player not available",
+    "view": "View",
+    "mode": "Mode",
+    "no_info": "No Information",
+    "errorUnknown": "Unknow error",
+    "all": "Select all",
+    "total_entries": "Total entries: {{total_entries}}",
+    "error": "Something went wrong, please try again",
+    "reload": "Reload",
+    "open": "Open"
+  },
+  "common_hints": {
+    "empty_hidden": "Show Empty",
+    "hide_empty": "Hide Empty",
+    "facets": "Facets",
+    "clear_facets": "Clear Selection",
+    "filters": "Filters",
+    "adv_search": "Advanced Search",
+    "search": "Search",
+    "view_settings": "View Settings",
+    "thumbs": "Thumbs",
+    "grid": "Grid",
+    "tiles": "Tiles",
+    "info": "Info",
+    "add": "Add",
+    "remove": "Remove",
+    "copy_error": "Copy",
+    "refresh": "Refresh"
+  },
+  "ng2_components": {
+    "ag_grid": {
+      "page": "page",
+      "more": "more",
+      "to": "to",
+      "of": "of",
+      "next": "next",
+      "last": "last",
+      "first": "first",
+      "previous": "prev",
+      "loadingOoo": "Loading...",
+      "selectAll": "Select all",
+      "searchOoo": "Search...",
+      "blanks": "blank...",
+      "filterOoo": "Filter...",
+      "applyFilter": "Apply Filter...",
+      "equals": "Equals",
+      "lessThan": "Less Than",
+      "greaterThan": "Greater Than",
+      "contains": "Contains",
+      "startsWith": "Starts with",
+      "endsWith": "Ends with",
+      "group": "Group",
+      "columns": "Columns",
+      "rowGroupColumns": "Pivot Cols",
+      "rowGroupColumnsEmptyMessage": "Please drag cols to group",
+      "valueColumns": "Value Cols",
+      "pivotMode": "Pivot Mode",
+      "groups": "Groups",
+      "values": "Values",
+      "pivots": "Pivots",
+      "valueColumnsEmptyMessage": "Drag cols to aggregate",
+      "pivotColumnsEmptyMessage": "Drag here to pivot",
+      "noRowsToShow": "No results found",
+      "pinColumn": "Pin Column",
+      "valueAggregation": "Value Agg",
+      "autosizeThiscolumn": "Autosize This column",
+      "autosizeAllColumns": "Autosize All Columns",
+      "groupBy": "Group by",
+      "ungroupBy": "UnGroup by",
+      "resetColumns": "Reset Those Cols",
+      "expandAll": "Open-em-up",
+      "collapseAll": "Close-em-up",
+      "toolPanel": "Tool Panelo",
+      "pinLeft": "Pin <<",
+      "pinRight": "Pin >>",
+      "noPin": "DontPin <>",
+      "sum": "Sum",
+      "min": "Min",
+      "max": "Max",
+      "none": "None",
+      "count": "Count",
+      "average": "Average",
+      "copy": "Copy",
+      "ctrlC": "ctrl n C",
+      "paste": "Paste",
+      "ctrlV": "ctrl n V",
+      "narrowSearch": "The search returned {{resCount}} results, please narrow your search",
+      "select_user": "Select user",
+      "start_type_user": "Please enter username",
+      "select_location": "Select location",
+      "select_taxonomy": "Select value",
+      "select_location_entries": " entries",
+      "start_type_location": "Please enter location name",
+      "start_type_taxonomy": "Please enter value",
+      "tbl_header_user_id": "User ID",
+      "tbl_header_surname": "First Name",
+      "tbl_header_forename": "Last Name",
+      "select_xml_fields": "Select XML Fields",
+      "start_type_xml_field_name": "Please enter field name",
+      "tbl_header_xml_field_schema_name": "Schema",
+      "tbl_header_xml_field_description": "Description",
+      "tbl_header_xml_schemas_not_found": "Schemas not found",
+      "tbl_header_xml_schemas_select_schema": "Select schema",
+      "tbl_header_xml_schemas_SCHEMAIDx": "Custom Metadata",
+      "tbl_header_xml_schemas_SCHEMAID": "XML Schema"
+    }
+  },
+  "base": {
+    "cachemanager": "Cache Manager",
+    "imediaflex_help": "i-mediaflex Help",
+    "logout": "Logout",
+    "basket": "Media Basket ({{ count }})",
+    "go_to_basket": "Go to Basket",
+    "cache_manager": "Cache Manager",
+    "media": "Media",
+    "version": "Version",
+    "carrier": "Carrier",
+    "tags": "Tags",
+    "titles": "Title",
+    "queues": "Queues",
+    "packages": "Packages",
+    "names": "Names",
+    "help": "Help",
+    "workflow": "Workflow",
+    "subtitle_qc": "Subtitle QC",
+    "search": "Search",
+    "simple": "Default",
+    "save": "Save",
+    "clear": "Clear",
+    "or": "OR",
+    "selectOoo": "Select...",
+    "package_search": "Package Search",
+    "create_package_group": "Create Package Group",
+    "package_configurator": "Package Configurator",
+    "rights_manager": "Rights Manager",
+    "rights_package_configurator": "Rights Package Configurator",
+    "productions": "Productions",
+    "new_production": "New Production",
+    "production_search": "Production Search",
+    "production_manager": "Production Manager",
+    "my_productions": "My Productions",
+    "made_items_search": "Made Items Search",
+    "apps": "Apps",
+    "misr": "MiSR",
+    "system": "System",
+    "queue_manager": "Queue Manager",
+    "system_monitor": "System Monitor",
+    "install_to_desktop": "Install To Desktop",
+    "user_preferences": "User Preferences",
+    "system_configuration": "System Configuration",
+    "events_manager": "Events Manager",
+    "events-manager": "Events Manager",
+    "change_password": "Change Password",
+    "test_page": "Test Page",
+    "media_upload": "Media Upload",
+    "mapping": "Mapping",
+    "profile": {
+      "hi_with_username": "{{username}}",
+      "to_profile": "Profile"
+    },
+    "dashboard": "Dashboard",
+    "reports": "Reports",
+    "mediaproxy-logplayer": "LogPlayer",
+    "tasks": "Tasks",
+    "tasks_my": "My Tasks",
+      "acquisitions": "Acquisitions"
+  },
+  "suggestions": {
+    "results": "Results",
+    "series": "Series",
+    "contributors": "Contributors",
+    "sresult": "result",
+    "sresults": "results"
+  },
+  "player": {
+    "start": "Start",
+    "end": "End",
+    "one_frame_back": "1 frame backward",
+    "one_second_back": "1 sec backward",
+    "one_frame_forward": "1 frame forward",
+    "one_second_forward": "1 sec forward",
+    "ss_not_supported": "Sorry, your browser does not support smooth streaming video format",
+    "hls_not_supported": "Sorry, your browser does not support HLS streaming video format",
+    "dash_not_supported": "Sorry, your browser does not support Dash video format",
+    "cors_or_network_error": "Can not load metadata: please check your network connection and CORS policy",
+    "network_error": "Can not load metadata: please check your network connection",
+    "fullscreen": "Fullscreen",
+    "non_fullscreen": "Minimize",
+    "cinemamode": "Cinema Mode",
+    "non_cinemamode": "Minimize",
+    "audiotracks": "Audio Tracks",
+    "play": "Play",
+    "pause": "Pause",
+    "closed_captions": "Timed text",
+    "closed_captions_off": "Timed text off",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "repeat": "Repeat Media",
+    "overlay": "Overlay"
+  },
+  "basket": {
+    "title": "Media Basket",
+    "order": "Media Order",
+    "select_preset": "Please select a preset",
+    "message": "Message",
+    "place_order": "Place Order",
+    "placing_order_message": "We are placing the order...",
+    "success_message": "Order placed successfully",
+    "error_message": "An error occurred",
+    "choose_preset": "Choose a preset...",
+    "remove_all": "Remove All",
+    "remove_selected": "Remove Selected",
+    "xml_not_valid": "XML not valid"
+  },
+  "settings_group": {
+    "title": "Settings Groups",
+    "name_column": "Name",
+    "description_column": "Description",
+    "default_search": "Default search",
+    "default": "Defaults",
+    "start_search": "Search Screen",
+    "search_by_fileds": "Search By Fields",
+    "facets": "Facets",
+    "item_layout": "Item Layout",
+    "details_layout": "Details Layout",
+    "remove_success": "Settings group removed successfully",
+      "empty_name_error": "Field \"Name\" can't be empty",
+    "save_success": "Settings group saved successfully",
+    "save_error": "An error occurred, please try again later",
+    "modal_remove_conformation": "Are you sure want to delete \"{{groupName}}\" settings group?",
+    "search_types": {
+      "simple": "Simplified",
+      "media": "Media",
+      "version": "Version",
+      "titles": "Title",
+      "carrier": "Carrier"
+    },
+    "select_default_search": "Select Default Search",
+    "select_logo": "Select Logo For Top Menu",
+    "screen_logo": "No Search Screen Logo",
+    "error": "Something went wrong, please try again",
+    "repeat": "Repeat"
+  },
+  "global_settings": {
+    "title": "Global settings",
+    "save_success": "Widget saved",
+    "remove_success": "Widget removed",
+    "modal_remove_conformation": "Are you sure want to delete \"{{friendlyName}}\" widget?",
+    "grafana": "Analytics",
+    "friendly_name": "Friendly Name",
+    "embed_data": "Embedded Data",
+    "error_empty_fn": "Empty Friendly Name",
+    "error_empty_em": "Empty Embedded Data"
+  },
+  "simplified_settings": {
+    "add_label": "Add Label",
+    "save": "Save",
+    "reset": "Reset",
+    "edit": "Edit",
+    "no_data": "No data",
+    "setup_fields": "Fields"
+  },
+  "xml": {
+    "select_value": "Please select a value"
+  },
+  "chart": {
+    "btn_title": "Open chart"
+  },
+  "profile": {
+    "overview": {
+      "title": "Overview",
+      "user_label": "User name:",
+      "image_label": "Avatar:",
+      "email_label": "Email:",
+      "language_label": "Language:"
+    },
+    "security": {
+      "title": "Security",
+      "change_password": {
+        "title": "Change password",
+        "current_pass": "Current password",
+        "new_pass": "New password",
+        "repeat_pass": "Repeat password",
+        "button": "Change"
+      }
+    },
+    "colorschemas": {
+      "title": "Themes"
+    },
+    "menu": {
+      "overview": "Overview",
+      "security": "Security",
+      "color_schemas": "Themes",
+      "settings": "Settings"
+    },
+    "defaultpage": {
+      "title": "Start page"
+    }
+  },
+  "login": {
+    "prompt": "Please sign in",
+    "username": "Username",
+    "password": "Password",
+    "sign_in": "Sign in",
+    "rememberme": "Remember me",
+    "forgot": "Forgot Password?",
+    "capsLockNotificationText": "Caps Lock is On",
+    "errorNetwork": "Login failed: Please check your network connection",
+    "errorUnknown": "Unknown error"
+  },
+  "table_search_dropdown": {
+    "controls": {
+      "settings": "Settings",
+      "save_view": "Save View",
+      "new_view": "New View",
+      "save_view_as": "Save View As...",
+      "save_global_view_as": "Save Global View as...",
+      "save_as_default_view": "Save as Default View",
+      "delete_view": "Delete View",
+      "reset_view": "Reset View",
+      "setup_columns": "Setup Columns",
+      "autosize_columns": "Autosize Columns",
+      "export_to_file": "Export Search Results"
+    }
+  },
+  "simplified": {
+    "title": "Simple search",
+    "facets_header": "Refine",
+    "clear_facets": "Clear Selection",
+    "show_more": "Show more",
+    "recent": "Recent Media",
+    "remove_from_basket": "Remove from Basket",
+    "add_to_basket": "Add to Basket",
+    "more_details": "More Details ...",
+    "no_results": "No results found",
+    "field_setup": "Field setup",
+    "error": "Something went wrong, please try again",
+    "repeat": "Repeat"
+  },
+  "tabs": {
+    "dropdown_default": "Please select a value",
+    "metadata_id": "Metadata ID"
+  },
+  "misr": {
+    "title": "MiSR",
+    "table": {
+      "dropdown": {
+      "active_wf": "Active Workflows",
+      "raise_wf": "Raise Workflow",
+        "row": {
+          "raise_prev_wf": "Raise Preview Workflow"
+        }
+      }
+    }
+  },
+  "system-config": {
+    "title": "System Config",
+    "xml": {
+      "title": "XML Schemas",
+      "empty": "XML Schema is empty"
+    }
+  },
+  "queue": {
+    "title": "Queue Manager",
+    "error": "Something went wrong, please try again",
+    "repeat": "Repeat",
+    "params": {
+      "show_completed": "Show Completed",
+      "show_error": "Show Error",
+      "select_all": "Select All"
+    },
+    "table": {
+      "dropdown": {
+        "row": {
+          "set_priority": "Set priority",
+          "move_to_the_beginning": "Move to the beginning",
+          "move_to_the_end": "Move to the end",
+          "copy_details": "Copy details to clipboard"
+        }
+      }
+    },
+    "auto_refresh_queue": "Auto refresh"
+  },
+  "media": {
+    "title": "Media Search",
+    "small_title": "Media",
+    "arc_asset_details": "Arc Asset Details",
+    "detail": "Details",
+    "facets": "Facets",
+    "wizard": {
+      "title": "Select Media",
+      "next": "Next"
+    },
+    "table": {
+      "thumb": {
+        "button": "Thumb"
+      },
+      "search": {
+        "button": "Search"
+      },
+      "dropdown": {
+        "row": {
+          "add_to_basket": "Add to Basket",
+          "remove_from_basket": "Remove from Basket",
+          "media_details": "Media Details",
+          "rw_wizard": "Raise Workflow",
+          "media_logger": "Media Logger",
+          "request_browse_copy": "Request Browse copy",
+          "open_in_rce": "Open in RCE",
+          "change_status": "Change status",
+          "clip_editor": "Clip Editor"
+        }
+      }
+    }
+  },
+  "version": {
+    "title": "Version Search",
+    "small_title": "Version",
+    "arc_asset_details": "Arc Asset Details",
+    "detail": "Details",
+    "facets": "Facets",
+    "wizard": {
+      "title": "Select Version",
+      "audio": "Audio",
+      "video": "Video",
+      "usage": "Usage",
+      "digital_media_format": "Digital Media Format",
+      "next": "Next",
+      "apply": "Apply",
+      "priority": {
+        "success": "Priority was changed",
+        "error": "Error on change priority"
+      }
+    },
+    "table": {
+      "thumb": {
+        "button": "Thumb"
+      },
+      "search": {
+        "button": "Search"
+      },
+      "dropdown": {
+        "row": {
+          "add_to_basket": "Add to Basket",
+          "remove_from_basket": "Remove from Basket",
+          "media_details": "Media Details",
+          "rw_wizard": "Raise Workflow",
+          "request_browse_copy": "Request Browse copy",
+          "open_in_rce": "Open in RCE",
+          "change_status": "Change status",
+          "upload": "Upload",
+          "multiupload": "Multi Upload",
+          "clip_editor": "Clip Editor"
+        }
+      }
+    }
+  },
+  "carrier": {
+    "title": "Carrier Search",
+    "arc_asset_details": "Arc Asset Details",
+    "detail": "Details",
+    "facets": "Facets",
+    "table": {
+      "thumb": {
+        "button": "Thumb"
+      },
+      "search": {
+        "button": "Search"
+      },
+      "dropdown": {
+        "row": {
+          "add_to_basket": "Add to Basket",
+          "remove_from_basket": "Remove from Basket",
+          "media_details": "Media Details",
+          "request_browse_copy": "Request Browse copy",
+          "open_in_rce": "Open in RCE",
+          "change_status": "Change status"
+        }
+      }
+    }
+  },
+  "titles": {
+    "title": "Titles Search",
+    "arc_asset_details": "Arc Asset Details",
+    "detail": "Details",
+    "facets": "Facets",
+    "table": {
+      "thumb": {
+        "button": "Thumb"
+      },
+      "search": {
+        "button": "Search"
+      },
+      "dropdown": {
+        "row": {
+          "add_to_basket": "Add to Basket",
+          "remove_from_basket": "Remove from Basket",
+          "media_details": "Media Details",
+          "request_browse_copy": "Request Browse copy",
+          "open_in_rce": "Open in RCE",
+          "change_status": "Change status"
+        }
+      }
+    },
+    "display_views_mode": {
+      "tvm": "Title Version Media",
+      "tv": "Title Version"
+    }
+  },
+  "workflow": {
+    "title": "Workflow",
+    "schedules": "Schedules",
+    "arc_asset_details": "Arc Asset Details",
+    "detail": "Details",
+    "facets": "Facets",
+    "collapse_all": "Collapse All",
+    "expand_all": "Expand All",
+    "success_assign": "Successfully assigned",
+    "error_assign": "Failed assigned",
+    "appointments": {
+      "title": "Job Schedule Drag & Drop Action"
+    },
+    "table": {
+      "thumb": {
+        "button": "Thumb"
+      },
+      "search": {
+        "button": "Search"
+      },
+      "dropdown": {
+        "row": {
+          "add_to_basket": "Add to Basket",
+          "remove_from_basket": "Remove from Basket",
+          "media_details": "Media Details",
+          "request_browse_copy": "Request Browse copy",
+          "open_in_rce": "Open in RCE",
+          "change_status": "Change status",
+          "delete": "Delete"
+        }
+      }
+    },
+    "topPanel": {
+      "wizard": {
+        "title": "Wizard",
+        "priority": {
+          "title": "Change priority",
+          "set": "Set priority",
+          "low": "Low",
+          "normal":"Normal",
+          "high": "High",
+          "immediate": "Immediate",
+          "step1": "Step 1",
+          "finished": "Finished"
+        },
+        "abort": {
+          "title": "Restart",
+          "reason": "Reason",
+          "step1": "Step 1",
+          "finished": "Finished"
+        },
+        "update_child": "Update Child"
+      },
+      "change_priority": "Change priority",
+      "abort": "Restart"
+    },
+    "details": {
+      "media": "Source media",
+      "mediainfo": {
+        "mediatype": "Media Format",
+        "aspectratio": "Aspect Ratio",
+        "tvstandart": "TV Standard",
+        "usage": "Usage",
+        "itemtype": "Item Type",
+        "workflow": "Workflow",
+        "notes": "Notes",
+        "certification": "Certification",
+        "afd": "AFD"
+      }
+    },
+    "assessment": "Simple Assessment"
+  },
+  "tasks": {
+      "success_assign": "Successfully assigned",
+      "error_assign": "Failed assigned"
+  },
+  "subtitle_qc": {
+    "title": "Subtitle QC",
+    "pause": "Pause",
+    "start": "Start",
+    "resume": "Resume",
+    "pending": "Pending",
+    "abort": "Restart",
+    "complete": "Complete"
+  },
+  "details_item": {
+    "check_network": "Check your network connection",
+    "server_not_work": "Internal Server Error",
+    "media_item_not_found": "Media item not found",
+    "document_not_found": "Document not found",
+    "loading_subtitles": "Timed Text loading...",
+    "subtitles_not_found": "Timed Text not found",
+    "select_item": "Select item please",
+    "select_one_item_only": "{{countSelectedRows}} items selected "
+  },
+  "media_details": {
+    "title": "Media",
+    "edit_som_eom": "Edit SOM/EOM",
+    "change_status": "Change Status",
+    "item_detail": "Media Item Detail",
+    "data": "Metadata",
+    "media": "Media",
+    "player": "Player",
+    "media_list": "Media Items",
+    "actions_button": "Actions",
+    "tabs": {
+      "mMediaTagging": "Locators",
+      "mEventsActions": "Events/Actions",
+      "mAttachements": "Attachments",
+      "mAssocMedia": "Assoc Media",
+      "mHistory": "History",
+      "mSegmentsAudioTracks": "Segments",
+      "mAudioTracks": "Audio Tracks",
+      "mNotes": "Notes",
+      "mMetadata": "Custom Metadata",
+      "mTasksReports": "Reports",
+      "mMisr": "MiSR",
+      "mVideoInfo": "Timeline",
+      "mSubtitlesGrid": "Timed text",
+      "mAI": "AI"
+    }
+  },
+  "version_details": {
+    "title": "Version",
+    "item_detail": "Version Item Detail",
+    "data": "Metadata",
+    "media": "Media",
+    "player": "Player",
+    "tabs": {
+      "vMedia": "Media",
+      "vSegmentsAudioTracks": "Segments",
+      "vAudioTracks": "Audio Tracks",
+      "vNotes": "Notes",
+      "vAdditionalInfo": "Additional Info",
+      "vRights": "Rights",
+      "mMetadata": "Custom Metadata",
+      "vImfPackage": "IMF Package"
+    }
+  },
+  "carrier_details": {
+    "title": "Carrier",
+    "item_detail": "Carrier Item Detail",
+    "data": "Metadata",
+    "media": "Media",
+    "player": "Player",
+    "tabs": {
+      "cNotes": "Notes",
+      "cMetadata": "Custom Metadata",
+      "cHistory": "History"
+    }
+  },
+  "title_details": {
+    "title": "Title Details",
+    "data": "Metadata",
+    "media": "Media",
+    "player": "Player",
+    "tabs": {
+      "mNotes": "Notes"
+    }
+  },
+  "advanced": {
+    "advanced": "ADVANCED",
+    "advanced_search": "Advanced",
+    "add_group": "Add Filter",
+    "remove_criteria": "Remove this criteria",
+    "remove_group": "Remove this group",
+    "select_advanced": "Saved searches",
+    "resent_searches": "RECENT SEARCHES",
+    "recent_items1": "items",
+    "recent_items": "items",
+    "recent_item": "item",
+    "error": "Something went wrong, please try again",
+    "repeat": "Repeat",
+    "repeat_clear": "Clear",
+    "add_criteria": "Add Criteria",
+    "query_builder_btn": "Query builder",
+    "query_example_btn": "Query by example",
+    "modal_name_for_search": "Please enter search name",
+    "modal_name_for_search_placeholder": "e.g 'My saved search'",
+    "modal_remove_saved_search_conformation": "Do you want to delete saved search \"{{ searchName }}\" ?",
+    "modal_need_name_for_search": "Need name for search",
+    "saved_search_success_save": "Search successfully saved",
+    "saved_search_success_removed": "Search successfully removed",
+    "not_selected_search_for_save": "Search item for save not selected"
+  },
+  "logout_modal_module": {
+    "title_modal": "Session expiring",
+    "sub_title_modal": "The session comes to an end in {{ timeLeft }} seconds",
+    "count_down_to_logout": " seconds before the end of session",
+    "description": "Session will be ended because inaction is revealed on this page",
+    "continue": "Continue session",
+    "logout": "Logout"
+  },
+  "views": {
+    "view_name_exist": "The view with such name already exists",
+    "view_name_is_empty": "View name is empty",
+    "view_columns_is_empty": "No selected columns",
+    "enter_view": "Please enter new view name:",
+    "new_name_view": "New Name",
+    "save_view": "Save View",
+    "global_save_view": "Save Global View",
+    "success_save": "View has been saved successfully.",
+    "global_success_save": "Global view has been saved successfully.",
+    "error_save": "An error occurred.",
+    "default_success": "Default view successfully set.",
+    "delete_confirm": "Are you sure you want to delete the current view?",
+    "as_default_confirm": "Are you sure you want to set current view as default?",
+    "delete_success": "View has been deleted successfully.",
+    "select_view": "Select view",
+    "apply": "Apply",
+    "apply_and_save": "Apply & Save",
+    "cancel": "Cancel",
+    "select_all": "Select All",
+    "deselect_all": "Deselect All"
+  },
+  "columns_modal": {
+    "header": "Show/Hide Columns"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "no-settings": "No allowed settings",
+    "boardName": "Title",
+    "showChartButtons": "Show buttons",
+    "selectedChartType": "Chart type",
+    "themeNames": "Themes",
+    "chartAxisNames": "Axis names",
+    "chart": "Chart",
+    "savedSearch": "Saved search",
+    "workflows": "Workflows",
+    "grafana": "Analytics",
+    "targetWidget": "Widget",
+    "autoRefresh": "Auto refresh",
+    "showedInterval": "Shown interval",
+    "boards_header": "Widgets",
+    "drag_widget": "Drag widget into dashboard",
+    "dropdown": {
+      "line": "Line",
+      "bar": "Bar",
+      "radar": "Radar",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "error": "An error occurred, please try again later"
+  },
+  "media_logger": {
+    "title": "Media Logger",
+    "timeline": "Locator Timeline",
+    "videoInfo": "Timeline",
+    "tagging": "Locators",
+    "data": "Metadata",
+    "media": "Media",
+    "logger_not_available": "Logger not available",
+    "taxonomy": "Taxonomy",
+    "success_save": "Logging saved successfully",
+    "error_save": "An error occurred"
+  },
+  "simple_assessment": {
+    "title": "Assessment",
+    "timeline": "Locator Timeline",
+    "audiotracks": "Audio Tracks",
+    "videoInfo": "Timeline",
+    "tagging": "Locators",
+    "data": "Metadata",
+    "jobdata": "Job Metadata",
+    "media": "Media",
+    "media_list": "Media Items",
+    "metadata": "Custom Metadata",
+    "subtitles": "Timed Text",
+    "media_info": "Media Info",
+    "notes": "Task Notes",
+    "events": "Events / Actions",
+    "history_button": "History",
+    "save_button": "Save",
+    "add_event": "Add Event",
+    "add_segment": "Add Segment",
+    "success_save": "Assessment has been saved successfully",
+    "error_save": "An error occurred.",
+    "invalid_save": "Data for saving is invalid.",
+    "set_in": "Set In",
+    "set_out": "Set Out",
+    "ai": "AI",
+    "add_track": "Add track",
+    "audio_files": "Related Audio",
+    "accepted": "Accepted",
+    "rejected": "Rejected",
+    "not_set": "None"
+  },
+  "media_logger_job": {
+    "title": "Media Logger Job",
+    "logger_not_available": "Logger not available"
+  },
+  "modal": {
+    "titles": {
+      "error": "Error",
+      "success": "Success",
+      "confirm": "Confirmation",
+      "prompt": "Prompt",
+      "warning": "Warning"
+    }
+  },
+  "upload": {
+    "modal_title": "Media Upload",
+    "select_local_file": "Local",
+    "select_remote_file": "Remote",
+    "filename": "File",
+    "workflow": "Workflow",
+    "accelerated": "Accelerated",
+    "title": "Version",
+    "upload": "Upload",
+    "start": "Upload has started",
+    "error": "Upload has error",
+    "notes": "Notes",
+    "select_file": "Select file",
+    "upload_in_process": "Uploading files",
+    "list_of_files": "List of files",
+    "error_ext": "File Type not configured please contact your System Administrator",
+    "succeed_file_upload": "Succeed file upload",
+    "failed_file_upload": "Failed file upload",
+    "delete_completed": "Clear completed",
+    "mb": "Mb",
+    "version_title": "Select version",
+    "error_uploading": "Uploading error",
+    "completed": "Upload Complete",
+    "upload_placeholder": "Click or drop files here",
+    "queue_state_success": "Success",
+    "queue_state_error": "Error",
+    "queue_state_warning": "Warning",
+    "queue_state_progress": "In Progress",
+    "queue_state_wait": "Wait",
+    "no_uploads_in_progress": "No uploads in progress",
+    "drop_file_for_upload": "Drop files for upload",
+    "error_creating_workflow": "Error creating workflow",
+    "open_created_media": "View Media",
+    "open_created_workflow": "View Job {{jobRef}}",
+    "next": "Next",
+    "list_upload_items": "List of files to upload",
+    "select_files_fo_upload": "Select and Associate",
+    "set_params": "Set Parameters",
+    "version_placeholder": "Click here to select version",
+    "empty_name": "Filename is empty",
+    "invalid_name": "Filename is incorrect"
+  },
+  "lookups": {
+    "mediatype": "Media Type",
+    "aspectratio": "Aspect Ratio",
+    "tvstandart": "TV Standard",
+    "usage": "Usage",
+    "itemtype": "Item Type",
+    "workflow": "Workflow"
+  },
+  "viewers": {
+    "full_display_mode_enable": "Maximize",
+    "full_display_mode_disable": "Minimize",
+    "preview": "Preview"
+  },
+  "reports": {
+    "title": "Reports",
+    "filter": "Filter",
+    "preview": "Preview",
+    "select_params": "Select parameters",
+    "error": "Something went wrong, please try again"
+  },
+  "rce": {
+    "title": "Clip Editor",
+    "timeline": "Timeline",
+      "timeline_eom_isnull": "Media duration is not available. Using file duration instead.",
+    "timeline_preview": "Timeline Preview",
+    "no_timline_text": "Timeline component is missing! Please add it to the layout",
+    "invalid_file": "File is invalid! Please select another file"
+  },
+  "rwwizard": {
+    "title": "Raise workflow wizard",
+    "not_found": "Nothing found on your request",
+    "filter": "Filter"
+  },
+  "saved": {
+    "save_success": "Parameters of search successfully saved",
+    "save_error": "Parameters of search not saved"
+  },
+  "export": {
+    "title": "Export Search Results",
+    "all_pages": "All Pages",
+    "current_page": "Current Page",
+    "success": "Report successfully created",
+    "download": "Download",
+    "open_in_viewer": "Open in browser",
+    "prev": "Back",
+    "generate": "Start",
+    "empty_params": "Export not available for empty criteria",
+    "empty_results": "Export not available for empty results",
+    "select_format": "1. Select Format",
+    "finished": "2. Finished"
+  },
+  "slick_grid": {
+    "not_have_column": "No columns. Please select new columns in the settings",
+    "error": "An error occurred, please try again later",
+    "repeat": "Repeat"
+  },
+  "layout-manager": {
+    "main": "Layout",
+    "open": "Open layout",
+    "save": "Save layout",
+    "saveas": "Save layout as",
+    "saveglobal": "Save layout as global",
+    "reset": "Reset layout",
+    "no-results": "No layouts",
+    "placeholder": "Layouts filter",
+    "default": "Default",
+    "shared": "Shared",
+    "new-name": "Layout name"
+  },
+  "ai": {
+    "speech": "Speech-to-text",
+    "tags": "Tags & descriptions",
+    "visual": "Visual text (OCR)",
+    "people": "People",
+    "logos": "Logos",
+    "adult": "Adult content"
+  },
+  "mapping": {
+    "bindSuccess": "Attached",
+    "bindError": "Attach error",
+    "unbindSuccess": "Unattached",
+    "unbindError": "Unattach error",
+    "unbind": "Unattach Media"
+  },
+  "acquisitions": {
+    "edit_acq": "Edit Acquisition",
+    "edit_article": "Edit Article"
+  },
+    "contacts": {
+        "new_contact": "New Contact",
+        "labels": {
+            "fname": "First Name",
+            "oname": "Othernames",
+            "sname": "Surname",
+            "qualifier": "Qualifier",
+            "email": "Email",
+            "site": "Web Site",
+            "phone": "Phone",
+            "fax": "FAX",
+            "mphone": "Mobile",
+            "addr": "Address",
+            "city": "City",
+            "state": "State",
+            "country": "Country",
+            "pcode": "Postcode",
+            "daddr": "Delivery FAO",
+            "dcity": "Delivery City",
+            "dstate": "State",
+            "dcountry": "Country",
+            "dpcode": "Postcode",
+            "dlvr": "Delivery"
+        }
+    },
+    "cachemanager": {
+        "table": {
+            "dropdown": {
+                "lock_item_in_cache": "Lock Item in Cache",
+                "unlock_item_in_cache": "Unlock Item in Cache",
+                "force_item_in_cache": "Force Item in Cache",
+                "unforce_item_in_cache": "Unforce Item in Cache",
+                "copy_to_clipboard": "Copy to Clipboard",
+                "reset_checks": "Reset Checks"
+            }
+        }
+    },
+    "names": {
+        "addmodal": {
+            "title": "Add Name"
+        },
+        "editmodal": {
+            "title": "Edit Name"
+        }
+    }
+}

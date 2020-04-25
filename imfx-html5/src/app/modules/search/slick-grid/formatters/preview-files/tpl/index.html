@@ -1,0 +1,5 @@
+<pdf-viewer *ngIf="checkType('pdf')" [config]="params"></pdf-viewer>
+<button class="img-preview-btn" *ngIf="checkType('img')" tmdfullimage [attr.data-src]="params.url">
+  {{'viewers.preview' | translate }}
+  <i class="icon icons-hide-empty"></i>
+</button>

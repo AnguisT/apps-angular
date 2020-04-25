@@ -1,0 +1,60 @@
+<div class="full-height full-width login-screen" style="display: table;">
+    <div style="display: table-cell; vertical-align: middle">
+        <div class="dialog-signin">
+            <h2 class="test-login-prompt">
+                {{ 'login.prompt' | translate }}
+            </h2>
+
+            <form class="form-grid test-login-form" [formGroup]="loginForm" novalidate
+                  (submit)="login($event, loginForm.value, loginForm.valid)" autocomplete="on">
+                <div *ngIf="isError" class="error" role="alert">
+                    {{errorText}}
+                </div>
+                <div class="form-grid-row">
+                    <label [attr.for]="username" class="">
+                        {{ 'login.username' | translate }}
+                    </label>
+                    <div>
+                        <input class="field" formControlName="username" required autofocus
+                               id="login-username">
+                    </div>
+                </div>
+                <div class="form-grid-row">
+                    <label [attr.for]="password" type="password" class="">
+                        {{ 'login.password' | translate }}
+                    </label>
+                    <div class="form-grid-group">
+                        <input class="field" type="password" formControlName="password" required
+                               id="login-password">
+                        <div *ngIf="capsLockNotification" class="error" role="alert" style="padding-right: 10px;">
+                            {{ 'login.capsLockNotificationText' | translate }}
+                        </div>
+                        <!--<div class="row-actions">-->
+                        <!--<label [attr.for]="rememberme" type="checkbox" class="">-->
+                        <!--<input type="checkbox" formControlName="rememberme" class="" id="remember-me">{{ 'login.rememberme' | translate }}-->
+                        <!--</label>-->
+                        <!--</div>-->
+                        <button class="primary full-width test-login-submit" type="submit"
+                                [disabled]="(disabledLoginBtn|| !loginForm.valid)" id="login-submit">
+                          <div *ngIf="loading" class="loader-login icon" style="display: inline-block;"></div>
+                          {{ 'login.sign_in' | translate }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+          <div *ngIf="autologin" class="autologin-overlay">
+            <h2>Auto login in progress....</h2>
+          </div>
+        </div>
+    </div>
+</div>
+<!--<span style="background-color: #ffffff; border-radius: 10px; padding: 10px; color: black">-->
+<!--</span>-->
+<footer>
+    <p>Copyright © 2015-{{currentYear}} TMD. All rights reserved
+      <br>Build: {{appVersion}}</p>
+    <nav>
+        <imfx-language-switcher [asLink]="true"></imfx-language-switcher>
+    </nav>
+    <p></p>
+</footer>

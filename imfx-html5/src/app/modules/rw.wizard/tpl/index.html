@@ -1,0 +1,70 @@
+<div class="rw-wizzard">
+    <div class="status-row">
+        <div class="step first" [ngClass]="{'done': currentStep >= 1, 'current': currentStep == 1}">
+            <span class="step-title">1. Select Preset</span>
+            <span class="step-circle"></span>
+            <span class="step-line"></span>
+        </div>
+        <div class="step second" [ngClass]="{'done': currentStep >= 2, 'current': currentStep == 2}">
+            <span class="step-title">2. Configure</span>
+            <span class="step-circle"></span>
+            <span class="step-line"></span>
+        </div>
+        <div class="step third" [ngClass]="{'done': currentStep >= 3, 'last': currentStep == 3}">
+            <span class="step-title">3. Results</span>
+            <span class="step-circle"></span>
+        </div>
+    </div>
+    <div class="wizard-steps">
+        <div class="step-content preset" *ngIf="currentStep == 1">
+            <input type="text" class="filter-field" (keyup)="filterPresets($event)"
+                   placeholder="{{'rwwizard.filter' | translate}}"/>
+            <div class="presets-wrapper">
+                <div class="preset-item" *ngFor="let item of visiblePresets; let i = index"
+                     [ngClass]="{'selected': selectedPreset && selectedPreset.Id == item.Id}"
+                     (click)="selectPreset(item)">
+                    {{item.Name}}
+                </div>
+                <div class="no-items" *ngIf="visiblePresets && visiblePresets.length == 0">
+                    {{"rwwizard.not_found" | translate}}
+                </div>
+            </div>
+        </div>
+        <div class="step-content xml" *ngIf="currentStep == 2">
+            <div class="xml-wrapper">
+                <imfx-xml-tree
+                        #xmlTree
+                        *ngIf="this.selectedPreset && this.selectedPreset.SchemaId"
+                        [schemaModel]="selectedSchemaModel"
+                        [xmlModel]="selectedXmlModel"
+                ></imfx-xml-tree>
+            </div>
+        </div>
+        <div class="step-content result" *ngIf="currentStep == 3">
+            <div class="result-wrapper">
+                <i class="result-icon icon "
+                   [ngClass]="{'icons-statusgreen ': successPlacement, 'icons-statusred': !successPlacement}"></i>
+                {{resultsMessage}} <span class="job-link" *ngIf="resultJob != null && successPlacement"
+                                         (click)="goToJobDetailFromWizard()">{{resultJobRef}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="wizard-overlay" [ngClass]="{'showed': overlayShowed, 'active-overlay': overlayActive}">
+        <div class="spinner large"></div>
+    </div>
+</div>
+
+<ng-template #modalFooterTemplate>
+    <div class="modal-footer">
+        <div class="buttons" *ngIf="currentStep == 1 && selectedPreset != null">
+            <button class="next" (click)="goToNextStep()">Next</button>
+        </div>
+        <div class="buttons" *ngIf="currentStep == 2 && selectedPreset != null">
+            <button class="back" (click)="goToPreviousStep()">Back</button>
+            <button class="next" (click)="goToNextStep()">Next</button>
+        </div>
+        <div class="buttons" *ngIf="currentStep == 3 && selectedPreset != null && !successPlacement">
+            <button class="back" (click)="goToPreviousStep()">Back</button>
+        </div>
+    </div>
+</ng-template>

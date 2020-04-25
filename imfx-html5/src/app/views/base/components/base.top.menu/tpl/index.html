@@ -1,0 +1,144 @@
+<script src="../base.top.menu.component.ts"></script>
+<ul style="height: inherit">
+    <li style="margin-right: 12px;">
+        <ul>
+            <li class="active">
+                <a *ngIf="activeItem.m">
+                    {{(this.routerInstance.url.substr(1, this.routerInstance.url.length).indexOf('/') > -1
+                    ? "base." + this.routerInstance.url
+                    .substr(1, this.routerInstance.url.substr(1).indexOf('/')) === "base.search" ||
+                    "base." + this.routerInstance.url
+                    .substr(1, this.routerInstance.url.substr(1).indexOf('/')) === "base.simple"
+                    ? "base.simple" : 'base.' + this.routerInstance.url
+                    .substr(1, this.routerInstance.url.substr(1).indexOf('/'))
+                    : this.routerInstance.url.substr(1) == "search" ? "base.simple" : "base." + this.routerInstance.url.substr(1)) | translate }}
+                </a>
+                <a *ngIf="activeItem.w">
+          <span *ngIf="this.routerInstance.url.indexOf('subtitle-qc') > -1">
+            {{"base.subtitle_qc" | translate }}
+          </span>
+                    <span *ngIf="this.routerInstance.url.indexOf('subtitle-qc') == -1">
+          {{
+            (routerInstance.url.substr(1, routerInstance.url.length).indexOf('/') > -1 ?
+    (this.routerInstance.url.substr(this.routerInstance.url.substr(1).indexOf('/')+2).length==2?
+        "base." + this.routerInstance.url.substr(1, this.routerInstance.url.substr(1).indexOf('/')) + '_' + this.routerInstance.url.substr(this.routerInstance.url.substr(1).indexOf('/')+2):
+        "base." + this.routerInstance.url.substr(1, this.routerInstance.url.substr(1).indexOf('/'))) :
+    "base." + this.routerInstance.url.substr(1)) | translate
+            }}
+          </span>
+                </a>
+                <a *ngIf="activeItem.a">
+                    {{(routerInstance.url.substr(1, routerInstance.url.length).indexOf('/') > -1 ? "base." +
+                    this.routerInstance.url.substr(1, this.routerInstance.url.substr(1).indexOf('/')) : "base." +
+                    this.routerInstance.url.substr(1)) | translate }}
+                </a>
+                <a *ngIf="activeItem.s">
+                    {{(routerInstance.url.substr(1, routerInstance.url.length).indexOf('/') > -1 ? "base." +
+                    this.routerInstance.url.substr(1, this.routerInstance.url.substr(1).indexOf('/')) : "base." +
+                    this.routerInstance.url.substr(1)) | translate }}
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="menu-separator" *ngIf="activeItem.m || activeItem.w || activeItem.a || activeItem.s">
+        <ul>
+            <li>
+                <a> </a>
+            </li>
+        </ul>
+    </li><!-- [routerLinkActive]="['active']" -->
+    <li class="dropdown" dropdown routerLinkActive #rlaSearch="routerLinkActive"
+        *ngIf="hasPermissions(['media','titles','versions','carrier','workflow','simplified'])">
+        <span *ngIf="menuActive(rlaSearch.isActive, 'm')"></span>
+        <a>
+            {{ 'base.search' | translate }}
+            <i class="icons-down icon"></i>
+        </a>
+        <ul class="submenu">
+
+            <li role="menuitem"><a href *ngIf="hasPermission('media')" (click)="toClickEvent($event)"
+                                   [routerLink]="['media']">{{ 'base.media' | translate }}</a></li>
+            <li role="menuitem"><a href *ngIf="hasPermission('titles')" (click)="toClickEvent($event)"
+                                   [routerLink]="['titles']">{{ 'base.titles' | translate }}</a></li>
+            <li role="menuitem"><a href *ngIf="hasPermission('version')" (click)="toClickEvent($event)"
+                                   [routerLink]="['version']">{{ 'base.version' | translate }}</a></li>
+            <li role="menuitem"><a href *ngIf="hasPermission('carrier')" (click)="toClickEvent($event)"
+                                   [routerLink]="['carrier']">{{ 'base.carrier' | translate }}</a></li>
+            <!--<li role="menuitem"><a href *ngIf="hasPermission('simple')" (click)="toClickEvent($event)" [routerLink]="[(simplifiedAvailable() ? 'simple' : 'search'), (shouldSetStaticSearch() ? staticSearchType : '')]">{{ 'base.simple' | translate }}</a></li>-->
+            <li role="menuitem"><a href *ngIf="hasPermission('simple')" (click)="toClickEvent($event)"
+                                   [routerLink]="simplifiedAvailable() ? ['simple'] : ['search', staticSearchType]">{{
+                'base.simple' | translate }}</a></li>
+
+            <!-- FAKE ITEMS FOR PAGE TITLE! -->
+            <li role="menuitem" style="display: none;" [routerLink]="['simple']"></li>
+            <li role="menuitem" style="display: none;" [routerLink]="['search', staticSearchType]"></li>
+            <li role="menuitem" style="display: none;" [routerLink]="['search']"></li>
+            <!-- FAKE ITEMS FOR PAGE TITLE! -->
+
+        </ul>
+    </li>
+    <li class="dropdown" dropdown routerLinkActive #rlaWF="routerLinkActive"
+        *ngIf="hasPermissions(['workflow','queues'])">
+        <span *ngIf="menuActive(rlaWF.isActive, 'w')"></span>
+        <a>
+            {{ 'base.workflow' | translate }}
+            <i class="icons-down icon"></i>
+        </a>
+        <ul class="submenu">
+            <li role="menuitem"><a href *ngIf="hasPermission('workflow')" (click)="toClickEvent($event)"
+                                   [routerLink]="['workflow']">{{ 'base.search' | translate }}</a></li>
+            <li role="menuitem"><a href *ngIf="hasPermission('queues')" (click)="toClickEvent($event)"
+                                   [routerLink]="['queues']">{{ 'base.queues' | translate }}</a></li>
+            <li role="menuitem"><a href *ngIf="hasPermission('tasks')" (click)="toClickEvent($event)"
+                                   [routerLink]="['tasks']">{{ 'base.tasks' | translate }}</a></li>
+            <li role="menuitem"><a href *ngIf="hasPermission('queues')" (click)="toClickEvent($event)"
+                                   [routerLink]="['tasks/my']">{{ 'base.tasks_my' | translate }}</a></li>
+        </ul>
+    </li>
+    <li class="dropdown" dropdown routerLinkActive #rlaAps="routerLinkActive">
+        <span *ngIf="menuActive(rlaAps.isActive, 'a')"></span>
+        <a>
+            {{ 'base.apps' | translate }}
+            <i class="icons-down icon"></i>
+        </a>
+        <ul class="submenu">
+            <li role="menuitem"><a href *ngIf="hasPermission('misr')" (click)="toClickEvent($event)"
+                                   [routerLink]="['misr']" href="#">{{ 'base.misr' | translate }}</a></li>
+            <li role="menuitem"><a href *ngIf="hasPermission('reports')" (click)="toClickEvent($event)"
+                                   [routerLink]="['reports']" href="#">{{ 'base.reports' | translate }}</a></li>
+            <li role="menuitem"><a *ngIf="hasPermission('media_upload')"
+                                   (click)="callMediaUpload($event);toClickEvent($event)">{{ 'base.media_upload' |
+                translate }}</a></li>
+            <li role="menuitem"><a *ngIf="hasPermission('mediaproxy-logplayer')" (click)="toClickEvent($event)"
+                                   [routerLink]="['mediaproxy-logplayer']">{{ 'base.mediaproxy-logplayer' | translate
+                }}</a></li>
+            <li role="menuitem"><a *ngIf="hasPermission('mapping')" (click)="toClickEvent($event)"
+                                   [routerLink]="['mapping']">
+                {{ 'base.mapping' | translate}}</a></li>
+            <li role="menuitem"><a href *ngIf="hasPermission('cachemanager')" (click)="toClickEvent($event)"
+                                   [routerLink]="['cachemanager']">{{ 'base.cachemanager' | translate }}</a></li>
+            <li role="menuitem"><a href *ngIf="hasPermission('names')" (click)="toClickEvent($event)"
+                                   [routerLink]="['names']">{{ 'base.names' | translate }}</a></li>
+            <li role="menuitem"><a href *ngIf="hasPermission('acquisitions')" (click)="toClickEvent($event)"
+                                   [routerLink]="['acquisitions']">{{ 'base.acquisitions' | translate }}</a></li>
+            <!--li role="menuitem"><a (click)="callRwWizard($event);toClickEvent($event)">TEST WIZARD</a></li-->
+        </ul>
+    </li>
+    <li class="dropdown" dropdown routerLinkActive #rlaSystem="routerLinkActive">
+        <span *ngIf="menuActive(rlaSystem.isActive, 's')"></span>
+        <a>
+            {{ 'base.system' | translate }}
+            <i class="icons-down icon"></i>
+        </a>
+        <ul class="submenu">
+            <li role="menuitem"><a href *ngIf="hasPermission('system')" (click)="toClickEvent($event)"
+                                   [routerLink]="['system/config']">{{ 'base.system_configuration' | translate }}</a>
+            </li>
+            <li role="menuitem"><a href *ngIf="hasPermission('events-manager')" (click)="toClickEvent($event)"
+                                   [routerLink]="['events-manager']">{{ 'base.events_manager' | translate }}</a></li>
+            <li role="menuitem"><a href *ngIf="hasPermission('dashboard')" (click)="toClickEvent($event)"
+                                   [routerLink]="['dashboard']">{{ 'base.dashboard' | translate }}</a></li>
+            <li role="menuitem"><a href (click)="clearStorages();toClickEvent($event)">[dev] Clear storages</a></li>
+        </ul>
+    </li>
+</ul>

@@ -1,0 +1,22 @@
+<div #settingsGroup class="settings-group">
+    <div class="add-btn-wrapper">
+        <button *ngIf="!error" (click)="addSettingsGroup()" title="{{ 'common_hints.add' | translate }}" class="add-btn">
+            <i class="icons-add icon"></i>
+            {{"common.add" | translate}}
+        </button>
+    </div>
+
+    <div class="settings-group-grid-wrapper">
+        <div id="externalWrapperSubPacSlickGridForInfoPanel" style="height: 100%;">
+            <slick-grid #settingsGroupGrid
+                        [config]="settingsGroupGridOptions">
+            </slick-grid>
+        </div>
+    </div>
+
+    <div *ngIf="error" class="repeat-btn-wrapper">
+        <h2>{{'settings_group.error' | translate}}</h2>
+        <button (click)="clickRepeat()">{{'settings_group.repeat' | translate}}</button>
+    </div>
+</div>
+<overlay #overlayGroup [mode]="true" (isError)="isError($event)"></overlay>

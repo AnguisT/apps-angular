@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <title>
+    Step-forward-2
+  </title>
+  <g fill-rule="evenodd">
+    <polygon points="9 5 9 15 16.5 9.883"/>
+    <rect width="2" height="10" x="5" y="5"/>
+  </g>
+</svg>

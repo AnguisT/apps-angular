@@ -1,0 +1,38 @@
+@import "../../../../../base/styles/theme.scss";
+
+@each $key, $value in $common-themes {
+  .#{$key} {
+
+    .system-config-xml-wrapper {
+
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+
+      .sidebar {
+        background: getThemeColor(4, $key);
+        padding: 12px;
+        position: absolute;
+        //top: 51px;
+        top: 0px;
+        bottom: 5px;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+      }
+
+
+      .main {
+        height: calc(100vh - 120px);
+        overflow: auto;
+      }
+    }
+
+  }
+
+}

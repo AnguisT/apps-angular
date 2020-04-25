@@ -1,0 +1,12 @@
+<div class="timeline-wrapper">
+  <!--button class="zoom-btn" (click)="zoomIn()"><i class="icon icons-add"></i></button-->
+  <div class="timeline-control">
+    <div><button class="pan-btn" (click)="moveLeft()"><i class="icon icons-left"></i></button></div>
+    <div id="timeline"></div>
+    <div><button class="pan-btn" (click)="moveRight()"><i class="icon icons-right"></i></button></div>
+  </div>
+  <!--button class="zoom-btn" (click)="zoomOut()"><i class="icon icons-minus"></i></button-->
+  <div class="zoom-wrapper">
+    <input type="range" id="zoom-seek" value="1" min="0" max="1" step="0.02" (change)="onChangeRange(this)" (input)="setZoomGradient()"/>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="accordion-row "
+     *ngFor="let task of tasks; let i=index"
+     [ngClass]="{'selected': item.id==provider.selectedSubRow.id && i==provider.selectedSubRow.index}"
+     (dblclick)="onDoubleClick(item, i)"
+     (click)="onClick(item, i)">
+    <span #dotEl class="dd-dots" draggable="true" (dragstart)="onDragRowStart($event, {item:task, mode:'task'})" >
+        <i></i>
+    </span>
+    <span class="ac-id">
+        {{i+1}}
+    </span>
+    <span class="ac-owner">
+        {{task.J_OP_USER}}
+    </span>
+    <span class="ac-name">
+        {{task.TSK_TYPE_text}}
+    </span>
+    <!--<div class="ac-status" [ngClass]="{'green': item.TSK_STATUS_text=='Ready'}">-->
+    <span class="ac-status {{getClass(task)}}">
+        {{task.TSK_STATUS_text}}
+    </span>
+    <span class="ac-progress" *ngIf="task.TSK_STATUS == jobStatuses.INPROG || task.TSK_STATUS == jobStatuses.COMPLETED">
+        <!--Progress: {{item.TSK_PROGRSS}}%-->
+      <progress-component [progress]="task.TSK_PROGRSS"></progress-component>
+    </span>
+    <span class="ac-owner">
+        {{task.OP_NAME}}
+    </span>
+</div>

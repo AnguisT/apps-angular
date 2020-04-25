@@ -1,0 +1,14 @@
+<div #select2ControlWrap>
+    <imfx-controls-select2
+            #select2Control
+            class=""
+            [allowClear]="false"
+            [width]="'100%'"
+            [multiple]="false"
+            [data]="[]"
+            (onSelect)="onUpdateControl()"
+            (onUnselect)="onUpdateControl()"
+            [placeholder]="'base.selectOoo'|translate"
+            [placeholderRefToTranslate]="'base.selectOoo'"
+            [validationEnabled]="validationEnabled"></imfx-controls-select2>
+</div>

@@ -1,0 +1,11 @@
+<div class="report-doc-viewer">
+  <div [ngSwitch]="mediaType">
+    <div *ngSwitchCase="'pdfViewer'">
+      <pdf-viewer [config]="viewerConfig"></pdf-viewer>
+    </div>
+    <div *ngSwitchCase="'xmlViewer'">
+      <code-prettify-viewer [config]="viewerConfig" [url]="viewerConfig.url" [language]="viewerConfig.language"></code-prettify-viewer>
+    </div>
+    <div *ngSwitchDefault></div>
+  </div>
+</div>

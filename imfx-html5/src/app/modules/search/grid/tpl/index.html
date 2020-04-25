@@ -1,0 +1,54 @@
+<div [ngClass]="{'tile-view': config.options.viewMode == 'tile', 'tree-view': config.options.isTree, 'empty-view': config.options.viewIsEmpty, 'with-thumbnails': config.options.isThumbnails}" style="height: 100%;overflow: hidden;position:relative;" (keydown)="onKeyPress($event)" class="search-grid" #gridWrapper>
+    <imfx-grid #grid style="width: 100%; height: 100%;" class="ag-fresh text {{config.options.type}}"
+                 [gridOptions]="config.gridOptions"
+                 (ready)="onReady($event)"
+                 (bodyScroll)="onBodyScroll($event)"
+                 (rowDataChanged)="onUpdate()">
+    </imfx-grid>
+    <nav class="ag-grid-pagination" [hidden]="!paginationVisible()">
+        <ul>
+            <li>
+                <span id="firstRecord"></span>
+                -
+                <span id="lastRecord"></span>
+                of
+                <span id="totalRecords"></span>
+            </li>
+            <li class="nav-right">
+                <button class="icon-button" title="first page" (click)="onBtFirst()"
+                        [disabled]="setFirstButtonDisabled()">
+                    <i class="icons-first icon"></i>
+                </button>
+            </li>
+            <li>
+                <button class="icon-button" title="previous page" (click)="onBtPrevious()"
+                         [disabled]="setFirstButtonDisabled()">
+                    <i class="icons-left icon"></i>
+                </button>
+            </li>
+            <li class="divider">|</li>
+            <li class="page" *ngFor="let page of config.options.pages" [ngClass]="{'active': page == getCurrentPage()}">
+                <a (click)="goToPage($event, page)" href>{{page}}</a>
+            </li>
+            <li class="divider">|</li>
+            <li>
+                <button class="icon-button" title="next page" (click)="onBtNext()"
+                        [disabled]="setLastButtonDisabled()">
+                    <i class="icons-right icon"></i>
+                </button>
+            </li>
+            <li>
+                <button class="icon-button" title="last page" (click)="onBtLast()" [disabled]="setLastButtonDisabled()">
+                    <i class="icons-last icon"></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
+    <div class="ag-select-view" id="selectView" *ngIf="config.options.viewIsEmpty">
+        <div class="ag-select-view-panel">
+            <div class="ag-select-view-wrapper">
+                <span class="ag-select-view-center">{{'views.select_view' | translate }}</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="location">
+    <input
+            #filterInput
+            class="field"
+            type="search"
+            placeholder="{{ 'ng2_components.ag_grid.start_type_location' | translate }}"
+            (keyup)="filter($event)">
+    <div class="js-scrollbar-target-adv-modal-user">
+        <imfx-controls-tree #tree
+                            [extensions]="['filter']"
+                            [ext_filter]="{autoExpand: true, mode: 'hide', highlight: false}"
+                            [checkbox]="true"
+                            [icon]="false"
+                            [source]="locations"
+                            (onSelect)="onSelect($event)"
+        ></imfx-controls-tree>
+    </div>
+</div>

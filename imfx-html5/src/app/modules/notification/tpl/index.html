@@ -1,0 +1,22 @@
+<div class="notification row-header sample-notification"
+     #notificationWrapperEl
+     [ngClass]="{'warning': notificationType == 2, 'show': show, 'hidden': !show}"
+     (click)="CopyToClipboard()"
+     title="Click to copy"
+>
+    <div class="notification-content" *ngIf="notificationType == 1; else errorMessage">
+        <i class="icons-success icon notif-icon"></i>
+        <div class="notif-message" #messageEl title="Click to copy | \n\r {{ message | translate }}">{{ message | translate }}</div>
+    </div>
+    <ng-template #errorMessage>
+        <div class="notification-content">
+            <i *ngIf="!copied" class="icons-info icon notif-icon"></i>
+            <div *ngIf="copied" style="margin-right: 8px">
+                <i class="icons-success icon notif-icon"></i>
+                <div>Copied</div>
+            </div>
+            <div class="notif-message" #messageEl title="Click to copy | \n\r {{ message | translate }}">{{ message | translate }}</div>
+        </div>
+    </ng-template>
+        <i (click)="HideNotificationHandler()" style="margin-right: 8px; margin-top: -6px;" class="nav-right close-trigger icon-button icons-closedelete icon close" *ngIf="notificationType == 2;"></i>
+</div>

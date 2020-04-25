@@ -1,0 +1,18 @@
+<div class="events-tab-wrapper" style="z-index: 0;">
+      <button class="history" (click)="addEvent()" *ngIf="!config.readOnly">
+            {{ 'simple_assessment.add_segment' | translate }}
+      </button>
+      <button class="history" (click)="setIn()" *ngIf="!config.readOnly">
+        {{ 'simple_assessment.set_in' | translate }}
+      </button>
+      <button class="history" (click)="setOut()" *ngIf="!config.readOnly">
+        {{ 'simple_assessment.set_out' | translate }}
+      </button>
+      <slick-grid
+              #segmentsAudioGrid
+              class="segments-audio-grid vertical-align-row"
+              style="width: 100%; height: 100%;"
+              [config]="segmentsAudioGridOptions"
+      ></slick-grid>
+</div>
+

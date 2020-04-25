@@ -1,0 +1,113 @@
+@import "../../base/styles/theme.scss";
+
+
+
+@each $key, $value in $common-themes {
+  .#{$key} {
+    .dialog-signin {
+      padding: 32px;
+      max-width: 35rem;
+      margin: 0 auto;
+      background-color: getThemeColor(6, $key);
+      box-shadow: 0 8px 16px rgba(63, 63, 63, 0.05);
+      position: relative;
+      .autologin-overlay {
+        position: absolute;
+        background-color: getThemeColor(6, $key);
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+        padding-top: 107px;
+      }
+      .form-grid {
+        display: table;
+
+        .error {
+          color: #ffffff;
+          background-color: getThemeColor(13, $key);
+          padding: 8px 16px;
+          margin-bottom: 16px;
+          display: table-caption;
+          width: 100%;
+          word-break: break-word;
+        }
+
+        .form-grid-row {
+          display: table-row;
+
+          div {
+            width: 100%;
+            padding: 4px 0 4px 12px;
+          }
+          label {
+            white-space: nowrap;
+          }
+          label, div {
+            display: table-cell;
+          }
+
+          .row-actions {
+            align-items: baseline;
+            justify-content: space-between;
+            display: flex;
+            margin-top: $baseline;
+            padding: 0;
+          }
+
+          .field {
+            width: 100%;
+          }
+
+          [type="checkbox"] {
+            margin-right: 8px;
+          }
+
+          button {
+            margin-top: $baseline;
+          }
+        }
+
+      }
+    }
+
+    .loader-login {
+      border: 4px solid getThemeColor(30, $key);
+      border-top: 4px solid getThemeColor(31, $key);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      transform-origin: 50% 50%;
+      transform: rotate(0deg);
+      width: 3px !important;
+    }
+
+    .forgot {
+      color: getThemeColor(11, $key)!important;
+      text-decoration: underline!important;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      vertical-align: top;
+      display: block;
+      width: 100%;
+      text-align: center;
+
+      p, a, li, ul {
+        font-size: 10px;
+      }
+      nav > ul {
+        max-width: 30rem;
+      }
+      .submenu {
+        top: auto!important;
+        bottom: 0;
+      }
+    }
+  }
+}
+
+
+

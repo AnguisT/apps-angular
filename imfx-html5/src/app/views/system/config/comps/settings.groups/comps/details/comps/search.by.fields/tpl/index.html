@@ -1,0 +1,4 @@
+<div *ngFor="let sf of searchFields" class="ug-list-item">
+  <label>
+    <input [(ngModel)]="sf.enabled" type="checkbox" (change)="changeSearchFields()"> {{sf.key}}</label>
+</div>

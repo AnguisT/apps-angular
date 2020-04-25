@@ -1,0 +1,166 @@
+@import "../../../views/base/styles/theme.scss";
+
+@each $key,
+$value in $common-themes {
+  .#{$key} {
+    .modal {
+      overflow: hidden;
+      position: fixed;
+      //position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      height: 100%;
+      &.modal-xs {
+        width: 20%;
+        min-width: 20%;
+        height: 80vh;
+        .modal-body {
+          height: calc(80vh - 84px);
+        }
+      }
+      &.modal-sm {
+        width: 30%;
+        min-width: 30%;
+        height: 80vh;
+        // .modal-body-without-footer {
+        //   height: calc(80vh - 66px) !important;
+        // }
+        // .modal-body {
+        //   height: calc(80vh - 127px);
+        // }
+      }
+      &.modal-md {
+        width: 45%;
+        min-width: 45%;
+        height: 80vh;
+        // .modal-body-without-footer {
+        //   height: calc(80vh - 66px) !important;
+        // }
+        // .modal-body {
+        //   height: calc(80vh - 84px);
+        // }
+      }
+      &.modal-lg {
+        width: 80%;
+        min-width: 80%;
+        height: 80vh;
+        // .modal-body {
+        //   height: calc(80vh - 84px);
+        // }
+      }
+      .modal-dialog {
+        height: 100%;
+        width: 100%;
+        min-width: 100%;
+        .modal-content {
+          border: none;
+          border-radius: 0;
+          box-shadow: getThemeColor(24, $key);
+          background: getThemeColor(3, $key);
+          border: 1px solid rgba(255, 255, 255, 0);
+          width: 100%;
+          min-width: 100%;
+          height: 100%;
+          .modal-body {
+            padding: 15px;
+            width: 100%;
+            color: getThemeColor(1, $key);
+            div {
+              word-wrap: break-word;
+              font-size: 12px;
+            }
+          }
+          .modal-header {
+            border: none;
+            background-color: getThemeColor(4, $key);
+            color: getThemeColor(1, $key);
+            padding: 8px 16px;
+            // border: none !important;
+            // position: absolute;
+            // left: -1px;
+            // right: -1px;
+            // top: -3px;
+            h4 {
+              font-size: 1rem;
+              font-family: "sinkin_sans400_regular", "Roboto", sans-serif !important;
+            }
+            span {
+              font-size: 20px;
+            }
+            .icons-closedelete {
+              top: 4px;
+            }
+          }
+          .modal-footer {
+            // position: absolute;
+            // left: 0;
+            // right: 0;
+            // bottom: 0;
+            border: none !important;
+            .primary {
+              background: #2A8CEA;
+              color: #fff;
+              //text-transform: uppercase;
+              &:hover {
+                background-color: #1472cd;
+              }
+              .icon {
+                color: #fff;
+                margin-top: -4px;
+              }
+              &:not(.no-label) .icon {
+                margin-right: 8px;
+              }
+            }
+          }
+          &.export-modal {
+            .modal-body {
+              max-height: 260px;
+            }
+          }
+          &.default-modal {
+            .modal-row {
+              padding: 1px 10px;
+            }
+            .modal-row.ms-search {
+              margin: 5px 0;
+              margin-top: 55px;
+              display: block;
+            }
+          }
+          &.prompt-modal {
+            height: auto;
+          }
+          &.error-modal {
+            .modal-header {
+              background-color: getThemeColor(13, $key);
+              color: getThemeColor(15, $key);
+              text-transform: none;
+            }
+          }
+          &.success-modal {
+            height: auto;
+            .modal-header {
+              background-color: #79e167;
+            }
+          }
+          &.confirm-modal {
+            height: auto;
+            .modal-body {
+              div {
+                word-wrap: break-word;
+                font-size: 12px;
+              }
+            }
+            .modal-footer {
+              .primary {
+                text-transform: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

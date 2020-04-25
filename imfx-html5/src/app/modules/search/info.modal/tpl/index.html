@@ -1,0 +1,31 @@
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content default-modal">
+            <div class="modal-header">
+                <!--button type="button" class="close" aria-label="Close" (click)="staticModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button-->
+                <h4 class="modal-title pull-left">
+                  {{config.options.headerText}}
+                </h4>
+                <i class="icon icons-closedelete" (click)="staticModal.hide()"></i>
+                <!--span class="modal-title">{{config.options.headerText}}</span-->
+            </div>
+            <div class="modal-body">
+                <span>{{config.options.bodyText}}</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="primary" (click)="staticModal.hide()"
+                        *ngIf="config.options.ok"> Ok </button>
+                <button type="button" (click)="staticModal.hide()"
+                        *ngIf="config.options.cancel"> Cancel </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="status-popup-wrapper" [ngClass]="{'status-popup-wrapper-show': config.options.showAlert}">
+    <div class="status-popup panel ok">
+        <div class="mark"></div>
+        <div class="text-message ok">{{config.options.bodyText}}</div>
+    </div>
+</div>

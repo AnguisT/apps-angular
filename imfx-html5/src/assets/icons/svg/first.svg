@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <title>
+    First
+  </title>
+  <g fill-rule="evenodd">
+    <polygon points="15 5 11 10 15 15 12 15 8 10 12 5"/>
+    <rect width="2" height="10" x="5" y="5"/>
+  </g>
+</svg>

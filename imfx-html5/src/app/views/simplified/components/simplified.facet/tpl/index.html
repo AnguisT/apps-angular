@@ -1,0 +1,14 @@
+<div *ngIf="facet.FacetItems.length > 0" class="panel-heading card-header" (click)="facet.hideme = !facet.hideme">
+    <h2>
+        <i *ngIf="!facet.hideme" class="icons-down icon"></i>
+        <i *ngIf="facet.hideme" class="icons-right icon"></i>
+        {{facet.FacedName}}
+    </h2>
+</div>
+<div class="panel-body card-block" [hidden]="facet.hideme" *ngIf="facet.FacetItems.length > 0">
+    <div class="card-row" [ngClass]="{'selected': activeField==item.FieldKey}" [hidden]="facet.hideme" *ngFor="let item of facet?.FacetItems; let i = index" (click)="collectSearchCriteria(item.Facet, item.FieldKey)">
+        <span class="card-col">{{item.Field}}</span>
+        <span class="card-col">{{item.Count}}</span>
+    </div>
+</div>
+

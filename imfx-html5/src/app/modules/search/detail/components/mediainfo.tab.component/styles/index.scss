@@ -1,0 +1,15 @@
+@import "../../../../../../views/base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        .media-info-tab-wrapper {
+            padding: 10px;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            textarea.controlNotes {
+                height: 120px;
+            }
+        }
+    }
+}

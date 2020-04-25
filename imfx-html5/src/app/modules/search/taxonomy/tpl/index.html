@@ -1,0 +1,19 @@
+<div class="taxonomy">
+    <input
+            #filterInput
+            class="field"
+            type="search"
+            placeholder="{{ 'ng2_components.ag_grid.start_type_taxonomy' | translate }}"
+            (keyup)="filter($event)">
+    <div class="js-scrollbar-target-adv-modal-user">
+        <imfx-controls-tree #tree
+                            [extensions]="['filter']"
+                            [ext_filter]="{autoExpand: true, mode: 'hide', highlight: false}"
+                            [checkbox]="false"
+                            [icon]="false"
+                            [source]="entries"
+                            (onClick)="onClickByTreeItem($event)"
+                            (onDblClick)="onDblClickByTreeItem($event)"
+        ></imfx-controls-tree>
+    </div>
+</div>

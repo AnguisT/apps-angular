@@ -1,0 +1,10 @@
+<div class="input-wrapper full-height">
+    <input *ngIf="!viewMulti" type="text" autofocus
+           name="text"
+           class="form-control"
+           [(ngModel)]="text"/>
+    <textarea *ngIf="viewMulti" type="text" autofocus
+              name="text"
+              class="form-control"
+              [(ngModel)]="text"></textarea>
+</div>

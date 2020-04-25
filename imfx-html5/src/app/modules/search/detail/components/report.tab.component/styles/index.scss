@@ -1,0 +1,14 @@
+@import "../../../../../../views/base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        .h-tab-wrapper {
+            padding: 10px;
+            height: 100%;
+            .ag-grid-history {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}

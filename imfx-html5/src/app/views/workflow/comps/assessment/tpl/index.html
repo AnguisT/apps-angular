@@ -1,0 +1,50 @@
+<div class="detail-page-wrapper assessment-wrapper">
+    <div class="imfx-table detail">
+        <div class="imfx-detail-btns imfx-logger-btns">
+            <nav>
+                <ul>
+                    <li>
+                        <button class="icon-button" title="{{ 'common.back_button' | translate }}"
+                                (click)="clickBack()">
+                            <i class="icons-left icon"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <h1>
+                            {{ 'simple_assessment.title' | translate }}
+                        </h1>
+                    </li>
+                    <li style="width: 950px; margin-left: 20px;">
+                        <div class="tasks-control-buttons-wrap">
+                            <tasks-control-buttons [status]="taskStatus"
+                                                   [provider]="config.options.provider"
+                                                   [taskId]="taskId"
+                                                   [statusText]="statusText"></tasks-control-buttons>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <nav>
+                <ul>
+                    <li>
+                        <button class="history">
+                            {{ 'simple_assessment.history_button' | translate }}
+                        </button>
+                        <button class="save" (click)="save()">
+                            {{ 'simple_assessment.save_button' | translate }}
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="imfx-row p-rel-h-full">
+            <div class="golden-layout-detail">
+                <golden-logger-layout *ngIf="config.options.showGolden"
+                                      [config]="goldenConfig"
+                                      [getValidation]="getValidation"
+                                      (onGetValidation)="validateAndSave($event)"#gl>
+                </golden-logger-layout>
+            </div>
+        </div>
+    </div>
+</div>

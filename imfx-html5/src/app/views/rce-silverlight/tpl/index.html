@@ -1,0 +1,21 @@
+<overlay #overlay></overlay>
+<div id="rce-page-wrapper">
+    <div class="imfx-detail-btns">
+        <nav>
+            <ul>
+                <li>
+                    <button class="icon-button" title="{{ 'common.back_button' | translate }}" style="margin: -5px 4px;" (click)="clickBack()">
+                        <i class="icons-left icon"></i>
+                    </button>
+                </li>
+                <li class="detail-title">
+                    <h1 title="{{ 'rce.title' | translate:{'id': id} }}">
+                        {{ 'rce.title' | translate:{'id': id} }}
+                    </h1>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <iframe [attr.src]="url|safe" frameborder="0" style="border: none; width: 100%; height: calc(100% - 50px); position: absolute;" *ngIf="silver.isSilverlightInstalled"></iframe>
+    <imfx-not-available [message]="'common.player_not_available'" *ngIf="!silver.isSilverlightInstalled"></imfx-not-available>
+</div>

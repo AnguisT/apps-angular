@@ -1,0 +1,64 @@
+<!--Markup for module-->
+<div class="full-height full-width" style="padding-top: 10px;  height:400px;">
+    <div class="container-fluid" style="position: relative; height: 100%">
+        <!--Header-->
+        <div class="row-header">
+            <nav>
+                <ul>
+                    <li>
+                        <search-form
+                                [config]="searchFormConfig"
+                        ></search-form>
+                    </li>
+                    <li class="divider" [ngClass]="{'common-hidden': !flagHide}"></li>
+                    <li [ngClass]="{'common-hidden': !flagHide}"><label>{{ 'common.view' | translate}}:</label></li>
+                    <li>
+                        <search-views
+                            #viewsComp
+                            [config]="searchViewsConfig"
+                        ></search-views>
+                    </li>
+                    <li [ngClass]="{'common-hidden': !flagHide}">
+                        <search-settings
+                            [config]="searchSettingsConfig"
+                        ></search-settings>
+                    </li>
+                </ul>
+            </nav>
+            <nav>
+                <ul>
+                    <li>
+                        <search-thumbs
+                                #searchThumbsComp
+                                [config]="searchThumbsConfig"
+                        ></search-thumbs>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!--Body-->
+        <div class="row-body">
+            <split
+                    #split
+                    [style.float]="'left'"
+                    [direction]="'horizontal'">
+                <!--Table-->
+                <split-area
+                        #tableSplit
+                        [order]="2"
+                        [size]="70">
+                    <div style="height: 100%; width: 100%">
+                        <slick-grid
+                                #slickGridComp
+                                class="version-grid version-inside-upload-grid"
+                                style="width: 100%;  height: 100%;"
+                                [config]="searchGridConfig"
+                        ></slick-grid>
+                    </div>
+                </split-area>
+            </split>
+        </div>
+    </div>
+</div>
+

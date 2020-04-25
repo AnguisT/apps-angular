@@ -1,0 +1,13 @@
+<div class="search-view-wrapper " [ngClass]="{'common-hidden': hide}">
+    <imfx-controls-select2
+        #selectViewControl
+        [width]="'100%'"
+        [multiple]="false"
+        [data]="[]"
+        [placeholder]="selectPlaceholder|translate"
+        [placeholderRefToTranslate]="selectPlaceholder"
+        (onSelect)="onSelect($event)"
+        [minimumResultsForSearch]="10"></imfx-controls-select2>
+</div>
+
+

@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Viewers demo</h1>
+        <h3>PDF</h3>
+        <a href="./assets/tmp/pdf.pdf" target="_blank">Original</a>
+        <br>
+        embedding mode; <br>
+        <pdf-viewer [url]="'./assets/tmp/pdf.pdf'" [renderMode]="'embedding'"></pdf-viewer>
+
+        canvas mode; <br>
+        <pdf-viewer [url]="'./assets/tmp/pdf.pdf'" [renderMode]="'canvas'"></pdf-viewer>
+        <hr>
+        <h3>DOCX</h3>
+        <a href="./assets/tmp/tstdcx.docx" target="_blank">Original</a>
+        <docx-viewer [url]="'./assets/tmp/tstdcx.docx'"></docx-viewer>
+        <hr>
+        <h3>Pretty (for ex. - XML)</h3>
+        <code-prettify-viewer [url]="'./assets/tmp/xml.xml'" [language]="'xml'"></code-prettify-viewer>
+    </div>
+</div>`

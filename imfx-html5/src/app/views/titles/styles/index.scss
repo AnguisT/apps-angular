@@ -1,0 +1,65 @@
+@import "../../base/styles/theme.scss";
+
+@each $key, $value in $common-themes {
+    .#{$key} {
+        .titles-view {
+
+            .slick-grid-wrapper .slick-viewport.slick-viewport-left {
+                overflow-x: auto !important;
+            }
+            .titles-grid, .inside-versions-grid, .inside-media-grid {
+                .slick-grid-wrapper .slick-header-column,
+                .slick-grid-wrapper .slick-group-header-column,
+                .slick-grid-wrapper .slick-header-column.ui-state-default,
+                .slick-grid-wrapper .slick-group-header-column.ui-state-default {
+                    height: 36px;
+                    line-height: 27px;
+                    margin: 0;
+                    padding: 5px;
+                }
+            }
+
+            media-inside-titles .submenu {
+                .submenu {
+                    top: inherit !important;
+                    bottom: 0 !important;
+                    right: 100% !important;
+                    left: inherit !important;
+                }
+            }
+
+            versions-inside-titles .submenu {
+                .submenu {
+                    top: inherit !important;
+                    bottom: 0 !important;
+                    right: 100% !important;
+                    left: inherit !important;
+                }
+            }
+            versions-inside-titles, media-inside-titles, .titles-row-header {
+                .select2-container {
+                    vertical-align: top;
+                    min-width: 180px;
+                    max-width: 200px;
+
+                    span {
+                        vertical-align: top;
+                        line-height: 32px !important;
+                    }
+
+                    .select2-selection {
+                        height: 32px;
+                    }
+                }
+            }
+            .titles-splitter {
+                position: relative;
+                overflow: visible !important;
+            }
+            .overflow-hidden-splitter{
+                overflow: hidden !important;
+            }
+
+        }
+    }
+}

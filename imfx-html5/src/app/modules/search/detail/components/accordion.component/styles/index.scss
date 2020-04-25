@@ -1,0 +1,31 @@
+@import "../../../../../../views/base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        .panel-heading {
+            .settings-btn {
+                position: absolute;
+                top: 0px;
+                right: 7px;
+            }
+        }
+        .accordion-toggle {
+            outline: none !important;
+        }
+        .panel.card .card-block {
+            .card-row {
+                .card-col {
+                    .thumbnail-wrapper {
+                        margin: 0;
+                        display: flex;
+                        height: 100px;
+                        width: 165px;
+                        .thumbnail {
+                            position: relative;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

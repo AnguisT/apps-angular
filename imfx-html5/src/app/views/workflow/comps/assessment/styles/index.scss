@@ -1,0 +1,99 @@
+@import "../../../../base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        .assessment-wrapper {
+            padding: 0 15px;
+            height: 100%;
+
+          .drag-btns-wraper {
+            overflow: hidden;
+            flex-direction: column;
+
+            .layout-manager-wrapper {
+              width: 100%;
+              .layout-manager-menu {
+                width: 100%;
+              }
+            }
+          }
+
+            .imfx-logger-btns {
+                display: flex;
+                justify-content: space-between;
+            }
+            .detail .imfx-toolbar-header h4 {
+                margin: 0;
+                line-height: 50px;
+            }
+            .detail .tasks-control-buttons-wrap {
+              //width: 40%;
+              margin-left: -5px;
+              tasks-control-buttons {
+                float: left;
+              }
+              .buttons-row {
+                position: relative;
+                font-size: 0;
+                padding-bottom: 10px;
+                float: left;
+                width: 386px;
+                button {
+                  width: 23%;
+                  margin: 0 1%;
+                  opacity: 0.9;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  overflow: hidden;
+
+                  &:hover:not([disabled]) {
+                    opacity: 1;
+                  }
+                }
+                .history {
+                  background-color: #1a7754;
+                  color: getThemeColor(1, $key);
+                }
+                .save {
+                  background-color: #1e7b11;
+                  color: getThemeColor(1, $key);
+                }
+              }
+            }
+            .golden-layout-detail {
+                position: relative;
+                height: 100%;
+                .player-wrapper.markers {
+                  opacity: 1;
+                  margin-top: -10px;
+                  margin-left: -15px;
+                  margin-right: -15px;
+                  height: calc(100% + 20px);
+                }
+                .lm_header {
+                    border-bottom: 0;
+                }
+                .lm_content {
+                    border-top: 0;
+                }
+                .lm_splitter.lm_vertical .lm_drag_handle {
+                    height: 10px;
+                    top: -2px;
+                }
+                .lm_splitter.lm_horizontal .lm_drag_handle {
+                    width: 10px;
+                    left: -2px;
+                }
+            }
+            .tagging-tab-wrapper {
+              position: absolute;
+              bottom: 0;
+              top: 35px;
+              left: 0;
+              right: 0;
+              height: inherit;
+              padding: 10px;
+            }
+        }
+    }
+}

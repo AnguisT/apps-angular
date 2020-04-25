@@ -1,0 +1,25 @@
+<li dropdown class="dropdown">
+  <a class="no-label user-btn" [attr.title]="data.FullName">
+    <i class="icons-user icon"></i>
+  </a>
+  <div class="submenu dialog dialog-user" style="top: 100%">
+    <div class="row-item">
+      <h2>{{data.FullName}}</h2>
+    </div>
+    <div class="row-item">
+      <!--img class="user-photo" src="http://placehold.it/250x350"-->
+      <div class="additional">
+        <button [routerLink]="['profile']">
+          {{ 'base.profile.to_profile' | translate }}
+        </button>
+        <profile-colorschemas
+          (changedColorSchema)="onChangeColorSchema($event)"></profile-colorschemas>
+      </div>
+    </div>
+    <button class="full-width logout" (click)="logout()" [disabled]="uploadProvider.getUploadModelsByStates('waiting', 'progress').length > 0">
+      {{ 'base.logout' | translate }}
+    </button>
+  </div>
+</li>
+
+

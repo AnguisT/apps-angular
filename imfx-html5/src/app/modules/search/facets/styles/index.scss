@@ -1,0 +1,39 @@
+@import "../../../../views/base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        .disabled {
+          opacity: 0.6;
+          cursor: default !important;
+        }
+        .media-facets {
+            width: 100%;
+            padding: 0;
+            font-size: 14px;
+            display: inline-block;
+            vertical-align: top;
+            box-sizing: border-box;
+            height: 100%;
+            border: 0;
+            background-color: getThemeColor(4, $key);
+            .panel {
+                padding: 12px!important;
+                background-color: getThemeColor(4, $key);
+                h2 {
+                    cursor: pointer;
+                }
+                .panel-body.card-block {
+                    padding: 0 0 0 2rem !important;
+                    .card-row {
+                        font-size: $basefontsize - 1px;
+                        justify-content: space-between!important;
+                        cursor: default;
+                        .card-col {
+                            width: auto!important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

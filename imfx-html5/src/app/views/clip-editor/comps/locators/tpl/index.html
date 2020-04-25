@@ -1,0 +1,16 @@
+<div class="locator-wrapper">
+    <tabset #staticTabs>
+        <tab heading="Black Detected" (select)="selectTab('Blackdetect')">
+            <imfx-media-tagging-tab [config]="locatorTabConfig.blackdetect"></imfx-media-tagging-tab>
+        </tab>
+        <tab heading="Comments" (select)="selectTab('Comments')">
+            <imfx-media-tagging-tab [config]="locatorTabConfig.comments"></imfx-media-tagging-tab>
+        </tab>
+        <tab heading="Legal" (select)="selectTab('Legal')">
+            <imfx-media-tagging-tab [config]="locatorTabConfig.legal"></imfx-media-tagging-tab>
+        </tab>
+        <tab heading="Cuts" (select)="selectTab('Cuts')">
+            <imfx-media-tagging-tab [config]="locatorTabConfig.cuts"></imfx-media-tagging-tab>
+        </tab>
+    </tabset>
+</div>

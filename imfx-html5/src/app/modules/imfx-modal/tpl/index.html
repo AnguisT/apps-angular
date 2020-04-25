@@ -1,0 +1,48 @@
+<div class="modal-header" #modalHeader>
+    <h4 id="dialog-sizes-name2" class="modal-title pull-left">
+        {{_data.modalOptions.title|translate}}
+    </h4>
+    <div class="close pull-right" aria-label="Close" (click)="hide('hide', $event)">
+        <i class="icon icons-closedelete"></i>
+    </div>
+</div>
+<div class="modal-body" #modalBody></div>
+
+
+<!--Footer-->
+<div class="modal-footer" #modalFooter *ngIf="_data.modalOptions.footer && !_data.modalOptions.footerRef">
+    <!--'close'-->
+    <div *ngIf="_data.modalOptions.footer == 'close'" class="buttons">
+        <button type="button" class="btn btn-default" (click)="hide('hide', $event)">{{'common.close'| translate}}</button>
+    </div>
+
+    <!--'ok'-->
+    <div *ngIf="_data.modalOptions.footer == 'ok'" class="buttons">
+        <button type="button" class="btn btn-default primary" (click)="emitClickFooterBtn('ok', $event)">{{'common.ok'| translate}}</button>
+    </div>
+
+    <!--'close|ok'-->
+    <div *ngIf="_data.modalOptions.footer == 'close|ok'" class="buttons">
+        <button type="button" class="btn btn-default pull-left" (click)="hide('hide', $event)">{{'common.close'| translate}}</button>
+        <button type="button" class="btn btn-default primary" (click)="emitClickFooterBtn('ok', $event)">{{'common.ok'| translate}}</button>
+    </div>
+
+    <!--'cancel|ok'-->
+    <div *ngIf="_data.modalOptions.footer == 'cancel|ok'" class="buttons">
+        <button type="button" class="btn btn-default pull-left" (click)="hide('hide', $event)">{{'common.cancel'| translate}}</button>
+        <button type="button" class="btn btn-default primary" (click)="emitClickFooterBtn('ok', $event)">{{'common.ok'| translate}}</button>
+    </div>
+</div>
+
+<!--Footer container-->
+<ng-container
+    #modalFooterContainer
+    *ngTemplateOutlet="footerRef; context: {'context':contentView}"
+>
+    <!--  the view from other tpl components will be inserted here-->
+</ng-container>
+
+
+
+
+<overlay #overlayModal></overlay>

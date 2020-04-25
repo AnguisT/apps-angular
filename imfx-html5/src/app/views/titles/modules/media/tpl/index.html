@@ -1,0 +1,46 @@
+<div class="full-height-width-block" style="top: 0px !important;">
+    <div class="" style="position: relative; height:100%;   display: flex;
+    flex-direction: column;">
+        <!--Header-->
+        <div class="row-header" style="justify-content: flex-start">
+            <nav style="width: calc(100% * 0.4)">
+                <ul>
+                    <li>
+                        <h4>{{ 'media.small_title' | translate }}</h4>
+                    </li>
+                </ul>
+            </nav>
+            <nav style="margin-right: 70px">
+                <ul>
+                    <li><label>{{ 'common.view' | translate}}:</label></li>
+                    <li>
+                        <search-views
+                            #viewsComp
+                            [config]="searchViewsConfig"
+                        ></search-views>
+                    </li>
+                    <li>
+                        <search-settings
+                            [config]="searchSettingsConfig"
+                        ></search-settings>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!--Body-->
+        <div style="height: calc(100% - 35px);margin-top:0;">
+            <div style="height: 100%;width: 100%;">
+                <slick-grid
+                    style="width: 100%;  height: 100%"
+                    class="inside-media-grid vertical-align-row"
+                    #slickGridComp
+                    [config]="searchGridConfig"
+                ></slick-grid>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

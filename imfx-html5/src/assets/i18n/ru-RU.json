@@ -1,0 +1,1029 @@
+{
+  "common": {
+    "lang": "ru",
+    "locale": "ru-RU",
+    "time_format": "H:i",
+    "date_full_format": "d.m.Y H:i",
+    "date_full_format_datepipe": "dd.MM.yyyy hh:mm",
+    "date_format": "d.m.Y",
+    "date_day_of_week_start": 1,
+    "back_button": "Назад",
+    "yes": "Да",
+    "cancel": "Отмена",
+    "createNew": "Новый",
+    "months": [
+      "Январь",
+      "Февраль",
+      "Март",
+      "Апрель",
+      "Май",
+      "Июнь",
+      "Июль",
+      "Август",
+      "Сентябрь",
+      "Октябрь",
+      "Ноябрь",
+      "Декабрь"
+    ],
+    "dayOfWeek": [
+      "Пн",
+      "Вт",
+      "Ср",
+      "Чт",
+      "Пт",
+      "Сб",
+      "Вс"
+    ],
+    "ok": "Готово",
+    "empty": "Пусто",
+    "close": "Закрыть",
+    "save": "Сохранить",
+    "apply": "Применить",
+    "select_all": "Выбрать все",
+    "deselect_all": "Очистить все",
+    "search_placeholder": "Поиск...",
+    "searching_placeholder": "Поиск...",
+    "information": "Информация",
+    "loadingOoo": "Загрузка...",
+    "input_name": "Введите название",
+    "error_need_value": "Необходимо указать значение",
+    "add": "Добавить",
+    "remove": "Удалить",
+    "download": "Скачать",
+    "not_available": "i-mediaflex не может отобразить этот медиа файл",
+    "drag_panel_to_layout": "Перетащите панель в макет",
+    "empty_layout": "Выберите компоненты для отображения",
+    "empty_hidden": "Пустые скрыты",
+    "hide_empty": "Скрыть пустые",
+    "player_not_available": "Плеер не доступен",
+    "view": "Представление",
+    "mode": "Вид",
+    "no_info": "Нет информации",
+    "errorUnknown": "Неизвестная ошибка",
+    "all": "Выбрать все",
+    "total_entries": "Всего записей: {{total_entries}}",
+    "error": "Что-то пошло не так, попробуйте еще раз",
+    "reload": "Сбросить",
+    "open": "Открыть"
+  },
+  "common_hints": {
+    "empty_hidden": "Пустые скрыты",
+    "hide_empty": "Скрыть пустые",
+    "facets": "Кластеры",
+    "clear_facets": "Отменить выбранные",
+    "filters": "Фильтры",
+    "adv_search": "Расширенный поиск",
+    "search": "Поиск",
+    "view_settings": "Настройки представления",
+    "thumbs": "Предпросмотр",
+    "grid": "Таблица",
+    "tiles": "Плитка",
+    "info": "Информация",
+    "add": "Добавить",
+    "remove": "Удалить",
+    "copy_error": "Скопировать",
+    "refresh": "Обновить"
+  },
+  "ng2_components": {
+    "ag_grid": {
+      "page": "Страница",
+      "to": "по",
+      "of": "из",
+      "more": "еще",
+      "next": "следующая",
+      "last": "последняя",
+      "first": "первая",
+      "previous": "предыдущая",
+      "loadingOoo": "Загрузка...",
+      "selectAll": "Выбрать все",
+      "searchOoo": "Поиск...",
+      "blanks": "Пусто",
+      "filterOoo": "Фильтр...",
+      "applyFilter": "Применить фильтр...",
+      "equals": "равно",
+      "lessThan": "меньше чем",
+      "greaterThan": "больше чем",
+      "contains": "содержит",
+      "startsWith": "начинается на",
+      "endsWith": "заканчивается на",
+      "group": "группа",
+      "columns": "столбцы",
+      "rowGroupColumns": "группа столбцов",
+      "rowGroupColumnsEmptyMessage": "Нет столбцов в группе",
+      "valueColumns": "Значение столбцов",
+      "pivotMode": "Режим блоков",
+      "groups": "Группы",
+      "values": "Значения",
+      "pivots": "Блоки",
+      "valueColumnsEmptyMessage": "Перенесите столбец",
+      "pivotColumnsEmptyMessage": "Перенесите столбец в блок",
+      "noRowsToShow": "Мы ничего не нашли - Пожалуйста, попробуйте позже",
+      "pinColumn": "Закрепить столбец",
+      "valueAggregation": "Значение блока",
+      "autosizeThiscolumn": "Авторазмер столбца",
+      "autosizeAllColumns": "Авторазмер всех столбцов",
+      "groupBy": "группировать по",
+      "ungroupBy": "разгрупировать по",
+      "resetColumns": "сбросить столбцы",
+      "expandAll": "Открыть все",
+      "collapseAll": "Закрыть все",
+      "toolPanel": "Панель инструментов",
+      "pinLeft": "закрепить <<",
+      "pinRight": "закрепить >>",
+      "noPin": "открепить  <>",
+      "sum": "сумма",
+      "min": "минимум",
+      "max": "максимум",
+      "none": "нету",
+      "count": "количество",
+      "average": "в среднем",
+      "copy": "копировать",
+      "ctrlC": "ctrl и C",
+      "paste": "вставить",
+      "ctrlV": "ctrl и V",
+      "narrowSearch": "Поиск вернул {{resCount}} результатов, пожалуйста, уточните ваш запрос",
+      "select_user": "Выберите пользователя",
+      "start_type_user": "Начните вводить имя пользователя",
+      "select_location": "Выберите расположение",
+      "select_taxonomy": "Выьерите значение",
+      "select_location_entries": " записей",
+      "start_type_location": "Начните вводить название расположения",
+      "start_type_taxonomy": "Начните вводить значение",
+      "tbl_header_user_id": "ID Пользователя",
+      "tbl_header_surname": "Имя",
+      "tbl_header_forename": "Фамилия",
+      "select_xml_fields": "Выберите XML поля",
+      "start_type_xml_field_name": "Начните вводить название поля",
+      "tbl_header_xml_field_schema_name": "Схема",
+      "tbl_header_xml_field_description": "Описание",
+      "tbl_header_xml_schemas_not_found": "Схемы не найдены",
+      "tbl_header_xml_schemas_select_schema": "Выберите схему",
+      "tbl_header_xml_schemas_SCHEMAIDx": "Custom Metadata",
+      "tbl_header_xml_schemas_SCHEMAID": "XML Schema"
+    }
+  },
+  "base": {
+    "cachemanager": "Управление кэшем",
+    "imediaflex_help": "i-mediaflex Помощь",
+    "logout": "Выход",
+    "basket": "Медиа Корзина ({{ count }})",
+    "go_to_basket": "В корзину",
+    "cache_manager": "Кэш-менеджер",
+    "media": "Медиа",
+    "version": "Версии",
+    "carrier": "Носители",
+    "tags": "Тэги",
+    "titles": "Заголовки",
+    "queues": "Очереди",
+    "packages": "Пакеты",
+    "names": "Имена",
+    "help": "Помощь",
+    "workflow": "Рабочий процесс",
+    "subtitle_qc": "Subtitle QC",
+    "search": "Поиск",
+    "simple": "Поиск",
+    "save": "Сохранить",
+    "clear": "Очистить",
+    "or": "ИЛИ",
+    "selectOoo": "Выбрать...",
+    "package_search": "Поиск пакетов",
+    "create_package_group": "Создание группы пакетов",
+    "package_configurator": "Конфигурация пакетов",
+    "rights_manager": "Менеджер прав",
+    "rights_package_configurator": "Конфигурация прав пакетов",
+    "productions": "Производство",
+    "new_production": "Новое производство",
+    "production_search": "Поиск производства",
+    "production_manager": "Менеджер производства",
+    "my_productions": "Мои производства",
+    "made_items_search": "Создание единиц поиска",
+    "apps": "Приложения",
+    "misr": "MiSR",
+    "reports": "Отчеты",
+    "system": "Система",
+    "queue_manager": "Менеджер очередей",
+    "system_monitor": "Контроль системы",
+    "install_to_desktop": "Установка на рабочий стол",
+    "user_preferences": "Пользовательские настройки",
+    "system_configuration": "Конфигурация системы",
+    "events_manager": "Менеджер событий",
+    "events-manager": "Менеджер событий",
+    "change_password": "Смена пароля",
+    "test_page": "Тестирование страницы",
+    "media_upload": "Загрузка Медиа",
+    "mapping": "Привязка Медиа",
+    "profile": {
+      "hi_with_username": "{{username}}",
+      "to_profile": "Профиль"
+    },
+    "dashboard": "Дашборд",
+    "mediaproxy-logplayer": "LogPlayer",
+    "tasks": "Задачи",
+    "tasks_my": "Мои Задачи",
+    "acquisitions": "Acquisitions"
+  },
+  "suggestions": {
+    "results": "Результаты",
+    "series": "Серии",
+    "contributors": "Контрибьютеры",
+    "sresult": "результат",
+    "sresults": "результатов"
+  },
+  "player": {
+    "start": "В начало",
+    "end": "В конец",
+    "one_frame_back": "1 кадр назад",
+    "one_second_back": "1 с. назад",
+    "one_frame_forward": "1 кадр вперед",
+    "one_second_forward": "1 с. вперед",
+    "ss_not_supported": "Извините, ваш браузер не поддерживает Smooth Streaming",
+    "hls_not_supported": "Извините, ваш браузер не поддерживает HLS",
+    "dash_not_supported": "Извините, ваш браузер не поддерживает Dash",
+    "cors_or_network_error": "Не удалось загрузить метаданные: проверьте сетевое соединение и настройку кроссдоменных запросов",
+    "network_error": "Не удалось загрузить метаданные: проверьте сетевое соединение",
+    "fullscreen": "На полный экран",
+    "non_fullscreen": "Выйти из полного экрана",
+    "cinemamode": "Широкий экран",
+    "non_cinemamode": "Выйти из широкого экрана",
+    "audiotracks": "Аудио Треки",
+    "play": "Играть",
+    "pause": "Пауза",
+    "closed_captions": "Субтитры",
+    "closed_captions_off": "Отключить субтитры",
+    "mute": "Без звука",
+    "unmute": "Включить звук",
+    "repeat": "Повторять",
+    "overlay": "Оверлей"
+  },
+  "basket": {
+    "title": "Медиа Корзина",
+    "order": "Заказ медиа",
+    "select_preset": "Пожалуйста, выберите шаблон",
+    "message": "Сообщение",
+    "place_order": "Заказать",
+    "placing_order_message": "Идет размещение заказа...",
+    "success_message": "Заказ успешно размещен!",
+    "error_message": "Произошла ошибка, попробуйте еще раз",
+    "choose_preset": "Выберите шаблон",
+    "remove_all": "Отменить все",
+    "remvoe_selected": "Отменить выбранные",
+    "xml_not_valid": "XML не валидна"
+  },
+  "settings_group": {
+    "title": "Группы настроек",
+    "name_column": "Имя группы",
+    "description_column": "Описание",
+    "default_search": "Поиск по умолчанию",
+    "default": "По умолчанию",
+    "start_search": "Экран поиска",
+    "search_by_fileds": "Поля поиска",
+    "facets": "Уточнения",
+    "item_layout": "Вид элемента",
+    "details_layout": "Вид деталей",
+    "remove_success": "Группа успешно удалена",
+      "empty_name_error": "Поле \"Имя группы\" не может быть пустым",
+    "save_success": "Настройки для группы успешно сохранены",
+    "save_error": "Произошла ошибка, попробуйте еще раз",
+    "modal_remove_conformation": "Вы действительно хотите удалить группу настроек \"{{groupName}}\" ?",
+    "search_types": {
+      "simple": "Упрощенный",
+      "media": "Медиа",
+      "version": "Версии",
+      "titles": "Заголовки",
+      "carrier": "Носители"
+    },
+    "select_default_search": "Выберите поиск по умолчанию",
+    "select_logo": "Выберите логотип для верхнего меню",
+    "screen_logo": "Нет логотипа для экрана поиска",
+    "error": "Что-то пошло не так, попробуйте еще раз",
+    "repeat": "Повторить"
+  },
+  "global_settings": {
+    "title": "Глобальные настройки",
+    "save_success": "Виджет сохранён",
+    "remove_success": "Виджет удалён",
+    "modal_remove_conformation": "Вы действительно хотите удалить виджет \"{{friendlyName}}\"?",
+    "grafana": "Аналитика",
+    "friendly_name": "Название",
+    "embed_data": "Встраиваемые данные",
+    "error_empty_fn": "Не заполнено название",
+    "error_empty_em": "Не заполнены встраиваемые данные"
+  },
+  "simplified_settings": {
+    "add_label": "Добавиить заголовок",
+    "save": "Сохранить",
+    "reset": "Сбросить",
+    "edit": "Изменить",
+    "no_data": "Нет данных",
+    "setup_fields": "Поля"
+  },
+  "xml": {
+    "select_value": "Пожалуйста, выберите значение"
+  },
+  "chart": {
+    "btn_title": "Открыть график"
+  },
+  "profile": {
+    "overview": {
+      "title": "Общее",
+      "user_label": "Имя пользователя:",
+      "image_label": "Аватар:",
+      "email_label": "Email:",
+      "language_label": "Язык:"
+    },
+    "security": {
+      "title": "Безопасность",
+      "change_password": {
+        "title": "Изменить пароль",
+        "current_pass": "Текущий пароль",
+        "new_pass": "Новый пароль",
+        "repeat_pass": "Повторите пароль",
+        "button": "Изменить"
+      }
+    },
+    "colorschemas": {
+      "title": "Темы"
+    },
+    "menu": {
+      "overview": "Общее",
+      "security": "Безопасность",
+      "color_schemas": "Темы",
+      "settings": "Настройки"
+    },
+    "defaultpage": {
+      "title": "Стартовая страница"
+    }
+  },
+  "login": {
+    "prompt": "Вход в систему",
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "sign_in": "Вход",
+    "rememberme": "Запомнить",
+    "forgot": "Забыли пароль?",
+    "capsLockNotificationText": "Включен CapsLock",
+    "errorNetwork": "Ошибка входа: проверьте ваше подключение к сети",
+    "errorUnknown": "Неизвестная ошибка"
+  },
+  "table_search_dropdown": {
+    "controls": {
+      "settings": "Настройки",
+      "save_view": "Сохранить представление",
+      "new_view": "Новое представление",
+      "save_view_as": "Сохранить представление как...",
+      "save_global_view_as": "Сохранить общее представление как...",
+      "save_as_default_view": "Сохарниь как представление по умолчанию",
+      "delete_view": "Удалить представление",
+      "reset_view": "Сбросить продставление",
+      "setup_columns": "Настройка столбцов",
+      "autosize_columns": "Авторазмер столбцов",
+      "export_to_file": "Экспорт в Файл"
+    }
+  },
+  "simplified": {
+    "title": "Упрощенный поиск",
+    "facets_header": "Уточнить",
+    "clear_facets": "Отменить выбранные",
+    "show_more": "Показать больше",
+    "recent": "Недавно просмотренные",
+    "remove_from_basket": "Убрать из корзины",
+    "add_to_basket": "Добавить в корзину",
+    "more_details": "Больше деталей ...",
+    "no_results": "Мы ничего не нашли - Пожалуйста, попробуйте позже",
+    "field_setup": "Настройка полей",
+    "error": "Нет результатов",
+    "repeat": "Повторить"
+  },
+  "tabs": {
+    "dropdown_default": "Пожалуйста, выберите значение",
+    "metadata_id": "ID метаданных"
+  },
+  "misr": {
+    "title": "MiSR",
+    "table": {
+      "dropdown": {
+        "row": {
+          "raise_prev_wf": "Предпросмотр рабочего процесса"
+        }
+      }
+    }
+  },
+  "system-config": {
+    "title": "Конфигурация системы",
+    "xml": {
+      "title": "XML схемы",
+      "empty": "XML схема пуста"
+    }
+  },
+  "queue": {
+    "title": "Менеджер очередей",
+    "error": "Что-то пошло не так, попробуйте еще раз",
+    "repeat": "Повторить",
+    "params": {
+      "show_completed": "Показывать завершенные",
+      "show_error": "Показывать ошибки",
+      "select_all": "Выбрать все"
+    },
+    "table": {
+      "dropdown": {
+        "row": {
+          "set_priority": "Установить приоритет",
+          "move_to_the_beginning": "Переместить в начало",
+          "move_to_the_end": "Переместить в конец",
+          "copy_details": "Скопировать подробности в буфер обмена"
+        }
+      }
+    },
+    "auto_refresh_queue": "Автообновление"
+  },
+  "media": {
+    "title": "Поиск медиа",
+    "small_title": "Медиа",
+    "arc_asset_details": "Подробнее по активам",
+    "detail": "Подробнее",
+    "facets": "Кластеры",
+    "wizard": {
+      "title": "Выберите медиа",
+      "next": "Далее"
+    },
+    "table": {
+      "thumb": {
+        "button": "Предпросмотр"
+      },
+      "search": {
+        "button": "Поиск"
+      },
+      "dropdown": {
+        "row": {
+          "add_to_basket": "Добавить в Коризну",
+          "remove_from_basket": "Удалить из корзины",
+          "media_details": "Подробнее о медиа",
+          "rw_wizard": "Запустить рабочий процесс",
+          "media_logger": "Медиа логер",
+          "request_browse_copy": "Запросить копию",
+          "open_in_rce": "Открыть в редакторе",
+          "change_status": "Изменить статус",
+          "clip_editor": "Редактор клипов"
+        }
+      }
+    }
+  },
+  "version": {
+    "title": "Поиск версий",
+    "small_title": "Версия",
+    "arc_asset_details": "Подробнее по активам",
+    "detail": "Подробнее",
+    "facets": "Кластеры",
+    "wizard": {
+      "title": "Выберите версию",
+      "audio": "Аудио",
+      "video": "Видео",
+      "usage": "Применение",
+      "digital_media_format": "Цифровой медиа формат",
+      "next": "Далее",
+      "apply": "Применить",
+      "priority": {
+        "success": "Приоритет был изменен",
+        "error": "Ошибка при изменении приоритета"
+      }
+    },
+    "table": {
+      "thumb": {
+        "button": "Предпросмотр"
+      },
+      "search": {
+        "button": "Поиск"
+      },
+      "dropdown": {
+        "row": {
+          "add_to_basket": "Добавить в Коризну",
+          "remove_from_basket": "Удалить из корзины",
+          "media_details": "Подробнее о медиа",
+          "rw_wizard": "Запустить рабочий процесс",
+          "request_browse_copy": "Запросить копии",
+          "open_in_rce": "Открыть в редакторе",
+          "change_status": "Изменить статус",
+          "upload": "Загрузка",
+          "multiupload": "Множественная загрука",
+          "clip_editor": "Редактор клипов"
+        }
+      }
+    }
+  },
+  "carrier": {
+    "title": "Поиск носителей",
+    "arc_asset_details": "Подробнее по активам",
+    "detail": "Подробнее",
+    "facets": "Кластеры",
+    "table": {
+      "thumb": {
+        "button": "Предпросмотр"
+      },
+      "search": {
+        "button": "Поиск"
+      },
+      "dropdown": {
+        "row": {
+          "add_to_basket": "Добавить в Коризну",
+          "remove_from_basket": "Удалить из корзины",
+          "media_details": "Подробнее о медиа",
+          "request_browse_copy": "Запросить просмотр копии",
+          "open_in_rce": "Открыть в редакторе",
+          "change_status": "Изменить статус"
+        }
+      }
+    }
+  },
+  "titles": {
+    "title": "Заголовки",
+    "arc_asset_details": "Подробнее по активам",
+    "detail": "Подробнее",
+    "facets": "Кластеры",
+    "table": {
+      "thumb": {
+        "button": "Предпросмотр"
+      },
+      "search": {
+        "button": "Поиск"
+      },
+      "dropdown": {
+        "row": {
+          "add_to_basket": "Добавить в Коризну",
+          "remove_from_basket": "Удалить из корзины",
+          "media_details": "Подробнее о медиа",
+          "request_browse_copy": "Запросить копию",
+          "open_in_rce": "Открыть в редакторе",
+          "change_status": "Изменить статус",
+          "delete": ""
+        }
+      }
+    },
+    "display_views_mode": {
+      "tvm": "Заголовки Версии Медиа",
+      "tv": "Заголовки Версии"
+    }
+  },
+  "workflow": {
+    "title": "Рабочий процесс",
+    "schedules": "Расписания",
+    "arc_asset_details": "Подробнее по активам",
+    "detail": "Подробнее",
+    "facets": "Уточнить",
+    "success_assign": "Успешно назначено",
+    "error_assign": "Назначение не удалось",
+    "appointments": {
+      "title": "Расписание Событие Drag & Drop"
+    },
+    "collapse_all": "Свернуть все",
+    "expand_all": "Развернуть все",
+    "table": {
+      "thumb": {
+        "button": "Предпросмотр"
+      },
+      "search": {
+        "button": "Поиск"
+      },
+      "dropdown": {
+        "row": {
+          "add_to_basket": "Добавить в Коризну",
+          "remove_from_basket": "Удалить из корзины",
+          "media_details": "Подробнее о медиа",
+          "request_browse_copy": "Запросить просмотр копии",
+          "open_in_rce": "Открыть в RCE",
+          "change_status": "Изменить статус",
+          "delete": "Удалить"
+        }
+      }
+    },
+    "topPanel": {
+      "wizard": {
+        "title": "Мастер",
+        "priority": {
+          "title": "Изменить приоритет",
+          "set": "Установите приоритет",
+          "low": "Низкий",
+          "normal":"Обычный",
+          "high": "Высокий",
+          "immediate": "Срочный",
+          "update_child": "Обновить дочерние",
+          "step1": "Шаг 1",
+          "finished": "Завершено"
+        },
+        "abort": {
+          "title": "Перезапускание",
+          "reason": "Причина",
+          "step1": "Шаг 1",
+          "finished": "Завершено"
+        }
+      },
+      "change_priority": "Изменить приоритет",
+      "abort": "Перезапустить"
+    },
+    "details": {
+      "media": "Исходные медиа",
+      "mediainfo": {
+        "mediatype": "Формат медиа",
+        "aspectratio": "Соотношение сторон",
+        "tvstandart": "ТВ Стандарт",
+        "usage": "Применение",
+        "itemtype": "Тип",
+        "workflow": "Рабочий процесс",
+        "notes": "Заметки"
+      }
+    },
+    "assessment": "Simple Assessment"
+  },
+  "subtitle_qc": {
+    "title": "Subtitle QC",
+    "pause": "Пауза",
+    "start": "Старт",
+    "resume": "Продолжить",
+    "pending": "Приостановить",
+    "abort": "Перезапустить",
+    "complete": "Завершить"
+  },
+  "details_item": {
+    "check_network": "Проверьте ваше соединение с интернетом",
+    "server_not_work": "Внутренняя ошибка сервера",
+    "media_item_not_found": "Медиа файл не найден",
+    "document_not_found": "Документ не найден",
+    "loading_subtitles": "Загрузка субтитров...",
+    "subtitles_not_found": "Субтитры не найдены",
+    "select_item": "Выберите файл",
+    "select_one_item_only": "{{countSelectedRows}} строк выбрано "
+  },
+  "media_details": {
+    "title": "Медиа",
+    "edit_som_eom": "Редактировать SOM/EOM",
+    "change_status": "Изменить статус",
+    "test": "Тест",
+    "item_detail": "Медиа Подробнее о выбранном",
+    "data": "Метаданные",
+    "media": "Медиа",
+    "player": "Плеер",
+    "media_list": "Список медиа",
+    "actions_button": "Действия",
+    "tabs": {
+      "mMediaTagging": "Маркировка",
+      "mEventsActions": "События/Действия",
+      "mAttachements": "Вложения",
+      "mAssocMedia": "Связан. Медиа",
+      "mHistory": "История",
+      "mSegmentsAudioTracks": "Сегменты",
+      "mAudioTracks": "Аудио Треки",
+      "mNotes": "Примечания",
+      "mMetadata": "Польз. Метаданные",
+      "mTasksReports": "Отчеты",
+      "mMisr": "MISR",
+      "mVideoInfo": "Таймлайн",
+      "mSubtitlesGrid": "Субтитры",
+      "mAI": "AI"
+    }
+  },
+  "version_details": {
+    "title": "Версия",
+    "item_detail": "Версия Подробнее о выбранном",
+    "data": "Метаданные",
+    "media": "Медиа",
+    "player": "Плеер",
+    "tabs": {
+      "vMedia": "Медиа",
+      "vSegmentsAudioTracks": "Сегменты",
+      "vAudioTracks": "Аудио Треки",
+      "vNotes": "Примечания",
+      "vAdditionalInfo": "Дополнительная информация",
+      "vRights": "Права",
+      "mMetadata": "Польз. Метаданные",
+      "vImfPackage": "IMF Package"
+    }
+  },
+  "carrier_details": {
+    "title": "Носитель",
+    "item_detail": "Носитель Подробнее о выбранном",
+    "data": "Метаданные",
+    "media": "Медиа",
+    "player": "Плеер",
+    "tabs": {
+      "cNotes": "Примечания",
+      "cMetadata": "Польз. Метаданные",
+      "cHistory": "История"
+    }
+  },
+  "title_details": {
+    "title": "Заголовок Подробнее о выбранном",
+    "data": "Метаданные",
+    "media": "Медиа",
+    "player": "Плеер",
+    "tabs": {
+      "mNotes": "Примечания"
+    }
+  },
+  "advanced": {
+    "advanced": "РАСШИРЕННЫЙ ПОИСК",
+    "advanced_search": "Расширенный поиск",
+    "add_group": "Добавить фильтр",
+    "remove_criteria": "Удалить критерий",
+    "remove_group": "Удалить группу",
+    "select_advanced": "Сохраненные",
+    "resent_searches": "НЕДАВНИЙ ПОИСК",
+    "recent_items1": "результата",
+    "recent_items": "результатов",
+    "recent_item": "результат",
+    "error": "Что-то пошло не так, попробуйте еще раз",
+    "repeat": "Повторить",
+    "repeat_clear": "Clear",
+    "add_criteria": "Добавить критерий",
+    "query_builder_btn": "Конструктор запросов",
+    "query_example_btn": "Запрос по примеру",
+    "modal_name_for_search": "Пожалуйста, введите имя поиска",
+    "modal_name_for_search_placeholder": "пример: 'Мой сохраненный поиск'",
+    "modal_remove_saved_search_conformation": "Вы действительно хотите удалить сохраненный поиск \"{{searchName}}\" ?",
+    "modal_need_name_for_search": "Укажите имя для нового поиска",
+    "saved_search_success_save": "Поиск успешно сохранен",
+    "saved_search_success_removed": "Поиск успешно удален",
+    "not_selected_search_for_save": "Не выбран поиск для сохранения параметров"
+  },
+  "logout_modal_module": {
+    "title_modal": "Сессия заканчивается",
+    "sub_title_modal": "Сессия заканчивается через {{ timeLeft }} секунд",
+    "count_down_to_logout": " секунд до окончания сессии",
+    "description": "Сессия будет заверешена потому что не обнаружена активность на этой странице",
+    "continue": "Продлить сессию",
+    "logout": "Выйти"
+  },
+  "views": {
+    "view_name_exist": "Представление с таким названием уже существует",
+    "view_name_is_empty": "Название представления не заполнено",
+    "view_columns_is_empty": "Не выбран ни один столбец",
+    "enter_view": "Введите название представления:",
+    "new_name_view": "Новое название",
+    "save_view": "Сохранение представления",
+    "global_save_view": "Сохранение глобального представления",
+    "success_save": "Представление успешно сохранено.",
+    "global_success_save": "Глобальное представление успешно сохранено.",
+    "error_save": "Произошла ошибка.",
+    "default_success": "Представление установлено по умолчанию.",
+    "delete_confirm": "Вы действительно хотите удалить текущее представление?",
+    "as_default_confirm": "Вы действительно хотите установить текущее представление как представление по умолчанию?",
+    "delete_success": "Представление успешно удалено.",
+    "select_view": "Выберите представление"
+  },
+  "columns_modal": {
+    "header": "Показать/скрыть колонки"
+  },
+  "dashboard": {
+    "title": "Дашборд",
+    "no-settings": "Нет доступных настроек",
+    "boardName": "Заголовок",
+    "showChartButtons": "Показывать кнопки",
+    "selectedChartType": "Тип графика",
+    "chartAxisNames": "Имена осей",
+    "themeNames": "Цветовые схемы",
+    "chart": "Графики",
+    "savedSearch": "Сохранённый запрос",
+    "workflows": "Рабочие процессы",
+    "grafana": "Grafana",
+    "targetWidget": "Аналитика",
+    "boards_header": "Виджеты",
+    "autoRefresh": "Авто обновление",
+    "showedInterval": "Показанный интервал",
+    "drag_widget": "Перетащите виджет на дашборд",
+    "dropdown": {
+      "line": "Линейный",
+      "bar": "Столбчатый",
+      "radar": "Радиальный",
+      "light": "Светлая",
+      "dark": "Темная"
+    },
+    "error": "Произошла ошибка, попробуйте еще раз"
+  },
+  "media_logger": {
+    "title": "Медиа логгер",
+    "timeline": "Таймлайн",
+    "videoInfo": "Таймлайн с событиями",
+    "tagging": "Локаторы",
+    "data": "Данные",
+    "media": "Медиа",
+    "logger_not_available": "Логер не доступен",
+    "taxonomy": "Taxonomy",
+    "success_save": "Запись успешно сохранена",
+    "error_save": "Произошла ошибка."
+  },
+  "simple_assessment": {
+    "title": "Assessment",
+    "timeline": "Таймлайн",
+    "audiotracks": "Аудио Треки",
+    "videoInfo": "Таймлайн с событиями",
+    "tagging": "Локаторы",
+    "data": "Данные",
+    "jobdata": "Данные задачи",
+    "media": "Медиа",
+    "media_list": "Список медиа",
+    "metadata": "Польз. метаданные",
+    "subtitles": "Субтитры",
+    "media_info": "Информация о медиа",
+    "notes": "Примечание к задаче",
+    "events": "События",
+    "history_button": "История",
+    "save_button": "Сохранить",
+    "add_event": "Добавить событие",
+    "add_segment": "Добавить сегмент",
+    "success_save": "Сохранение прошло успешно",
+    "error_save": "Произошла ошибка сохранения.",
+    "invalid_save": "Данные для сохранения не являютсч валидными.",
+    "set_in": "Set In",
+    "set_out": "Set Out",
+    "ai": "AI",
+    "add_track": "Добавить трэк",
+    "audio_files": "Привязанные Аудио",
+    "accepted": "Accepted",
+    "rejected": "Rejected",
+    "not_set": "None"
+  },
+  "media_logger_job": {
+    "title": "Задачи медиа логгера",
+    "logger_not_available": "Логер не доступен"
+  },
+  "modal": {
+    "titles": {
+      "error": "Ошибка",
+      "success": "Успешно",
+      "confirm": "Подтверждение",
+      "prompt": "Запрос данных",
+      "warning": "Предупреждение"
+    }
+  },
+  "upload": {
+    "modal_title": "Загрузка медиа",
+    "select_local_file": "Локальный файл",
+    "select_remote_file": "Удаленный файл",
+    "filename": "Файл",
+    "workflow": "Рабочий процесс",
+    "accelerated": "Ускоренный",
+    "title": "Версия",
+    "upload": "Загрузить",
+    "start": "Загрузка началась",
+    "error": "Ошибка загрузки",
+    "notes": "Пометки",
+    "select_file": "Выберете файл",
+    "upload_in_process": "Загрузка файлов",
+    "list_of_files": "Список файлов",
+    "error_ext": "Тип файла не поддерживается",
+    "succeed_file_upload": "Файл загружен успешно",
+    "failed_file_upload": "Загрузка файла не удалась",
+    "delete_completed": "Удалить завершенные",
+    "mb": "Мб",
+    "version_title": "Выберите версию",
+    "error_uploading": "Ошибка загрузки",
+    "completed": "Загрузка завершена",
+    "upload_placeholder": "Кликните или перенесите файлы сюда",
+    "queue_state_success": "Успешно",
+    "queue_state_error": "Ошибка",
+    "queue_state_warning": "Внимание",
+    "queue_state_progress": "В процессе",
+    "queue_state_wait": "В очереди",
+    "no_uploads_in_progress": "Нет файлов для загрузки",
+    "drop_file_for_upload": "Отпустите файлы для загрузки",
+    "error_creating_workflow": "Ошибка создания рабочего потока",
+    "open_created_media": "Посмотреть медиа",
+    "open_created_workflow": "Посмотреть рабочий поток {{jobRef}}",
+    "next": "Далее",
+    "list_upload_items": "Список загружаемых файлов",
+    "select_files_fo_upload": "Выберите файлы",
+    "set_params": "Укажите параметры",
+    "version_placeholder": "Кликните для выбора версии",
+    "empty_name": "Имя файла пустое",
+    "invalid_name": "Имя файла некорректно"
+  },
+  "lookups": {
+    "mediatype": "Тип медиа данных",
+    "aspectratio": "Соотношение сторон",
+    "tvstandart": "ТВ Стандарт",
+    "usage": "Применение",
+    "itemtype": "Тип",
+    "workflow": "Рабочий процесс"
+  },
+  "viewers": {
+    "full_display_mode_enable": "Развернуть",
+    "full_display_mode_disable": "Свернуть",
+    "preview": "Просмотр"
+  },
+  "reports": {
+    "title": "Отчеты",
+    "filter": "Фильтр",
+    "preview": "Просмотр",
+    "select_params": "Выберите параметры",
+    "error": "Что-то пошло не так, попробуйте еще раз"
+  },
+  "rce": {
+    "title": "Редактор клипов",
+    "timeline": "Таймлайн",
+      "timeline_eom_isnull": "Длительность медиа недоступна. Вместо этого используется длительность файла.",
+    "timeline_preview": "Предварительный просмотр Таймлайна",
+    "no_timline_text": "Компонент Таймлайн недоступен! Пожалуйста, добавьте его на страницу",
+    "invalid_file": "Файл некорректен! Пожалуйста, выберите другой файл"
+  },
+  "rwwizard": {
+    "title": "Мастер создания рабочего процесса",
+    "not_found": "По вашему запросу ничего не найдено",
+    "filter": "Фильтр"
+  },
+  "saved": {
+    "save_success": "Параметры поиска успешно сохранены",
+    "save_error": "Не удалось сохранить парамеры поиска"
+  },
+  "export": {
+    "title": "Выгрузка",
+    "all_pages": "Все Страницы",
+    "current_page": "Текущую Страницу",
+    "success": "Отчет успешно сгенерирован",
+    "download": "Скачать",
+    "open_in_viewer": "Открыть в браузере",
+    "prev": "Вернуться",
+    "generate": "Начать",
+    "empty_params": "Экспорт не доступен при пустых критериях",
+    "empty_results": "Экспорт не доступен при пустом результате",
+    "select_format": "1. Выберите формат",
+    "finished": "2. Завершено"
+  },
+  "slick_grid": {
+    "not_have_column": "Нет столбцов. Пожалуйста выберете новые столбцы в настройках",
+    "error": "Произошла ошибка. Попробуйте позже.",
+    "repeat": "Повторить"
+  },
+  "layout-manager": {
+    "main": "Представление",
+    "open": "Открыть представление",
+    "save": "Сохранить представление",
+    "saveas": "Сохранить представление как",
+    "saveglobal": "Сохранить глобальное представление",
+    "reset": "Восстановить представление",
+    "no-results": "Представления отсутствуют",
+    "placeholder": "Фильтр представлений",
+    "default": "По умолчанию",
+    "shared": "Общий",
+    "new-name": "Имя представления"
+  },
+  "ai": {
+    "speech": "Распознанная речи",
+    "tags": "Теги",
+    "visual": "Распознанный текст",
+    "people": "Люди",
+    "logos": "Логотипы",
+    "adult": "Небезопасный контент"
+  },
+  "mapping": {
+    "bindSuccess": "Медиа успешно привязано",
+    "bindError": "Ошибка привязки медиа",
+    "unbind": "Отвязать медиа"
+  },
+  "acquisitions": {
+    "edit_acq": "Редактировать Acquisition",
+    "edit_article": "Редактировать Статью"
+  },
+    "contacts": {
+        "new_contact": "Новый контакт",
+        "labels": {
+            "fname": "Имя",
+            "oname": "Отчество",
+            "sname": "Фамилия",
+            "qualifier": "Спецификатор",
+            "email": "Email",
+            "site": "Сайт",
+            "phone": "Телефон",
+            "fax": "Факс",
+            "mphone": "Мобильный телефон",
+            "addr": "Адрес",
+            "city": "Город",
+            "state": "Область/район",
+            "country": "Страна",
+            "pcode": "Индекс",
+            "daddr": "Адрес доставки",
+            "dcity": "Город доставки",
+            "dstate": "Область/район доставки",
+            "dcountry": "Страна доставки",
+            "dpcode": "Индекс доставки",
+            "dlvr": "Доставка"
+        }
+    },
+    "cachemanager": {
+        "table": {
+            "dropdown": {
+                "lock_item_in_cache": "Заблокирвоать в кэше",
+                "unlock_item_in_cache": "Разблоирвоать из кэша",
+                "force_item_in_cache": "Занести в Кэш",
+                "unforce_item_in_cache": "Вынести из кэша",
+                "copy_to_clipboard": "Копировать в буфер",
+                "reset_checks": "Сбросить проверки"
+            }
+        }
+    },
+    "names": {
+        "addmodal": {
+            "title": "Добавить имя"
+        },
+        "editmodal": {
+            "title": "Редактирование имени"
+        }
+    }
+}

@@ -1,0 +1,82 @@
+@import "../../../..//base/styles/theme.scss";
+@each $key, $value in $common-themes {
+  .#{$key} {
+    misr-accordion {
+      .accordion-group-wrapper {
+        padding-left: 22px;
+
+        .accordion-header-row {
+          box-sizing: border-box;
+          cursor: pointer;
+
+          .icon {
+            color: getThemeColor(1, $key);
+          }
+        }
+
+        .accordion-item-row {
+          box-sizing: border-box;
+          padding: 0px 0px 0px 48px;
+          border-left: 1px solid getThemeColor(22, $key);
+
+          > span {
+            display: flex;
+            align-items: center;
+
+            .icon {
+              flex: 0 0 25px;
+            }
+          }
+
+          &.selected-row {
+            span {
+              .icon {
+                color: #fff!important;
+              }
+            }
+          }
+
+          &.pointer {
+            cursor: pointer;
+          }
+
+          .row-item {
+            padding: 8px;
+            display: inline-block;
+            border-left: 1px solid getThemeColor(22, $key);
+            min-height: 32px;
+
+            &.code {
+              box-sizing: border-box;
+              flex: 2;
+            }
+            &.name {
+              flex: 2;
+            }
+            &.num {
+              box-sizing: border-box;
+              flex: 2;
+            }
+            &.type {
+              box-sizing: border-box;
+              flex: 2;
+            }
+            &.server {
+              box-sizing: border-box;
+              flex: 2;
+            }
+            &.pass {
+              box-sizing: border-box;
+              flex: 2;
+            }
+            &.format {
+              box-sizing: border-box;
+              flex: 2;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

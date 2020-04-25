@@ -1,0 +1,21 @@
+@import "../../../../views/base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        input-component {
+            height: 100%;
+            width: 100%;
+        }
+        .input-wrapper {
+            padding: 7px 0;
+            width: 100%;
+            input {
+                height: 25px;
+            }
+            textarea {
+                resize: none;
+                height: 100%;
+            }
+        }
+    }
+}

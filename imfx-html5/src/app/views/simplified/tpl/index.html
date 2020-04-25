@@ -1,0 +1,87 @@
+<div id="simplified-search" class="full-height">
+  <!--<start-search-form [staticSearchType]="searchType" *ngIf="!searchResults.length; else simpleSearch"></start-search-form>-->
+  <!--<template #simpleSearch>-->
+    <overlay #overlay></overlay>
+    <div class="simplified-block">
+      <div class="search-row-wrapper simple-search inline">
+        <search-form
+          [config]="searchFormConfig"
+          [changesDetector]="pushChangesTosuggestion"
+          class="combined"
+          #searchForm
+        ></search-form>
+      </div>
+      <div class="cinema-mode-player"></div>
+      <div class="simplified-blocks-wrapper grid">
+        <div class="facets" [ngClass]="{'collapsed-facets': facetsCollapsed, 'uncollapsed-facets': !facetsCollapsed}">
+          <div class="sidebar-toggle" (click)="setFacetsCollapsed()">
+            <i *ngIf="facetsCollapsed; else sidebarExpanded" class="icons-sidebar-right icon"></i>
+            <ng-template #sidebarExpanded>
+              <i class="icons-sidebar-left icon"></i>
+            </ng-template>
+          </div>
+          <div class="simplified-facets sidebar full-height panel card"
+             *ngIf="searchResults[0]?.Facets?.length && searchResults[0]?.Items?.length > 0"
+             [ngClass]="{'collapsed-simplified-facets': facetsCollapsed, 'uncollapsed-simplified-facets': !facetsCollapsed}">
+            <div style="overflow-y: auto;
+                        height: 100%;">
+              <div>
+                <div style="float:right; margin-top: 8px; cursor: pointer" [ngClass]="{'disabled' : searchCriteria.length == 0}" (click)="clearFacets()">
+                  {{'simplified.clear_facets' | translate}}
+                </div>
+                <h2>
+                  {{'simplified.facets_header' | translate}}
+                </h2>
+              </div>
+              <div *ngFor="let facet of searchResults[0]?.Facets; let i = index">
+                <simplified-facet-component [facet]="facet" [activeFields]="searchCriteria"
+                                            (selectedFilters)="changeSearchCriteria($event)"></simplified-facet-component>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="common-items-wrapper" [ngClass]="{'detail-selected': selectedItem && checkSelectedItem()}" style="min-width: 480px; border-left: none; padding: 0; flex: 1; height:100%; overflow: auto;" #simplifiedItems>
+          <div class="simplified-items full-height" *ngIf="searchResults[0]?.Items?.length > 0"
+               [ngClass]="{'tiles-view': tilesView, 'detail-showed': selectedItem}">
+            <div *ngFor="let padeIndex of totalPagesArr; let k = index">
+              <div *ngIf="page>=k">
+                <div *ngFor="let item of searchResults[k]?.Items; let i = index" class="simplified-item__row"
+                     [ngClass]="{'selected-item': selectedItem?.VersionId == item.VersionId}"
+                     id="simplified-preview-item">
+                  <simplified-item-component [item]="item"
+                                             [setupsUpdated]="setupsUpdated"
+                                             (selected)="toggleItemSelection($event)"
+                                             [settings]="itemSettings"
+                                             [storagePrefix]="storagePrefix"
+                                             [defaultSettings]="defaultItemSettings"
+                                             [settingsMode]="settingsMode"
+                                             [itemIndex]="i"
+                                             (seriesFilter)="doSeriesSearch($event)"></simplified-item-component>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="enabledMoreButton" (click)="doSearch()" class="show-more-btn">{{ 'simplified.show_more' |
+              translate }}
+            </div>
+          </div>
+          <div style="text-align: center" *ngIf="searchResults[0]?.Items?.length == 0">
+            <h2>{{'simplified.no_results' | translate}}</h2>
+          </div>
+        </div>
+
+        <div class="simplified-detail full-height" *ngIf="selectedItem && checkSelectedItem()"
+             [ngClass]="{'overlay': settingsMode, 'collapsed': detailsCollapsed}">
+          <simplified-item-detail [item]="selectedItem"
+                                  [setupsUpdated]="setupsUpdated"
+                                  [settings]="detailSettings"
+                                  [storagePrefix]="storagePrefix"
+                                  [defaultSettings]="defaultDetailSettings"
+                                  [settingsMode]="settingsMode"
+                                  [itemIndex]="i"
+                                  (toggleCollapse)="setDetailsCollapsed($event)"
+                                  (selected)="toggleItemSelection($event)"></simplified-item-detail>
+        </div>
+      </div>
+    </div>
+  <!--</template>-->
+</div>

@@ -1,0 +1,13 @@
+@import "../../../../../../views/base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        .taxonomy-tab-wrapper {
+            overflow: auto;
+            height: 100%;
+            ul.ui-fancytree {
+                overflow: hidden;
+            }
+        }
+    }
+}

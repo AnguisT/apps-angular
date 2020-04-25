@@ -1,0 +1,44 @@
+<div *ngIf="sgp && provider?.slickGridProvider">
+    <nav
+            #pager
+            *ngIf="sgp.module.pager.enabled == true"
+            [hidden]="!sgp.getData()?.length || sgp.module.pager._pages?.length <= 1"
+            class="slick-pager"
+            id="{{sgp.uid}}-pager">
+        <ul class="pages" style="float: right;margin-left: auto;">
+            <li>
+                <button class="icon-button" title="first page" [hidden]="provider.isFirstPage()"
+                        (click)="provider.firstPage()">
+                    <i class="icons-first icon"></i>
+                </button>
+            </li>
+            <li>
+                <button class="icon-button" title="previous page" [hidden]="provider.isFirstPage()"
+                        (click)="provider.prevPage()">
+                    <i class="icons-left icon"></i>
+                </button>
+            </li>
+            <li class="divider">|</li>
+            <li class="page" (click)="provider.setPage(p)" class="slick-page-{{p}}"
+                [ngClass]="{'active': provider.currentPage == p}"
+                *ngFor="let p of provider.currentPageNumbers">
+                <!--*ngFor="let p of module.pager._pages">-->
+                <a (click)="provider.setPage(p)">{{p}}</a>
+            </li>
+            <li class="divider">|</li>
+            <li>
+                <button class="icon-button" title="next page" [hidden]="provider.isLastPage()"
+                        (click)="provider.nextPage()">
+                    <i class="icons-right icon"></i>
+                </button>
+            </li>
+            <li>
+                <button class="icon-button" title="last page" [hidden]="provider.isLastPage()"
+                        (click)="provider.lastPage()">
+                    <i class="icons-last icon"></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+</div>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <title>
+    Tiles
+  </title>
+  <g fill-rule="evenodd">
+    <path d="M11 4L17 4 17 9 11 9 11 4zM13 6L13 7 15 7 15 6 13 6zM11 11L17 11 17 16 11 16 11 11zM13 13L13 14 15 14 15 13 13 13zM3 4L9 4 9 9 3 9 3 4zM5 6L5 7 7 7 7 6 5 6zM3 11L9 11 9 16 3 16 3 11zM5 13L5 14 7 14 7 13 5 13z"/>
+  </g>
+</svg>

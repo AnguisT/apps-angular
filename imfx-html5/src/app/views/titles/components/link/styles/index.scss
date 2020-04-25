@@ -1,0 +1,11 @@
+@import "../../../../base/styles/theme";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        .ag-cell {
+            .wrapper {
+              font-size: 10px;
+            }
+        }
+    }
+}

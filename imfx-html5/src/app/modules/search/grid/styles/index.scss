@@ -1,0 +1,75 @@
+@import "../../../../views/base/styles/theme.scss";
+@each $key,$value in $common-themes {
+    .#{$key} {
+        .grid-settings-dropdown.dropdown:hover {
+          a:hover {
+            color: #ffffff !important;
+          }
+        }
+
+        .grid-settings-dropdown.dropdown {
+            a {
+                padding: 0px 1.5rem !important;
+            }
+            a.disabled {
+                pointer-events: none;
+            }
+        }
+
+        ag-grid-ng2 {
+            overflow: hidden;
+        }
+        .search-grid {
+            display: flex;
+            flex-direction: column;
+            .ag-fresh {
+                .ag-header-cell-label {
+                    //Incorrect display #/media/detail/
+                    //line-height: 40px;
+                }
+            }
+        }
+        .empty-view {
+            .ag-root {
+               // border: 1px solid red;
+            }
+            .ag-header {
+                background-color: rgba(255, 0, 0, 0.2);
+                //border-color: red;
+            }
+            .ag-body-viewport-wrapper, .ag-pinned-left-cols-viewport, .ag-pinned-right-cols-viewport, .ag-full-width-viewport  {
+                background-color: rgba(255, 0, 0, 0.1);
+            }
+            .ag-row {
+                background-color: rgba(255, 0, 0, 0);
+            }
+        }
+        .ag-select-view {
+            pointer-events: none;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0px;
+            left: 0px;
+            .ag-select-view-panel {
+                display: table;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                .ag-select-view-wrapper {
+                    display: table-cell;
+                    vertical-align: middle;
+                    text-align: center;
+                    .ag-select-view-center {
+                        background-color: #fff;
+                        border: 1px solid #808080;
+                        border-radius: 10px;
+                        padding: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+//.ag-body-viewport { overflow: hidden !important; position: relative;}
+//.ag-pinned-left-cols-viewport {height: 100% !important;}

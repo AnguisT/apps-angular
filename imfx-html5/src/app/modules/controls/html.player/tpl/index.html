@@ -1,0 +1,19 @@
+<div #playerElement class="player-wrapper" id="vjs-wrapper-{{internalId}}" [ngClass]="{
+  'base-player-mode': simpleModeClass,
+  'focused': focusProvider.isFocused,
+  'markers': clipBtns
+ }">
+  <!-- crossorigin="anonymous" used here to enable canvas export -->
+  <video id="imfx-video-{{internalId}}" *ngIf="!isLive" attr.data-imfx-id="imfx-video-{{internalId}}" class="video-js vjs-default-skin vjs-big-play-centered">
+    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a
+      href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+  </video>
+  <audio id="imfx-audio-{{internalId}}" *ngIf="!isLive" attr.data-imfx-id="imfx-audio-{{internalId}}" src="{{audioSrc}}" controls="controls" style="display: none;"> <!-- -->
+  </audio>
+  <audio id="imfx-video-{{internalId}}" *ngIf="isLive" attr.data-imfx-id="imfx-video-{{internalId}}" class="video-js vjs-default-skin vjs-big-play-centered">
+  </audio>
+  <canvas id="clip-canvas" class="clip-canvas" origin-clean="true" *ngIf="clipBtns"></canvas>
+  <canvas id="empty-canvas" class="empty-canvas" origin-clean="true" *ngIf="clipBtns"></canvas>
+  <iframe name="frame" width=100% height=100% style="position:absolute;z-index:-1;top:0;"></iframe>
+  <div id="png-overlay" class="png-overlay" *ngIf="!simpleMode"></div>
+</div>

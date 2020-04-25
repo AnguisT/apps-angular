@@ -1,0 +1,39 @@
+@import "../../../../views/base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+  .#{$key} {
+    .search-text-wrapper {
+      position: relative;
+      input::-ms-clear {
+        display: none;
+      }
+      .search-text-actions {
+        position: absolute;
+        top: 20%;
+        right: 4px;
+        display: flex;
+        flex-direction: row;
+        .icon-button {
+          cursor: pointer;
+          height: 20px;
+          &:hover {
+            background-color: getThemeColor(18, $key);
+            box-shadow: 0 8px 16px rgba(51, 60, 69, 0.08);
+          }
+        }
+        .search-text-results {
+          opacity: .6;
+          margin-right: 6px;
+        }
+      }
+    }
+    span.highlight {
+      background-color: getThemeColor(25, $key);
+      cursor: pointer;
+    }
+    span.highlight.selected {
+      background-color: getThemeColor(7, $key);
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,125 @@
+@import "../../../../views/base/styles/theme.scss";
+
+@each $key, $value in $common-themes {
+  .#{$key} {
+    .imfx-xml-tree-wrapper {
+      position: relative;
+      .select2-container--default, .select2-selection--single, .select2-selection__rendered {
+        line-height: 24px !important;
+        height: 22px !important;
+        vertical-align: top;
+      }
+      .select2-selection__arrow {
+        margin-top: 1px!important;
+      }
+      span {
+        font-size: 13px!important;
+      }
+
+      tree-viewport {
+        overflow: hidden;
+      }
+
+      .show-children {
+
+      }
+
+      .expander {
+        cursor: pointer;
+        i.icon {
+          height: 20px;
+          vertical-align: 2px;
+        }
+      }
+      .tree-children { padding-left: 20px }
+
+      .tree, .node-content-wrapper {
+        width: 100%
+      }
+      .tree {
+        .toggle-children-wrapper-expanded .toggle-children,
+        .toggle-children-wrapper-collapsed .toggle-children {
+          webkit-filter: invert(getFilter($key));
+          filter: invert(getFilter($key));
+        }
+      }
+      input {
+        width: 100%;
+        height: 26px!important;
+        line-height: 26px!important;
+        font-size: 11px;
+      }
+
+      input[type="number"] {
+        line-height: 20px!important;
+        font-size: 11px;
+      }
+      input[type=checkbox] {
+        width: 16px;
+        height: 16px!important;
+        margin: 5px 0;
+      }
+
+      .dropdown {
+        border: 2px solid getThemeColor(22, $key) !important;
+        &.button {
+          height: 26px!important;
+        }
+        height: 26px!important;
+        line-height: 24px;
+        background: getThemeColor(6, $key) !important;
+      }
+      .node-content-wrapper {
+        height: 100%;
+        cursor: auto;
+        margin-bottom: 2px;
+        padding: 2px 5px;
+        &:hover {
+          background: none;
+          box-shadow: none;
+          .node-icon {
+            opacity: 1;
+          }
+        }
+      }
+      .node-label {
+        margin: 0px 0;
+        padding-top: 5px;
+      }
+      .node-wrapper {
+        display: flex;
+        align-items: flex-start;
+      }
+      .tree-node-focused > .node-wrapper > .node-content-wrapper {
+        //color: rgb(255, 255, 255);
+        background: none;
+        border: none;
+        box-shadow: none;
+      }
+
+      .node-content-wrapper {
+        border-radius: 0;
+      }
+
+      .tree-node-child .tree-children {
+        margin-left: 25px;
+        padding-left: 0;
+        //border-left: 2px solid getThemeColor(22, $key);
+
+      }
+
+      .tree-children {
+        transition: all 0.2s ease-in-out;
+      }
+
+      .tree-node-collapsed {
+        .tree-children {
+          height: 0;
+          opacity: 0;
+          overflow: auto;
+        }
+      }
+
+    }
+  }
+}

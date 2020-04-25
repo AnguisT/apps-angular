@@ -1,0 +1,12 @@
+<div class="modal-body" style="overflow: auto; height: calc(100% - 60px)">
+    <div [innerHTML]="text| translate:textParams">
+    </div>
+</div>
+<div class="modal-footer" style="padding-left: 0px; padding-right: 0px;">
+    <button type="button" (click)="cancel()">
+        {{ 'common.cancel' | translate }}
+    </button>
+    <button type="button" class="primary" (click)="ok()">
+        {{ 'common.ok' | translate }}
+    </button>
+</div>

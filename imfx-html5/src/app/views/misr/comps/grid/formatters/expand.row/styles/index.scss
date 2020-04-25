@@ -1,0 +1,98 @@
+@import "../../../../../../../views/base/styles/theme.scss";
+
+@each $key, $value in $common-themes {
+  .#{$key} {
+    //misr-accordion {
+      .accordion-group-wrapper {
+        padding-left: 22px;
+        .sub-row-selectable {
+            background-color: getThemeColor(10, $key);
+        }
+        .accordion-header-row {
+          box-sizing: border-box;
+          cursor: pointer;
+          height: 30px;
+
+          .icon {
+            color: getThemeColor(1, $key);
+          }
+        }
+
+        .accordion-item-row {
+          box-sizing: border-box;
+          padding: 0px 0px 0px 48px;
+          border-left: 1px solid getThemeColor(22, $key);
+          height: 30px;
+            :hover {
+                background-color: getThemeColor(10, $key);
+            }
+
+          > span {
+            display: flex;
+            align-items: center;
+
+            .icon {
+              flex: 0 0 25px;
+            }
+          }
+
+          &.selected-row {
+            background-color: getThemeColor(10, $key);
+            span {
+              .icon {
+                color: #fff!important;
+              }
+            }
+          }
+
+          &.pointer {
+            cursor: pointer;
+          }
+
+          .row-item {
+            padding-top: 4px;
+            padding-bottom: 4px;
+            display: inline-block;
+            border-left: 1px solid getThemeColor(22, $key);
+            min-height: 30px;
+            height: 22px;
+
+            &.code {
+              box-sizing: border-box;
+              flex: 2;
+                max-width: 300px;
+            }
+            &.name {
+              flex: 2;
+                max-width: 300px;
+            }
+            &.num {
+              box-sizing: border-box;
+              flex: 2;
+            }
+            &.type {
+              box-sizing: border-box;
+              flex: 2;
+            }
+            &.server {
+              box-sizing: border-box;
+              flex: 2;
+            }
+            &.pass {
+              box-sizing: border-box;
+              flex: 2;
+            }
+            &.format {
+              box-sizing: border-box;
+              flex: 2;
+            }
+            &.popups {
+                box-sizing: border-box;
+                flex:0.2;
+            }
+          }
+        }
+      }
+    //}
+  }
+}

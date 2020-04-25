@@ -1,0 +1,43 @@
+@import "../../../../../../base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+      .media-wizzard-grid {
+        .search-field {
+          min-width: 400px;
+        }
+        .media-grid {
+          .tile-view {
+            .ag-cell[colid="THUMBURL"] {
+              height: 150px !important;
+              width: 267px !important;
+            }
+            .ag-cell[colid="TITLE"],
+            .ag-cell[colid="MEDIA_FORMAT_text"],
+            .ag-cell[colid="DURATION_text"],
+            .ag-cell[colid="MEDIA_TYPE_text"] {
+              display: block; //table-row;
+              width: 243px !important;
+              height: 20px;
+              font-size: 12px;
+            }
+
+            .ag-cell[colid="_mediaBasket"],
+            .ag-cell[colid="_settings"] {
+              float: right;
+              height: 35px;
+              display: flex !important;
+              align-items: flex-end !important;
+              justify-content: flex-end;
+            }
+            .ag-cell[colid="_icons"] {
+              float: left;
+              height: 35px;
+              display: flex !important;
+              align-items: flex-end !important;
+            }
+          }
+        }
+      }
+    }
+}

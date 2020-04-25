@@ -1,0 +1,6 @@
+<div class="download-viewer">
+    <a href="{{config.url}}" target="_blank" download="noname">
+        {{ 'common.download' | translate }} <span *ngIf="config.fileName">({{config.fileName}})</span>
+        <i class="icon icons-files"></i>
+    </a>
+</div>

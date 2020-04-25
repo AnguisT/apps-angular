@@ -1,0 +1,9 @@
+@import "../../../../base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        ag-grid-ng2.inside-versions #south {
+            display: none !important;
+        }
+    }
+}

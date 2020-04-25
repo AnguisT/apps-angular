@@ -1,0 +1,108 @@
+@import "../../../../../../base/styles/theme";
+
+@each $key, $value in $common-themes {
+    .#{$key} {
+        div.accordion-row {
+            display: flex;
+            position: relative;
+            margin-left: 15px;
+            box-sizing: border-box;
+            align-items: center;
+            text-align: left;
+            //padding: 5px 5px 5px 30px;
+            cursor: pointer;
+
+            &:hover,
+            &:hover div {
+                //background: getThemeColor(19, $key)!important;
+            }
+
+            &.selected{
+                background: getThemeColor(10, $key) !important;
+            }
+
+            .ac-id,
+            .ac-owner,
+            .ac-name,
+            .ac-status,
+            .ac-progress {
+                display: inline-block;
+                box-sizing: border-box;
+                flex-grow: 1;
+                max-width: 150px;
+                padding-right: 20px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            .ac-id {
+                flex-grow: 0;
+                flex-basis: 40px;
+                margin-left: 24px;
+                padding-right: 10px;
+            }
+            .ac-status {
+                position: relative;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 8px;
+                    top: 50%;
+                    margin-top: -4px;
+                    left: -10px;
+                }
+                &.ready:before {
+                    background: getThemeColor(12, $key) !important;
+                }
+                &.failed:before {
+                    background: getThemeColor(13, $key) !important;
+                }
+                &.completed:before {
+                    background: getThemeColor(12, $key) !important;
+                }
+                &.inprogress:before {
+                    //background: getThemeColor(10, $key) !important;
+                    background: getThemeColor(12, $key) !important;
+                }
+            }
+
+            .dd-dots {
+                cursor: move;
+                position: absolute;
+                display: inline-block;
+                box-sizing: border-box;
+                width: 13px;
+                left: 4px;
+                top: 4px;
+            }
+            //.dd-dots {
+            //    cursor: move;
+            //    transform: rotate(90deg);
+            //    position: absolute;
+            //    display: inline-block;
+            //    box-sizing: border-box;
+            //    width: 13px;
+            //    left: 17px;
+            //}
+
+            //.slick-cell.dd-dots.visible {
+            //  display: block;
+            //}
+            //.slick-cell.dd-dots.invisible {
+            //  display: none;
+            //}
+
+            .dd-dots i {
+                display: block;
+                &:before {
+                    font-family: icons !important;
+                    font-style: normal;
+                    font-weight: normal !important;
+                    content: "\f129";
+                }
+            }
+        }
+    }
+}

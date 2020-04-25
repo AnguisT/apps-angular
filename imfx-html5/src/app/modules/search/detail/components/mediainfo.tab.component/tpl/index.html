@@ -1,0 +1,128 @@
+<div class="media-info-tab-wrapper">
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label class="mr-sm-2">{{ 'workflow.details.mediainfo.mediatype' | translate }}</label>
+                <imfx-lookups-select2
+                        #control_MEDIA_FORMAT
+                        [width]="'100%'"
+                        [lookupType]="'MediaFileTypes'"
+                        [placeholder]="'base.selectOoo'|translate"
+                        [placeholderRefToTranslate]="'base.selectOoo'"
+                        [validationEnabled]="true"
+                        (onSelect)="onUpdateControl('MEDIA_FORMAT')"
+                        (onUnselect)="onUpdateControl('MEDIA_FORMAT')"
+                ></imfx-lookups-select2>
+            </div>
+
+            <div class="form-group">
+                <label class="mr-sm-2">{{ 'workflow.details.mediainfo.afd' | translate }}</label>
+                <imfx-lookups-select2
+                        #control_AFD_ID
+                        [width]="'100%'"
+                        [allowClear]="true"
+                        [lookupType]="'AfdTypes'"
+                        [placeholder]="'base.selectOoo'|translate"
+                        [placeholderRefToTranslate]="'base.selectOoo'"
+                        [validationEnabled]="true"
+                        (onSelect)="onUpdateControl('AFD_ID')"
+                        (onUnselect)="onUpdateControl('AFD_ID')"
+                ></imfx-lookups-select2>
+            </div>
+
+
+            <div class="form-group">
+                <label class="mr-sm-2">{{ 'workflow.details.mediainfo.certification' | translate }}</label>
+                <imfx-lookups-select2
+                        #control_AGE_CERTIFICATION
+                        [width]="'100%'"
+                        [allowClear]="true"
+                        [lookupType]="'AgeCertification'"
+                        [placeholder]="'base.selectOoo'|translate"
+                        [placeholderRefToTranslate]="'base.selectOoo'"
+                        [validationEnabled]="true"
+                        (onSelect)="onUpdateControl('AGE_CERTIFICATION')"
+                        (onUnselect)="onUpdateControl('AGE_CERTIFICATION')"
+                ></imfx-lookups-select2>
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label class="mr-sm-2">{{ 'workflow.details.mediainfo.tvstandart' | translate }}</label>
+                <imfx-lookups-select2
+                        #control_TV_STD
+                        [width]="'100%'"
+                        [allowClear]="true"
+                        [lookupType]="'TvStandards'"
+                        [placeholder]="'base.selectOoo'|translate"
+                        [placeholderRefToTranslate]="'base.selectOoo'"
+                        [validationEnabled]="true"
+                        (onSelect)="onUpdateControl('TV_STD')"
+                        (onUnselect)="onUpdateControl('TV_STD')"
+                ></imfx-lookups-select2>
+            </div>
+
+            <div class="form-group">
+
+                <label class="mr-sm-2">{{ 'workflow.details.mediainfo.aspectratio' | translate }}</label>
+                <imfx-lookups-select2
+                        #control_ASPECT_R_ID
+                        [width]="'100%'"
+                        [allowClear]="true"
+                        [lookupType]="'AspectRatioTypes'"
+                        (onSelect)="onUpdateControl('ASPECT_R_ID')"
+                        (onUnselect)="onUpdateControl('ASPECT_R_ID')"
+                        [placeholder]="'base.selectOoo'|translate"
+                        [placeholderRefToTranslate]="'base.selectOoo'"
+                        [validationEnabled]="true"
+                ></imfx-lookups-select2>
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label class="mr-sm-2">{{ 'workflow.details.mediainfo.usage' | translate }}</label>
+                <imfx-lookups-select2
+                        #control_USAGE_TYPE
+                        [width]="'100%'"
+                        [allowClear]="true"
+                        [lookupType]="'UsageTypes'"
+                        [placeholderRefToTranslate]="'base.selectOoo'"
+                        [validationEnabled]="true"
+                        (onSelect)="onUpdateControl('USAGE_TYPE')"
+                        (onUnselect)="onUpdateControl('USAGE_TYPE')"
+                ></imfx-lookups-select2>
+            </div>
+
+            <div class="form-group">
+                <label class="mr-sm-2">{{ 'workflow.details.mediainfo.itemtype' | translate }}</label>
+                <imfx-lookups-select2
+                        #control_ITEM_TYPE
+                        [width]="'100%'"
+                        [allowClear]="true"
+                        [lookupType]="'ItemTypes'"
+                        [placeholder]="'base.selectOoo'|translate"
+                        [placeholderRefToTranslate]="'base.selectOoo'"
+                        [validationEnabled]="true"
+                        (onSelect)="onUpdateControl('ITEM_TYPE')"
+                        (onUnselect)="onUpdateControl('ITEM_TYPE')"
+                ></imfx-lookups-select2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="mr-sm-2">{{ 'upload.notes' | translate }}</label>
+                <textarea class="form-control field controlNotes"
+                          #control_DESCRIPTION
+                          [attr.rows]="10"
+                          [attr.cols]="10"
+                          [attr.wrap]="'soft'"
+                          (change)="onChangeNotes($event)"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

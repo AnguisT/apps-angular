@@ -1,0 +1,77 @@
+@import "../../../../../../views/base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        imfx-metadata-tab {
+            .modal-body {
+                height: calc(100% - 116px) !important;
+                position: relative;
+
+                .modal-overlay {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: -40px;
+                    background: getThemeColor(3, $key);
+
+                    .spinner {
+                        width: 50px;
+                        height: 50px;
+                        display: block;
+                        position: absolute;
+                        left: calc(50% - 25px);
+                        top: calc(50% - 25px);
+                    }
+                }
+            }
+
+            .metadata-tab-wrapper {
+                font-size: 0;
+                box-sizing: border-box;
+                padding: 10px;
+                height: 100%;
+
+                .trees-wrapper {
+                    height: calc(100% - 42px);
+                    font-size: 0;
+
+                    &.full {
+                        height: 100%;
+                    }
+                }
+                .add-document {
+                    display: inline-block;
+                    margin-top: 16px;
+                    margin-right: 15px;
+                }
+
+                .docs-block,
+                .xml-block {
+                    display: inline-block;
+                    font-size: 16px;
+                    box-sizing: border-box;
+                    vertical-align: top;
+                    height: 100%;
+                    border: 1px solid getThemeColor(22, $key);
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                }
+                .docs-block {
+                    width: 30%;
+                    i {
+                        left: 8px;
+                        top: 2px;
+                        font-weight: 900;
+                    }
+                }
+                .xml-block {
+                    width: 70%;
+                    border-left: 0;
+                    box-sizing: border-box;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}

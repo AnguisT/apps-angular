@@ -1,0 +1,63 @@
+<div class="simple-list-wrapper" #simpleList>
+  <div *ngFor="let item of items; let i = index" class="item-wrapper" [ngClass]="{'selected': i == selectedItemIndex}" (click)="selectItem(item.ID)">
+    <div style="display: flex; flex-direction: row;">
+      <div class="thumb">
+        <thumb-component [disablePlayer]="true" [params]="{'data':item}" ></thumb-component>
+      </div>
+      <div class="info">
+        <h4 class="item-name">{{item.TITLE}}</h4>
+        <p>{{item.DURATION_text}} {{item.ITEM_TYPE_text}}</p>
+        <p>{{item.VERSIONID1}}</p>
+          <div class="form-group acceptance-form-group" id="{{item.ID}}" *ngIf="item._hasAcceptBnts">
+              <div class="form-check">
+                  <div>
+                    <input type="radio"
+                         id="radio_accepted_{{item.ID}}"
+                         (change)="item.ACCEPTANCE_LTTR_ID = 1"
+                         [checked]="item.ACCEPTANCE_LTTR_ID === 1"
+                         [value]="1"
+                         name="{{item.ID}}">
+                  </div>
+                  <div class="label-wrapper">
+                    <label for="radio_accepted_{{item.ID}}" title="{{ 'simple_assessment.accepted' | translate }}">
+                      {{ 'simple_assessment.accepted' | translate }}
+                    </label>
+                  </div>
+              </div>
+              <div class="form-check">
+                  <div>
+                    <input type="radio"
+                         id="radio_rejected_{{item.ID}}"
+                         (change)="item.ACCEPTANCE_LTTR_ID = -1"
+                         [checked]="item.ACCEPTANCE_LTTR_ID === -1"
+                         [value]="-1"
+                         name="{{item.ID}}">
+                  </div>
+                  <div class="label-wrapper">
+                      <label for="radio_rejected_{{item.ID}}" title="{{ 'simple_assessment.rejected' | translate }}">
+                          {{ 'simple_assessment.rejected' | translate }}
+                      </label>
+                  </div>
+              </div>
+
+              <div class="form-check">
+                  <div>
+                    <input type="radio"
+                         id="radio_not_set_{{item.ID}}"
+                         (change)="item.ACCEPTANCE_LTTR_ID = 0"
+                         [checked]="item.ACCEPTANCE_LTTR_ID === 0"
+                         [value]="0"
+                         name="{{item.ID}}">
+                  </div>
+                  <div class="label-wrapper">
+                      <label for="radio_not_set_{{item.ID}}" title="{{ 'simple_assessment.not_set' | translate }}">
+                          {{ 'simple_assessment.not_set' | translate }}
+                      </label>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+  </div>
+</div>

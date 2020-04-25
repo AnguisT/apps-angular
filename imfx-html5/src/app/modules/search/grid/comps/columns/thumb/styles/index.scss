@@ -1,0 +1,42 @@
+@import "../../../../../../../views/base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        .thumbnail-wrapper {
+            height: 100%;
+            width: 100%;
+            max-width: 150px;
+            max-height: 85px;
+            min-width: 150px;
+            overflow: hidden;
+            background-color: #000000;
+            margin: 5px auto;
+            position: relative;
+
+          .thumbnail {
+              max-height: 100%;
+              max-width: 100%;
+              width: auto;
+              height: auto;
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              margin: auto;
+          }
+        }
+        .tile-view {
+            .ag-row .thumbnail-wrapper {
+                height: 100%;
+                width: 100%;
+                max-width: 267px;
+                max-height: 150px;
+                overflow: hidden;
+                background-color: #000000!important;
+                margin: 0;
+                position: relative;
+            }
+        }
+    }
+}

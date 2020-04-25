@@ -1,0 +1,43 @@
+@import "../../../../../../../../../base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+  .#{$key} {
+    .default-settings-wrapper {
+      display: flex;
+      flex-direction: column;
+      .default-settings-row {
+        padding-top: 10px;
+      }
+      .logo-images-wrapper {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        .logo-image-wrapper {
+          margin-right: 15px;
+          cursor: pointer;
+          height: 90px;
+          //width: 80px;
+          padding: 2px;
+          text-align: center;
+          //border: 2px solid transparent;
+          span {
+            line-height: 80px;
+          }
+          img {
+            //width: 80px;
+            height: 80px;
+          }
+          &:hover {
+            //border: 2px solid blue;
+            box-shadow: 0 8px 16px rgba(51, 60, 69, 0.08);
+            border-bottom: getThemeColor(7, $key) 2px solid;
+          }
+          &.selected {
+            border-bottom: getThemeColor(7, $key) 2px solid;
+          }
+        }
+      }
+    }
+  }
+}

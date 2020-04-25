@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <title>
+    Step-backward-1
+  </title>
+  <g fill-rule="evenodd" transform="matrix(-1 0 0 1 17 5)">
+    <polygon points="8 0 8 10 15.5 4.883"/>
+    <rect width="2" height="10" x="4"/>
+    <rect width="2" height="10"/>
+  </g>
+</svg>

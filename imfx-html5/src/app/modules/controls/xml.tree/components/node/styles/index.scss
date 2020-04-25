@@ -1,0 +1,100 @@
+@import "../../../../../../views/base/styles/theme.scss";
+
+@each $key, $value in $common-themes {
+  .#{$key} {
+
+    .imfx-xml-node-wrapper {
+      .multiline-view-btn {
+        height: 26px;
+        line-height: 24px;
+      }
+      .parent-node-label {
+        color: getThemeColor(1, $key);
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 1rem;
+        letter-spacing: 0.1rem;
+        font-family: sinkin_sans500_medium, Roboto, sans-serif;
+        font-weight: normal;
+        padding: 0;
+      }
+
+      &.modal-node-selector {
+        position: absolute;
+        opacity: 0.9; // TODO: prevent input opacity
+        top: 0;
+        height: 100%;
+        width: 100%;
+        left: 0;
+      }
+
+      .table-wrapper {
+        height: 100%;
+        width: 100%;
+        .cell-wrapper {
+          display: flex;
+          .node-label {
+            flex: 1;
+          }
+          .node-control {
+            flex: 2;
+          }
+          .node-buttons {
+            float:right;
+            width:80px;
+          }
+        }
+      }
+
+      .node-icon {
+        margin: 6px;
+        cursor: pointer;
+        float: none!important;
+        margin: 0px!important;
+        display: inline-block;
+        position: relative;
+        vertical-align: top;
+        margin-top: -3px!important;
+
+        &.close {
+          opacity: 0.7;
+          width: 20px;
+          height: 20px;
+          &:hover {
+            opacity: 1;
+            .icon {
+              background: #e67339;
+              color: #ffffff;
+              opacity: 1;
+              padding-bottom: 3px;
+            }
+          }
+          .icons-closedelete {
+            top: auto;
+            right: auto;
+          }
+          .icons-closedelete:before {
+            vertical-align: 0px;
+          }
+        }
+
+        &.add {
+          float: right;
+          font-size: 1.5rem;
+          font-weight: 700;
+          line-height: 1;
+          color: #000;
+          text-shadow: 0 1px 0 #fff;
+          opacity: .7;
+        }
+
+      }
+
+      .flex-container {
+        display: flex;
+        flex-direction: row;
+      }
+
+    }
+  }
+}

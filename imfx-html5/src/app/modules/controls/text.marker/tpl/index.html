@@ -1,0 +1,13 @@
+<div class="search-text-wrapper">
+  <input type="text" name="text" class="form-control" [(ngModel)]="config.options.filterText" (keyup)="searchKeyUp()"/>
+  <div class="search-text-actions">
+    <div *ngIf="config.options.showResults" class="search-text-results">
+        <span>{{config.options.selectedItem}}</span>
+        /
+        <span>{{config.options.maxItems}}</span>
+    </div>
+    <button (click)="gotoPrev()" class="icon-button"><i class="icons-up icon"></i></button>
+    <button (click)="gotoNext()" class="icon-button"><i class="icons-down icon"></i></button>
+    <button (click)="clear()" class="icon-button"><i class="icons-cross icon"></i></button>
+  </div>
+</div>

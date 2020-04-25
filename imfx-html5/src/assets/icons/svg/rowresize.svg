@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <title>
+    RowResize
+  </title>
+  <g fill-rule="evenodd">
+    <polygon points="6 7 10 4.143 14 7 14 4.857 10 2 6 4.857"/>
+    <polygon points="6 13 10 15.857 14 13 14 15.143 10 18 6 15.143"/>
+  </g>
+</svg>

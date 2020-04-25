@@ -1,0 +1,20 @@
+<div class="taxonomy-tab-wrapper">
+  <!--<input type="text" style="display: none" name="text" class="form-control" [(ngModel)]="filterText" (change)="searchKeyUp()"/>-->
+  <div>
+    <imfx-controls-select2
+            #select
+            [multiple]="true"
+            [maximumSelectionLength]="1"
+            [placeholder]="'base.selectOoo'|translate"
+            [placeholderRefToTranslate]="'base.selectOoo'"
+            [width]="'100%'"
+            (onSelect)="onSelect()"
+            (onUnselect)="onUnselect()"
+    ></imfx-controls-select2>
+  </div>
+  <imfx-controls-tree #tree
+                      [extensions]="['filter']"
+                      [ext_filter]="{autoExpand: true, mode: 'hide', highlight: true}"
+                      (onDblClick)="onDblClickByTreeItem($event)">
+  </imfx-controls-tree>
+</div>

@@ -1,0 +1,4 @@
+<div *ngFor="let facet of facets" class="ug-list-item">
+  <label>
+    <input [(ngModel)]="facet.enabled" type="checkbox" (change)="onChangeFacets()"> {{facet.key}}</label>
+</div>

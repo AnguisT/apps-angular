@@ -1,0 +1,18 @@
+<div class="row media-basket-item" (click)="toggleSelected($event)" >
+  <div class="basket-selection " [ngClass]="{'selected': item.selected}" ><i class="icon check"></i></div>
+    <div class="basket-thumbnail">
+        <grid-column-thumb-component [params]="{'data':item}"></grid-column-thumb-component>
+        <!--<img [src]="item.THUMBURL" />-->
+    </div>
+    <div class="details-wrapper">
+        <h1 class="title" (click)="goToDetail($event)">{{item.TITLE}}</h1>
+        <div class="series-title" *ngIf="item.VERSIONID1">{{item.VERSIONID1}}</div>
+        <div class="description" *ngIf="item.DURATION_text" [ngClass]="{'withSubTitle': item.VERSIONID1 && !item.DURATION_text, 'withSubAndDuration': item.VERSIONID1 && item.DURATION_text, 'withDuration': !item.VERSIONID1 && item.DURATION_text}">
+          {{item.ITEM_TYPE_text}}
+        </div>
+        <i class="icons-duration icon" *ngIf="item.DURATION_text"></i>
+        <span class="duration" *ngIf="item.DURATION_text">{{item.DURATION_text}}</span> </div>
+    <div class="close">
+        <i (click)="remove($event);" class="icons-closedelete icon"></i>
+    </div>
+</div>

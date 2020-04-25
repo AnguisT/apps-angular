@@ -1,0 +1,48 @@
+@import "../../../../../../../views/base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+      @-webkit-keyframes color_change {
+        from { background-color: #800000; }
+        to { background-color: red; }
+      }
+      @-moz-keyframes color_change {
+        from { background-color: #800000; }
+        to { background-color: red; }
+      }
+      @-ms-keyframes color_change {
+        from { background-color: #800000; }
+        to { background-color: red; }
+      }
+      @-o-keyframes color_change {
+        from { background-color: #800000; }
+        to { background-color: red; }
+      }
+      @keyframes color_change {
+        from { background-color: #800000; }
+        to { background-color: red; }
+      }
+
+        .ag-cell {
+            .wrapper {
+                .live-label-status {
+                  padding-left: 34px;
+                  position: relative;
+                  &:before {
+                    content: "";
+                    position: absolute;
+                    left: 12px;
+                    top: 4px;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 10px;
+                    animation-name: color_change;
+                    animation-duration: 1s;
+                    animation-iteration-count: infinite;
+                    animation-direction: alternate;
+                  }
+                }
+            }
+        }
+    }
+}

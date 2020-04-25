@@ -1,0 +1,38 @@
+{
+  "common": {
+    "lang": "en",
+    "locale": "en-AU",
+    "time_format": "H:i",
+    "date_full_format": "d/m/Y H:i",
+    "date_full_format_datepipe": "dd/MM/yyyy hh:mm",
+    "date_format": "d/m/Y",
+    "date_day_of_week_start": 0,
+    "back_button": "Back",
+    "yes": "Yes",
+    "cancel": "Cancel",
+    "createNew": "New",
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "dayOfWeek": [
+      "Sun",
+      "Mon",
+      "Thu",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat"
+    ]
+  }
+}

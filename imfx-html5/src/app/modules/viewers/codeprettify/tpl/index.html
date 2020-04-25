@@ -1,0 +1,13 @@
+<div [hidden]="config.onlyButton && !config.fullSize" class="viewer-wrapper viewer-wrapper-code-prettify" [ngClass]="{'fullSize': config.fullSize, 'notFullSize': !config.fullSize}">
+    <button class="btn imfx-btn min-max-btn" (click)="triggerFullSize()">
+        <span *ngIf="config.fullSize === false">{{ 'viewers.full_display_mode_enable' | translate }}</span>
+        <span *ngIf="config.fullSize === true">{{ 'viewers.full_display_mode_disable' | translate }}</span>
+    </button>
+    <pre class="prettyprint language-{{config.language}} linenums">{{resultInner}}</pre>
+</div>
+<div>
+  <button (click)="triggerFullSize();" *ngIf="config.onlyButton === true" class="previewButton">
+    {{ 'viewers.preview' | translate }} <span *ngIf="config.fileName">({{config.fileName}})</span>
+    <i class="icon icons-hide-empty"></i>
+  </button>
+</div>

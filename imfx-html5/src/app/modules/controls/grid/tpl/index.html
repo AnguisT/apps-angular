@@ -1,0 +1,17 @@
+<div class="imfx-grid-wrapper">
+  <ag-grid-ng2 #gridRef style="width: 100%; height: 100%;"
+               class="ag-fresh text"
+               [gridOptions]="gridOptions"
+               [rowData]="rowData"
+               [columnDefs]="columnDefs"
+
+               (gridReady)="onReadyHandler($event)"
+               (bodyScroll)="onBodyScrollHandler($event)"
+               (rowDataChanged)="onUpdateHandler()"
+               (cellFocused)="onCellFocusedHandler($event)"
+               (rowDoubleClicked)="rowDoubleClickedHandler($event)"
+               (rowClicked)="rowClickedHandler($event)"
+  >
+  </ag-grid-ng2>
+  <iframe name="frame" width=100% height=100% style="position:absolute;z-index:-1;top:0;"></iframe>
+</div>

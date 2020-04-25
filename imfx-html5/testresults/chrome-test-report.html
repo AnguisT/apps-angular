@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Protractor HTML Reporter</title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/css/lightbox.min.css" >
+    <style type="text/css">
+      .panel-heading {
+    padding: 0;
+}
+
+.panel-heading a {
+    padding: 10px 5px;
+    display: block;
+    position: relative;
+    text-decoration: none;
+}
+
+.panel-heading i.glyphicon-chevron-down {
+    display: none;
+}
+
+.panel-heading i.glyphicon-chevron-right {
+    display: inline-block;
+}
+
+.panel-heading.open i.glyphicon-chevron-down {
+    display: inline-block;
+}
+
+.panel-heading.open i.glyphicon-chevron-right {
+    display: none;
+}
+
+.info {
+    text-align: right;
+    padding-bottom: 10px;
+}
+
+.panel-title b {
+    padding-right: 10px;
+}
+
+.panel-heading .label-container {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.panel-heading .label-container label {
+    margin-left: 5px;
+    padding: 5px;
+}
+
+.navbar .label-container {
+    position: absolute;
+    right: 10px;
+    top: 14px;
+}
+
+.navbar {
+    margin-bottom: 10px;
+}
+
+.navbar .label {
+    font-size: 20px;
+}
+
+.navbar .project-name {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    margin-left: -700px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.chart {
+    padding-bottom: 15px;
+}
+
+div.chart div div svg rect {
+    fill: #f5f5f5;
+}
+
+table.arguments {
+    margin-left: 30px;
+}
+
+.screenshot {
+    padding: 2% 0 2% 0;
+}
+
+.scenarioTitle {
+    width: 80%
+}
+
+.description {
+    background-color: white;
+    border-color: white;
+    line-height: 1.6;
+    color: #6f6f6f;
+    font-weight: 400;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    padding:  0.1em 0.5em 1.2em 1.5em
+}
+
+#scenario-description {
+    padding-bottom:  1em;
+    padding-left: 0.2em;
+}
+
+.scrollBar {
+    overflow-x: scroll;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f5f5f5;
+    color: black;
+}
+
+.info {
+    background-color: #fbfbfb;
+}
+
+.step-duration {
+    float: right;
+}
+
+.footer-div {
+    text-align: right;
+    vertical-align: middle;
+    height:3.5%;
+    width:100%;
+}
+
+.footer-container {
+    margin-right: 10px;
+    margin-top: 5px;
+    width:18%;
+    z-index: 10;
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    text-align: center;
+    background-color: transparent;
+}
+
+.footer-link {
+    font-size: 13px;
+    float: right;
+}
+
+.footer-link:hover {
+    color: darkgray;
+}
+
+    </style>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <div class="project-name visible-md visible-lg">Test Execution Report</div>
+          <div class="label-container">
+            <span class="label label-success" title=TestCases>Passed: 15</span>
+            <span class="label label-danger" title=TestCases>Failed: 9</span>
+            <span class="label label-warning" title=TestCases>Skipped: 0</span>
+            <span class="label label-info">Time Elapsed: 0h 14min 6s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+    <!--<div class="generated-on"><b>Platform:</b> </div>-->
+    <div class="info"><b>Browser:</b> chrome 66.0.3359.181</div>
+    <div class="info"><b>Generated on:</b> 2018-6-5 02:14:40</div>
+
+
+      <div class="row">
+        <div class="chart col-lg-6 col-md-6" id="piechart_testsuites"></div>
+        <div class="chart col-lg-6 col-md-6" id="piechart_testcases"></div>
+      </div>
+
+      
+<div class="row">
+  <div class="col-lg-11 col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapseSuite0">
+          
+            <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+          
+          <font color="red"><b>TestSuite:</b>(e2e) General Testing</font>
+          
+          <span class="label-container">
+            <span class="label label-success">15</span>
+            <span class="label label-danger">9</span>
+            
+            
+          </span>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseSuite0" class="panel-collapse collapse">
+            <div class="panel-body">
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_0">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 0. Should get login system</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_0" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 31 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 0. Should get login system.png" data-lightbox="chrome-(e2e) General Testing (e2e) 0. Should get login system.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 0. Should get login system.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 0. Should get login system.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_1">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 1. Should get page media</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_1" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 23 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 1. Should get page media.png" data-lightbox="chrome-(e2e) General Testing (e2e) 1. Should get page media.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 1. Should get page media.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 1. Should get page media.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_2">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 2. Should get a new view for media search</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 57 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 2. Should get a new view for media search.png" data-lightbox="chrome-(e2e) General Testing (e2e) 2. Should get a new view for media search.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 2. Should get a new view for media search.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 2. Should get a new view for media search.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_3">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 3. Should get found ix3 in media search</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 21 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 3. Should get found ix3 in media search.png" data-lightbox="chrome-(e2e) General Testing (e2e) 3. Should get found ix3 in media search.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 3. Should get found ix3 in media search.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 3. Should get found ix3 in media search.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_4">
+                        
+                          <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                        
+
+                        
+                        
+                        <font color="red"><b>TestCase:</b>(e2e) 4. Should get thumbnails for every found element</font>
+                        <span class="label-container">
+                          
+                          
+                          <span class="label label-danger" title="Failed">Failed</span>
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 29 seconds</font>
+
+                          
+                            <br />
+                            <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                            <font color="red">Expected 0 not to be 0.</font>
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot on failure:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 4. Should get thumbnails for every found element.png" data-lightbox="chrome-(e2e) General Testing (e2e) 4. Should get thumbnails for every found element.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 4. Should get thumbnails for every found element.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 4. Should get thumbnails for every found element.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_5">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 5. Should get functional player</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_5" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 92 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 5. Should get functional player.png" data-lightbox="chrome-(e2e) General Testing (e2e) 5. Should get functional player.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 5. Should get functional player.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 5. Should get functional player.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_6">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 6. Should get resized the panel</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_6" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 31 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 6. Should get resized the panel.png" data-lightbox="chrome-(e2e) General Testing (e2e) 6. Should get resized the panel.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 6. Should get resized the panel.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 6. Should get resized the panel.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_7">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 9. Should get switch to grid view</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_7" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 18 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 9. Should get switch to grid view.png" data-lightbox="chrome-(e2e) General Testing (e2e) 9. Should get switch to grid view.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 9. Should get switch to grid view.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 9. Should get switch to grid view.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_8">
+                        
+                          <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                        
+
+                        
+                        
+                        <font color="red"><b>TestCase:</b>(e2e) 10. Should get do facets search</font>
+                        <span class="label-container">
+                          
+                          
+                          <span class="label label-danger" title="Failed">Failed</span>
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_8" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 30 seconds</font>
+
+                          
+                            <br />
+                            <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                            <font color="red">Expected '' not to be ''.</font>
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot on failure:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 10. Should get do facets search.png" data-lightbox="chrome-(e2e) General Testing (e2e) 10. Should get do facets search.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 10. Should get do facets search.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 10. Should get do facets search.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_9">
+                        
+                          <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                        
+
+                        
+                        
+                        <font color="red"><b>TestCase:</b>(e2e) 11. Should get used a saved search in advanced search </font>
+                        <span class="label-container">
+                          
+                          
+                          <span class="label label-danger" title="Failed">Failed</span>
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_9" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 40 seconds</font>
+
+                          
+                            <br />
+                            <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                            <font color="red">Expected 'Всего записей: 148' not to be 'Всего записей: 148'.</font>
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot on failure:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 11. Should get used a saved search in advanced search .png" data-lightbox="chrome-(e2e) General Testing (e2e) 11. Should get used a saved search in advanced search .png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 11. Should get used a saved search in advanced search .png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 11. Should get used a saved search in advanced search .png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_10">
+                        
+                          <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                        
+
+                        
+                        
+                        <font color="red"><b>TestCase:</b>(e2e) 12. Should get found at different type of media </font>
+                        <span class="label-container">
+                          
+                          
+                          <span class="label label-danger" title="Failed">Failed</span>
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_10" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 18 seconds</font>
+
+                          
+                            <br />
+                            <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                            <font color="red">Failed: element not visible
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.37.544315 (730aa6a5fdba159ac9f4c1e8cbc59bf1b5ce12b7),platform=Windows NT 10.0.17134 x86_64)</font>
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot on failure:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 12. Should get found at different type of media .png" data-lightbox="chrome-(e2e) General Testing (e2e) 12. Should get found at different type of media .png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 12. Should get found at different type of media .png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 12. Should get found at different type of media .png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_11">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 13. Should get used the recent searches</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_11" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 41 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 13. Should get used the recent searches.png" data-lightbox="chrome-(e2e) General Testing (e2e) 13. Should get used the recent searches.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 13. Should get used the recent searches.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 13. Should get used the recent searches.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_12">
+                        
+                          <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                        
+
+                        
+                        
+                        <font color="red"><b>TestCase:</b>(e2e) 19. Should get page details for selected media file</font>
+                        <span class="label-container">
+                          
+                          
+                          <span class="label label-danger" title="Failed">Failed</span>
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_12" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 48 seconds</font>
+
+                          
+                            <br />
+                            <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                            <font color="red">Failed: no such element: Unable to locate element: {"method":"css selector","selector":"imfx-controls-number .field"}
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.37.544315 (730aa6a5fdba159ac9f4c1e8cbc59bf1b5ce12b7),platform=Windows NT 10.0.17134 x86_64)</font>
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot on failure:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 19. Should get page details for selected media file.png" data-lightbox="chrome-(e2e) General Testing (e2e) 19. Should get page details for selected media file.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 19. Should get page details for selected media file.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 19. Should get page details for selected media file.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_13">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 14. Should get to dart theme</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_13" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 23 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 14. Should get to dart theme.png" data-lightbox="chrome-(e2e) General Testing (e2e) 14. Should get to dart theme.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 14. Should get to dart theme.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 14. Should get to dart theme.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_14">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 15. Should get page login</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_14" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 23 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 15. Should get page login.png" data-lightbox="chrome-(e2e) General Testing (e2e) 15. Should get page login.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 15. Should get page login.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 15. Should get page login.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_15">
+                        
+                          <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                        
+
+                        
+                        
+                        <font color="red"><b>TestCase:</b>(e2e) 16. Should get modified language in site</font>
+                        <span class="label-container">
+                          
+                          
+                          <span class="label label-danger" title="Failed">Failed</span>
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_15" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 50 seconds</font>
+
+                          
+                            <br />
+                            <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                            <font color="red">Expected 'Медиа' to be 'Media'.</font>
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot on failure:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 16. Should get modified language in site.png" data-lightbox="chrome-(e2e) General Testing (e2e) 16. Should get modified language in site.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 16. Should get modified language in site.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 16. Should get modified language in site.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_16">
+                        
+                          <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                        
+
+                        
+                        
+                        <font color="red"><b>TestCase:</b>(e2e) 17. Should get datails for selected video</font>
+                        <span class="label-container">
+                          
+                          
+                          <span class="label label-danger" title="Failed">Failed</span>
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_16" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 42 seconds</font>
+
+                          
+                            <br />
+                            <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                            <font color="red">Failed: no such element: Unable to locate element: {"method":"css selector","selector":"imfx-controls-number .field"}
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.37.544315 (730aa6a5fdba159ac9f4c1e8cbc59bf1b5ce12b7),platform=Windows NT 10.0.17134 x86_64)</font>
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot on failure:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 17. Should get datails for selected video.png" data-lightbox="chrome-(e2e) General Testing (e2e) 17. Should get datails for selected video.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 17. Should get datails for selected video.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 17. Should get datails for selected video.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_17">
+                        
+                          <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                        
+
+                        
+                        
+                        <font color="red"><b>TestCase:</b>(e2e) 21. Should get title search</font>
+                        <span class="label-container">
+                          
+                          
+                          <span class="label label-danger" title="Failed">Failed</span>
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_17" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 32 seconds</font>
+
+                          
+                            <br />
+                            <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                            <font color="red">Expected false to be true.</font>
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot on failure:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 21. Should get title search.png" data-lightbox="chrome-(e2e) General Testing (e2e) 21. Should get title search.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 21. Should get title search.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 21. Should get title search.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_18">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 22. Should get list of suggested results</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_18" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 20 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 22. Should get list of suggested results.png" data-lightbox="chrome-(e2e) General Testing (e2e) 22. Should get list of suggested results.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 22. Should get list of suggested results.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 22. Should get list of suggested results.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_19">
+                        
+                          <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                        
+
+                        
+                        
+                        <font color="red"><b>TestCase:</b>(e2e) 23. Should get modified views</font>
+                        <span class="label-container">
+                          
+                          
+                          <span class="label label-danger" title="Failed">Failed</span>
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_19" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 57 seconds</font>
+
+                          
+                            <br />
+                            <span class="label label-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                            <font color="red">Failed: no such element: Unable to locate element: {"method":"css selector","selector":".slick-pane-right .slick-header-column:nth-child(3) .slick-column-name"}
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.37.544315 (730aa6a5fdba159ac9f4c1e8cbc59bf1b5ce12b7),platform=Windows NT 10.0.17134 x86_64)</font>
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot on failure:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 23. Should get modified views.png" data-lightbox="chrome-(e2e) General Testing (e2e) 23. Should get modified views.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 23. Should get modified views.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 23. Should get modified views.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_20">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 24. Should get version search</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_20" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 28 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 24. Should get version search.png" data-lightbox="chrome-(e2e) General Testing (e2e) 24. Should get version search.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 24. Should get version search.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 24. Should get version search.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_21">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 25. Should get simplified</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_21" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 35 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 25. Should get simplified.png" data-lightbox="chrome-(e2e) General Testing (e2e) 25. Should get simplified.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 25. Should get simplified.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 25. Should get simplified.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_22">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 26. Should get the additional drop down menus in basket for selected media file</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_22" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 26 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 26. Should get the additional drop down menus in basket for selected media file.png" data-lightbox="chrome-(e2e) General Testing (e2e) 26. Should get the additional drop down menus in basket for selected media file.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 26. Should get the additional drop down menus in basket for selected media file.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 26. Should get the additional drop down menus in basket for selected media file.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapseTestCase0_23">
+                        
+                          <span class="label label-success"><i class="glyphicon glyphicon-ok"></i></span>
+                        
+
+                        <font color="green"><b>TestCase:</b>(e2e) 27. Should get misr search with used advanced search</font>
+                        
+                        
+                        <span class="label-container">
+                          <span class="label label-success" title="Passed">Passed</span>
+                          
+                          
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div id="collapseTestCase0_23" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p class="scenario-container">
+                        
+                          <span class="label label-primary" title="Success"><i class="glyphicon glyphicon-time"></i></span>
+                          <font color="black">Time elapsed: 40 seconds</font>
+
+                          
+
+                          
+                            <br />
+                            <span class="label label-primary"><i class="glyphicon glyphicon-camera"></i></span>
+                            
+                              Screenshot:
+                            
+                            <a class="screenshot" href="./screenshots/chrome-(e2e) General Testing (e2e) 27. Should get misr search with used advanced search.png" data-lightbox="chrome-(e2e) General Testing (e2e) 27. Should get misr search with used advanced search.png">
+                              <img src="./screenshots/chrome-(e2e) General Testing (e2e) 27. Should get misr search with used advanced search.png" style="width:100%;height:100%" alt="Screenshot not found: ./screenshots/chrome-(e2e) General Testing (e2e) 27. Should get misr search with used advanced search.png"/>
+                            </a>
+                          
+                      
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              
+            </div>
+      </div>
+
+
+  </div>
+  </div>
+</div>
+
+
+
+    </div>
+
+
+    <div class="navbar-fixed-bottom row-fluid footer-div ">
+      <div class="navbar-inner">
+        <div class="footer-container">
+          <a  target="_blank" href="https://www.npmjs.com/package/protractor-html-reporter">
+            <div class="text-muted footer-link">
+              generated by @protractor-html-reporter
+            </div>
+             </a>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.1/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(function() {drawChart({
+                                                              "title": "TestSuites",
+                                                              "passed": 0,
+                                                              "failed": 1,
+        })
+      });
+      google.charts.setOnLoadCallback(function() {drawChart({
+                                                              "title": "TestCases",
+                                                              "passed": 15,
+                                                              "skipped": 0,
+                                                              "errors": 0,
+                                                              "failed": 9
+        })
+      });
+
+    </script>
+    <script>
+      function drawChart(chartData) {
+  var data = google.visualization.arrayToDataTable([
+    ['Task', 'Project Results'],
+    ['Passed', chartData.passed],
+    ['Skipped', chartData.skipped],
+    ['Errors', chartData.errors],
+    ['Failed', chartData.failed]
+  ]);
+
+  var testsNumber = chartData.passed + chartData.failed + (chartData.skipped || 0) + (chartData.errors || 0);
+  var title;
+
+  if (testsNumber === 1) {
+    title = testsNumber + ' ' + chartData.title.slice(0, -1);
+  } else {
+    title = testsNumber + ' ' + chartData.title;
+  }
+
+  var options = {
+    width: '100%',
+    height: 270,
+    title: title,
+    is3D: true,
+    fontSize: '12',
+    colors: ['#5cb85c', '#f0ad4e', '#5bc0de', '#d9534f'],
+    pieStartAngle: 100,
+    backgroundColor: 'white',
+    titleTextStyle: {
+      fontSize: '13',
+      color: '#5e5e5e'
+    }
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
+  chart.draw(data, options);
+}
+
+    </script>
+
+  </body>
+</html>

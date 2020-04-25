@@ -1,0 +1,41 @@
+<!--<button type="button" class="btn btn-primary" (click)="moduleModal.show()">BTN</button>-->
+<div class="{{config.options.modal.height}}"></div>
+<div class="modal fade modal-{{config.options.modal.size}}" bsModal #moduleModal="bs-modal"
+     [ngStyle]="{
+            'overflow': config.options.modal.overflow,
+            'top': config.options.modal.top,
+            'transform': config.options.modal.transform,
+            '-ms-transform': config.options.modal.transform,
+            'height': config.options.modal.height,
+            'max-height': config.options.modal.max_height
+        }"
+     (onHidden)="_onHidden()"
+     (onHide)="_onHide($event)"
+     (onShown)="_onShown()"
+     (onShow)="_onShow()" [config]="{
+                                backdrop: config.options.modal.backdrop,
+                                ignoreBackdropClick: config.options.modal.ignoreBackdropClick,
+                                keyboard: config.options.modal.keyboard,
+                                show: config.options.modal.show
+                               }"
+     tabindex="-1" role="dialog" aria-labelledby="imfx-modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" *ngIf="config.options.modal.isHeader">
+                <h4 class="modal-title">
+                    {{ config.options.modal.title }}
+                </h4>
+                <i (click)="hide()" class="icon icons-closedelete"></i>
+            </div>
+            <div class="modal-body" #modalBody
+            [ngClass]="{'modal-body-without-footer': !config.options.modal.isFooter}">
+                <div style="display: none" #contentContainer></div>
+            </div>
+            <div class="modal-footer" *ngIf="config.options.modal.isFooter">
+                <button type="button" class="primary" (click)="hide()">
+                    {{ 'common.ok' | translate }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

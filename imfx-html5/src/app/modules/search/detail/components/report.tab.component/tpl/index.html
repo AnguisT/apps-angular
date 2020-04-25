@@ -1,0 +1,9 @@
+<div class="h-tab-wrapper">
+    <imfx-grid #reportGrid class="ag-fresh text ag-grid-history"
+               [gridOptions]="gridOptions"
+
+               (gridReady)="onReady($event)"
+               (bodyScroll)="onBodyScroll($event)"
+               (cellFocused)="onCellFocused($event)">
+    </imfx-grid>
+</div>

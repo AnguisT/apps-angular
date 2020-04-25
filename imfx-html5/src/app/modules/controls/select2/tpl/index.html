@@ -1,0 +1,29 @@
+<div class="dropdown button select2-wrapper">
+    <select
+            #imfxControlsSelect2
+            [attr.multiple]="multiple==true ? 'multiple' : null"
+            [ngStyle]="{
+            'width': width
+            }"
+            id="{{guid}}"
+            class="dropdown button"
+    >
+        <!--test-advanced-searching-select-parameter<option disabled selected [value]="firstEmptyValue" *ngIf="firstEmpty&&multiple==false">-->
+            <!--{{firstEmptyLabel}}-->
+        <!--</option>-->
+        <option *ngFor="let item of _data; let i=index" [value]="item.id">
+            {{item.text}}
+        </option>
+    </select>
+
+    <span class="input-group-btn" *ngIf="selectAllButton || deselectAllButton">
+        <button class="btn btn-secondary" type="button" (click)="selectAll()" *ngIf="selectAllButton">
+            {{ 'common.select_all' | translate }}
+        </button>
+
+        <button class="btn btn-secondary" type="button" (click)="deselectAll()" *ngIf="deselectAllButton">
+            {{ 'common.deselect_all' | translate }}
+        </button>
+    </span>
+    <div class="invalid-triangle"></div>
+</div>

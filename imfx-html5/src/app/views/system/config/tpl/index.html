@@ -1,0 +1,20 @@
+<div class="system-config-wrapper grid imfx-allow-dnd">
+  <div class="sc-sidebar">
+    <ul>
+      <li (click)="selectItem('ug')" [ngClass]="{'active': selectedComponent=='ug'}">{{'settings_group.title' | translate}}</li>
+      <li (click)="selectItem('xml')" [ngClass]="{'active': selectedComponent=='xml'}">XML</li>
+      <li (click)="selectItem('gs')" [ngClass]="{'active': selectedComponent=='gs'}">{{"global_settings.title" | translate}}</li>
+    </ul>
+  </div>
+  <div class="sc-viewport" [ngSwitch]="selectedComponent">
+    <div class="sc-container" *ngSwitchCase="'xml'">
+      <system-config-xml-tree></system-config-xml-tree>
+    </div>
+    <div class="sc-container" *ngSwitchCase="'ug'">
+      <settings-groups-manager></settings-groups-manager>
+    </div>
+    <div class="sc-container" *ngSwitchCase="'gs'">
+      <global-settings-manager></global-settings-manager>
+    </div>
+  </div>
+</div>

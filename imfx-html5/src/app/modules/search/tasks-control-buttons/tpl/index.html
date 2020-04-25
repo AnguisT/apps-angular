@@ -1,0 +1,35 @@
+<div class="tcb">
+    <div class="buttons-row">
+        <button class="pause"
+                [hidden]="!btnPaus.visibility" [disabled]="!btnPaus.enabled"
+                (click)="saveTaskStatus('PAUSED')">
+            {{ 'subtitle_qc.pause' | translate }}
+        </button>
+        <button class="pending"
+                [hidden]="!btnPend.visibility" [disabled]="!btnPend.enabled"
+                (click)="saveTaskStatus('PEND')">
+            {{ 'subtitle_qc.pending' | translate }}
+        </button>
+        <button class="abort"
+                [hidden]="!btnAbrt.visibility" [disabled]="!btnAbrt.enabled"
+                (click)="saveTaskStatus('ABORT')">
+            {{ 'subtitle_qc.abort' | translate }}
+        </button>
+        <button class="resume"
+                [hidden]="!btnResm.visibility" [disabled]="!btnResm.enabled"
+                (click)="saveTaskStatus('RESUME')">
+            {{ 'subtitle_qc.resume' | translate }}
+        </button>
+        <button class="start"
+                [hidden]="!btnStrt.visibility" [disabled]="!btnStrt.enabled"
+                (click)="saveTaskStatus('STARTED')">
+            {{ 'subtitle_qc.start' | translate }}
+        </button>
+        <button class="complete"
+                [hidden]="!btnComp.visibility" [disabled]="!btnComp.enabled"
+                (click)="saveTaskStatus('COMPLETED')">
+            {{ 'subtitle_qc.complete' | translate }}
+        </button>
+    </div>
+    <h1 class="task-status">{{statusText}}</h1>
+</div>

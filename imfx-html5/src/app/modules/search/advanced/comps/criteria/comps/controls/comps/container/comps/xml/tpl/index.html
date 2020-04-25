@@ -1,0 +1,18 @@
+<button type="button" class="btn btn-default sidx" (click)="showModal()" *ngIf="data.field.Name == 'SCHEMAIDx'">
+    <span *ngIf="serializedValue">
+    {{cuttedSerializedValue}}
+    </span>
+    <span *ngIf="!serializedValue">
+    {{ 'ng2_components.ag_grid.select_xml_fields' | translate }}
+    </span>
+</button>
+
+
+<button type="button" class="btn btn-default sid" (click)="showModal()" *ngIf="data.field.Name == 'SCHEMAID'">
+    <span *ngIf="selectedSchemaModel.SchemaModel">
+    {{selectedSchemaModel.SchemaModel.Name}}
+    </span>
+    <span *ngIf="!selectedSchemaModel.SchemaModel">
+    {{ 'ng2_components.ag_grid.select_xml_fields' | translate }}
+    </span>
+</button>

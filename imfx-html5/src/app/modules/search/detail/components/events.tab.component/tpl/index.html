@@ -1,0 +1,17 @@
+<div class="events-tab-wrapper" style="z-index: 0;">
+  <button class="history" (click)="addEvent()" *ngIf="!config.readOnly">
+    {{ 'simple_assessment.add_event' | translate }}
+  </button>
+  <button class="history" (click)="setIn()" *ngIf="!config.readOnly">
+    {{ 'simple_assessment.set_in' | translate }}
+  </button>
+  <button class="history" (click)="setOut()" *ngIf="!config.readOnly">
+    {{ 'simple_assessment.set_out' | translate }}
+  </button>
+  <slick-grid
+    class="vertical-align-row"
+    #slickGridComp
+    [config]="searchGridConfig">
+  </slick-grid>
+</div>
+

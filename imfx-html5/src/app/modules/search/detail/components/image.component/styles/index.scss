@@ -1,0 +1,34 @@
+@import "../../../../../../views/base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        .media-img {
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+}
+
+
+/*
+        .media-img {
+          position: relative;
+          max-width: 100%;
+          max-height: 100%;
+          margin-top: -25%;
+          margin-left: -25%;
+        }
+        .media-img-wrapper {
+          position: absolute;
+          max-width: 100%;
+          max-height: 100%;
+          top: 50%;
+          left: 35%;
+          overflow: visible;
+        }
+
+
+*/

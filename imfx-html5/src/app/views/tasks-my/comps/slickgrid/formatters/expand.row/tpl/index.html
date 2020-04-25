@@ -1,0 +1,20 @@
+<div class="accordion-row "
+     *ngFor="let task of tasks; let i=index"
+     [ngClass]="{'selected': item.ID==provider.selectedSubRow.id && i==provider.selectedSubRow.index}"
+     (dblclick)="onDoubleClick(item, i)"
+     (click)="onClick(item, i)">
+    <span class="ac-id">
+        {{i+1}}
+    </span>
+    <span class="ac-name">
+        {{task.TSK_TYPE_text}}
+    </span>
+    <!--<div class="ac-status" [ngClass]="{'green': item.TSK_STATUS_text=='Ready'}">-->
+    <span class="ac-status {{getClass(task)}}">
+        {{task.TSK_STATUS_text}}
+    </span>
+    <span class="ac-progress" *ngIf="task.TSK_STATUS == jobStatuses.INPROG || task.TSK_STATUS == jobStatuses.COMPLETED">
+        <!--Progress: {{item.TSK_PROGRSS}}%-->
+      <progress-component [progress]="task.TSK_PROGRSS"></progress-component>
+    </span>
+</div>

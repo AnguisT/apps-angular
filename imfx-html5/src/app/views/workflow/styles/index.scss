@@ -1,0 +1,14 @@
+@import "../../base/styles/theme.scss";
+
+@each $key, $value in $common-themes {
+  .#{$key} {
+    .workflow-view {
+      .slick-cell.l0.r0.selected {
+        background: transparent !important;
+      }
+      .slick-cell.l3.r3 {
+        border: none;
+      }
+    }
+  }
+}

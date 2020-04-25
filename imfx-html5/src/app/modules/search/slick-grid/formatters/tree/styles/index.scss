@@ -1,0 +1,16 @@
+@import "../../../../../../views/base/styles/theme";
+
+@each $key,
+$value in $common-themes {
+  .#{$key} {
+    .slickgrid-toggle-row {
+      //margin-right: 5px;
+      color: getThemeColor(17, $key);
+      //display: table-cell;
+      vertical-align: middle;
+      padding: 15px;
+      //height: 50px;
+      //border: 1px solid red;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<button type="button" class="btn btn-default" (click)="showModal()">
+    <span *ngIf="username">
+        {{username}}
+    </span>
+    <span *ngIf="!username">
+        {{ 'ng2_components.ag_grid.select_user' | translate }}
+    </span>
+</button>

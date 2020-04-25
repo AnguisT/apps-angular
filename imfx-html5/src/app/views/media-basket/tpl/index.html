@@ -1,0 +1,67 @@
+<div class="full-height-block media-basket-wrapper">
+  <div class="imfx-detail-btns">
+    <nav>
+      <ul>
+        <li>
+          <button class="icon-button" title="Back" style="margin: -5px 12px 12px;" (click)="clickBack()">
+            <i class="icons-left icon"></i>
+          </button>
+        </li>
+        <li class="detail-title">
+          <h1>{{'basket.title' | translate}}</h1>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="p-rel-h-full grid">
+    <div class="media-basket-content" style="position: relative">
+      <div style="position: absolute;top: -35px;right: 12px;">
+        <button *ngIf="items.length > 0" title="Remove All" style="" (click)="clearAll()">
+          {{"basket.remove_all" | translate}}
+        </button>
+        <button *ngIf="items.length > 0 && checkSelected()" title="Remove Selected" style="" (click)="clearSelected()">
+          {{"basket.remove_selected" | translate}}
+        </button>
+      </div>
+      <div *ngFor="let item of items; let i = index" class="basket-item" (click)="itemClick($event)">
+        <media-basket-item-component [item]="item"></media-basket-item-component>
+      </div>
+    </div>
+    <div class="media-basket-order sidebar">
+      <h2>{{ 'basket.order' | translate }}</h2>
+      <div class="padding-default">
+        <!--<select [(ngModel)]="selectedPreset" (ngModelChange)="onPresetChange()" class="full-width">-->
+          <!--<option value="{{ 'basket.choose_preset' | translate }}" selected disabled>{{ 'basket.choose_preset' | translate }}</option>-->
+          <!--<option *ngFor="let preset of presets" [ngValue]="preset">{{preset.Name}}</option>-->
+        <!--</select>-->
+        <imfx-controls-select2
+          #mediaBasketPreset
+          [width]="'100%'"
+          [data]="[]"
+          [placeholder]="'basket.choose_preset'|translate"
+          [placeholderRefToTranslate]="'basket.choose_preset'"
+          (onSelect)="onSelect($event)"></imfx-controls-select2>
+        <div class="js-basket-items-scroll">
+        <textarea rows="7" cols="45" name="text" placeholder="{{ 'basket.message' | translate }}" [(ngModel)]="message"
+                  class="media-message full-width"></textarea>
+        </div>
+        <button [disabled]="!isPlaceOrderEnabled()" *ngIf="orderStatus != 2" class="primary full-width" (click)="placeOrder()">
+          <div *ngIf="loading" class="loader-login icon" style="display: inline-block;"></div>
+          <i class="icons-basket icon"></i>
+          <span>{{ 'basket.place_order' | translate }}</span>
+        </button>
+        <span *ngIf="orderStatus == 2" class="pull-right">{{ 'basket.placing_order_message' | translate }}</span>
+        <!--<span *ngIf="orderStatus == 3" class="pull-right">{{ 'basket.success_message' | translate }}</span>-->
+        <!--<span *ngIf="orderStatus == 4" class="pull-right">{{ 'basket.error_message' | translate }}</span>-->
+      </div>
+      <div class="padding-default preset-settings-wrapper">
+      <imfx-xml-tree
+        #xmlTree
+        *ngIf="this.selectedPreset && this.selectedPreset.SchemaId"
+        [schemaModel]="selectedSchemaModel"
+        [xmlModel]="selectedXmlModel"
+      ></imfx-xml-tree>
+    </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+@import "../../../../views/base/styles/theme.scss";
+@each $key, $value in $common-themes {
+  .#{$key} {
+    .simple-tree-wrapper {
+        &.readonly {
+            .dock-header-row,
+            .dock-item-row:not(.selected-item){
+                opacity: 0.5
+            }
+        }
+      .dock-header-row {
+        box-sizing: border-box;
+        padding: 5px 10px 5px 5px;
+        cursor: pointer;
+        position: relative;
+      }
+      .dock-item-row {
+        box-sizing: border-box;
+        padding: 5px 10px 5px 50px;
+        cursor: pointer;
+      }
+    }
+  }
+}

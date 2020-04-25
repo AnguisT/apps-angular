@@ -1,0 +1,11 @@
+<div class="h-tab-wrapper" #mediaTagging>
+    <imfx-grid class="ag-fresh text ag-grid-history"
+         [gridOptions]="gridOptions"
+         [rowData]="data.tableRows"
+         [columnDefs]="data.tableColumns"
+
+         (gridReady)="onReady($event)"
+         (bodyScroll)="onBodyScroll($event)"
+         (cellFocused)="onCellFocused($event)">
+    </imfx-grid>
+</div>

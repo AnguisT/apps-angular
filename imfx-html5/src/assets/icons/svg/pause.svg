@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <title>
+    Pause
+  </title>
+  <g fill-rule="evenodd">
+    <rect width="3" height="12" x="5" y="4"/>
+    <rect width="3" height="12" x="12" y="4"/>
+  </g>
+</svg>

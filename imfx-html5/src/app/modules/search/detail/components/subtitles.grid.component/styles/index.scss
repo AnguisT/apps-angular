@@ -1,0 +1,43 @@
+@import "../../../../../../views/base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        .subtitles-grid-wrapper {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            slick-grid{
+                overflow-y: hidden;
+                .slick-header-column.ui-state-default{
+                    line-height: inherit;
+                    height: inherit;
+                }
+            }
+            .subs-header-wrapper.with-drop {
+                position: relative;
+                font-size: 0;
+                display: block;
+                vertical-align: top;
+                box-sizing: border-box;
+
+                search-text-for-mark {
+                    font-size: 0px;
+
+                    .search-text-wrapper {
+                        display: inline-block;
+                        width: calc(100% - 180px);
+                        vertical-align: top;
+                    }
+                }
+                select {
+                    display: inline-block;
+                    width: 180px;
+                    vertical-align: top;
+                    box-sizing: border-box;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+@import "../../../../base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+
+        .media-inside-mapping-grid {
+            .slick-header-column, .slick-group-header-column,
+            .slick-header-column.ui-state-default, .slick-group-header-column.ui-state-default {
+                height: 30px;
+                line-height: 20px;
+                &.hidden {
+                    display: none;
+                }
+            }
+            .tile-mode {
+                [colid="THUMBURL"] {
+                  .thumbnail-wrapper {
+                    height: 150px!important;
+                    width: 267px!important;
+                    margin: -12px -12px 5px -12px;
+                    max-width: none;
+                    max-height: none;
+                  }
+                }
+                .tile-field[colid="TITLE"],
+                .tile-field[colid="MEDIA_FORMAT_text"],
+                .tile-field[colid="DURATION_text"],
+                .tile-field[colid="MEDIA_TYPE_text"] {
+                    display: block;//table-row;
+                    width: 243px!important;
+                    height: 20px;
+                    font-size: 12px;
+                }
+
+                .ag-cell[colid="_mediaBasket"],
+                .ag-cell[colid="_settings"] {
+                    float: right;
+                    height: 35px;
+                    display: flex!important;
+                    align-items: flex-end!important;
+                    justify-content: flex-end;
+                }
+                .ag-cell[colid="_icons"] {
+                    float: left;
+                    height: 35px;
+                    display: flex!important;
+                    align-items: flex-end!important;
+                }
+            }
+        }
+    }
+}

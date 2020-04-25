@@ -1,0 +1,23 @@
+<div class="wrapper img-cell">
+    <div class="media-icon-wrapper"  [ngClass]="{'green-icon': playable}" ><!-- .status-green -->
+      <!--img src="{{url_media_icon}}" />
+      < *ngIf="!isVideo  && !isPdf && !isAudio && !isXml && !isExcel && !isWord" -->
+        <i *ngIf="!isVideo  && !isPdf && !isAudio && !isXml && !isExcel && !isWord && !isSubtitles && !isImage" class="icons-files icon"></i>
+        <!--do not use [ngClass] here because of IE problems-->
+        <i *ngIf="isVideo && playable" class="icons-video-playable icon video-icon"></i>
+        <i *ngIf="isVideo && !playable" class="icons-video icon video-icon"></i>
+        <i *ngIf="isPdf" class="icons-pdf icon"></i>
+        <i *ngIf="isAudio" class="icons-audio icon"></i>
+        <i *ngIf="isXml" class="icons-xml icon"></i>
+        <i *ngIf="isExcel" class="icons-excel icon"></i>
+        <i *ngIf="isWord" class="icons-word icon"></i>
+        <i *ngIf="isSubtitles" class="icons-subtitles icon"></i>
+        <i *ngIf="isImage" class="icons-thumbs icon"></i>
+        <span>{{fileExt}}</span>
+    </div>
+    <!--div *ngIf="!!url_hdSd_icon">
+        <img src="{{url_hdSd_icon}}" *ngIf="!isHD && !isSD"/> < 4,5,6 HD  12 SD>
+        <svg class="icon" [ngClass]="{'orange-icon': playable}" *ngIf="isHD"><use xlink:href="assets/icons/svg-symbols.svg#video-hd"></use></svg>
+        <svg class="icon" [ngClass]="{'orange-icon': playable}" *ngIf="isSD"><use xlink:href="assets/icons/svg-symbols.svg#video-sd"></use></svg>
+    </div-->
+</div>

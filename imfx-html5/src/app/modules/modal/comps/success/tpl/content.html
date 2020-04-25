@@ -1,0 +1,21 @@
+<div class="modal-content success-modal">
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">
+            {{data.config.options.modal.title.name | translate}}
+        </h4>
+        <i class="icon icons-closedelete" (click)="data.refs.modal.hide()"></i>
+        <!--button type="button" class="close pull-right" aria-label="Close" (click)="data.refs.modal.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button-->
+    </div>
+    <div class="modal-body" style="overflow: auto;">
+        <div>
+            <p [innerHTML]="text"></p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="primary" (click)="data.refs.modal.hide()">
+            {{ 'common.ok' | translate }}
+        </button>
+    </div>
+</div>

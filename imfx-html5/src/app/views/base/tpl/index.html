@@ -1,0 +1,57 @@
+<div class="{{themesSettings.theme_class}} full-height common-app-wrapper timeout-wrapper overlay-wrapper">
+    <div class="full-height body">
+        <nav class="main-menu" *ngIf="loginSettings?.isLogged">
+            <ul style="height: inherit">
+                <li class="logo">
+                    <i class="icons-menu icon"></i>
+                    <div (click)="goHome()" class="main-logo-wrapper">
+                        <img [src]="mainLogo" *ngIf="mainLogo" class="main-logo">
+                        <a [ngClass]="{'logo-label': mainLogo}">
+                            i-mediaflex
+                            <span style="
+    display: block;
+    position: absolute;
+    font-size: 9px;
+    font-weight: 100;
+    top: 24px;
+    left: 63px;
+    opacity: 0.5;
+">{{appVersion}}</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="full-height">
+                    <base-top-menu style="height: inherit" (toSearchPage)="onGoSearchPage($event)"></base-top-menu>
+                </li>
+                <li class="full-height nav-right">
+                    <ul class="right-controls">
+                        <base-upload-menu #baseUploadMenu *ngIf="loginSettings.isLogged==true"></base-upload-menu>
+                        <media-basket-panel-component #basket></media-basket-panel-component>
+                        <base-profile></base-profile>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="full-height-width-block">
+            <main class="full-height">
+                <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
+            </main>
+        </div>
+    </div>
+    <!-- Notification -->
+    <notification #notification></notification>
+
+    <!--Language switcher-->
+    <base-language-switcher [isVisible]="false"></base-language-switcher>
+
+    <!--Overlay loader-->
+    <overlay #overlay [color]="getOverlayColor(themesSettings.theme_class)"></overlay>
+
+    <!--<div *ngIf="loginSettings.isLogged==true">-->
+    <!--</div>-->
+</div>
+
+
+
+
+

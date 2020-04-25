@@ -1,0 +1,110 @@
+<div class="h-tab-wrapper">
+    <div class="" style="position: relative; height:100%;   display: flex;
+    flex-direction: column;">
+        <!--Header-->
+      <div class="row-header">
+        <nav>
+          <ul>
+            <li>
+                <search-thumbs
+                        #searchThumbsComp
+                        [config]="searchThumbsConfig"
+                ></search-thumbs>
+            </li>
+          </ul>
+        </nav>
+        <nav>
+          <ul>
+            <li><label>{{ 'common.view' | translate}}:</label></li>
+            <li>
+              <search-views
+                  #viewsComp
+                [config]="searchViewsConfig"
+              ></search-views>
+            </li>
+            <!--<li>
+              <search-settings
+                [config]="searchSettingsConfig"
+              ></search-settings>
+            </li>-->
+          </ul>
+        </nav>
+      </div>
+
+        <!--Body-->
+        <div style="height: calc(100% - 32px);margin-top:0;">
+            <div style="height: 100%;width: 100%;">
+                <slick-grid
+                    #slickGridComp
+                    class="media-grid vertical-align-row"
+                    style="width: 100%;  height: 100%"
+                    [config]="searchGridConfig"
+                ></slick-grid>
+                <!--<search-grid-->
+                        <!--style="width: 100%;  height: 100%"-->
+                        <!--#searchGridModule-->
+                        <!--[config]="searchGridConfig"-->
+                        <!--(onSortChangedEvent)="onSort()"-->
+                <!--&gt;</search-grid>-->
+            </div>
+        </div>
+    </div>
+
+    <!--Settings dropdown-->
+    <div *ngIf="slickGridComp && slickGridComp?.provider?.getSlick()" class="dropdown grid-settings-dropdown mediaSettingsPopup mediaTabCompSettingsPopup"
+         style="margin-top: 15px; margin-right: 15px; position: fixed; display: none;">
+        <ul
+            aria-labelledby="simple-btn-keyboard-nav"
+            style="display: block; top: 0%"
+            class="dropdown-menu"
+            role="menu"
+        >
+            <li role="menuitem">
+                <a
+                    *ngIf="!slickGridComp.provider.isOrdered()"
+                    class="dropdown-item" (click)="slickGridComp.provider.addToBasket($event)">
+                    {{ 'media.table.dropdown.row.add_to_basket' | translate }}
+                </a>
+                <a
+                    *ngIf="slickGridComp.provider.isOrdered()"
+                    class="dropdown-item" (click)="slickGridComp.provider.removeFromBasket($event)">
+                    {{ 'media.table.dropdown.row.remove_from_basket' | translate }}
+                </a>
+            </li>
+            <li role="menuitem">
+                <a class="dropdown-item" (click)="slickGridComp.provider.getMediaDetails($event)">
+                    {{ 'media.table.dropdown.row.media_details' | translate }}
+                </a>
+            </li>
+            <li role="menuitem">
+                <a class="dropdown-item" (click)="slickGridComp.provider.showRaiseWorkflowWizzard($event)">
+                    {{ 'media.table.dropdown.row.rw_wizard' | translate }}
+                </a>
+            </li>
+            <li role="menuitem" *ngIf="slickGridComp.provider.isMediaLoggerShow()">
+                <a class="dropdown-item" (click)="slickGridComp.provider.goToMediaLogger($event)"
+                   [class.disabled]="!slickGridComp.provider.isMediaLoggerEnable()">
+                    {{ 'media.table.dropdown.row.media_logger' | translate }}
+                </a>
+            </li>
+            <!--<li role="menuitem"><a class="dropdown-item disabled"-->
+            <!--(click)="searchGridConfig.options.provider.requestBrowseCopy($event, searchGridConfig.options.provider.moduleContext.rowData)"-->
+            <!--[class.disabled]="true" aria-disabled="true">-->
+            <!--{{ 'media.table.dropdown.row.request_browse_copy' | translate }}-->
+            <!--</a></li>-->
+            <!--<li role="menuitem" *ngIf="silver.isSilverlightInstalled"><a class="dropdown-item"-->
+            <!--(click)="searchGridConfig.options.provider.openInRCESL($event, searchGridConfig.options.provider.moduleContext.rowData)">-->
+            <!--{{ 'media.table.dropdown.row.open_in_rce' | translate }}-->
+            <!--</a></li>-->
+            <!--<li role="menuitem"><a class="dropdown-item"-->
+            <!--(click)="searchGridConfig.options.provider.openInRCE($event, searchGridConfig.options.provider.moduleContext.rowData)">-->
+            <!--{{ 'media.table.dropdown.row.open_in_rce' | translate }}-->
+            <!--</a></li>-->
+            <!--<li role="menuitem"><a class="dropdown-item disabled"-->
+            <!--(click)="searchGridConfig.options.provider.changeStatus($event, searchGridConfig.options.provider.moduleContext.rowData)"-->
+            <!--[class.disabled]="true" aria-disabled="true">-->
+            <!--{{ 'media.table.dropdown.row.change_status' | translate }}-->
+            <!--</a></li>-->
+        </ul>
+    </div>
+</div>

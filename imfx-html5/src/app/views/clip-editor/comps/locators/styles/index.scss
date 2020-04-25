@@ -1,0 +1,38 @@
+@import "../../../../base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        .locator-wrapper {
+            padding-top: 5px;
+            height: 100%;
+            .ag-grid-history {
+                width: 100%;
+                height: 100%;
+                .ag-body {
+                    .thumbnail-wrapper {
+                        width: 100%;
+                        height: 100%;
+                        min-width: 120px;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        margin: 0;
+                        background-color: transparent;
+                    }
+                }
+            }
+            .h-tab-wrapper{
+                position: absolute;
+                bottom: 0;
+                top: 35px;
+                left: 0;
+                right: 0;
+                height: inherit;
+                padding: 10px;
+            }
+            ul.nav-tabs {
+                border-bottom: getThemeColor(22, $key) 1px solid !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,129 @@
+<li dropdown class="dropdown upload-dropdown-submenu dropdown-dragover-target">
+    <a class="upload-btn">
+        <i class="icons-upload icon"></i>
+        <span *ngIf="queueFiles.length > 0">
+            {{ queueFiles.length }}
+        </span>
+    </a>
+
+    <div class="dialog dialog-upload submenu dropdown-dragover-target" style="top: 100%" #queueMenu>
+
+        <!--is set uploads files-->
+        <div class="all-uploads is-uploads-in-progress" *ngIf="queueFiles && queueFiles.length > 0">
+            <div class="upload-items">
+                <!--item-->
+                <div class="upload-item" *ngFor="let uploadModel of queueFiles; let i = index">
+                    <div class="left-icons-area">
+                        <div class="left-icon-wrapper error" *ngIf="uploadModel.state=='error'">
+                            <i class="icons-statusred icon"></i>
+                            <div class="hover-tooltip">
+                                <div class="tooltip-header">{{'upload.queue_state_error' | translate}}</div>
+                                <div class="tooltip-error" #messageErrorText>
+                                    {{uploadModel.errorText}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left-icon-wrapper warning"
+                             *ngIf="uploadModel.success && uploadModel.state!='error' && (uploadModel.success.WorfklowResult.ErrorCode || uploadModel.success.WorfklowResult.Error)">
+                            <i class="icons-statusorange icon"></i>
+                            <div class="hover-tooltip">
+                                <div class="tooltip-header">{{'upload.queue_state_warning' | translate}}</div>
+                                <div class="tooltip-error" #messageErrorWorkflowText>
+                                    {{uploadModel.success.WorfklowResult.Error }}
+                                    ({{uploadModel.success.WorfklowResult.ErrorCode }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left-icon-wrapper success"
+                             *ngIf="uploadModel.state=='success' && uploadModel.success && !(uploadModel.success.WorfklowResult.ErrorCode || uploadModel.success.WorfklowResult.Error)"
+                             title="{{'upload.queue_state_success' | translate}}">
+                            <i class="icons-statusgreen icon"></i>
+                        </div>
+                        <div class="left-icon-wrapper waiting"
+                             *ngIf="uploadModel.state=='waiting'"
+                             title="{{'upload.queue_state_wait' | translate}}">
+                            <i class="icons-duration icon"></i>
+                        </div>
+                    </div>
+                    <div class="common-block-area">
+                        <p class="item-name" title="{{uploadModel.file.name}}">
+                            {{uploadModel.file.name}}
+                        </p>
+                        <p class="item-details">
+                        <span>
+                            {{((uploadModel.file.size).toFixed(2)/1024/1024).toFixed(2)}}
+                            {{ 'upload.mb' | translate }}
+                        </span>
+                            <span>
+                            {{uploadModel.mediaFileType?.Name}}
+                        </span>
+                        </p>
+
+                        <span class="right-icons-area">
+                      <button class="icon-button workflow"
+                              (click)="navFromUploadMenu('/workflow/detail', uploadModel.success.WorfklowResult.JobId)"
+                              *ngIf="uploadModel.success && uploadModel.success.WorfklowResult.Result"
+                              title="{{'upload.open_created_workflow' | translate:{'jobRef': uploadModel.success.WorfklowResult.JobRef} }}">
+                        <i class="icons-duration icon"></i>
+                      </button>
+                      <button class="icon-button media"
+                              (click)="navFromUploadMenu('/media/detail', uploadModel.success.MediaId)"
+                              *ngIf="uploadModel.success && uploadModel.success.MediaId"
+                              title="{{'upload.open_created_media' | translate}}">
+                        <i class="icons-hide-empty icon"></i>
+                      </button>
+                        <button *ngIf="uploadModel.state=='error'||uploadModel.state=='warning'"
+                                class="icon-button files"
+                                (click)="copyError(uploadModel.state)"
+                                title="{{ 'common_hints.copy_error' | translate }}">
+                        <i class="icons-files icon"></i>
+                      </button>
+                      <button class="icon-button delete" (click)="removeFileItem(i)"
+                              title="{{ 'common_hints.remove' | translate }}">
+                        <i class="icons-cross icon"></i>
+                      </button>
+                    </span>
+
+                    </div>
+                    <div class="upload-progress-bar">
+                        <div class="progress-meter-work" *ngIf="uploadModel.state == 'progress'">
+                            <div class="progress-meter-line"
+                                 [ngStyle]="{'width': (uploadModel.percentValue)*100 + '%'}"></div>
+                        </div>
+                        <div class="progress-meter-end" *ngIf="uploadModel.state != 'progress'"></div>
+                    </div>
+                </div>
+            </div>
+            <!--end item-->
+            <button class="half-width" (click)="uploadProvider.removeCompleted()">
+                {{ 'upload.delete_completed' | translate }}
+            </button>
+            <button class="half-width primary" (click)="open()">
+                {{ 'base.media_upload' | translate }}
+            </button>
+        </div>
+
+        <!--Not is set uploads files-->
+        <div class="item no-uploads-in-progress" *ngIf="queueFiles && queueFiles.length == 0">
+            <!--item-->
+            <div class="row-item">
+                <div>
+                    <p class="item-name" *ngIf="!ddMode">
+                        {{ 'upload.no_uploads_in_progress' | translate }}
+                    </p>
+                    <p class="item-name-empty" *ngIf="ddMode">
+                        {{ 'upload.drop_file_for_upload' | translate }}
+                    </p>
+                    <p>
+                        <button class="full-width primary" (click)="open()">
+                            {{ 'base.media_upload' | translate }}
+                        </button>
+                    </p>
+                </div>
+            </div>
+            <!--end item-->
+        </div>
+    </div>
+</li>
+
+

@@ -1,0 +1,391 @@
+@import "../../../views/base/styles/theme.scss";
+@import "../../../views/base/styles/blocks/inputs.scss";
+@import "../../../views/base/styles/blocks/buttons.scss";
+@import "../../../views/base/styles/blocks/nav.scss";
+@import "../../../views/base/styles/blocks/nav.tabbed.scss";
+@import "../../../views/base/styles/blocks/rows.scss";
+@import "../../../modules/modal/styles/index.scss";
+
+@each $key,
+$value in $common-themes {
+  .#{$key} {
+    .upload {
+      height: 100%;
+      .notification {
+        max-width: initial;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 10px;
+        padding-bottom: inherit;
+        max-width: 100%;
+        p {
+          font-size: 11px;
+          //font-weight: 600;
+        }
+      }
+
+      .wizard-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        align-items: center;
+        justify-content: center;
+        background: getThemeColor(3, $key);
+        z-index: 10;
+        opacity: 0;
+        display: none;
+        transition: all ease-in 0.3s;
+
+        &.showed {
+          opacity: 1;
+          transition: all ease-in 0.3s;
+        }
+
+        &.active-overlay {
+          display: flex;
+        }
+      }
+
+      .status-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 50px;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .step {
+          flex: 1;
+          height: 50px;
+          position: relative;
+
+          .step-title {
+            opacity: 0.4;
+            display: block;
+            text-align: center;
+          }
+          .step-circle {
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            border: 5px solid getThemeColor(4, $key);
+            background: getThemeColor(4, $key);
+            border-radius: 20px;
+            display: block;
+            margin: 0 auto;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+          }
+          .step-line {
+            background: getThemeColor(4, $key);
+            height: 6px;
+            width: 100%;
+            bottom: 7px;
+            position: absolute;
+            left: 50%;
+          }
+
+          &.first {
+            text-align: left;
+
+            .step-circle {
+
+            }
+          }
+          &.second {
+            text-align: center;
+
+            .step-circle {
+
+            }
+          }
+          &.third {
+            text-align: right;
+
+            .step-circle {
+
+            }
+          }
+
+          &.done {
+            .step-title {
+              opacity: 1;
+            }
+            .step-circle {
+              border-color: #8cbf45;
+              background: #8cbf45;
+            }
+            .step-line {
+              background: #8cbf45;
+            }
+
+            &.current,
+            &.last {
+              .step-title {
+                font-size: 16px;
+                opacity: 1;
+              }
+              .step-circle {
+                border-color: getThemeColor(4, $key);
+                background: #fff;
+              }
+              .step-line {
+                background: getThemeColor(4, $key);
+              }
+            }
+            &.last {
+              .step-circle {
+                border-color: #8cbf45;
+                background: #fff;
+              }
+            }
+          }
+        }
+      }
+
+      .wizard-steps {
+        height: calc(100% - 118px);
+        .files {
+          height: 100%;
+          padding: 0;
+        }
+      }
+
+      .step-content {
+        // height: 100%;
+        display: block;
+        padding-bottom: 22px;
+        position: relative;
+        width: 100%;
+        overflow: auto;
+        height: calc(100% - 118px);
+
+        .files-wrapper {
+          height: calc(100% - 20px);
+          overflow: hidden;
+          overflow-y: auto;
+          .files-upload-area {
+            height: 250px;
+            border: 3px getThemeColor(12, $key) dashed;
+            display: block;
+            margin-top: 10px;
+            .files-block {
+              padding: 0px;
+              color: getThemeColor(16, $key);
+              height: 243px;
+              max-height: 243px;
+              overflow: auto;
+              background-color: getThemeColor(6, $key);
+              .click-me-for-upload-placeholder {
+                //display: block;
+                cursor: pointer;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                height: 243px;
+                overflow: hidden;
+                overflow-y: auto;
+                //
+                align-items: center;
+                align-content: center;
+                justify-content: center;
+                font-size: 14px;
+                font-weight: bold;
+                line-height: 18px;
+                word-wrap: break-word;
+                word-break: break-all;
+                //text-transform: uppercase;
+                opacity: 0.6;
+                .upload-icon {
+                  width: auto;
+                  height: auto;
+                  opacity: 0.5;
+                  color: getThemeColor(12, $key);
+                }
+                .upload-icon:before {
+                  content: "\f148";
+                  font-size: 124px;
+                }
+              }
+              .row-item {
+                position: relative;
+                cursor: pointer;
+                width: 200px;
+                min-width: 200px;
+                padding: 5px;
+                margin: 0px;
+                .item-controls {
+                  position: absolute;
+                  right: 0px;
+                  top: -23px;
+                  .delete {
+                      .icons-closedelete {
+                          position: absolute;
+                          right: 3px;
+                          top: 1px;
+                          cursor: pointer;
+                          font-size: 20px;
+                          opacity: 0.3;
+                          transition: opacity ease-in 0.3s;
+                        }
+                    background-color: transparent;
+                    transition: all 0.2s ease-in-out;
+                    cursor: pointer;
+                    display: inline-block;
+                    position: absolute;
+                    right: 12px;
+                    top: 27px;
+                    width: 26px;
+                    height: 26px;
+                    padding: 0;
+                    line-height: 20px;
+                    opacity: 0.7;
+
+                    &:hover {
+                      background-color: getThemeColor(13, $key);
+                      opacity: 1;
+
+                      i.icon {
+                        color: getThemeColor(15, $key);
+                      }
+                    }
+                  }
+                }
+                //h4 {
+                //  font-size: 14px;
+                //}
+              }
+              .row-item:hover {
+                color: getThemeColor(15, $key);
+                background-color: getThemeColor(5, $key);
+              }
+              .row-item.active {
+                color: getThemeColor(15, $key);
+                background-color: getThemeColor(5, $key);
+              }
+              .row-item {
+                width: 100%;
+                min-width: 100%;
+                display: block;
+              }
+              .item-name {
+                font-size: 14px;
+                padding-right: 22px;
+              }
+              .item-descr {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+
+        &.files {
+          display: block;
+          align-items: center;
+        }
+
+        &.prepare {
+          display: block;
+          align-items: center;
+
+          .prepare-wrapper {
+            display: flex;
+            flex-direction: column;
+            //height: 350px;
+            overflow: hidden;
+            overflow-y: auto;
+            //
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 18px;
+            word-wrap: break-word;
+            word-break: break-all;
+            padding-bottom: 24px;
+            .prepare-top {
+              width: 100%;
+              //height: 140px;
+              .prepare-top-left {
+                float: left;
+                width: 60%;
+                //height: 250px;
+                overflow: auto;
+                @extend .files-wrapper;
+                .files-wrapper {
+                  height: calc(100% - 20px);
+                  overflow: hidden;
+                  overflow-y: auto;
+                  .files-upload-area {
+                    height: 180px;
+                    border: 2px solid getThemeColor(22, $key);
+                    display: block;
+                    margin-top: 10px;
+                    .files-block {
+                      height: 100%;
+                    }
+                  }
+                }
+              }
+              .prepare-top-right {
+                float: left;
+                width: calc(40% - 10px);
+                margin-left: 10px;
+                .controlNotes {
+                  height: 180px;
+                  max-height: 180px;
+                  min-height: 180px;
+                  -webkit-appearance: textarea;
+                  -webkit-rtl-ordering: logical;
+                  -webkit-user-select: text;
+                  -webkit-box-orient: vertical;
+                  cursor: auto;
+                  white-space: pre-wrap;
+                  word-wrap: break-word;
+                  resize: none;
+                }
+              }
+            }
+            .prepare-bottom {
+              width: 100%;
+            }
+            .prepare-icon {
+              font-size: 150px;
+
+              &.icons-statusgreen {
+                color: getThemeColor(12, $key);
+              }
+              &.icons-statusred {
+                color: getThemeColor(13, $key);
+              }
+            }
+          }
+        }
+        .buttons {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 42px;
+          padding-top: 10px;
+
+          .next {
+            float: right;
+          }
+          .back {
+            float: left;
+          }
+        }
+      }
+
+      .buttons {
+        padding: 15px 0 15px 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@import "../../../../../../views/base/styles/theme.scss";
+@each $key,
+$value in $common-themes {
+    .#{$key} {
+        .at-tab-wrapper {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            //.tracks-grid {
+            //    .slick-viewport.slick-viewport-top.slick-viewport-right {
+            //        overflow-x: auto !important;
+            //    }
+            //}
+            //
+            //.segments-audio-grid, .audio-tracks-grid {
+            //    .slick-grid-wrapper .slick-viewport.slick-viewport-right {
+            //        overflow-x: hidden !important;
+            //    }
+            //}
+        }
+    }
+}

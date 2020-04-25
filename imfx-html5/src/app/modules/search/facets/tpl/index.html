@@ -1,0 +1,28 @@
+<div class="media-facets">
+    <div class="panel card">
+        <div *ngIf="provider.facets?.length">
+            <div style="float:right; margin-top: 8px; cursor: pointer" [ngClass]="{'disabled' : provider.selectedFacets.length == 0}" (click)="clearFacets()">
+              {{'common_hints.clear_facets' | translate}}
+            </div>
+        </div>
+        <div *ngFor="let facetGroup of provider.facets; let i=index">
+            <div (click)="toggleFacetsAccordion(facetGroup)" class="panel-heading card-header">
+                <h2>
+                    <i *ngIf="facetGroup._isOpen" class="icons-down icon"></i>
+                    <i *ngIf="!facetGroup._isOpen" class="icons-right icon"></i>
+                    {{facetGroup.FieldName}}
+                </h2>
+            </div>
+           <!-- <div class="facets-wrapper" [style.height.px]="setHeight(facetGroup)">-->
+            <div class="panel-body card-block" *ngIf="facetGroup._isOpen">
+                <div class="card-row" [ngClass]="{'selected': facet._selected||isFacetFromSelected(facet)}" *ngFor="let facet of facetGroup?.Facets; let i = index" (click)="clickFacet(facet, facetGroup)">
+                    <span class="card-col">{{facet.Field}}</span>
+                    <span class="card-col">{{facet.Count}}</span>
+                </div>
+                <div *ngIf="facetGroup?.Facets.length == 0" class="card-row">
+                    <span class="prop-name">{{ 'common.not_available' | translate }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

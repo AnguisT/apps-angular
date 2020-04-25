@@ -1,0 +1,39 @@
+<div class="settings-groups-details">
+    <nav class="ug-header">
+        <ul>
+            <li>
+                <button class="icon-button" title="{{ 'common.back_button' | translate }}" (click)="goBack()">
+                    <i class="icons-left icon"></i>
+                </button>
+            </li>
+            <li>
+                <input [(ngModel)]="settingsGroupName" type="text" placeholder="{{ 'settings_group.name_column' | translate }}">
+                <input [(ngModel)]="settingsGroupDescription" type="text" placeholder="{{ 'settings_group.description_column' | translate }}">
+                <button (click)="saveSettingsGroup()" *ngIf="!loading; else loadingicon">{{ 'common.save' | translate }}</button>
+                <ng-template #loadingicon>
+                    <div class="spinner icon"></div>
+                </ng-template>
+            </li>
+        </ul>
+    </nav>
+    <tabset #staticTabs>
+        <tab heading="{{'settings_group.default' | translate}}">
+            <settings-groups-detail-defaults [configDefault]="configDefault" (defaultSearchEmit)="defaultSearchChange($event)"></settings-groups-detail-defaults>
+        </tab>
+        <tab heading="{{'settings_group.start_search' | translate}}">
+            <settings-groups-detail-search-screen (startForm)="startSearchData = $event" [context]="context"></settings-groups-detail-search-screen>
+        </tab>
+        <tab heading="{{'settings_group.search_by_fileds' | translate}}">
+            <settings-groups-detail-search-by-fields [searchFields]="searchFields" (changeFields)="searchByFieldItemChanged()"></settings-groups-detail-search-by-fields>
+        </tab>
+        <tab heading="{{'settings_group.facets' | translate}}">
+            <settings-groups-detail-facets (changeFacets)="facetItemChanged()" [facets]="facets"></settings-groups-detail-facets>
+        </tab>
+        <tab heading="{{'settings_group.item_layout' | translate}}">
+            <settings-groups-detail-item-layout (simplifiedItemSettings)="itemSettingsData = $event" [context]="context"></settings-groups-detail-item-layout>
+        </tab>
+        <tab heading="{{'settings_group.details_layout' | translate}}">
+            <settings-groups-detail-detail-layout [context]="context" (simplifiedDetailsSettings)="detailsSettingsData = $event"></settings-groups-detail-detail-layout>
+        </tab>
+    </tabset>
+</div>

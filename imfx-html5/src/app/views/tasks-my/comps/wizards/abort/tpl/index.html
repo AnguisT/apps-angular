@@ -1,0 +1,47 @@
+<div class="abort" #overlayWrapper>
+    <div class="status-row">
+        <!--[ngClass]="{'done': currentStep >= 0, 'current': currentStep == 0}"-->
+        <div class="step first current done">
+            <span class="step-title">{{'workflow.topPanel.wizard.abort.step1'|translate}}</span>
+            <span class="step-circle"></span>
+            <span class="step-line"></span>
+        </div>
+        <!--[ngClass]="{'done': currentStep >= 1, 'last': currentStep == 1}"-->
+        <div class="step third">
+            <span class="step-title">{{'workflow.topPanel.wizard.abort.finished'|translate}}</span>
+            <span class="step-circle"></span>
+        </div>
+    </div>
+    <div class="wizard-steps">
+        <!--<div class="panel notification warning row-header inline" *ngIf="errorMsg">-->
+        <!--<p>{{errorMsg}}</p>-->
+        <!--</div>-->
+        <div class="step-content">
+            <div class="step-content-wrapper">
+                <!--Priority-->
+                <div class="row" style="max-height: 200px; overflow-y: auto;">
+                    <div class="col-xs-12">
+                        <h3>
+                            {{ 'workflow.topPanel.wizard.abort.title' | translate }}
+                        </h3>
+                        <div class="form-group">
+                            <label for="abort_reason">
+                                {{ 'workflow.topPanel.wizard.abort.reason' | translate }}
+                            </label>
+                            <textarea class="form-control" id="abort_reason" style="height: 120px; max-height: 120px; min-height: 120px;" rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #modalFooterTemplate>
+    <div class="modal-footer">
+        <div class="buttons">
+            <button class="next primary">
+                {{ 'version.wizard.next' | translate }}
+            </button>
+        </div>
+    </div>
+</ng-template>

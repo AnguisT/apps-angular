@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="60" viewBox="0 0 20 60">
+  <title>
+    Sort
+  </title>
+  <g fill-rule="evenodd">
+    <polygon points="5 26 10 30 15 26 15 29 10 33 5 29" transform="matrix(1 0 0 -1 0 59)"/>
+    <polygon points="5 47 10 51 15 47 15 50 10 54 5 50"/>
+  </g>
+</svg>

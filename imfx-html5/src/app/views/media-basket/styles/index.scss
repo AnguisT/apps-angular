@@ -1,0 +1,50 @@
+@import "../../base/styles/theme.scss";
+
+@each $key, $value in $common-themes {
+  .#{$key} {
+    .media-basket-wrapper {
+      padding: 0 16px;
+      background: getThemeColor(3, $key);
+      .imfx-detail-btns ul {
+        height: 50px;
+        display: flex;
+        align-items: flex-end;
+      }
+      .media-basket-content {
+        max-width: 100%;
+        //margin: 0 32px 0 16px;
+        flex: 1 0;
+      }
+      .media-basket-order {
+        background: getThemeColor(4, $key);
+        max-width: 30vw;
+        margin: 0;
+        flex: 1 0;
+        padding: 12px;
+      }
+      .media-message {
+        margin: 16px 0;
+      }
+      .panel-heading {
+        color: getThemeColor(6, $key);
+      }
+      .preset-settings-wrapper {
+        margin: 12px 0;
+      }
+      textarea {
+        height: 100%;
+      }
+      .loader-login {
+        border: 4px solid getThemeColor(30, $key);
+        border-top: 4px solid getThemeColor(31, $key);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        transform-origin: 50% 50%;
+        transform: rotate(0deg);
+        width: 20px !important;
+      }
+    }
+  }
+}
+
+

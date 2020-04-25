@@ -1,0 +1,16 @@
+<div class="play-button-formatter-wrapper" #buttonControlWrap>
+    <button id="{{params.data.id}}" (click)="onClick($event)"
+            [ngClass]="{'active': provider.formatterPlayButtonActiveId==params.data.id}"
+            #buttonControl
+            *ngIf="showLikeButton">
+        PLAY
+    </button>
+
+    <div class="wrapper img-cell" *ngIf="!showLikeButton">
+        <div class="media-icon-wrapper"  [ngClass]="{'green-icon': playable, 'orange-icon': provider.formatterPlayButtonActiveId==params.data.id}" style="text-align: center;"><!-- .status-green -->
+            <!--do not use [ngClass] here because of IE problems-->
+            <i *ngIf="(isVideo||isRelatedAudio) && playable" class="video-icon icons-play icon play" (click)="onClick($event)"></i>
+            <i *ngIf="(isVideo||isRelatedAudio) && !playable" class="icons-play icon play"></i>
+        </div>
+    </div>
+</div>

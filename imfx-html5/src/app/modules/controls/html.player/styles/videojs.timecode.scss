@@ -1,0 +1,30 @@
+@import "../../../../views/base/styles/theme.scss";
+@each $key, $value in $common-themes {
+    .#{$key} {
+        #enter-timecode-wrapper {
+            position: absolute;
+            top: -20px;
+            left: 2px;
+            .icons-cross {
+                position: absolute;
+                top: 0;
+                right: 0px;
+                &:before {
+                    font-size: 13px;
+                    line-height: 20px;
+                }
+            }
+        }
+        .enter-timecode{
+            height: 20px;
+            line-height: 20px;
+            width: 90px;
+            font-size: 10px;
+            text-align: center;
+            padding-right: 20px;
+        }
+        .error, .error:focus {
+            border: 1px red solid!important;
+        }
+    }
+}

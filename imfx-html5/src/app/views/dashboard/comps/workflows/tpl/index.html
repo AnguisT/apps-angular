@@ -1,0 +1,11 @@
+<div class="full-height full-width dashboard-workflows-wrapper" #workflowtable>
+  <imfx-grid class="ag-fresh text dashboard-workflows"
+               [gridOptions]="gridOptions"
+               [rowData]="data.tableRows"
+               [columnDefs]="data.tableColumns"
+               (rowDoubleClicked)="onRowDoubleClicked($event)"
+               style="z-index: 0;"
+               >
+  </imfx-grid>
+</div>
+<overlay #overlay></overlay>

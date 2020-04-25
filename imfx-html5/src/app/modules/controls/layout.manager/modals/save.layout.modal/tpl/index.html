@@ -1,0 +1,9 @@
+<div class="save-layout-wrapper">
+  <div class="save-layout-fields">
+    <input type="text" placeholder="{{'layout-manager.new-name' | translate}}" [(ngModel)]="layoutName">
+    <i class="icon icons-closedelete" *ngIf="layoutName.trim().length > 0" (click)="layoutName = ''"></i>
+    <label>{{'layout-manager.default' | translate}} <input type="checkbox" [(ngModel)]="isDefault"></label>
+  </div>
+  <button *ngIf="layoutName.trim().length > 0" (click)="saveLayout()">{{'layout-manager.save' | translate}}</button>
+  <div *ngIf="showOverlay" class="modal-overlay"><div class="spinner"></div></div>
+</div>

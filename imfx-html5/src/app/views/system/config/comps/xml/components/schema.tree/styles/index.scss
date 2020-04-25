@@ -1,0 +1,23 @@
+@import "../../../../../../../base/styles/theme.scss";
+
+@each $key, $value in $common-themes {
+  .#{$key} {
+
+    .imfx-schema-tree-wrapper {
+      .dock-header-row {
+        box-sizing: border-box;
+        padding: 5px 10px;
+        cursor: pointer;
+        position: relative;
+      }
+      .dock-item-row {
+        box-sizing: border-box;
+        padding: 5px 10px 5px 30px;
+        cursor: pointer;
+      }
+      .selected {
+        border-bottom: 2px solid #D98A1C;
+      }
+    }
+  }
+}

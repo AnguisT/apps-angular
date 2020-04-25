@@ -1,0 +1,44 @@
+<li class="dropdown test-search-settings-li-dropdown" dropdown title="{{ 'common_hints.view_settings' | translate }}">
+    <i class="icons-more icon"></i>
+    <ul class="submenu" #submenu>
+        <li><a (click)="newView()">{{
+            'table_search_dropdown.controls.new_view' | translate }}</a></li>
+        <li [ngClass]="{'disabled': !currentViewIsSaved}">
+            <a (click)="saveView()">
+                {{ 'table_search_dropdown.controls.save_view' | translate }}
+            </a>
+        </li>
+        <li><a (click)="saveViewAs()">{{
+            'table_search_dropdown.controls.save_view_as' | translate }}</a></li>
+        <li [ngClass]="{'disabled': !currentViewIsSaved}">
+            <a (click)="saveGlobalViewAs()">
+                {{ 'table_search_dropdown.controls.save_global_view_as' | translate }}
+            </a>
+        </li>
+        <li [ngClass]="{'disabled': !currentViewIsSaved}">
+            <a
+                (click)="saveAsDefaultView()">
+                {{ 'table_search_dropdown.controls.save_as_default_view' | translate }}
+            </a>
+        </li>
+        <li [ngClass]="{'disabled': !currentViewIsSaved}"><a (click)="deleteView()">
+            {{ 'table_search_dropdown.controls.delete_view' | translate }}
+        </a></li>
+        <li><a (click)="resetView()">
+            {{ 'table_search_dropdown.controls.reset_view' | translate }}
+        </a></li>
+        <li><a (click)="setupColumns()">
+            {{ 'table_search_dropdown.controls.setup_columns' | translate }}
+        </a></li>
+        <li><a (click)="autoSizeColumns()">
+            {{ 'table_search_dropdown.controls.autosize_columns' | translate }}
+        </a></li>
+        <li (click)="exportResults()">
+            <a>
+                {{ 'table_search_dropdown.controls.export_to_file' | translate }}
+            </a>
+        </li>
+    </ul>
+</li>
+
+

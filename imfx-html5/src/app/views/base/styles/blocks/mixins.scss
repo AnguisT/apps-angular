@@ -1,0 +1,5 @@
+@import "../../../../views/base/styles/theme.scss";
+// Mixins
+@mixin shadow($key, $theme) {
+  box-shadow: 0 $grid*2 $grid*4 getThemeColor($key, $theme);
+}

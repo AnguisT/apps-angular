@@ -1,0 +1,22 @@
+<div class="locator-wrapper">
+    <tabset #staticTabs>
+        <tab heading="Comments" (select)="selectTab('Comments')">
+            <imfx-logger-comments [config]="locatorTabConfig.comments"
+                                  [reloadData]="reloadTaggingData"
+                                  (saveValid)="onSaveValid($event)"></imfx-logger-comments>
+        </tab>
+        <tab heading="Legal" (select)="selectTab('Legal')">
+            <imfx-logger-comments [config]="locatorTabConfig.legal"
+                                  [reloadData]="reloadTaggingData"
+                                  (saveValid)="onSaveValid($event)"></imfx-logger-comments>
+        </tab>
+        <tab heading="Cuts" (select)="selectTab('Cuts')">
+            <imfx-logger-comments [config]="locatorTabConfig.cuts"
+                                  [reloadData]="reloadTaggingData"
+                                  (saveValid)="onSaveValid($event)"></imfx-logger-comments>
+        </tab>
+        <tab heading="Black Detected" (select)="selectTab('Blackdetect')">
+            <imfx-media-tagging-tab [config]="locatorTabConfig.blackdetect"></imfx-media-tagging-tab>
+        </tab>
+    </tabset>
+</div>

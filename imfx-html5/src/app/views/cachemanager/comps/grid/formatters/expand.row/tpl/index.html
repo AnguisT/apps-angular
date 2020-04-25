@@ -1,0 +1,50 @@
+<div class="wrapper-cachemanager-row-table" id="container-{{item.ID}}">
+    <div *ngFor="let dev of item.Devices; let i=index">
+        <table class="table cachemanager-simple-table">
+            <thead>
+                <th>
+                </th>
+                <th>
+                    Devices
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Job Id
+                </th>
+                <th>
+                    Job Status
+                </th>
+                <th>
+                    Locked
+                </th>
+            </thead>
+            <tbody>
+                <td>
+                    <i class="icons-more icon reveal"
+                       (click)="openPopups($event)"
+                       [attr.data-popupid]="'settings'"
+                       [attr.data-rowid]="'subrow-' + item.ID + '-' + i"
+                    ></i>
+                </td>
+                <td>
+                    {{dev.DeviceName}}
+                </td>
+                <td>
+                    <cm-status-comp [device]="dev"></cm-status-comp>
+                    <!--{{}}-->
+                </td>
+                <td>
+                    {{dev.JOB_ID}}
+                </td>
+                <td>
+                    {{dev.JobStatus}}
+                </td>
+                <td>
+                    {{dev.IS_LOCKED}}
+                </td>
+            </tbody>
+        </table>
+    </div>
+</div>

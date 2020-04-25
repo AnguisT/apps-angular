@@ -1,0 +1,13 @@
+<div class="layout-manager-wrapper" #layoutManager>
+    <button class="layout-manager-wrapper" (click)="toggleDropdown()" title="{{ _layout.Name.length > 0 ? _layout.Name : ('layout-manager.main' | translate) }}">
+      {{ _layout.Name.length > 0 ? _layout.Name : ('layout-manager.main' | translate) }}
+      <i class="icon" [ngClass]="{'icons-up':opened, 'icons-down':!opened}"></i>
+    </button>
+    <div class="layout-manager-menu" *ngIf="opened">
+      <div (click)="open($event)">{{ 'layout-manager.open' | translate }}</div>
+      <div (click)="save($event)">{{ 'layout-manager.save' | translate }}</div>
+      <div (click)="saveAs($event)">{{ 'layout-manager.saveas' | translate }}</div>
+      <div (click)="saveGlobal($event)">{{ 'layout-manager.saveglobal' | translate }}</div>
+      <div (click)="reset($event)">{{ 'layout-manager.reset' | translate }}</div>
+    </div>
+</div>

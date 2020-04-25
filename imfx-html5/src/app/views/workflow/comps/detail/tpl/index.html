@@ -1,0 +1,126 @@
+<div class="workflow-details-wrapper" #workflow style="height: 100%">
+  <div class="imfx-detail-btns">
+    <nav>
+      <ul>
+        <li *ngIf="!error">
+          <button class="icon-button" title="{{ 'common.back_button' | translate }}" (click)="clickBack()">
+            <i class="icons-left icon"></i>
+          </button>
+        </li>
+        <li *ngIf="!error" class="detail-title">
+          <h1 title="{{ 'workflow.title' | translate }}">
+            {{ 'workflow.title' | translate }}
+            <span *ngIf="details?.JobRef">-</span> {{details?.JobRef}}
+          </h1>
+        </li>
+        <li *ngIf="error">
+          <button class="icon-button" title="{{ 'common.back_button' | translate }}" (click)="clickBack()">
+            <i class="icons-left icon"></i>
+            {{'common.back_button' | translate}}
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <div class="full-height-width-block">
+    <split *ngIf="!error"
+      #split
+      (dragProgress)="onResize($event)"
+      [style.float]="'left'"
+      [direction]="'horizontal'">
+      <split-area
+        [order]="1"
+        [size]="30">
+        <div class="panel-flex-wrapper">
+          <div class="panel card panel-default">
+            <div class="panel-heading card-heading">
+              <h2>Job Details</h2>
+            </div>
+            <div class="panel-body card-block">
+              <div class="card-row">
+                <div class="card-col prop-name">Job Ref</div>
+                <div class="card-col prop-name">{{details?.JobRef}}</div>
+              </div>
+              <div class="card-row">
+                <div class="card-col prop-name">Id</div>
+                <div class="card-col prop-name">{{details?.Id}}</div>
+              </div>
+              <div class="card-row">
+                <div class="card-col prop-name">Status Text</div>
+                <div class="card-col prop-name">{{details?.StatusText}}</div>
+              </div>
+              <div class="card-row">
+                <div class="card-col prop-name">Client</div>
+                <div class="card-col prop-name">{{details?.Client}}</div>
+              </div>
+              <div class="card-row">
+                <div class="card-col prop-name">Complete By</div>
+                <div class="card-col prop-name">{{details?.CompleteBy}}</div>
+              </div>
+              <div class="card-row">
+                <div class="card-col prop-name">Priority</div>
+                <div class="card-col prop-name">{{details?.Priority}}</div>
+              </div>
+              <div class="card-row">
+                <div class="card-col prop-name">Created By</div>
+                <div class="card-col prop-name">{{details?.CreatedBy}}</div>
+              </div>
+              <div class="card-row">
+                <div class="card-col prop-name">Created Date</div>
+                <div class="card-col prop-name">{{details?.CreatedDate}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="panel card panel-default">
+            <div class="panel-heading card-heading">
+              <h2>{{ 'workflow.details.media' | translate }}</h2>
+            </div>
+            <div class="panel-body card-block">
+              <div *ngFor="let item of details?.SourceMedia; let i = index">
+                <media-item-component [item]="item"></media-item-component>
+              </div>
+            </div>
+          </div>
+        </div>
+      </split-area>
+      <split-area
+        [order]="2"
+        [size]="70">
+        <div class="col-md-12 graph-wrapper no-padding" style="height: 100%">
+          <split
+            #split
+            [style.float]="'left'"
+            [direction]="'vertical'">
+            <split-area
+              [order]="1"
+              [size]="70">
+              <joint [fullSize]="true" #jointModule></joint>
+              <!--<div id="workflow-graph"></div>-->
+            </split-area>
+            <split-area *ngIf="selectedTask"
+                        [order]="2"
+                        [size]="30">
+              <!--<div *ngIf="selectedTask" class="stick-bottom">-->
+              <div>
+                <h2 class="">{{ selectedTask.TaskTypeText }} ({{selectedTask.StatusText }})</h2>
+                <imfx-grid *ngIf="selectedTask" class="ag-fresh text ag-grid-task-history"
+                             [gridOptions]="gridOptions"
+                             [rowData]="data.tableRows"
+                             [columnDefs]="data.tableColumns">
+                </imfx-grid>
+              </div>
+            </split-area>
+          </split>
+        </div>
+      </split-area>
+    </split>
+    <div style="margin: auto;" *ngIf="error">
+      <h2>
+        {{text}}
+      </h2>
+    </div>
+  </div>
+</div>
+<overlay #overlay></overlay>

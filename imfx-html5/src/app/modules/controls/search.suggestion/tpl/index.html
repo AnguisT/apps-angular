@@ -1,0 +1,68 @@
+<div class="input-group">
+    <div class="search-mode" *ngIf="currentMode!='Titles'" [ngClass]="currentMode.toLowerCase()">
+        <span>{{currentMode}}</span>
+        <div class="close" (click)="doSearch($event)" *ngIf="currentMode!='Titles'">x</div>
+    </div>
+    <input class="form-control"
+           required
+           autofocus
+           type="text"
+           placeholder="{{ 'common.search_placeholder' | translate }}"
+           (keyup)="onKeyUp($event)"
+           [ngClass]="currentMode.toLowerCase()+'-input'"
+           [(ngModel)]="searchString"/>
+    <div class="input-group-btn">
+        <button class="btn imfx-btn" (click)="doSearch($event)" [disabled]="!enabledSearchButton"> <i class="icons-search icon"></i></button>
+    </div>
+</div>
+<div class="angucomplete-dropdown" *ngIf="showAutocompleteDropdown">
+    <div class="angucomplete-searching" *ngIf="searching">{{'common.searching_placeholder' | translate}}</div>
+
+    <div class="angucomplete-results" *ngIf="!searching">
+        <div class="angucomplete-result-block">
+            <div class="angucomplete-row row" *ngFor="let res of results.titles; let i=index"
+                 [ngClass]="{'selected': i==currentItem && currentArray==0}"
+                 (mouseover)='hoverRow(i, 0)'
+                 (click)="selectResult(res)">
+                <div class="angucomplete-row-wrapper">
+                    <div class="angucomplete-entry-title"> {{res.title}}</div>
+                    <div class="angucomplete-count" [ngSwitch]="res.count" *ngIf="res.count>0">
+                        {{res.count}}
+                        <span *ngSwitchCase="1">{{'suggestions.sresult' | translate}}</span>
+                        <span *ngSwitchDefault>{{'suggestions.sresults' | translate}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="angucomplete-result-block">
+            <div *ngIf="results.series.length" class="angucomplete-episodes-title">
+                {{'suggestions.series' | translate}}
+            </div>
+            <div class="angucomplete-row row" *ngFor="let res of results.series; let i=index"
+                 [ngClass]="{'selected': i==currentItem && currentArray==1}"
+                 (mouseover)='hoverRow(i, 1)'
+                 (click)="selectResult(res)">
+                <div class="angucomplete-row-wrapper" [ngSwitch]="res.image">
+                    <img [src]="res.image" class="angucomplete-image" *ngSwitchDefault/>
+                    <div class="angucomplete-entry-title" *ngSwitchCase="null"> {{res.title}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="angucomplete-result-block">
+            <div *ngIf="results.contributors.length" class="angucomplete-episodes-title">
+                {{'suggestions.contributors' | translate}}
+            </div>
+            <div class="angucomplete-row row" *ngFor="let res of results.contributors; let i=index"
+                 [ngClass]="{'selected': i==currentItem && currentArray==2}"
+                 (mouseover)='hoverRow(i, 2)'
+                 (click)="selectResult(res)">
+                <div class="angucomplete-row-wrapper">
+                    <div class="angucomplete-contributor-info">
+                        <img [src]="res.image" class="image" *ngIf="res.image && res.image != ''"/>
+                        <div class="title"> {{res.title}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

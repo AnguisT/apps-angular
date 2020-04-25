@@ -1,0 +1,84 @@
+<div id="start-search" class="full-height" [ngSwitch]="backgrounds[selectedBackground]?.type">
+  <div *ngSwitchCase="'img'" class="background" [ngStyle]="{'background-image': 'url(' + backgrounds[selectedBackground].url + ')'}"></div>
+  <div *ngSwitchCase="'video'" class="background" [ngStyle]="{'background-image': 'url(' + backgrounds[selectedBackground].preview + ')'}"></div>
+  <!--<div *ngSwitchCase="'video'" class="background">-->
+  <div  *ngIf="backgrounds[selectedBackground]?.type == 'video'" class="background">
+    <video class="iw_userfiles_video" playsinline="" autoplay="" muted="" loop="" [src]="backgrounds[selectedBackground].url">
+      <img [src]="backgrounds[selectedBackground].preview" alt="">
+    </video>
+  </div>
+  <div class="start-search-block" [ngStyle]="{'height': heightStartBlock}">
+      <div class="search-row-wrapper simple-search" #simpleSearch [ngClass] ="{'full-height': builderMode}">
+          <div *ngIf="builderMode; else searchMode">
+            <div class="search-logo-selector">
+              <div *ngFor="let key of searchLogosKeys" class="item" [ngClass]="{'selected': selectedSearchLogo == key}" (click)="selectSearchLogo(key)">
+                <div *ngIf="searchLogos[key].type=='img'; else noSearchLogo" class="search-logo-item-frame">
+                  <span class="search-logo-helper"></span>
+                  <img [attr.src]="searchLogos[key].url">
+                </div>
+                <ng-template #noSearchLogo>
+                  <div class="no-logo">
+                    <h2>{{ 'settings_group.screen_logo' | translate }}</h2>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+            <input [(ngModel)]="title" class="fake-label title" placeholder="Please enter title">
+            <input [(ngModel)]="subtitle" class="fake-label subtitle" placeholder="Please enter subtitle">
+          </div>
+          <ng-template #searchMode>
+              <div>
+                <img #imageLogo *ngIf="selectedSearchLogo && searchLogos[selectedSearchLogo] && searchLogos[selectedSearchLogo].url"
+                       class="search-form-logo" [src]="searchLogos[selectedSearchLogo].url" alt="">
+              </div>
+            <label *ngIf="title" class="fake-label title">{{title}}</label>
+            <label *ngIf="subtitle" class="fake-label subtitle">{{subtitle}}</label>
+          </ng-template>
+          <search-form
+                  [config]="searchFormConfig"
+                  [changesDetector]="pushChangesTosuggestion"
+                  [builderMode]="builderMode"
+                  class="combined"
+                  #searchForm
+          ></search-form>
+        <div *ngIf="builderMode" class="backgrounds-selector">
+          <div *ngFor="let key of backgroundsKeys" class="item" [ngClass]="{'selected': selectedBackground == key}" (click)="selectBackground(key)">
+            <img *ngIf="backgrounds[key].type=='img'" [attr.src]="backgrounds[key].url">
+            <img *ngIf="backgrounds[key].type=='video'" [attr.src]="backgrounds[key].preview">
+            <div *ngIf="backgrounds[key].type=='empty'" class="no-background">
+              <h2>No Background</h2>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="recentItems && recentItems.length > 0 && !builderMode">
+            <div class="recent-ctrl-panel">
+                <h2 class="caption">{{ 'simplified.recent' | translate }}</h2>
+            </div>
+            <div class="recent-files">
+                <div class="item" *ngFor="let item of recentItems" (click)="showFromRecent(item)">
+                    <div class="recent-thumbnail">
+                        <thumb-component [params]="item"></thumb-component>
+                        <!--<grid-column-thumb-component [params]="item.ThumbUrl"></grid-column-thumb-component>-->
+                    </div>
+                    <div class="title">{{item.Title}}</div>
+                </div>
+            </div>
+            <div *ngIf="recentItems && recentItems.length > 0 && !builderMode">
+                <div class="recent-ctrl-panel">
+                    <a class="clearBtn" [hidden]="recentItems.length==0" (click)="clearRecent()">
+                        {{ 'base.clear' | translate }}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="searchRecentConfig && !builderMode">
+          <search-recent
+            [externalMode]="true"
+            [config]="searchRecentConfig"
+            (onSelect)="selectRecentSearch($event)"
+          ></search-recent>
+        </div>
+      </div>
+  </div>
+</div>

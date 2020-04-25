@@ -1,0 +1,21 @@
+<div class="subtitles-grid-wrapper">
+  <div class="subs-header-wrapper" [ngClass]="{'with-drop': additionalSubs && additionalSubs.length > 0}">
+    <search-text-for-mark [searchResource]="data.tableRows"
+                          [config]="textMarkerConfig"
+                          [externalSearchText]="externalSearchText"
+    ></search-text-for-mark>
+    <select *ngIf="additionalSubs && additionalSubs.length > 0" (change)="setLangSubtitles($event.target.value)">
+      <option value="0">Indexed</option>
+      <option *ngFor="let item of additionalSubs" value="{{item.Id}}">{{item.Language + ' [' + item.Format + ']'}}</option>
+    </select>
+  </div>
+  <div id="externalWrapperSlickGridForInfoPanel" style="height: calc(100% - 40px);">
+    <slick-grid #subtitlesGrid class="ag-fresh text"
+                [ngClass]="{'standalone': standalone}"
+                [config]="subtitlesGridOptions">
+    </slick-grid>
+  </div>
+
+
+
+</div>

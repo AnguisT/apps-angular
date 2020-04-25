@@ -1,0 +1,17 @@
+<div class="metadata-tab-wrapper">
+  <div class="trees-wrapper" [ngClass]="{'full': config.readOnly != false}">
+    <imfx-simple-tree #simpleTreeRef class="docs-block js-scrollbar-target" *ngIf="xmls"
+                      [groups]="xmls"
+                      [freeze]="editMode"
+                      (selected)="selectXmlDocument($event)">
+    </imfx-simple-tree>
+    <imfx-xml-tree #xmlTreeRef class="xml-block js-scrollbar-target" *ngIf="selectedSchemaModel"
+                   [schemaModel]="selectedSchemaModel"
+                   [xmlModel]="selectedXmlModel">
+    </imfx-xml-tree>
+  </div>
+  <button *ngIf="config.readOnly == false && !inSave && !editMode && compIsLoaded" class="add-document" (click)="addCustomMetadata()">Add Document</button>
+  <button *ngIf="config.readOnly == false && !inSave && selectedXmlModel && selectedXmlModel.XmlModel && !editMode && compIsLoaded" class="add-document" (click)="editDocument()">Edit document</button>
+  <button *ngIf="config.readOnly == false && !inSave && editMode && compIsLoaded" class="add-document" (click)="cancelEditDocument()">Cancel</button>
+  <button *ngIf="config.readOnly == false && !inSave && editMode && compIsLoaded" class="add-document" (click)="saveSelectedMetadata()">Save</button>
+</div>

@@ -1,0 +1,11 @@
+<div class="notes-tab-wrapper">
+  <div *ngIf="config.readOnly !== false">
+    {{config.fileNotes}}
+  </div>
+  <div *ngIf="config.readOnly == false" style="height: 100%;">
+    <textarea type="text" autofocus
+    name="text"
+    class="form-control"
+    [(ngModel)]="config.fileNotes"></textarea>
+  </div>
+</div>

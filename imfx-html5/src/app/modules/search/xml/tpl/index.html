@@ -1,0 +1,103 @@
+<div class="xml-schema">
+    <div *ngIf="schemas" class="js-scrollbar-target-modal-one">
+        <!--SchemaIDx-->
+        <div *ngIf="type == 'SCHEMAIDx'"
+                style="height:100%"
+                layout="row">
+
+            <div style="height:100%; overflow: hidden;position: relative;float: left;" [ngStyle]="{'width': (data && modalData.compContext.withoutXmlTree ? '100%' : 'calc(40% - 20px)'), 'float': (data && modalData.compContext.withoutXmlTree ? 'none' : 'left')}">
+                <input
+                        #filterInput
+                        type="text"
+                        placeholder="{{ 'ng2_components.ag_grid.start_type_xml_field_name' | translate }}"
+                        (keyup)="cdrFired()">
+                <div class="table-wrapper">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <td>
+                                <strong>
+                                    {{ 'ng2_components.ag_grid.tbl_header_xml_field_schema_name' |
+                                    translate
+                                    }}
+                                </strong>
+                            </td>
+                            <td>
+                                <strong>
+                                    {{
+                                    'ng2_components.ag_grid.tbl_header_xml_field_description'
+                                    |
+                                    translate }}
+                                </strong>
+                            </td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr
+                                [ngClass]="{'active': selectedIndex == i}"
+                                (click)="onSelect(schema, i)"
+                                style="cursor:pointer"
+                                *ngFor="let schema of schemas|filter: ['Name']: filterInput.value; let i = index">
+                            <td>
+                                {{schema.Name}}
+                            </td>
+                            <td>
+                                {{schema.Description}}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div
+              *ngIf="data && !modalData.compContext.withoutXmlTree"
+                    #tableSplit
+                    style="padding-left: 25px; height:100%; position: relative;float: left; width: 60%; overflow: auto; max-height: 400px">
+                <div class="">
+                    <div class="">
+                        <imfx-xml-tree
+                                #xmlTree
+                                [schemaModel]="selectedSchemaModel"
+                                [xmlModel]="selectedXmlModel"
+                        ></imfx-xml-tree>
+                    </div>
+                </div>
+            </div>
+            <!-- <button *ngIf="data && selectedSchemaFormList" style="margin-top: 16px" type="button" class="primary" (click)="onSave()">
+              {{ 'common.ok' | translate }}
+            </button> -->
+            <div *ngIf="data && showOverlay && modalData.compContext.withoutXmlTree" class="modal-overlay"><div class="spinner"></div></div>
+        </div>
+
+        <!--SchemaID-->
+        <div style="height: 100%" *ngIf="type == 'SCHEMAID'">
+            <div style="height:90%">
+                <input
+                        #filterInput
+                        class="field"
+                        placeholder="{{ 'ng2_components.ag_grid.start_type_xml_field_name' | translate }}"
+                        (keyup)="cdrFired()">
+                <!-- <imfx-grid #xmlGrid
+                            [gridOptions]="gridOptions"
+                            [columnDefs]="dataTable.tableColumns"
+                            [rowData]="dataTable.tableRows"
+                            (rowClicked)="onSelect($event)">
+                </imfx-grid> -->
+                <slick-grid
+                    #slickGridComp
+                    style="width: 100%; height: 100%;"
+                    class="xml-grid"
+                    [config]="searchGridConfig">
+                </slick-grid>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!schemas">
+        <div class="">
+            <div class="">
+                {{"tbl_header_xml_schemas_select_schema"|translate}}
+            </div>
+        </div>
+    </div>
+</div>
+<overlay #overlayXML></overlay>

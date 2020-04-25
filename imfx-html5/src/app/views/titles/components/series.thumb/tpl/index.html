@@ -1,0 +1,5 @@
+<div class="series-thumbnail-wrapper">
+  <a [routerLink]="['/title','detail', params.node.data.ID]">
+    <img *ngIf="showThumb" [src]="url || './assets/img/default-thumb.PNG'" class="thumbnail" onError="this.src='./assets/img/default-thumb.PNG'"/>
+  </a>
+</div>

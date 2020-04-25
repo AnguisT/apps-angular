@@ -1,0 +1,30 @@
+<div class="global-settings-logger full-height" #loggerSettingsWrapper>
+    <!--<div class="add-logger-wrapper">-->
+    <div>
+        <div class="form-group">
+            <label for="sys-glob-sett-logger">Logger</label>
+            <input id="sys-glob-sett-logger"
+                   class="form-control"
+                   aria-describedby="sys-glob-sett-logger-help"
+                   [(ngModel)]="this.loggerData.Url" type="text"
+                   placeholder="Endpoint url"/>
+            <small id="sys-glob-sett-logger-help" class="form-text text-muted">Logger</small>
+        </div>
+
+        <div class="form-group">
+            <label for="sys-glob-sett-logplayer">Media Proxy Player</label>
+            <input
+                    id="sys-glob-sett-logplayer"
+                    class="form-control"
+                    [(ngModel)]="this.loggerData.MediaProxyLogger"
+                    aria-describedby="sys-glob-sett-logplayer-help"
+                    type="text"
+                    placeholder="Endpoint url"/>
+            <small id="sys-glob-sett-logplayer-help" class="form-text text-muted">
+                Media Proxy Player
+            </small>
+        </div>
+        <button class="primary" (click)="SaveLoggerUrl()">Save</button>
+    </div>
+    <!--</div>-->
+</div>

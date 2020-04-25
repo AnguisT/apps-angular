@@ -1,0 +1,18 @@
+<div class="default-settings-wrapper" style="height: 100%">
+  <div class="default-settings-row">
+    <span>{{ 'settings_group.select_default_search' | translate }}</span>
+    <select class="" (change)="searchChange($event)">
+      <option value="" disabled>{{'base.selectOoo'|translate}}</option>
+      <option *ngFor="let key of configDefault.searchTypesKeys" [value]="key" [selected]="key == configDefault.defaultSearch">{{ 'settings_group.search_types.' + configDefault.searchTypes[key] | translate }} </option>
+    </select>
+  </div>
+  <div class="default-settings-row">
+    <span>{{ 'settings_group.select_logo' | translate }}</span>
+    <div class="logo-images-wrapper">
+      <div *ngFor="let img of configDefault.logoImages; let i=index" class="logo-image-wrapper"  [ngClass]="{'selected': img.select}" (click)="selectLogo(i)">
+        <span *ngIf="img.id=='NOLOGO'">No Logo</span>
+        <img *ngIf="img.id!=='NOLOGO'" [src]="img.url">
+      </div>
+    </div>
+  </div>
+</div>

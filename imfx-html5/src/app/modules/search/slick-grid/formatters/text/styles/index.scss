@@ -1,0 +1,16 @@
+.text-formatter-wrapper {
+    margin-top: -4px;
+    position: relative;
+    .field {
+        width: 100%;
+    }
+    &.error-validation .invalid-triangle{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-left: 10px solid red;
+    }
+}
