@@ -120,7 +120,7 @@
     "js-cookie": "2.2.0",
     "karma-html-reporter": "^0.2.7",
     "karma-teamcity-reporter": "^1.0.0",
-    "lodash": "3.10.0",
+    "lodash": "4.17.21",
     "mammoth": "^1.4.6",
     "momentjs": "^2.0.0",
     "multiple-select": "^1.2.0",
