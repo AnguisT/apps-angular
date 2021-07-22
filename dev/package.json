@@ -54,7 +54,7 @@
     "primeng": "^6.1.7",
     "rxjs": "6.0.0",
     "text-mask-addons": "^3.8.0",
-    "xlsx": "^0.15.3",
+    "xlsx": "^0.17.0",
     "zone.js": "^0.8.29"
   },
   "devDependencies": {
