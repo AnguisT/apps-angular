@@ -133,7 +133,7 @@
     "ng2-vis": "git+https://github.com/seveves/ng2-vis.git",
     "ng2-webstorage": "^2.0.0",
     "ngx-bootstrap": "^2.0.4",
-    "node-sass": "^4.9.0",
+    "node-sass": "^7.0.0",
     "object-hash": "^1.1.8",
     "pdfjs-dist": "^1.10.100",
     "protractor": "^5.3.2",
